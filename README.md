@@ -1,10 +1,10 @@
 ## Hi 👋
 
-I'm **Georges Byona** from RDCongo 🇨🇩, and `@georgesbyona` is my handle on different Social Media.
+I'm **Georges Byona** from RDCongo 🇨🇩, currently based in Kenya 🇰🇪, and `@glosings0n` is my handle on different Social Media.
 
 Here are some ideas to get you started:
 
-- 🔭 I’m currently working on **LosingTech** platform
+- 🔭 I’m currently working at **LosingTech** to solve real society problem
 - 🌱 I’m currently learning **Google Cloud Platform**
 - 👯 I’m looking to collaborate on a **Flutter App**
 - 🤔 I'm looking for help with **Embedded System Training**
