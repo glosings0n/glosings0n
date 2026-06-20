@@ -349,6 +349,11 @@ h4 {
     width: 100%;
 }
 
+#block-losingtech .block-img-wrapper,
+#block-flutterfire .block-img-wrapper {
+    max-width: 400px;
+}
+
 .block-img-wrapper::before,
 .block-img-wrapper::after {
     content: '';
