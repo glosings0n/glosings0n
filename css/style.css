@@ -818,12 +818,41 @@ h4 {
     }
 
     /* Achievements */
+    .section-title {
+        font-size: clamp(1.8rem, 6vw, 2.2rem);
+    }
+
+    .section-lead {
+        font-size: 1rem;
+        margin-bottom: 40px;
+    }
+
+    .logo {
+        font-size: 1.2rem;
+    }
+
     .achievement-block,
     .achievement-block.reverse {
         flex-direction: column;
         gap: 30px;
         margin-bottom: 70px;
         text-align: center;
+    }
+
+    .block-heading {
+        font-size: clamp(1.4rem, 5vw, 1.7rem);
+    }
+
+    .block-text {
+        font-size: 0.95rem;
+    }
+
+    .stat-number {
+        font-size: 1.5rem;
+    }
+
+    .stat-label {
+        font-size: 0.85rem;
     }
 
     .block-tag,
@@ -846,9 +875,25 @@ h4 {
         padding: 30px;
     }
 
+    .info-card h4 {
+        font-size: 1.25rem;
+    }
+
+    .info-card p {
+        font-size: 0.95rem;
+    }
+
     /* Contact & Footer */
+    .contact-title {
+        font-size: clamp(2rem, 7vw, 2.4rem);
+    }
+
+    .contact-subtitle {
+        font-size: 1rem;
+    }
+
     .contact-cta-btn {
-        font-size: 1.4rem;
+        font-size: clamp(1.2rem, 4vw, 1.5rem);
     }
 
     .footer-container {
