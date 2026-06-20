@@ -605,17 +605,22 @@ h4 {
 .contact-section {
     background-color: var(--bg-secondary);
     border-top: 1px solid var(--border-color);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .contact-container {
     max-width: var(--max-width);
     margin: 0 auto;
-    padding: 120px 24px;
+    padding: 80px 24px;
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 24px;
+    width: 100%;
 }
 
 .contact-title {
