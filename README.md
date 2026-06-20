@@ -30,7 +30,7 @@ I am **Georges Byona** (aka **glosings0n**), a passionate software engineer, tec
     <img src="https://raw.githubusercontent.com/danielcranney/profileme-dev/master/public/icons/skills/dart.svg" alt="Dart" width="40" height="40"/>
   </a>
   <a href="https://developer.android.com" target="_blank" rel="noreferrer">
-    <img src="https://raw.githubusercontent.com/danielcranney/profileme-dev/master/public/icons/skills/android.svg" alt="Android" width="40" height="40"/>
+    <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/android/android-original.svg" alt="Android" width="40" height="40"/>
   </a>
   <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" rel="noreferrer">
     <img src="https://raw.githubusercontent.com/danielcranney/profileme-dev/master/public/icons/skills/javascript.svg" alt="JavaScript" width="40" height="40"/>
@@ -56,7 +56,7 @@ I am **Georges Byona** (aka **glosings0n**), a passionate software engineer, tec
     <img src="https://raw.githubusercontent.com/danielcranney/profileme-dev/master/public/icons/skills/git.svg" alt="Git" width="40" height="40"/>
   </a>
   <a href="https://vercel.com" target="_blank" rel="noreferrer">
-    <img src="https://raw.githubusercontent.com/danielcranney/profileme-dev/master/public/icons/skills/vercel.svg" alt="Vercel" width="40" height="40"/>
+    <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/vercel/vercel-original.svg" alt="Vercel" width="40" height="40" style="filter: invert(1);"/>
   </a>
 </p>
 
