@@ -772,8 +772,11 @@ h4 {
     .hero-section {
         height: auto;
         min-height: 100vh;
-        padding-top: calc(var(--header-height) + 40px);
-        padding-bottom: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-top: calc(var(--header-height) + 60px);
+        padding-bottom: 80px;
     }
 
     .hero-bg-img {
@@ -790,14 +793,24 @@ h4 {
         grid-template-columns: 1fr;
         text-align: center;
         gap: 40px;
-        padding-top: 20px;
+        padding-top: 0;
+        width: 100%;
+    }
+
+    .hero-title {
+        font-size: clamp(2.2rem, 8.5vw, 3rem);
+        letter-spacing: -1px;
+        line-height: 1.25;
     }
 
     .hero-subtitle {
+        font-size: clamp(1.05rem, 4vw, 1.2rem);
         border-left: none;
         border-bottom: 3px solid var(--color-cyan);
         padding-left: 0;
-        padding-bottom: 16px;
+        padding-bottom: 20px;
+        max-width: 480px;
+        margin: 0 auto;
     }
 
     .hero-actions {
