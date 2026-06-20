@@ -659,7 +659,7 @@ h4 {
 
 /* 9. Footer */
 .footer {
-    background-color: transparent;
+    background-color: var(--bg-primary);
     border-top: 1px solid var(--border-color);
     padding: 40px 24px;
     width: 100%;
