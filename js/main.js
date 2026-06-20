@@ -9,7 +9,25 @@ document.addEventListener('DOMContentLoaded', () => {
     initActiveLinkHighlighting();
     initCurrentYear();
     initAppConfig();
+    handleInitialScroll();
 });
+
+/**
+ * Smoothly scroll to the hash section on initial page load if present
+ */
+function handleInitialScroll() {
+    const hash = window.location.hash;
+    if (hash) {
+        const targetId = hash.substring(1);
+        const targetElement = document.getElementById(targetId);
+        if (targetElement) {
+            // Slight delay to ensure content layout is fully computed
+            setTimeout(() => {
+                targetElement.scrollIntoView({ behavior: 'smooth' });
+            }, 150);
+        }
+    }
+}
 
 /**
  * Set Dynamic Current Year in Footer
