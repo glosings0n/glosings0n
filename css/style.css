@@ -181,6 +181,37 @@ h4 {
     width: 100%;
 }
 
+/* Language Selector */
+.lang-selector {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-left: 12px;
+}
+
+.lang-btn {
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    font-family: var(--font-family);
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 4px 6px;
+    transition: var(--transition-smooth);
+}
+
+.lang-btn:hover,
+.lang-btn.active {
+    color: var(--color-cyan);
+}
+
+.lang-divider {
+    color: var(--border-color);
+    font-size: 0.85rem;
+    user-select: none;
+}
+
 /* Mobile Toggle */
 .menu-toggle {
     display: none;
@@ -270,8 +301,6 @@ h4 {
     font-size: 1.4rem;
     color: var(--text-secondary);
     font-weight: 400;
-    border-left: 3px solid var(--color-cyan);
-    padding-left: 16px;
     line-height: 1.5;
 }
 
@@ -544,6 +573,7 @@ h4 {
 .platform-btn:hover {
     background-color: var(--bg-primary);
     border-color: var(--color-cyan);
+    color: var(--color-cyan);
     transform: translateY(-2px);
 }
 
@@ -711,7 +741,7 @@ h4 {
 
 .social-link:hover {
     border-color: var(--color-cyan);
-    color: var(--text-primary);
+    color: var(--color-cyan);
 }
 
 /* 10. Scroll Animation Reveal Classes */
@@ -773,6 +803,11 @@ h4 {
         font-size: 1.25rem;
     }
 
+    .lang-selector {
+        margin-left: 0;
+        margin-top: 10px;
+    }
+
     /* Burger Menu Animations */
     .menu-toggle.open .bar:nth-child(1) {
         transform: translateY(8px) rotate(45deg);
@@ -823,10 +858,6 @@ h4 {
 
     .hero-subtitle {
         font-size: clamp(1.05rem, 4vw, 1.2rem);
-        border-left: none;
-        border-bottom: 3px solid var(--color-cyan);
-        padding-left: 0;
-        padding-bottom: 20px;
         max-width: 480px;
         margin: 0 auto;
     }
