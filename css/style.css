@@ -787,26 +787,26 @@ h4 {
     .nav-menu {
         position: fixed;
         top: 0;
-        left: 0;
-        right: auto;
+        left: auto;
+        right: 0;
         width: 60%;
         height: 100vh;
         height: 100dvh;
         background-color: var(--bg-primary);
-        border-right: 1px solid var(--border-color);
+        border-left: 1px solid var(--border-color);
         flex-direction: column;
         justify-content: flex-start;
         align-items: flex-start;
         gap: 16px;
         padding: calc(var(--header-height) + 20px) 24px 40px;
-        transform: translateX(-100%);
+        transform: translateX(100%);
         transition: var(--transition-smooth);
         z-index: 1050;
     }
 
     .nav-menu.open {
         transform: translateX(0);
-        box-shadow: 10px 0 30px rgba(0, 0, 0, 0.25);
+        box-shadow: -10px 0 30px rgba(0, 0, 0, 0.25);
     }
 
     .nav-link {
