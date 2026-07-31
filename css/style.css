@@ -786,31 +786,42 @@ h4 {
 
     .nav-menu {
         position: fixed;
-        top: var(--header-height);
-        left: 0;
-        width: 100%;
-        height: calc(100vh - var(--header-height));
+        top: 0;
+        left: auto;
+        right: 0;
+        width: 60%;
+        height: 100vh;
+        height: 100dvh;
         background-color: var(--bg-primary);
+        border-left: 1px solid var(--border-color);
         flex-direction: column;
-        justify-content: center;
-        gap: 40px;
-        padding-bottom: 100px;
+        justify-content: flex-start;
+        align-items: flex-end;
+        gap: 16px;
+        padding: calc(var(--header-height) + 20px) 24px 40px;
         transform: translateX(100%);
         transition: var(--transition-smooth);
-        border-top: 1px solid var(--border-color);
+        z-index: 1050;
     }
 
     .nav-menu.open {
         transform: translateX(0);
+        box-shadow: -10px 0 30px rgba(0, 0, 0, 0.25);
     }
 
     .nav-link {
-        font-size: 1.25rem;
+        font-size: 1.1rem;
+        font-weight: 500;
+        text-align: right;
+        padding: 6px 0;
+        width: auto;
     }
 
     .lang-selector {
         margin-left: 0;
-        margin-top: 10px;
+        margin-top: 15px;
+        display: flex;
+        justify-content: flex-end;
     }
 
     /* Burger Menu Animations */
