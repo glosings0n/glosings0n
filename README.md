@@ -1,4 +1,4 @@
-# Georges Byona — @glosings0n 👋
+# Georges Byona — @glosings0n
 
 <p align="center">
   <img src="https://img.shields.io/badge/Software_Engineer-00B0FF?style=for-the-badge&logo=codeforces&logoColor=white" alt="Software Engineer" />
@@ -14,7 +14,7 @@ I am **Georges Byona** (aka **glosings0n**), a passionate software engineer, tec
 
 * 💻 Specializing in mobile and web ecosystems, focused on high performance and clean architecture.
 * 🎓 **GDG on Campus UCB Leader**: Empowering and mentoring 500+ student developers in mobile development, cloud computing, and AI.
-* 🏕️ **FlutterFire Summer Camp Organizer**: Coordinating bootcamps to share development best practices with thousands of participants.
+* 🏕️ **FlutterFire Camp Organizer**: Coordinating bootcamps to share development best practices with thousands of participants.
 * 🎤 **Tech Speaker**: Presenting on mobile development, Firebase, and AI technologies at major events like **Build with AI**, **Google I/O Extended**, and **DevFest**.
 
 ---
@@ -55,9 +55,6 @@ I am **Georges Byona** (aka **glosings0n**), a passionate software engineer, tec
   <a href="https://git-scm.com" target="_blank" rel="noreferrer">
     <img src="https://raw.githubusercontent.com/danielcranney/profileme-dev/master/public/icons/skills/git.svg" alt="Git" width="40" height="40"/>
   </a>
-  <a href="https://vercel.com" target="_blank" rel="noreferrer">
-    <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/vercel/vercel-original.svg" alt="Vercel" width="40" height="40" style="filter: invert(1);"/>
-  </a>
 </p>
 
 ---
@@ -95,5 +92,5 @@ I am **Georges Byona** (aka **glosings0n**), a passionate software engineer, tec
 ---
 
 <p align="center">
-  Powered with 💻 and ☕ by <a href="https://losingtech.com">LosingTech</a>
+  Powered with 💻 and ☕ by <a href="https://losingtek.com">LosingTek</a>
 </p>
