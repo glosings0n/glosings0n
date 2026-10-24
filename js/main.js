@@ -8,11 +8,11 @@ const Translations = {
         "nav-home": "Home",
         "nav-about": "About",
         "nav-contact": "Contact",
-        "hero-subtitle": "Software Engineer, Founder @ <span class=\"losingtech-font\">LosingTech</span>, AI Researcher, Community Leader, Tech Trainer, Content Creator & Speaker",
+        "hero-subtitle": "Software Engineer, Founder @ <span class=\"losingtek-font\"><span class=\"brand-bold\">Losing</span>Tek</span>, AI Researcher, Community Leader, Tech Trainer, Content Creator & Speaker",
         "hero-cta": "Get in Touch",
         "about-title": "Achievements & Impact",
         "block1-tag": "Founder & Engineering",
-        "block1-heading": "Software Engineer & Founder of <span class=\"losingtech-font\">LosingTech</span>",
+        "block1-heading": "Software Engineer & Founder of <span class=\"losingtek-font\"><span class=\"brand-bold\">Losing</span>Tek</span>",
         "block1-text": "We design robust software architectures and intuitive applications with cutting-edge technologies. Performance, code quality, and strong community impact are at the core of our achievements.",
         "block2-tag": "Bootcamp & Training",
         "block2-heading": "Initiator & Lead Organizer of FlutterFire Summer Camp",
@@ -35,11 +35,11 @@ const Translations = {
         "nav-home": "Accueil",
         "nav-about": "À propos",
         "nav-contact": "Contact",
-        "hero-subtitle": "Software Engineer, Fondateur @ <span class=\"losingtech-font\">LosingTech</span>, Chercheur en IA, Leader Communautaire, Formateur Tech, Créateur de contenu & Conférencier",
+        "hero-subtitle": "Software Engineer, Fondateur @ <span class=\"losingtek-font\"><span class=\"brand-bold\">Losing</span>Tek</span>, Chercheur en IA, Leader Communautaire, Formateur Tech, Créateur de contenu & Conférencier",
         "hero-cta": "Me contacter",
         "about-title": "Réalisations & Impact",
         "block1-tag": "Fondateur & Ingénierie",
-        "block1-heading": "Ingénieur Logiciel & Fondateur de <span class=\"losingtech-font\">LosingTech</span>",
+        "block1-heading": "Ingénieur Logiciel & Fondateur de <span class=\"losingtek-font\"><span class=\"brand-bold\">Losing</span>Tek</span>",
         "block1-text": "Nous concevons des architectures logicielles robustes et des applications intuitives avec les technologies les plus modernes. Performance, qualité du code et fort impact communautaire sont au cœur de nos réalisations.",
         "block2-tag": "Bootcamp & Formation",
         "block2-heading": "Initiateur & Organisateur Principal du FlutterFire Summer Camp",
@@ -197,10 +197,10 @@ function initAppConfig() {
     if (socialTwitter) socialTwitter.href = AppConfig.links.twitter;
 
     // Learn More links & Image links
-    const linkLosingtech = document.getElementById('link-losingtech');
-    if (linkLosingtech) linkLosingtech.href = AppConfig.links.losingTech;
-    const linkImgLosingtech = document.getElementById('link-img-losingtech');
-    if (linkImgLosingtech) linkImgLosingtech.href = AppConfig.links.losingTech;
+    const linkLosingtek = document.getElementById('link-losingtek');
+    if (linkLosingtek) linkLosingtek.href = AppConfig.links.losingTek;
+    const linkImgLosingtek = document.getElementById('link-img-losingtek');
+    if (linkImgLosingtek) linkImgLosingtek.href = AppConfig.links.losingTek;
 
     const linkGdg = document.getElementById('link-gdg');
     if (linkGdg) linkGdg.href = AppConfig.links.gdgCampus;

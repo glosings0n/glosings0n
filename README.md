@@ -2,7 +2,7 @@
 
 <p align="center">
   <img src="https://img.shields.io/badge/Software_Engineer-00B0FF?style=for-the-badge&logo=codeforces&logoColor=white" alt="Software Engineer" />
-  <img src="https://img.shields.io/badge/LosingTech_Founder-02569B?style=for-the-badge&logo=google-cloud&logoColor=white" alt="LosingTech Founder" />
+  <img src="https://img.shields.io/badge/LosingTek_Founder-02569B?style=for-the-badge&logo=google-cloud&logoColor=white" alt="LosingTek Founder" />
   <img src="https://img.shields.io/badge/GDG_Lead-4285F4?style=for-the-badge&logo=google&logoColor=white" alt="GDG Lead" />
 </p>
 
@@ -10,7 +10,7 @@
 
 ### 🚀 About Me
 
-I am **Georges Byona** (aka **glosings0n**), a passionate software engineer, tech solution creator, and community builder. As the founder of **LosingTech**, I help build modern, high-performance, and robust software architectures.
+I am **Georges Byona** (aka **glosings0n**), a passionate software engineer, tech solution creator, and community builder. As the founder of **LosingTek**, I help build modern, high-performance, and robust software architectures.
 
 * 💻 Specializing in mobile and web ecosystems, focused on high performance and clean architecture.
 * 🎓 **GDG on Campus UCB Leader**: Empowering and mentoring 500+ student developers in mobile development, cloud computing, and AI.

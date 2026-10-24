@@ -1,11 +1,11 @@
 /* ==========================================================================
    Design System & Styling - Portfolio Glosingson
-   Font: 'Urbanist' (Google Fonts)
+   Font: 'Figtree' (Google Fonts) & 'Urbanist' for LosingTek brand
    Colors: Dark Mode with Direct Cyan (#00B0FF) and Flutter Blue (#02569B)
    ========================================================================== */
 
 /* 1. Imports & CSS Variables */
-@import url('https://fonts.googleapis.com/css2?family=Oregano&family=Urbanist:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=Urbanist:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
 :root {
     --bg-primary: #070a13;
@@ -21,15 +21,26 @@
     --text-secondary: #94a3b8;
     --text-muted: #64748b;
 
-    --font-family: 'Urbanist', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    --font-family: 'Figtree', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
     --header-height: 80px;
     --max-width: 1200px;
     --transition-smooth: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     --border-radius: 12px;
 }
 
-.losingtech-font {
-    font-family: 'Oregano', cursive;
+.losingtek-font {
+    font-family: 'Urbanist', sans-serif;
+    font-weight: 400;
+}
+
+.losingtek-font .brand-bold,
+.losingtek-font strong,
+.losingtek-font b {
+    font-weight: 700;
+}
+
+.losingtek-font .brand-regular {
+    font-weight: 400;
 }
 
 /* 2. Base & Typography */
@@ -383,7 +394,7 @@ h4 {
     width: 100%;
 }
 
-#block-losingtech .block-img-wrapper,
+#block-losingtek .block-img-wrapper,
 #block-flutterfire .block-img-wrapper {
     max-width: 400px;
 }
