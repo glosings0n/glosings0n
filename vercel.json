@@ -1,4 +1,30 @@
 {
   "version": 2,
-  "cleanUrls": true
+  "cleanUrls": true,
+  "rewrites": [
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "codelabs.glosings0n.dev"
+        }
+      ],
+      "destination": "/codelabs/index.html"
+    },
+    {
+      "source": "/flutter-gemma-droidcon-ug-2026",
+      "destination": "/codelabs/flutter-gemma-droidcon-ug-2026/index.html"
+    },
+    {
+      "source": "/:slug",
+      "has": [
+        {
+          "type": "host",
+          "value": "codelabs.glosings0n.dev"
+        }
+      ],
+      "destination": "/codelabs/:slug/index.html"
+    }
+  ]
 }

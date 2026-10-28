@@ -8,6 +8,7 @@ const AppConfig = {
         twitter: "https://x.com/glosings0n",
         github: "https://github.com/glosings0n",
         medium: "https://medium.com/@glosings0n",
-        youtube: "https://youtube.com/@FlutterFireCamp"
+        youtube: "https://youtube.com/@FlutterFireCamp",
+        codelabs: "https://codelabs.glosings0n.dev"
     }
 };

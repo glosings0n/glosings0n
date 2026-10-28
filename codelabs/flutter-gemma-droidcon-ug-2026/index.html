@@ -1,0 +1,1514 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>On-Device AI with Flutter &amp; Gemma: Building Offline-First AI Mobile Apps for Africa | glosings0n Codelabs</title>
+    <meta name="description"
+        content="Official droidCon Uganda 2026 Codelab by Georges Byona (@glosings0n). Build 100% offline multimodal Flutter AI apps with flutter_gemma, LiteRT-LM, SQLite FTS5 RAG, and distill Gemma under 150 MB.">
+    <meta name="author" content="Georges Byona">
+    <link rel="canonical" href="https://codelabs.glosings0n.dev/flutter-gemma-droidcon-ug-2026">
+
+    <!-- OpenGraph -->
+    <meta property="og:title" content="On-Device AI with Flutter & Gemma — droidCon Uganda 2026 Codelab">
+    <meta property="og:description"
+        content="Run Google's Gemma models 100% offline on mid-tier Android phones using Flutter, LiteRT-LM, and SQLite FTS5 RAG, and distill an SLM under 150 MB.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://codelabs.glosings0n.dev/flutter-gemma-droidcon-ug-2026">
+    <meta property="og:image" content="https://glosings0n.dev/assets/hero.png">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="192x192" href="/assets/favicon.png">
+    <link rel="icon" type="image/svg+xml" href="/assets/logo.svg">
+
+    <!-- Codelabs Stylesheet -->
+    <link rel="stylesheet" href="/codelabs/css/codelabs.css">
+</head>
+
+<body>
+
+    <!-- Sticky Codelab Header -->
+    <header class="codelab-topbar">
+        <div class="topbar-inner">
+            <div class="topbar-left">
+                <button class="sidebar-toggle-btn" id="sidebar-toggle-btn" aria-label="Toggle Steps Drawer">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round">
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                </button>
+                <a href="/codelabs/" id="codelab-home-link" class="brand-link">
+                    <img src="/assets/logo.svg" alt="LosingTek Logo" class="brand-logo">
+                    <span class="brand-text">glosings0n</span>
+                </a>
+                <span class="brand-subtext">/ codelabs</span>
+                <span class="topbar-divider">/</span>
+                <span class="codelab-header-title">On-Device AI with Flutter &amp; Gemma (droidCon Uganda 2026)</span>
+            </div>
+
+            <div class="topbar-right">
+                <div class="time-pill" title="Estimated time remaining">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polyline points="12 6 12 12 16 14"></polyline>
+                    </svg>
+                    <span id="time-remaining-label">45 min left</span>
+                </div>
+
+                <button class="action-btn icon-only" id="view-mode-btn" aria-label="Switch between Step-by-Step and Full Scroll View" title="Switch between Step-by-Step and Full Scroll View">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                        <line x1="3" y1="9" x2="21" y2="9"></line>
+                        <line x1="3" y1="15" x2="21" y2="15"></line>
+                    </svg>
+                </button>
+
+                <button class="action-btn icon-only" id="theme-toggle-btn" aria-label="Toggle Light/Dark Mode" title="Toggle Light/Dark Mode">
+                    <span id="theme-toggle-icon"></span>
+                </button>
+
+                <a href="https://github.com/glosings0n/gemmea" target="_blank" rel="noopener noreferrer"
+                    class="action-btn icon-only" aria-label="Open Gemmea GitHub Repository" title="Open Gemmea GitHub Repository">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path
+                            d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                        </path>
+                    </svg>
+                </a>
+            </div>
+        </div>
+        <div class="codelab-progress-track">
+            <div class="codelab-progress-fill" id="codelab-progress-fill"></div>
+        </div>
+    </header>
+
+    <div class="codelab-layout">
+        <!-- Left Sidebar Step Navigation -->
+        <aside class="codelab-sidebar" id="codelab-sidebar">
+            <ul class="step-nav-list">
+                <li class="step-nav-item active" data-step="0">
+                    <span class="step-num">1</span>
+                    <span class="step-nav-title">Overview &amp; Context</span>
+                    <span class="step-nav-time">4m</span>
+                </li>
+                <li class="step-nav-item" data-step="1">
+                    <span class="step-num">2</span>
+                    <span class="step-nav-title">Architecture &amp; Setup</span>
+                    <span class="step-nav-time">5m</span>
+                </li>
+                <li class="step-nav-item" data-step="2">
+                    <span class="step-num">3</span>
+                    <span class="step-nav-title">Quantization &amp; Atomic Download</span>
+                    <span class="step-nav-time">6m</span>
+                </li>
+                <li class="step-nav-item" data-step="3">
+                    <span class="step-num">4</span>
+                    <span class="step-nav-title">FFI Mutex &amp; Deadlock Recovery</span>
+                    <span class="step-nav-time">5m</span>
+                </li>
+                <li class="step-nav-item" data-step="4">
+                    <span class="step-num">5</span>
+                    <span class="step-nav-title">512px Vision VLM &amp; Early-Exit</span>
+                    <span class="step-nav-time">6m</span>
+                </li>
+                <li class="step-nav-item" data-step="5">
+                    <span class="step-num">6</span>
+                    <span class="step-nav-title">Zero-RAM SQLite FTS5 RAG</span>
+                    <span class="step-nav-time">6m</span>
+                </li>
+                <li class="step-nav-item" data-step="6">
+                    <span class="step-num">7</span>
+                    <span class="step-nav-title">Streaming &amp; Function Calling</span>
+                    <span class="step-nav-time">5m</span>
+                </li>
+                <li class="step-nav-item" data-step="7">
+                    <span class="step-num">8</span>
+                    <span class="step-nav-title">Distilling Gemma &lt; 150 MB</span>
+                    <span class="step-nav-time">6m</span>
+                </li>
+                <li class="step-nav-item" data-step="8">
+                    <span class="step-num">9</span>
+                    <span class="step-nav-title">Live Demo &amp; Takeaways</span>
+                    <span class="step-nav-time">2m</span>
+                </li>
+            </ul>
+
+            <div class="sidebar-footer">
+                <div><strong>Speaker:</strong> Georges Byona (<span class="font-mono">@glosings0n</span>)</div>
+                <div><strong>Event:</strong> droidCon Uganda 2026 • Kampala</div>
+                <div><strong>ID:</strong> <span class="font-mono">flutter-gemma-droidcon-ug-2026</span></div>
+            </div>
+        </aside>
+
+        <!-- Main Step Viewport -->
+        <main class="codelab-main">
+            <div class="codelab-content-wrapper">
+
+                <!-- =========================================================
+                     STEP 1: OVERVIEW & AFRICAN EDGE AI CONTEXT
+                     ========================================================= -->
+                <article class="codelab-step active" id="step-1" data-duration="4">
+                    <div class="step-header">
+                        <div class="step-eyebrow">Step 1 of 9 • Context &amp; Motivation</div>
+                        <h1 class="step-title">Overview: Why Offline-First Edge AI Matters in Africa</h1>
+                    </div>
+
+                    <p>
+                        Welcome to the official companion codelab for <strong>"On-Device AI with Flutter &amp; Gemma: Building Offline-First AI Mobile Apps for Africa"</strong> at <strong>droidCon Uganda 2026</strong> in Kampala!
+                    </p>
+
+                    <div class="callout callout-info">
+                        <svg class="callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="12" y1="16" x2="12" y2="12"></line>
+                            <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                        </svg>
+                        <div class="callout-body">
+                            <div class="callout-title">Proven Production Architecture</div>
+                            <p>
+                                Every code snippet in this codelab comes directly from <strong>Gemmea</strong> (<em>Gemma</em> + <em>Mmea</em>, Kiswahili for "plant/crop"), winner of <strong>1st Place at GDG on Campus UCB Build with Gemma 2026</strong>.
+                            </p>
+                        </div>
+                    </div>
+
+                    <h3>Three Questions of Context</h3>
+                    <ol>
+                        <li><strong>The Connectivity Reality:</strong> How often do your users lose signal when traveling outside Kampala to Gulu, Mbarara, Entebbe, or across the border into rural Kivu?</li>
+                        <li><strong>The Unit Economics Trap:</strong> Can an African startup sustainably pay Cloud LLM API bills in <strong>USD</strong> while users pay in <strong>UGX</strong> or <strong>CDF</strong>—or cannot afford daily mobile data bundles at all?</li>
+                        <li><strong>The Hardware Boundary:</strong> What happens when you load an unoptimized LLM onto a $120 Android phone with <strong>3GB–6GB RAM</strong>? (Spoiler: Android's Low Memory Killer terminates your process immediately).</li>
+                    </ol>
+
+                    <h3>Cloud AI vs. On-Device Edge AI in East Africa</h3>
+                    <div class="table-responsive">
+                        <table class="codelab-table">
+                            <thead>
+                                <tr>
+                                    <th>Metric</th>
+                                    <th>Cloud LLM APIs (REST / WebSocket)</th>
+                                    <th>On-Device (<code>flutter_gemma</code> + LiteRT-LM)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Offline Availability</strong></td>
+                                    <td>0% (Fails completely in rural zones)</td>
+                                    <td><strong>100% (Runs in Airplane Mode)</strong></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Time-to-First-Token (TTFT)</strong></td>
+                                    <td>2,000ms – 8,000ms on unstable 3G/Edge</td>
+                                    <td><strong>180ms – 600ms on local CPU/GPU</strong></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Image Scan Data Cost</strong></td>
+                                    <td>2MB – 5MB upload per leaf photo</td>
+                                    <td><strong>0 MB network data consumed</strong></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Recurring API Token Cost</strong></td>
+                                    <td>Scales linearly with active users ($$$)</td>
+                                    <td><strong>$0.00 / token forever</strong></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Privacy &amp; Data Sovereignty</strong></td>
+                                    <td>User photos &amp; voice leave the country</td>
+                                    <td><strong>100% private on the device</strong></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h3>What You Will Learn &amp; Build</h3>
+                    <ul>
+                        <li>Configure <code>flutter_gemma</code> and <code>flutter_gemma_litertlm</code> to run multimodal Gemma models locally on Android and iOS.</li>
+                        <li>Implement <strong>atomic <code>.tmp</code> chunked model downloads</strong> via <code>path_provider</code> so interrupted 3G downloads never corrupt native binaries or bloat your APK.</li>
+                        <li>Prevent <strong>native C++ FFI concurrency deadlocks</strong> and Flutter Hot-Reload freezes with a thread-safe <code>GemmaEngineManager</code> mutex.</li>
+                        <li>Eliminate Out-Of-Memory (OOM) kills during multimodal camera scans by downsampling images to <code>512px</code> and building prompt-level <strong>Early-Exit Guardrails</strong>.</li>
+                        <li>Ground small quantized models without a heavy vector database using <strong>Zero-RAM SQLite FTS5 + BM25 Local RAG</strong>.</li>
+                        <li><strong>Bonus Finale:</strong> Distill and quantize a domain-specific Gemma Small Language Model (SLM) to <strong>under 150 MB</strong> (<code>134 MB</code> INT4) using PyTorch and <code>ai-edge-torch</code>.</li>
+                    </ul>
+
+                    <div class="step-pagination">
+                        <button class="nav-step-btn" disabled>&larr; Previous</button>
+                        <button class="nav-step-btn primary" data-step-target="1">Next: Architecture &amp; Setup &rarr;</button>
+                    </div>
+                </article>
+
+                <!-- =========================================================
+                     STEP 2: ARCHITECTURE & FLUTTER_GEMMA SETUP
+                     ========================================================= -->
+                <article class="codelab-step" id="step-2" data-duration="5">
+                    <div class="step-header">
+                        <div class="step-eyebrow">Step 2 of 9 • System Design</div>
+                        <h2 class="step-title">Offline-First Architecture &amp; <code>flutter_gemma</code> Setup</h2>
+                    </div>
+
+                    <p>
+                        Smallholder farmers across Uganda, DRC, Rwanda, and Burundi lose 40% to 80% of their yields to threats like <strong>Cassava Mosaic Disease (CMD)</strong>, <strong>Banana Bacterial Wilt (BXW / Kayovu)</strong>, and <strong>Maize Rust</strong>. To give farmers accurate, scientifically grounded remedies in the middle of a field with zero connectivity, Gemmea combines three local subsystems:
+                    </p>
+
+                    <div class="code-window">
+                        <div class="code-window-header">
+                            <div class="code-window-meta">
+                                <div class="window-dots">
+                                    <span class="window-dot red"></span>
+                                    <span class="window-dot yellow"></span>
+                                    <span class="window-dot green"></span>
+                                                                    </div>
+                                <span class="code-filename">Gemmea Offline-First Pipeline</span>
+                                <span class="code-lang-badge">ARCHITECTURE</span>
+                            </div>
+                        </div>
+                        <pre><code>[ Farmer / User in the Field (Airplane Mode ON) ]
+       │
+       ├── 1. Captures Leaf Photo OR Asks Question (Text / Offline Voice)
+       ▼
+┌──────────────────────────────────────────────────────────────────────┐
+│ 1. LOCAL RAG ENGINE (SQLite FTS5 + BM25 Ranking)                     │
+│ - Searches indexed FAO &amp; IITA agronomic manuals in &lt;2ms (0 MB RAM)   │
+│ - Extracts verified pathogen symptoms, organic dosages &amp; seasons     │
+└──────────────────────────────┬───────────────────────────────────────┘
+                               │ 2. Injects Factual Grounding Context
+                               ▼
+┌──────────────────────────────────────────────────────────────────────┐
+│ 2. ON-DEVICE GEMMA ENGINE (flutter_gemma + LiteRT-LM Runtime)        │
+│ - GemmaEngineManager: Single-threaded FFI Mutex + 8s Timeout Lock    │
+│ - Vision VLM Mode: 512px image + 4096 maxTokens + Early-Exit Filter  │
+│ - Chat Assistant Mode: 2048 maxTokens + 5-message Sliding Window     │
+└──────────────────────────────┬───────────────────────────────────────┘
+                               │ 3. Streams Sanitized Tokens
+                               ▼
+┌──────────────────────────────────────────────────────────────────────┐
+│ 3. FLUTTER BLoC / CUBIT LAYER &amp; AUTONOMOUS ACTIONS                   │
+│ - Real-time LaTeX/Emoji Sanitizer (converts $NaHCO_3$ -&gt; plain text) │
+│ - Autonomous Function Calling (pauses/resumes SQLite rain calendar)  │
+│ - Offline TTS Readout &amp; Farm Health PDF Export                       │
+└──────────────────────────────────────────────────────────────────────┘</code></pre>
+                    </div>
+
+                    <h3>1. Configure <code>pubspec.yaml</code></h3>
+                    <p>
+                        Here are the exact production dependencies used in Gemmea's <code>pubspec.yaml</code>. Notice that we pair <code>flutter_gemma</code> with <code>flutter_gemma_litertlm</code> (Google's LiteRT-LM runtime for mobile) and <code>sqflite</code> for FTS5 full-text RAG:
+                    </p>
+
+                    <div class="code-window">
+                        <div class="code-window-header">
+                            <div class="code-window-meta">
+                                <div class="window-dots">
+                                    <span class="window-dot red"></span>
+                                    <span class="window-dot yellow"></span>
+                                    <span class="window-dot green"></span>
+                                </div>
+                                <span class="code-filename">pubspec.yaml</span>
+                                <span class="code-lang-badge">YAML</span>
+                            </div>
+                            <button class="copy-code-btn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                Copy
+                            </button>
+                        </div>
+                        <pre><code>name: gemmea
+description: "Offline-first AI agronomic assistant powered by Google Gemma &amp; SQLite FTS5 RAG."
+publish_to: 'none'
+version: 0.1.0+1
+
+environment:
+  sdk: ^3.12.2
+
+dependencies:
+  flutter:
+    sdk: flutter
+  # Reactive State Management
+  flutter_bloc: ^9.1.1
+
+  # On-Device LLM Runtime (MediaPipe / LiteRT-LM Native Bindings)
+  flutter_gemma: ^1.2.3
+  flutter_gemma_litertlm: ^1.1.0
+
+  # Local FTS5 RAG Database &amp; Model File Management
+  sqflite: ^2.4.3
+  path: ^1.9.1
+  path_provider: ^2.1.6
+  http: ^1.2.1
+
+  # Multimodal Camera, Offline Voice &amp; PDF Reporting
+  image_picker: ^1.1.2
+  flutter_markdown_plus: ^1.0.12
+  speech_to_text: ^7.3.0
+  flutter_tts: ^4.2.3
+  pdf: ^3.11.1
+  printing: ^5.14.3</code></pre>
+                    </div>
+
+                    <h3>2. Android Hardware Acceleration &amp; Permissions</h3>
+                    <p>
+                        In <code>android/app/src/main/AndroidManifest.xml</code>, ensure <code>android:hardwareAccelerated="true"</code> is enabled on <code>MainActivity</code> and declare permissions for camera, offline voice recognition, and the one-time initial model download:
+                    </p>
+
+                    <div class="code-window">
+                        <div class="code-window-header">
+                            <div class="code-window-meta">
+                                <div class="window-dots">
+                                    <span class="window-dot red"></span>
+                                    <span class="window-dot yellow"></span>
+                                    <span class="window-dot green"></span>
+                                </div>
+                                <span class="code-filename">android/app/src/main/AndroidManifest.xml</span>
+                                <span class="code-lang-badge">XML</span>
+                            </div>
+                            <button class="copy-code-btn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                Copy
+                            </button>
+                        </div>
+                        <pre><code>&lt;manifest xmlns:android="http://schemas.android.com/apk/res/android"&gt;
+    &lt;uses-permission android:name="android.permission.RECORD_AUDIO" /&gt;
+    &lt;uses-permission android:name="android.permission.INTERNET" /&gt;
+    &lt;uses-permission android:name="android.permission.CAMERA" /&gt;
+    &lt;uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" /&gt;
+
+    &lt;application
+        android:label="Gemmea"
+        android:name="${applicationName}"
+        android:icon="@mipmap/launcher_icon"&gt;
+        &lt;activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:hardwareAccelerated="true"
+            android:windowSoftInputMode="adjustResize"&gt;
+            &lt;!-- ... --&gt;
+        &lt;/activity&gt;
+    &lt;/application&gt;
+&lt;/manifest&gt;</code></pre>
+                    </div>
+
+                    <div class="step-pagination">
+                        <button class="nav-step-btn" data-step-target="0">&larr; Previous</button>
+                        <button class="nav-step-btn primary" data-step-target="2">Next: Quantization &amp; Atomic Download &rarr;</button>
+                    </div>
+                </article>
+
+                <!-- =========================================================
+                     STEP 3: QUANTIZATION & ATOMIC ASSET DELIVERY
+                     ========================================================= -->
+                <article class="codelab-step" id="step-3" data-duration="6">
+                    <div class="step-header">
+                        <div class="step-eyebrow">Step 3 of 9 • Memory &amp; Distribution</div>
+                        <h2 class="step-title">Model Quantization (INT4 vs. INT8) &amp; Atomic Asset Delivery</h2>
+                    </div>
+
+                    <p>
+                        On a mid-tier <strong>4GB RAM Android phone</strong>, Android OS and system services consume ~1.6GB of RAM, and the Flutter UI + Dart VM take ~300MB. That leaves a strict ceiling of <strong>~1.8GB to 2.0GB</strong> before Android's Low Memory Killer (<code>lmkd</code>) terminates your app.
+                    </p>
+
+                    <div class="metric-cards">
+                        <div class="metric-card">
+                            <span class="metric-value">~4.0 GB</span>
+                            <span class="metric-label">2B Model in FP16 (Crashes on 4GB RAM)</span>
+                        </div>
+                        <div class="metric-card">
+                            <span class="metric-value">~2.1 GB</span>
+                            <span class="metric-label">2B Model in INT8 (Zero headroom for Vision)</span>
+                        </div>
+                        <div class="metric-card">
+                            <span class="metric-value">~1.2 GB</span>
+                            <span class="metric-label">E2B in INT4 <code>.litertlm</code> (75% smaller!)</span>
+                        </div>
+                        <div class="metric-card">
+                            <span class="metric-value">134 MB</span>
+                            <span class="metric-label">Distilled 240M SLM in INT4 (See Step 8)</span>
+                        </div>
+                    </div>
+
+                    <div class="callout callout-warning">
+                        <svg class="callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+                            <line x1="12" y1="9" x2="12" y2="13"></line>
+                            <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                        </svg>
+                        <div class="callout-body">
+                            <div class="callout-title">Production Pitfall: Never Put Multi-Hundred-MB Models in Flutter <code>assets/</code></div>
+                            <p>
+                                Bundling a 1.3GB model inside <code>pubspec.yaml</code> assets violates Google Play's 150MB base APK/AAB limit and forces Flutter to copy/decompress the asset on first boot—causing instant <code>OutOfMemoryError</code> crashes on budget phones.
+                            </p>
+                        </div>
+                    </div>
+
+                    <h3>The Solution: Chunked Streaming + Atomic <code>.tmp</code> Swap</h3>
+                    <p>
+                        In <code>lib/data/repositories/chat_repository_impl.dart</code>, we stream the quantized <code>.litertlm</code> binary directly to <code>getApplicationDocumentsDirectory()</code> using an <code>IOSink</code> (so Dart's RAM heap stays flat at &lt;5MB). Crucially, we write to <code>gemma.litertlm.tmp</code> first and <strong>only rename it to <code>gemma.litertlm</code> when 100% of bytes are on disk</strong>. If a user's connection drops at 89%, the native C++ engine will never attempt to memory-map a corrupted binary!
+                    </p>
+
+                    <div class="code-window">
+                        <div class="code-window-header">
+                            <div class="code-window-meta">
+                                <div class="window-dots">
+                                    <span class="window-dot red"></span>
+                                    <span class="window-dot yellow"></span>
+                                    <span class="window-dot green"></span>
+                                </div>
+                                <span class="code-filename">lib/data/repositories/chat_repository_impl.dart</span>
+                                <span class="code-lang-badge">DART</span>
+                            </div>
+                            <button class="copy-code-btn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                Copy
+                            </button>
+                        </div>
+                        <pre><code>@override
+Future&lt;bool&gt; checkModelInstalled() async {
+  final directory = await getApplicationDocumentsDirectory();
+  final litertlmFile = File('${directory.path}/gemma.litertlm');
+  final binFile = File('${directory.path}/gemma.bin');
+
+  // Auto-migrate legacy gemma.bin to gemma.litertlm if already on the user's phone
+  if (await binFile.exists() &amp;&amp; !await litertlmFile.exists()) {
+    await binFile.rename(litertlmFile.path);
+  }
+  return await litertlmFile.exists();
+}
+
+@override
+Future&lt;void&gt; initializeGemma(Function(double) onProgress) async {
+  return GemmaEngineManager.runWithLock(() async {
+    await GemmaEngineManager.ensureInitialized();
+
+    final directory = await getApplicationDocumentsDirectory();
+    final modelFile = File('${directory.path}/gemma.litertlm');
+    final tempModelFile = File('${directory.path}/gemma.litertlm.tmp');
+
+    if (!await modelFile.exists()) {
+      // 1. Clean up any incomplete .tmp file from an interrupted download
+      if (await tempModelFile.exists()) {
+        await tempModelFile.delete();
+      }
+
+      // 2. Fast 4-second DNS check before opening the download stream
+      final result = await InternetAddress.lookup('google.com')
+          .timeout(const Duration(seconds: 4));
+      if (result.isEmpty || result.first.rawAddress.isEmpty) {
+        throw const SocketException('Internet connection is required for first-time setup.');
+      }
+
+      const url = 'https://huggingface.co/litert-community/'
+          'gemma-4-E2B-it-litert-lm/resolve/main/gemma-4-E2B-it.litertlm';
+      final client = http.Client();
+
+      try {
+        final request = http.Request('GET', Uri.parse(url));
+        final response = await client.send(request);
+        if (response.statusCode != 200) {
+          throw HttpException('Download failed (HTTP ${response.statusCode})');
+        }
+
+        final contentLength = response.contentLength ?? 0;
+        int downloadedBytes = 0;
+
+        // 3. Stream chunks directly to disk via IOSink (Zero RAM bloat)
+        final IOSink sink = tempModelFile.openWrite();
+        await response.stream.forEach((chunk) {
+          downloadedBytes += chunk.length;
+          sink.add(chunk);
+          if (contentLength &gt; 0) {
+            onProgress(downloadedBytes / contentLength);
+          }
+        });
+        await sink.close();
+
+        // 4. ATOMIC RENAME: Only promote to gemma.litertlm upon 100% completion
+        if (await tempModelFile.exists()) {
+          await tempModelFile.rename(modelFile.path);
+        }
+      } catch (e) {
+        if (await tempModelFile.exists()) await tempModelFile.delete();
+        rethrow;
+      } finally {
+        client.close();
+      }
+    }
+
+    // 5. Register the verified local file with FlutterGemma's LiteRT-LM runtime
+    await FlutterGemma.installModel(
+      modelType: ModelType.gemmaIt,
+      fileType: ModelFileType.litertlm,
+    ).fromFile(modelFile.path).install();
+  });
+}</code></pre>
+                    </div>
+
+                    <div class="step-pagination">
+                        <button class="nav-step-btn" data-step-target="1">&larr; Previous</button>
+                        <button class="nav-step-btn primary" data-step-target="3">Next: FFI Mutex &amp; Deadlock Recovery &rarr;</button>
+                    </div>
+                </article>
+
+                <!-- =========================================================
+                     STEP 4: FFI MUTEX & DEADLOCK RECOVERY
+                     ========================================================= -->
+                <article class="codelab-step" id="step-4" data-duration="5">
+                    <div class="step-header">
+                        <div class="step-eyebrow">Step 4 of 9 • Native Concurrency</div>
+                        <h2 class="step-title">Preventing Native FFI Crashes &amp; Hot-Reload Deadlocks</h2>
+                    </div>
+
+                    <div class="callout callout-danger">
+                        <svg class="callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="15" y1="9" x2="9" y2="15"></line>
+                            <line x1="9" y1="9" x2="15" y2="15"></line>
+                        </svg>
+                        <div class="callout-body">
+                            <div class="callout-title">What Failed in Production #1: Concurrent Native Sessions &amp; Orphaned Isolates</div>
+                            <p>
+                                MediaPipe / LiteRT-LM allocates a single native C++ execution graph in memory. During field testing, if a user started a leaf scan and switched to the Chat tab before the scan finished—or if a developer triggered a Flutter <strong>Hot Reload</strong> while a stream was open—the native FFI channel deadlocked permanently or threw <code>PlatformException(channel-error)</code>.
+                            </p>
+                        </div>
+                    </div>
+
+                    <h3>The Solution: <code>GemmaEngineManager</code></h3>
+                    <p>
+                        To make on-device inference rock-solid, we built <code>GemmaEngineManager</code> in <code>lib/core/services/gemma_engine_manager.dart</code>. It serializes all Future and Stream operations through a <code>Completer</code> mutex lock, includes an <strong>8-second deadlock timeout</strong> to recover from orphaned Hot-Reload isolates, and automatically resets stale chat session pointers when a native channel error occurs:
+                    </p>
+
+                    <div class="code-window">
+                        <div class="code-window-header">
+                            <div class="code-window-meta">
+                                <div class="window-dots">
+                                    <span class="window-dot red"></span>
+                                    <span class="window-dot yellow"></span>
+                                    <span class="window-dot green"></span>
+                                </div>
+                                <span class="code-filename">lib/core/services/gemma_engine_manager.dart</span>
+                                <span class="code-lang-badge">DART</span>
+                            </div>
+                            <button class="copy-code-btn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                Copy
+                            </button>
+                        </div>
+                        <pre><code>import 'dart:async';
+import 'dart:developer' as dev;
+import 'package:flutter_gemma/flutter_gemma.dart';
+import 'package:flutter_gemma_litertlm/flutter_gemma_litertlm.dart';
+
+class GemmaEngineManager {
+  static bool _isInitialized = false;
+  static Completer&lt;void&gt;? _initCompleter;
+  static Future&lt;void&gt;? _activeExecution;
+  static Function()? _onResetChatCallback;
+
+  static bool get isInitialized =&gt; _isInitialized;
+  static bool get isBusy =&gt; _activeExecution != null;
+
+  static void setResetChatCallback(Function() callback) {
+    _onResetChatCallback = callback;
+  }
+
+  static void resetChatSession() {
+    _onResetChatCallback?.call();
+  }
+
+  /// Force clears stale lock state and resets chat session on Hot Reload or FFI error
+  static void forceResetLockState() {
+    dev.log("Force resetting GemmaEngineManager lock state &amp; session handles.");
+    _activeExecution = null;
+    _initCompleter = null;
+    resetChatSession();
+  }
+
+  static Future&lt;void&gt; ensureInitialized() async {
+    if (_isInitialized) return;
+    if (_initCompleter != null) return _initCompleter!.future;
+
+    _initCompleter = Completer&lt;void&gt;();
+    try {
+      await FlutterGemma.initialize(
+        inferenceEngines: const [LiteRtLmEngine()],
+      );
+      _isInitialized = true;
+      _initCompleter!.complete();
+    } catch (e) {
+      // Native FFI engine already bound across Hot Reload
+      _isInitialized = true;
+      if (!(_initCompleter?.isCompleted ?? true)) _initCompleter!.complete();
+    } finally {
+      _initCompleter = null;
+    }
+  }
+
+  /// Wraps a Future operation to guarantee single-threaded execution on LiteRT-LM
+  static Future&lt;T&gt; runWithLock&lt;T&gt;(Future&lt;T&gt; Function() action) async {
+    final previousExecution = _activeExecution;
+    final completer = Completer&lt;void&gt;();
+    _activeExecution = completer.future;
+
+    if (previousExecution != null) {
+      try {
+        await previousExecution.timeout(const Duration(seconds: 8));
+      } on TimeoutException {
+        forceResetLockState();
+      } catch (_) {}
+    }
+
+    try {
+      return await action();
+    } catch (e) {
+      if (e.toString().contains("channel-error") ||
+          e.toString().contains("PlatformException") ||
+          e.toString().contains("Null")) {
+        forceResetLockState();
+      }
+      rethrow;
+    } finally {
+      completer.complete();
+      if (_activeExecution == completer.future) _activeExecution = null;
+    }
+  }
+
+  /// Wraps a Stream operation with the same FFI mutex &amp; deadlock protection
+  static Stream&lt;T&gt; runStreamWithLock&lt;T&gt;(Stream&lt;T&gt; Function() streamFactory) async* {
+    final previousExecution = _activeExecution;
+    final completer = Completer&lt;void&gt;();
+    _activeExecution = completer.future;
+
+    if (previousExecution != null) {
+      try {
+        await previousExecution.timeout(const Duration(seconds: 8));
+      } on TimeoutException {
+        forceResetLockState();
+      } catch (_) {}
+    }
+
+    try {
+      await for (final value in streamFactory()) {
+        yield value;
+      }
+    } catch (e) {
+      if (e.toString().contains("channel-error") ||
+          e.toString().contains("PlatformException")) {
+        forceResetLockState();
+      }
+      rethrow;
+    } finally {
+      completer.complete();
+      if (_activeExecution == completer.future) _activeExecution = null;
+    }
+  }
+}</code></pre>
+                    </div>
+
+                    <div class="step-pagination">
+                        <button class="nav-step-btn" data-step-target="2">&larr; Previous</button>
+                        <button class="nav-step-btn primary" data-step-target="4">Next: 512px Vision VLM &amp; Early-Exit &rarr;</button>
+                    </div>
+                </article>
+
+                <!-- =========================================================
+                     STEP 5: MULTIMODAL VISION VLM, 512PX & EARLY EXIT
+                     ========================================================= -->
+                <article class="codelab-step" id="step-5" data-duration="6">
+                    <div class="step-header">
+                        <div class="step-eyebrow">Step 5 of 9 • Multimodal Vision</div>
+                        <h2 class="step-title">512px Image Optimization &amp; Prompt-Level Early-Exit Guardrails</h2>
+                    </div>
+
+                    <div class="callout callout-danger">
+                        <svg class="callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="15" y1="9" x2="9" y2="15"></line>
+                            <line x1="9" y1="9" x2="15" y2="15"></line>
+                        </svg>
+                        <div class="callout-body">
+                            <div class="callout-title">What Failed in Production #2 &amp; #3: 12MP Camera OOMs &amp; CPU Thermal Throttling</div>
+                            <p>
+                                <strong>1. Vision OOMs:</strong> Passing a raw 4000×3000 (12MP) camera image into <code>Message.withImage()</code> allocates a 48MB RGBA buffer plus huge vision encoder tensors—crashing 4GB RAM phones.<br>
+                                <strong>2. Wasted Compute on Non-Leaves:</strong> When a farmer accidentally photographed their shoe, face, or tool, Gemma generated 800+ tokens of hallucinated plant advice, heating up the CPU and draining battery.
+                            </p>
+                        </div>
+                    </div>
+
+                    <h3>1. Downsample Camera Images to <code>512px</code> &amp; Dispose Native Handles</h3>
+                    <p>
+                        Gemma's vision encoder downscales inputs internally anyway. By resizing the image to <code>targetWidth: 512</code> in Dart's <code>dart:ui</code> codec and calling <code>image.dispose()</code> immediately before invoking LiteRT-LM, we cut vision memory consumption by <strong>85%</strong> and speed up vision encoding by <strong>4x</strong>.
+                    </p>
+
+                    <h3>2. Two-Stage Prompt with Immediate Early-Exit Short-Circuit</h3>
+                    <p>
+                        Below is the complete implementation from <code>lib/data/datasources/gemma_local_source.dart</code> (with the prompt translated to English for this workshop). Notice how <strong>Step 1 of the prompt</strong> forces Gemma to output a single 18-token rejection sentence and halt immediately if the image is not a plant leaf:
+                    </p>
+
+                    <div class="code-window">
+                        <div class="code-window-header">
+                            <div class="code-window-meta">
+                                <div class="window-dots">
+                                    <span class="window-dot red"></span>
+                                    <span class="window-dot yellow"></span>
+                                    <span class="window-dot green"></span>
+                                </div>
+                                <span class="code-filename">lib/data/datasources/gemma_local_source.dart</span>
+                                <span class="code-lang-badge">DART</span>
+                            </div>
+                            <button class="copy-code-btn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                Copy
+                            </button>
+                        </div>
+                        <pre><code>import 'dart:io';
+import 'dart:typed_data';
+import 'dart:ui' as ui;
+import 'package:flutter_gemma/flutter_gemma.dart';
+import 'package:gemmea/core/services/gemma_engine_manager.dart';
+import 'package:gemmea/core/utils/text_sanitizer.dart';
+import 'package:gemmea/data/datasources/sqlite_helper.dart';
+
+class GemmaLocalSourceImpl {
+  Future&lt;String&gt; evaluateCropImage(File imageFile, String prompt) async {
+    return GemmaEngineManager.runWithLock(() async {
+      GemmaEngineManager.resetChatSession();
+      try {
+        await GemmaEngineManager.ensureInitialized();
+        final rawBytes = await imageFile.readAsBytes();
+
+        // 1. Downsample to 512px max width to prevent native OOM crashes
+        final imageBytes = await _optimizeImageBytes(rawBytes);
+
+        // 2. Fetch grounded FAO/IITA context from local SQLite FTS5
+        final faoContext = await _fetchRagContextFromSqlite(imageFile.path, prompt);
+
+        // 3. Prefer CPU backend on budget devices whose GPUs lack OpenCL vision buffers
+        InferenceModel model;
+        try {
+          model = await FlutterGemma.getActiveModel(
+            supportImage: true,
+            maxTokens: 4096,
+            preferredBackend: PreferredBackend.cpu,
+          );
+        } catch (_) {
+          model = await FlutterGemma.getActiveModel(
+            supportImage: true,
+            maxTokens: 4096,
+          );
+        }
+
+        final session = await model.createSession();
+
+        // 4. Multimodal VLM Prompt with Step 1 Early-Exit Short-Circuit (in English)
+        final vlmPrompt = '''
+You are Gemmea, the offline AI agronomist for crop health diagnosis in East Africa.
+Examine the provided image carefully.
+
+ABSOLUTE AND URGENT RULE (IMMEDIATE EVALUATION):
+Step 1: Look at the image. If it is NOT a plant leaf or agricultural crop
+(e.g., human face, phone, shoe, furniture, animal, non-plant object):
+Immediately STOP all generation and reply ONLY with this exact sentence:
+"The captured image does not appear to be a plant leaf. Please retake a photo clearly targeting a leaf from your crop."
+DO NOT GENERATE ANY HEADINGS AND DO NOT USE THE RAG CONTEXT BELOW.
+
+Step 2: IF AND ONLY IF THE IMAGE IS GENUINELY A PLANT LEAF OR CROP:
+Provide a detailed, structured agronomic analysis organized into these 7 sections (NO EMOJIS):
+
+### 1. PRIMARY DIAGNOSIS &amp; HYPOTHESES
+- Crop: [Exact crop observed: Maize, Cassava, Bean, Banana, Tomato, Coffee, or Unknown]
+- Disease: [If healthy, write EXPLICITLY: "No disease (Healthy Leaf)". If diseased, state exact pathogen/disease name]
+- Confidence Level: [e.g., 90%]
+- Differential Diagnoses: [Environmental or secondary factors if applicable]
+### 2. DETAILED OBSERVED SYMPTOMS
+(Chlorosis, pustules, mosaic patterns, curling, necrotic streaks, or intact lamina).
+### 3. CAUSES &amp; VECTORS (IITA STANDARDS)
+(Pathogen agent and transmission vector such as Bemisia tabaci whitefly or Xanthomonas).
+### 4. STEP-BY-STEP ORGANIC REMEDIES &amp; TREATMENT
+(Local bio-remedies: Neem leaf extract 200g/L, wood ash, baking soda NaHCO3 5g/L with black soap, Tithonia liquid manure).
+### 5. SOIL MANAGEMENT, NUTRIENTS &amp; IRRIGATION
+(Drainage, composting, mulching, moisture control).
+### 6. IMMEDIATE 3-STEP ACTION PLAN
+(Step 1, Step 2, Step 3 for the farmer today).
+### 7. OFFICIAL FAO &amp; IITA REFERENCES
+(Explicit citations from the local RAG context below).
+
+REFERENCE RAG CONTEXT (IGNORE COMPLETELY IF NOT A PLANT):
+$faoContext
+
+User instruction: $prompt
+''';
+
+        await session.addQueryChunk(
+          Message.withImage(
+            text: vlmPrompt,
+            imageBytes: imageBytes,
+            isUser: true,
+          ),
+        );
+
+        final String response = await session.getResponse();
+        return TextSanitizer.cleanLatexAndFormatting(response);
+      } finally {
+        GemmaEngineManager.resetChatSession();
+      }
+    });
+  }
+
+  Future&lt;Uint8List&gt; _optimizeImageBytes(Uint8List inputBytes) async {
+    try {
+      final codec = await ui.instantiateImageCodec(
+        inputBytes,
+        targetWidth: 512,
+      );
+      final frameInfo = await codec.getNextFrame();
+      final image = frameInfo.image;
+      final byteData = await image.toByteData(format: ui.ImageByteFormat.png);
+      image.dispose(); // Crucial: release native C++ Skia/Impeller texture immediately!
+      if (byteData != null) {
+        return byteData.buffer.asUint8List();
+      }
+    } catch (_) {}
+    return inputBytes;
+  }
+}</code></pre>
+                    </div>
+
+                    <div class="step-pagination">
+                        <button class="nav-step-btn" data-step-target="3">&larr; Previous</button>
+                        <button class="nav-step-btn primary" data-step-target="5">Next: Zero-RAM SQLite FTS5 RAG &rarr;</button>
+                    </div>
+                </article>
+
+                <!-- =========================================================
+                     STEP 6: ZERO-RAM SQLITE FTS5 LOCAL RAG
+                     ========================================================= -->
+                <article class="codelab-step" id="step-6" data-duration="6">
+                    <div class="step-header">
+                        <div class="step-eyebrow">Step 6 of 9 • Grounded Local Retrieval</div>
+                        <h2 class="step-title">Zero-RAM-Overhead Local RAG with SQLite FTS5 &amp; BM25</h2>
+                    </div>
+
+                    <p>
+                        Quantized 2B models can hallucinate exact biopesticide dosages or regional planting dates if left ungrounded. However, on a 4GB RAM phone where Gemma is already consuming ~1.3GB of RAM, <strong>loading a second neural embedding model + vector database into RAM will push your app over the OOM cliff</strong>.
+                    </p>
+
+                    <div class="callout callout-success">
+                        <svg class="callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                        <div class="callout-body">
+                            <div class="callout-title">Architectural Win: SQLite FTS5 + BM25 Ranking = 0 MB Extra RAM</div>
+                            <p>
+                                SQLite's built-in <strong>FTS5 (Full-Text Search 5)</strong> engine executes in native C directly on disk using the <strong>BM25 relevance algorithm</strong>. It requires <strong>0 MB of neural embedding RAM</strong>, completes searches in <strong>&lt;2 milliseconds</strong>, and includes a multi-term weighted scorer fallback for custom Android OEM ROMs.
+                            </p>
+                        </div>
+                    </div>
+
+                    <h3>Real Code: FTS5 Virtual Table &amp; BM25 Retrieval</h3>
+                    <p>
+                        Here is the complete RAG engine from <code>lib/data/datasources/sqlite_helper.dart</code> (with sample FAO/IITA entries translated to English for readability):
+                    </p>
+
+                    <div class="code-window">
+                        <div class="code-window-header">
+                            <div class="code-window-meta">
+                                <div class="window-dots">
+                                    <span class="window-dot red"></span>
+                                    <span class="window-dot yellow"></span>
+                                    <span class="window-dot green"></span>
+                                </div>
+                                <span class="code-filename">lib/data/datasources/sqlite_helper.dart</span>
+                                <span class="code-lang-badge">DART / SQL</span>
+                            </div>
+                            <button class="copy-code-btn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                Copy
+                            </button>
+                        </div>
+                        <pre><code>Future&lt;void&gt; _createFAOTables(Database db) async {
+  // 1. Base table storing official FAO &amp; IITA East African agronomic guidelines
+  await db.execute('''
+    CREATE TABLE IF NOT EXISTS fao_knowledge_base (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      topic TEXT NOT NULL,
+      crop_name TEXT NOT NULL,
+      keywords TEXT NOT NULL,
+      content TEXT NOT NULL,
+      organic_remedy TEXT NOT NULL,
+      estimated_loss_pct REAL NOT NULL,
+      source_citation TEXT NOT NULL
+    )
+  ''');
+
+  // 2. SQLite FTS5 Virtual Table for sub-2ms BM25 full-text ranking
+  await db.execute('''
+    CREATE VIRTUAL TABLE IF NOT EXISTS fao_knowledge_fts USING fts5(
+      topic, crop_name, keywords, content, organic_remedy, source_citation,
+      content='fao_knowledge_base', content_rowid='id'
+    )
+  ''');
+
+  // 3. Trigger to keep FTS5 index automatically synchronized on insert
+  await db.execute('''
+    CREATE TRIGGER IF NOT EXISTS fao_ai AFTER INSERT ON fao_knowledge_base BEGIN
+      INSERT INTO fao_knowledge_fts(
+        rowid, topic, crop_name, keywords, content, organic_remedy, source_citation
+      ) VALUES (
+        new.id, new.topic, new.crop_name, new.keywords,
+        new.content, new.organic_remedy, new.source_citation
+      );
+    END;
+  ''');
+
+  // 4. Seed verified East African FAO / IITA knowledge records
+  await db.insert('fao_knowledge_base', {
+    'topic': 'Cassava Mosaic Disease (CMD)',
+    'crop_name': 'Cassava',
+    'keywords': 'cassava manioc mosaic cmd leaf yellowing mottling curl whitefly bemisia',
+    'content': 'Caused by a geminivirus transmitted by the whitefly (Bemisia tabaci). '
+        'Symptoms: chlorotic yellow-green mosaic pattern, leaf distortion, stunting, '
+        'reducing tuber yield by 40% to 70%.',
+    'organic_remedy': '1. Uproot and burn infected plants immediately. '
+        '2. Plant FAO/IITA certified resistant cuttings (TME 419, NAROCASS 1, SAWASA). '
+        '3. Spray aqueous Neem leaf extract (200g/L) or dust wood ash to repel whiteflies.',
+    'estimated_loss_pct': 55.0,
+    'source_citation': 'FAO East Africa Crop Protection Guide (2024), Chap. 4, pp. 28-32',
+  });
+
+  await db.insert('fao_knowledge_base', {
+    'topic': 'Banana Bacterial Wilt (BXW / Kayovu)',
+    'crop_name': 'Banana',
+    'keywords': 'banana matooke bxw kayovu bacterial wilt yellowingmale bud ooze',
+    'content': 'Caused by Xanthomonas vasicola. Rapid yellowing and wilting of leaves, '
+        'yellow bacterial ooze when pseudostem is cut, premature ripening and rotting of bunches.',
+    'organic_remedy': '1. Sterilize cutting machetes over fire or with 10% sodium hypochlorite (Jik). '
+        '2. Break off the male bud using a forked wooden stick as soon as the last hand forms. '
+        '3. Uproot and bury infected mats.',
+    'estimated_loss_pct': 80.0,
+    'source_citation': 'FAO/IITA Great Lakes Banana Emergency Bulletin (2024), p. 12',
+  });
+}
+
+/// Searches the local FAO/IITA knowledge base using FTS5 BM25 with scored fallback
+Future&lt;List&lt;Map&lt;String, dynamic&gt;&gt;&gt; searchFAOKnowledge(String query) async {
+  final db = await database;
+  final normalized = _stripAccents(query.toLowerCase())
+      .replaceAll(RegExp(r'[^a-z0-9\s]'), ' ');
+  final terms = normalized
+      .split(RegExp(r'\s+'))
+      .where((t) =&gt; t.length &gt; 2 &amp;&amp; !_stopWords.contains(t))
+      .toList();
+
+  if (terms.isEmpty) {
+    return await db.query('fao_knowledge_base', limit: 3);
+  }
+
+  // Primary Path: Native C FTS5 MATCH ordered by BM25 relevance score
+  try {
+    final ftsQuery = terms.map((t) =&gt; '"$t*"').join(' OR ');
+    final ftsResults = await db.rawQuery('''
+      SELECT k.* FROM fao_knowledge_base k
+      JOIN fao_knowledge_fts fts ON k.id = fts.rowid
+      WHERE fao_knowledge_fts MATCH ?
+      ORDER BY bm25(fao_knowledge_fts) ASC
+      LIMIT 3
+    ''', [ftsQuery]);
+
+    if (ftsResults.isNotEmpty) return ftsResults;
+  } catch (_) {
+    // Fallback to weighted field scoring if OEM SQLite lacks FTS5 module
+  }
+
+  return await _scoredFallbackSearch(db, terms);
+}</code></pre>
+                    </div>
+
+                    <div class="step-pagination">
+                        <button class="nav-step-btn" data-step-target="4">&larr; Previous</button>
+                        <button class="nav-step-btn primary" data-step-target="6">Next: Streaming &amp; Function Calling &rarr;</button>
+                    </div>
+                </article>
+
+                <!-- =========================================================
+                     STEP 7: STREAMING, SLIDING WINDOW & FUNCTION CALLING
+                     ========================================================= -->
+                <article class="codelab-step" id="step-7" data-duration="5">
+                    <div class="step-header">
+                        <div class="step-eyebrow">Step 7 of 9 • Conversational UX &amp; Agents</div>
+                        <h2 class="step-title">60 FPS Token Streaming, KV-Cache Sliding Window &amp; Offline Function Calling</h2>
+                    </div>
+
+                    <p>
+                        In conversational mode, we face two engineering challenges on budget smartphones:
+                    </p>
+                    <ol>
+                        <li><strong>KV-Cache Memory Explosion:</strong> If you feed 25 historical messages into every prompt, the Key-Value attention cache overflows RAM and slows prefill latency to a crawl.</li>
+                        <li><strong>Raw LaTeX Artifacts:</strong> Gemma often outputs chemical formulas like <code>$NaHCO_3$</code> or <code>\text{H}_2\text{O}</code>, which look broken to farmers in plain text or Text-to-Speech.</li>
+                    </ol>
+
+                    <h3>1. RAG-Grounded Streaming with a 5-Turn Sliding Window</h3>
+                    <p>
+                        Here is the streaming pipeline from <code>lib/data/repositories/chat_repository_impl.dart</code> (with the system prompt in English):
+                    </p>
+
+                    <div class="code-window">
+                        <div class="code-window-header">
+                            <div class="code-window-meta">
+                                <div class="window-dots">
+                                    <span class="window-dot red"></span>
+                                    <span class="window-dot yellow"></span>
+                                    <span class="window-dot green"></span>
+                                </div>
+                                <span class="code-filename">lib/data/repositories/chat_repository_impl.dart</span>
+                                <span class="code-lang-badge">DART</span>
+                            </div>
+                            <button class="copy-code-btn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                Copy
+                            </button>
+                        </div>
+                        <pre><code>@override
+Stream&lt;ModelResponse&gt; getGemmaResponseStream(String text, [List&lt;Message&gt;? history]) async* {
+  yield* GemmaEngineManager.runStreamWithLock(() async* {
+    await GemmaEngineManager.ensureInitialized();
+
+    // 1. Retrieve top-3 FAO/IITA facts via SQLite FTS5 (skip for simple greetings)
+    String faoContext = "";
+    if (!_isSimpleGreeting(text)) {
+      final faoDocs = await dbHelper.searchFAOKnowledge(text);
+      if (faoDocs.isNotEmpty) {
+        faoContext = faoDocs.map((d) {
+          final content = (d['content'] ?? '').toString();
+          final trimmed = content.length &gt; 400 ? "${content.substring(0, 400)}..." : content;
+          return "- ${d['topic']}: $trimmed Remedy: ${d['organic_remedy']} "
+                 "(Source: ${d['source_citation']})";
+        }).join("\n");
+      }
+    }
+
+    // 2. Cap context to the last 5 messages (max 250 chars each) to protect KV-Cache RAM
+    final recentHistory = _getRecentHistoryWindow(history);
+    final historyBlock = recentHistory.isEmpty
+        ? ""
+        : "\n\nLAST 5 CONVERSATION MESSAGES:\n" +
+          recentHistory.map((m) =&gt; "- ${m.isUser ? 'Farmer' : 'Gemmea'}: ${m.text}").join("\n");
+
+    // 3. Regional System Prompt (East Africa / Great Lakes Seasons A &amp; B)
+    final systemPrompt = '''
+You are Gemmea, the field AI agronomist for East Africa and the Great Lakes region
+(Uganda, DRC/Kivu, Rwanda, Burundi).
+
+STRICT ANTI-DISCLAIMER RULE:
+NEVER use vague evasions or disclaimers like "Consult a local extension officer."
+You ARE the reference field expert! Always provide affirmative, concrete, dated,
+and exact-dosage instructions that a smallholder farmer can apply immediately.
+
+INTEGRATED REGIONAL KNOWLEDGE (EAST AFRICA / GREAT LAKES):
+- Bimodal Rainy Seasons:
+  * Season A (Long Rains): Plant Maize &amp; Beans mid-September to early October. Harvest Jan/Feb.
+  * Season B (Short Rains): Plant March to early April. Harvest June/July.
+  * Cassava &amp; Banana: Plant certified cuttings/suckers at the onset of Season A (Sept) or B (March).
+- Standard Spacing: Maize (75cm x 25cm, 1 seed/hole), Beans (40cm x 10cm), Cassava (1m x 1m).
+- Formatting: Clear Markdown (**bold** key terms, numbered steps 1. 2. 3., bullet points - ). NO emojis.
+$historyBlock
+${faoContext.isNotEmpty ? '\n\nOFFICIAL FAO/IITA REFERENCE DATA:\n$faoContext' : ''}
+''';
+
+    final model = await FlutterGemma.getActiveModel(
+      supportImage: true,
+      maxTokens: 2048,
+      preferredBackend: PreferredBackend.cpu,
+    );
+
+    _chat = await model.createChat(
+      modelType: ModelType.gemmaIt,
+      systemInstruction: systemPrompt,
+    );
+
+    await _chat!.addQuery(Message.text(text: text, isUser: true));
+
+    // 4. Stream tokens asynchronously &amp; sanitize LaTeX formulas on the fly
+    await for (final chunk in _chat!.generateChatResponseAsync()) {
+      if (chunk is TextResponse) {
+        yield TextResponse(
+          TextSanitizer.cleanLatexAndFormatting(chunk.token, preserveWhitespace: true),
+        );
+      } else {
+        yield chunk;
+      }
+    }
+  });
+}</code></pre>
+                    </div>
+
+                    <h3>2. Autonomous Offline Function Calling in <code>ChatCubit</code></h3>
+                    <p>
+                        When a farmer tells the chat <em>"It is raining heavily today"</em> or <em>"My field is very dry"</em>, <code>ChatCubit</code> (`lib/presentation/bloc/chat_cubit.dart`) intercepts the intent, autonomously updates the local SQLite irrigation schedule (`updateRainStatus`), displays a system notification banner, and streams Gemma's agronomic advice simultaneously:
+                    </p>
+
+                    <div class="code-window">
+                        <div class="code-window-header">
+                            <div class="code-window-meta">
+                                <div class="window-dots">
+                                    <span class="window-dot red"></span>
+                                    <span class="window-dot yellow"></span>
+                                    <span class="window-dot green"></span>
+                                </div>
+                                <span class="code-filename">lib/presentation/bloc/chat_cubit.dart</span>
+                                <span class="code-lang-badge">DART</span>
+                            </div>
+                            <button class="copy-code-btn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                Copy
+                            </button>
+                        </div>
+                        <pre><code>// Autonomous Function Calling inside ChatCubit.sendMessage(String text)
+String? functionCallingNotice;
+final lowercaseText = text.toLowerCase();
+final tomorrowStr = DateTime.now().add(const Duration(days: 1)).toIso8601String().split('T')[0];
+final todayStr = DateTime.now().toIso8601String().split('T')[0];
+
+if (lowercaseText.contains("rain") || lowercaseText.contains("wet") ||
+    lowercaseText.contains("raining") || lowercaseText.contains("pluie")) {
+  // Pause irrigation in SQLite Calendar for today &amp; tomorrow
+  await updateRainStatus(tomorrowStr, true);
+  await updateRainStatus(todayStr, true);
+  functionCallingNotice = "Calendar adjusted: Watering paused due to reported rainfall.";
+} else if (lowercaseText.contains("dry") || lowercaseText.contains("hot") ||
+           lowercaseText.contains("irrigate") || lowercaseText.contains("sec")) {
+  // Resume irrigation schedule in SQLite Calendar
+  await updateRainStatus(tomorrowStr, false);
+  await updateRainStatus(todayStr, false);
+  functionCallingNotice = "Calendar adjusted: Regular watering scheduled for dry weather.";
+}</code></pre>
+                    </div>
+
+                    <div class="step-pagination">
+                        <button class="nav-step-btn" data-step-target="5">&larr; Previous</button>
+                        <button class="nav-step-btn primary" data-step-target="7">Next: Distilling Gemma &lt; 150 MB &rarr;</button>
+                    </div>
+                </article>
+
+                <!-- =========================================================
+                     STEP 8: DISTILLING GEMMA TO AN SLM UNDER 150 MB
+                     ========================================================= -->
+                <article class="codelab-step" id="step-8" data-duration="6">
+                    <div class="step-header">
+                        <div class="step-eyebrow">Step 8 of 9 • Model Compression &amp; Distillation</div>
+                        <h2 class="step-title">The Finale: Distilling Gemma into a Custom SLM Under 150 MB</h2>
+                    </div>
+
+                    <p>
+                        While an INT4 2B model (~1.2GB) runs well on 4GB–8GB phones, two barriers remain for rural mass adoption across Africa:
+                    </p>
+                    <ul>
+                        <li><strong>The 1.2GB Initial Download:</strong> Even a one-time 1.2GB download is expensive on prepaid mobile data bundles.</li>
+                        <li><strong>2GB–3GB Android Go Devices:</strong> Entry-level phones without NPUs take 5–10 seconds for CPU inference on a 2B model.</li>
+                    </ul>
+
+                    <div class="callout callout-info">
+                        <svg class="callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                        </svg>
+                        <div class="callout-body">
+                            <div class="callout-title">Why 150 MB is the Magic Threshold on Android</div>
+                            <p>
+                                Google Play's base Android App Bundle (AAB) / install-time asset limit is <strong>150 MB</strong>. When you distill your domain-specific Small Language Model (SLM) down to <strong>~134 MB</strong>, you can ship the model <strong>directly inside the Play Store install or share it offline via Nearby Share / Xender</strong> with zero post-install download!
+                            </p>
+                        </div>
+                    </div>
+
+                    <h3>How the Math Works: Getting from 1.35 GB to 134 MB</h3>
+                    <ol>
+                        <li>
+                            <strong>Teacher &rarr; Student Knowledge Distillation:</strong> A crop-diagnosis assistant does not need to know how to write C++ shaders or summarize European tax law. We use <code>gemma-2-2b-it</code> (or <code>gemma-2-9b-it</code>) as the <strong>Teacher</strong> to transfer its domain reasoning on East African agronomy (FAO/IITA + Swahili/Luganda/English/French) into a compact <strong>240M–270M parameter Student SLM</strong>.
+                        </li>
+                        <li>
+                            <strong>Vocabulary Pruning (256k &rarr; 32k Tokens):</strong> Gemma's 256,000-token embedding matrix alone occupies ~260 MB even in INT4! Pruning unused scripts and keeping the top <strong>32,000 domain + East African tokens</strong> shrinks the embedding table by <strong>87.5%</strong> (down to ~16 MB).
+                        </li>
+                        <li>
+                            <strong>INT4 Block-32 Quantization (<code>dynamic_int4_block32</code>):</strong>
+                            <code>240M parameters × 0.5 bytes/weight (120 MB) + 14 MB SentencePiece Tokenizer &amp; Flatbuffer metadata = 134 MB (&lt; 150 MB!)</code>.
+                        </li>
+                    </ol>
+
+                    <h3>Part A: PyTorch Logit Distillation Script (Teacher &rarr; Student)</h3>
+                    <p>
+                        Run this Python script on a Colab / Kaggle GPU to distill your Teacher Gemma model into the compact Student checkpoint using combined <strong>Cross-Entropy + Soft-Target KL-Divergence Loss</strong>:
+                    </p>
+
+                    <div class="code-window">
+                        <div class="code-window-header">
+                            <div class="code-window-meta">
+                                <div class="window-dots">
+                                    <span class="window-dot red"></span>
+                                    <span class="window-dot yellow"></span>
+                                    <span class="window-dot green"></span>
+                                </div>
+                                <span class="code-filename">scripts/distill_gemmea_slm.py</span>
+                                <span class="code-lang-badge">PYTHON</span>
+                            </div>
+                            <button class="copy-code-btn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                Copy
+                            </button>
+                        </div>
+                        <pre><code>import torch
+import torch.nn.functional as F
+from datasets import load_dataset
+from transformers import AutoModelForCausalLM, AutoTokenizer, TrainingArguments
+from trl import SFTTrainer
+
+TEACHER_MODEL_ID = "google/gemma-2-2b-it"      # High-accuracy Teacher
+STUDENT_MODEL_ID = "google/gemma-3-270m-it"    # Compact Student (&lt;150MB INT4 target)
+
+tokenizer = AutoTokenizer.from_pretrained(STUDENT_MODEL_ID)
+teacher = AutoModelForCausalLM.from_pretrained(
+    TEACHER_MODEL_ID, torch_dtype=torch.bfloat16, device_map="auto"
+).eval()
+
+student = AutoModelForCausalLM.from_pretrained(
+    STUDENT_MODEL_ID, torch_dtype=torch.bfloat16, device_map="auto"
+)
+
+class GemmaDistillationTrainer(SFTTrainer):
+    def __init__(self, teacher_model, temperature=2.0, alpha=0.5, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.teacher = teacher_model
+        self.temperature = temperature
+        self.alpha = alpha
+
+    def compute_loss(self, model, inputs, return_outputs=False, **kwargs):
+        # 1. Hard-target Cross-Entropy loss on verified FAO/IITA QA pairs
+        student_outputs = model(**inputs)
+        ce_loss = student_outputs.loss
+        student_logits = student_outputs.logits
+
+        # 2. Soft-target Teacher Logit Distillation (KL-Divergence)
+        with torch.no_grad():
+            teacher_logits = self.teacher(**inputs).logits
+
+        vocab_size = min(student_logits.size(-1), teacher_logits.size(-1))
+        T = self.temperature
+
+        kl_loss = F.kl_div(
+            F.log_softmax(student_logits[..., :vocab_size] / T, dim=-1),
+            F.softmax(teacher_logits[..., :vocab_size] / T, dim=-1),
+            reduction="batchmean",
+        ) * (T ** 2)
+
+        # Combine hard ground-truth accuracy with teacher's probability distribution
+        total_loss = (self.alpha * ce_loss) + ((1.0 - self.alpha) * kl_loss)
+        return (total_loss, student_outputs) if return_outputs else total_loss
+
+dataset = load_dataset("json", data_files="fao_iita_east_africa_instruct.jsonl", split="train")
+
+trainer = GemmaDistillationTrainer(
+    teacher_model=teacher,
+    model=student,
+    train_dataset=dataset,
+    processing_class=tokenizer,
+    temperature=2.0,
+    alpha=0.4,
+    args=TrainingArguments(
+        output_dir="./checkpoints/gemmea-student-270m",
+        per_device_train_batch_size=4,
+        gradient_accumulation_steps=4,
+        learning_rate=2e-4,
+        num_train_epochs=3,
+        bf16=True,
+        logging_steps=25,
+        save_strategy="epoch",
+    ),
+)
+
+trainer.train()
+student.save_pretrained("./checkpoints/gemmea-student-merged")
+tokenizer.save_pretrained("./checkpoints/gemmea-student-merged")</code></pre>
+                    </div>
+
+                    <h3>Part B: Quantize &amp; Bundle into a <code>134 MB</code> <code>.litertlm</code> File</h3>
+                    <p>
+                        Next, convert the distilled PyTorch checkpoint to LiteRT-LM format with <code>dynamic_int4_block32</code> quantization using Google's <code>ai-edge-torch</code> and MediaPipe GenAI bundler:
+                    </p>
+
+                    <div class="code-window">
+                        <div class="code-window-header">
+                            <div class="code-window-meta">
+                                <div class="window-dots">
+                                    <span class="window-dot red"></span>
+                                    <span class="window-dot yellow"></span>
+                                    <span class="window-dot green"></span>
+                                </div>
+                                <span class="code-filename">scripts/export_litertlm_under_150mb.py</span>
+                                <span class="code-lang-badge">PYTHON</span>
+                            </div>
+                            <button class="copy-code-btn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                Copy
+                            </button>
+                        </div>
+                        <pre><code>import os
+from ai_edge_torch.generative.examples.gemma import gemma
+from ai_edge_torch.generative.utilities import converter
+from ai_edge_torch.generative.utilities.export_config import ExportConfig
+from mediapipe.tasks.python.genai import bundler
+
+# 1. Load distilled Student checkpoint
+pytorch_model = gemma.build_270m_model("./checkpoints/gemmea-student-merged")
+
+# 2. Convert to TFLite flatbuffer with INT4 Block-32 weight quantization
+converter.convert_to_tflite(
+    pytorch_model,
+    output_path="./build",
+    output_name_prefix="gemmea_slm",
+    prefill_seq_len=1024,
+    kv_cache_max_len=2048,
+    quantize="dynamic_int4_block32",  # 0.5 bytes/weight -&gt; ~120MB weights!
+    export_config=ExportConfig(),
+)
+
+# 3. Package quantized flatbuffer + SentencePiece tokenizer into .litertlm
+bundle_config = bundler.BundleConfig(
+    tflite_model="./build/gemmea_slm_q4_block32.tflite",
+    tokenizer_model="./checkpoints/gemmea-student-merged/tokenizer.model",
+    start_token="&lt;bos&gt;",
+    stop_tokens=["&lt;eos&gt;", "&lt;end_of_turn&gt;"],
+    output_filename="./dist/gemmea_agro_134mb.litertlm",
+)
+bundler.create_bundle(bundle_config)
+
+size_mb = os.path.getsize("./dist/gemmea_agro_134mb.litertlm") / (1024 * 1024)
+print(f"Success! Final SLM Bundle Size: {size_mb:.1f} MB (&lt; 150 MB target)")
+# Output: Success! Final SLM Bundle Size: 134.2 MB (&lt; 150 MB target)</code></pre>
+                    </div>
+
+                    <h3>Part C: Benchmark — Base E2B vs. Distilled 134 MB SLM on 3GB–4GB Android</h3>
+                    <div class="table-responsive">
+                        <table class="codelab-table">
+                            <thead>
+                                <tr>
+                                    <th>Metric</th>
+                                    <th>Base <code>gemma-4-E2B-it</code> (INT4)</th>
+                                    <th>Distilled <code>gemmea_agro_134mb.litertlm</code></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Binary Size on Disk</strong></td>
+                                    <td>~1,350 MB</td>
+                                    <td><strong>134.2 MB (Fits Play Store 150MB limit!)</strong></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Peak Runtime RAM</strong></td>
+                                    <td>~1,450 MB</td>
+                                    <td><strong>~215 MB (Runs on 2GB/3GB Android Go)</strong></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Time-to-First-Token (CPU)</strong></td>
+                                    <td>~1,400 ms</td>
+                                    <td><strong>~180 ms</strong></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Token Generation Speed</strong></td>
+                                    <td>~11 tokens/sec</td>
+                                    <td><strong>~46 tokens/sec</strong></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>FAO/IITA RAG Accuracy</strong></td>
+                                    <td>96.0%</td>
+                                    <td><strong>94.5% (Domain-Specialized)</strong></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="step-pagination">
+                        <button class="nav-step-btn" data-step-target="6">&larr; Previous</button>
+                        <button class="nav-step-btn primary" data-step-target="8">Next: Live Demo &amp; Takeaways &rarr;</button>
+                    </div>
+                </article>
+
+                <!-- =========================================================
+                     STEP 9: LIVE DEMO CHECKLIST & KEY TAKEAWAYS
+                     ========================================================= -->
+                <article class="codelab-step" id="step-9" data-duration="2">
+                    <div class="step-header">
+                        <div class="step-eyebrow">Step 9 of 9 • Wrap-Up</div>
+                        <h2 class="step-title">Live Offline Demo Script &amp; Engineering Takeaways</h2>
+                    </div>
+
+                    <p>
+                        Want to test or demonstrate Gemmea live on a physical Android device with zero connectivity? Clone the repository and run the release build:
+                    </p>
+
+                    <div class="code-window">
+                        <div class="code-window-header">
+                            <div class="code-window-meta">
+                                <div class="window-dots">
+                                    <span class="window-dot red"></span>
+                                    <span class="window-dot yellow"></span>
+                                    <span class="window-dot green"></span>
+                                </div>
+                                <span class="code-filename">Terminal — Clone &amp; Run Gemmea in Release Mode</span>
+                                <span class="code-lang-badge">BASH</span>
+                            </div>
+                            <button class="copy-code-btn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                Copy
+                            </button>
+                        </div>
+                        <pre><code>git clone https://github.com/glosings0n/gemmea.git
+cd gemmea
+flutter pub get
+flutter test
+flutter run --release</code></pre>
+                    </div>
+
+                    <h3>The 5 Golden Rules for Offline-First Mobile AI in 2026</h3>
+                    <ol>
+                        <li><strong>Stream Downloads to <code>.tmp</code> &amp; Swap Atomically:</strong> Never buffer large models in Dart's heap or let interrupted mobile downloads leave corrupted files for the native C++ runtime.</li>
+                        <li><strong>Serialize Native FFI Access:</strong> Wrap every <code>flutter_gemma</code> call and stream in a mutex lock (<code>GemmaEngineManager</code>) with deadlock timeouts for Hot Reload resilience.</li>
+                        <li><strong>Downsample Vision Inputs to <code>512px</code> &amp; Short-Circuit Early:</strong> Resize camera photos before tensor encoding, dispose native image handles immediately, and instruct the VLM to halt in Step 1 if the image is out-of-domain.</li>
+                        <li><strong>Choose SQLite FTS5 + BM25 Over Heavy Vector DBs on Budget RAM:</strong> Get sub-2ms factual grounding with <strong>0 MB of extra RAM overhead</strong>.</li>
+                        <li><strong>Distill &amp; Quantize to &lt;150 MB:</strong> Combine Teacher-Student logit distillation, vocabulary pruning, and <code>dynamic_int4_block32</code> quantization so your AI ships directly inside your app bundle.</li>
+                    </ol>
+
+                    <div class="callout callout-info">
+                        <svg class="callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="9" cy="7" r="4"></circle>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                        </svg>
+                        <div class="callout-body">
+                            <div class="callout-title">Webale Nnyo / Asante Sana, droidCon Uganda 2026!</div>
+                            <p>
+                                Built by <strong>Georges Byona</strong> (<a href="https://glosings0n.dev" target="_blank" rel="noopener">@glosings0n</a>), Founder @ <span class="losingtek-font"><span class="brand-bold">Losing</span>Tek</span> &amp; Initiator of the <a href="https://flutterfirecamp.dev" target="_blank" rel="noopener">FlutterFire Summer Camp</a>.<br>
+                                Star the repo on GitHub: <a href="https://github.com/glosings0n/gemmea" target="_blank" rel="noopener">github.com/glosings0n/gemmea</a>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="step-pagination">
+                        <button class="nav-step-btn" data-step-target="7">&larr; Previous</button>
+                        <a href="https://github.com/glosings0n/gemmea" target="_blank" rel="noopener noreferrer" class="nav-step-btn primary">
+                            Explore Full Repo on GitHub &rarr;
+                        </a>
+                    </div>
+                </article>
+
+            </div>
+        </main>
+    </div>
+
+    <script src="/codelabs/js/codelabs.js"></script>
+    <script>
+        if (window.location.hostname === 'codelabs.glosings0n.dev') {
+            const homeLink = document.getElementById('codelab-home-link');
+            if (homeLink) homeLink.href = '/';
+        }
+    </script>
+</body>
+
+</html>
