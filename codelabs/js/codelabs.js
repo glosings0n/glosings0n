@@ -6,11 +6,23 @@
 
 document.addEventListener('DOMContentLoaded', () => {
     initEnvironmentLinks();
+    initCurrentYear();
     initThemeToggle();
     initStepNavigation();
     initCodeCopyButtons();
     initMobileSidebar();
 });
+
+/**
+ * Populate dynamic current year ONLY on #current-year (Hub page),
+ * while keeping individual Codelab session years fixed to their event year.
+ */
+function initCurrentYear() {
+    const yearEl = document.getElementById('current-year');
+    if (yearEl) {
+        yearEl.textContent = new Date().getFullYear();
+    }
+}
 
 /**
  * 0. Environment-Aware Routing (Local Dev vs. Live codelabs.glosings0n.dev)

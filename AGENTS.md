@@ -45,3 +45,6 @@ These rules are mandatory across all web, codelab, slide, documentation, and app
   - `https://codelabs.glosings0n.dev/` serves the Codelabs hub directly at `/` (never `/codelabs/`).
   - Each codelab is served at `https://codelabs.glosings0n.dev/<session-slug>` (e.g., `/flutter-gemma-droidcon-ug-2026`).
   - When displaying domain links in text, use a clean lowercase blue link (`codelabs-url-link`), never inside an uppercase badge.
+- **Copyright Year Policy:**
+  - The main Portfolio (`index.html`) and the Codelabs Hub (`codelabs/hub.html`) use a **dynamic** `currentYear` (`new Date().getFullYear()` via `#current-year`) so the year updates automatically every year.
+  - Individual Codelab Session pages (`codelabs/<slug>/index.html`) use a **fixed static year** in `.sidebar-copyright` matching the year of that specific talk/session (e.g., `&copy; 2026 glosings0n`), so a 2026 session still displays `2026` in 2028.

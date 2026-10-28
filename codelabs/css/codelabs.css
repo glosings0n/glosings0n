@@ -1103,6 +1103,18 @@ body.mode-all-steps .codelab-step {
     font-family: var(--font-family);
 }
 
+.hub-footer {
+    margin-top: 64px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border-color);
+    text-align: center;
+}
+
+.hub-copyright {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
 /* ==========================================================================
    11. Mobile & Tablet Responsive Refinements (Compact, Clean, Zero Overflow)
    ========================================================================== */
