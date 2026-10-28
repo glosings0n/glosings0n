@@ -66,3 +66,13 @@ These rules are mandatory across all web, codelab, slide, documentation, and app
     2. Complete OpenGraph (`og:*`, `article:*`) and Twitter Card (`twitter:*`) tags referencing `@glosings0n`.
     3. A complete Schema.org JSON-LD `@graph` (`TechArticle`, `LearningResource`, `BreadcrumbList`, `Person` for **Georges Byona** with all aliases `glosings0n`, `@glosings0n`, `Losingson`, `Losings0n`, `@losingson`, `Georges Losingson`, `Byona Georges`, `g-losingson`, and `Organization` entities for **LosingTek** and **FlutterFire Summer Camp**, plus all technical topic tags).
     4. Registration of the new codelab URL in `sitemap.xml` and in the `hasPart` array of `codelabs/hub.html`'s `CollectionPage` JSON-LD.
+
+---
+
+## 5. Mandatory Codelab Prerequisites & Runnable Code Verification
+- **Always Start with Prerequisites & System Requirements:**
+  - Every codelab MUST include an explicit **Prerequisites & System Requirements** section in Step 1 (and environment verification commands in Step 1/Step 2) listing exact SDK versions, OS/tool dependencies (e.g., Flutter SDK, Dart SDK, JDK 17, Android SDK `minSdk`, Xcode), hardware/device requirements (RAM, storage, 64-bit `arm64-v8a` physical device vs. emulator), and pre-flight terminal checks (`flutter doctor -v`, `adb devices`).
+- **100% Self-Contained, Cross-Platform & Verified Code Snippets:**
+  - Every file listed in a codelab's minimal project structure MUST be presented as a complete, self-contained, copy-pasteable file (with all required `import` statements, class declarations, and helper methods included) so a participant can copy the files from Step 1 to the final step and run the project without any missing symbols, missing assets, or SDK version mismatch errors.
+  - Provide terminal commands for both **macOS / Linux / Git Bash** and **Windows PowerShell** whenever shell syntax differs (such as creating nested folders).
+  - Always verify codelab code with `flutter analyze` / `dart analyze` before publishing.
