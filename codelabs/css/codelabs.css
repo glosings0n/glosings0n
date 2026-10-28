@@ -150,6 +150,10 @@ body {
     line-height: 1.65;
     -webkit-font-smoothing: antialiased;
     transition: background-color 0.25s ease, color 0.25s ease;
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
 }
 
 code, pre, kbd, samp, .font-mono {
@@ -1018,7 +1022,8 @@ body.mode-all-steps .codelab-step {
     width: 100%;
     max-width: 1340px;
     margin: 0 auto;
-    padding: calc(var(--header-height) + 48px) 24px 72px;
+    padding: calc(var(--header-height) + 48px) 24px 48px;
+    flex: 1;
 }
 
 .hub-hero {
@@ -1152,15 +1157,26 @@ body.mode-all-steps .codelab-step {
 }
 
 .hub-footer {
-    margin-top: 64px;
-    padding-top: 24px;
+    background-color: var(--bg-primary);
     border-top: 1px solid var(--border-color);
+    padding: 20px 24px;
+    width: 100%;
+    margin-top: auto;
+}
+
+.hub-footer-container {
+    max-width: 1340px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-align: center;
 }
 
 .hub-copyright {
-    font-size: 0.85rem;
+    font-size: 0.95rem;
     color: var(--text-muted);
+    margin: 0;
 }
 
 /* ==========================================================================
@@ -1248,7 +1264,11 @@ body.mode-all-steps .codelab-step {
 
     /* Hub Mobile */
     .hub-container {
-        padding: calc(var(--header-height) + 28px) 14px 48px;
+        padding: calc(var(--header-height) + 28px) 14px 28px;
+    }
+
+    .hub-footer {
+        padding: 16px 24px;
     }
 
     .hub-hero {
