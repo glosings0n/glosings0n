@@ -1,5 +1,7 @@
 {
   "version": 2,
+  "buildCommand": "mv index.html home.html",
+  "outputDirectory": ".",
   "cleanUrls": true,
   "trailingSlash": false,
   "redirects": [

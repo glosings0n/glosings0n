@@ -30,7 +30,7 @@
     <header class="codelab-topbar">
         <div class="topbar-inner">
             <div class="topbar-left">
-                <a href="https://glosings0n.dev" class="brand-link">
+                <a href="https://glosings0n.dev" id="hub-brand-link" class="brand-link">
                     <img src="/assets/logo.svg" alt="LosingTek Logo" class="brand-logo">
                     <span class="brand-text">glosings0n</span>
                 </a>
@@ -55,7 +55,7 @@
 
         <section class="codelab-card-grid">
             <!-- Featured Codelab: droidCon Uganda 2026 -->
-            <a href="/flutter-gemma-droidcon-ug-2026" id="card-droidcon-ug-2026" class="codelab-card">
+            <a href="/flutter-gemma-droidcon-ug-2026" id="card-droidcon-ug-2026" data-codelab-slug="flutter-gemma-droidcon-ug-2026" class="codelab-card">
                 <div class="card-tags">
                     <span class="card-tag">droidCon Uganda 2026</span>
                     <span class="card-tag">Flutter</span>
@@ -75,12 +75,6 @@
     </main>
 
     <script src="/codelabs/js/codelabs.js"></script>
-    <script>
-        if (window.location.hostname === 'codelabs.glosings0n.dev') {
-            const cardLink = document.getElementById('card-droidcon-ug-2026');
-            if (cardLink) cardLink.href = '/flutter-gemma-droidcon-ug-2026';
-        }
-    </script>
 </body>
 
 </html>

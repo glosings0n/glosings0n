@@ -137,7 +137,19 @@ function setLanguage(lang) {
  * Smoothly scroll to the hash section on initial page load if present
  */
 function handleInitialScroll() {
+    // Configure Codelabs navbar link for local dev vs production
+    const navCodelabs = document.getElementById('nav-item-codelabs');
+    if (navCodelabs) {
+        const isLocal = ['localhost', '127.0.0.1', ''].includes(window.location.hostname) ||
+                        window.location.protocol === 'file:';
+        navCodelabs.href = isLocal ? '/codelabs/hub.html' : 'https://codelabs.glosings0n.dev';
+    }
+
     const hash = window.location.hash;
+    if (hash === '#home') {
+        history.replaceState(null, null, window.location.pathname);
+        return;
+    }
     if (hash) {
         const targetId = hash.substring(1);
         const targetElement = document.getElementById(targetId);
@@ -291,21 +303,34 @@ function initScrollReveal() {
 function initActiveLinkHighlighting() {
     const sections = document.querySelectorAll('section[id]');
     const navLinks = document.querySelectorAll('.nav-link');
+    const logoLink = document.getElementById('logo-link');
     
     if (sections.length === 0 || navLinks.length === 0) return;
+
+    // Handle click on Logo to scroll to top and keep URL at / (never #home)
+    if (logoLink) {
+        logoLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            history.replaceState(null, null, window.location.pathname);
+        });
+    }
 
     // Handle clicks on nav links to avoid showing /#home
     navLinks.forEach(link => {
         link.addEventListener('click', (e) => {
             const href = link.getAttribute('href');
-            if (href.startsWith('#')) {
+            if (href === '/' || href === '#home') {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                history.replaceState(null, null, window.location.pathname);
+            } else if (href && href.startsWith('#')) {
                 e.preventDefault();
                 const targetId = href.substring(1);
                 const targetElement = document.getElementById(targetId);
                 if (targetElement) {
                     targetElement.scrollIntoView({ behavior: 'smooth' });
-                    const targetUrl = targetId === 'home' ? window.location.pathname : href;
-                    history.replaceState(null, null, targetUrl);
+                    history.replaceState(null, null, href);
                 }
             }
         });
@@ -331,7 +356,8 @@ function initActiveLinkHighlighting() {
         if (currentActive) {
             navLinks.forEach(link => {
                 const href = link.getAttribute('href');
-                if (href === `#${currentActive}`) {
+                const isHomeLink = link.id === 'nav-item-home' || href === '/';
+                if ((currentActive === 'home' && isHomeLink) || href === `#${currentActive}`) {
                     link.classList.add('active');
                 } else {
                     link.classList.remove('active');

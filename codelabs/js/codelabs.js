@@ -5,11 +5,53 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
+    initEnvironmentLinks();
     initThemeToggle();
     initStepNavigation();
     initCodeCopyButtons();
     initMobileSidebar();
 });
+
+/**
+ * 0. Environment-Aware Routing (Local Dev vs. Live codelabs.glosings0n.dev)
+ * - In Live (codelabs.glosings0n.dev):
+ *   * Hub is at "/"
+ *   * Codelab session is at "/<slug>"
+ *   * Hub logo points to "https://glosings0n.dev"
+ *   * Codelab logo points back to Hub "/"
+ * - In Local Dev (localhost, 127.0.0.1, or non-subdomain preview):
+ *   * Hub is at "/codelabs/hub.html"
+ *   * Codelab session is at "/codelabs/<slug>/index.html"
+ *   * Hub logo points to "/" (local portfolio index.html)
+ *   * Codelab logo points back to "/codelabs/hub.html"
+ */
+function initEnvironmentLinks() {
+    const isSubdomain = window.location.hostname === 'codelabs.glosings0n.dev';
+    const hubPath = isSubdomain ? '/' : '/codelabs/hub.html';
+    const portfolioPath = isSubdomain ? 'https://glosings0n.dev' : '/';
+
+    const hubBrandLink = document.getElementById('hub-brand-link');
+    if (hubBrandLink) {
+        hubBrandLink.href = portfolioPath;
+    }
+
+    const codelabHomeLink = document.getElementById('codelab-home-link');
+    if (codelabHomeLink) {
+        codelabHomeLink.href = hubPath;
+    }
+
+    const codelabSubLink = document.getElementById('codelab-sub-link');
+    if (codelabSubLink) {
+        codelabSubLink.href = hubPath;
+    }
+
+    document.querySelectorAll('.codelab-card[data-codelab-slug]').forEach(card => {
+        const slug = card.getAttribute('data-codelab-slug');
+        if (slug) {
+            card.href = isSubdomain ? `/${slug}` : `/codelabs/${slug}/index.html`;
+        }
+    });
+}
 
 /**
  * 1. Light / Dark Mode Switcher (Default: Dark matching glosings0n.dev)
