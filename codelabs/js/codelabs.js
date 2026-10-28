@@ -157,9 +157,18 @@ function initStepNavigation() {
 
         // Close mobile drawer if open
         const sidebar = document.getElementById('codelab-sidebar');
+        const toggleBtn = document.getElementById('sidebar-toggle-btn');
         if (sidebar) sidebar.classList.remove('open');
+        if (toggleBtn) {
+            toggleBtn.classList.remove('open');
+            toggleBtn.setAttribute('aria-expanded', 'false');
+        }
 
         // Scroll to top of step smoothly
+        const mainContainer = document.querySelector('.codelab-main');
+        if (mainContainer) {
+            mainContainer.scrollTo({ top: 0, behavior: 'smooth' });
+        }
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
@@ -244,12 +253,16 @@ function initMobileSidebar() {
 
     toggleBtn.addEventListener('click', (e) => {
         e.stopPropagation();
-        sidebar.classList.toggle('open');
+        const isOpen = sidebar.classList.toggle('open');
+        toggleBtn.classList.toggle('open', isOpen);
+        toggleBtn.setAttribute('aria-expanded', isOpen);
     });
 
     document.addEventListener('click', (e) => {
         if (sidebar.classList.contains('open') && !sidebar.contains(e.target) && !toggleBtn.contains(e.target)) {
             sidebar.classList.remove('open');
+            toggleBtn.classList.remove('open');
+            toggleBtn.setAttribute('aria-expanded', 'false');
         }
     });
 }
