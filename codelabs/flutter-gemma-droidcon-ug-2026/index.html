@@ -50,7 +50,7 @@
             </div>
 
             <div class="topbar-right">
-                <div class="time-pill" title="Estimated time remaining">
+                <div class="time-pill" title="Time remaining">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
                         <circle cx="12" cy="12" r="10"></circle>
@@ -59,21 +59,12 @@
                     <span id="time-remaining-label">45 min left</span>
                 </div>
 
-                <button class="action-btn icon-only" id="view-mode-btn" aria-label="Switch between Step-by-Step and Full Scroll View" title="Switch between Step-by-Step and Full Scroll View">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-                        <line x1="3" y1="9" x2="21" y2="9"></line>
-                        <line x1="3" y1="15" x2="21" y2="15"></line>
-                    </svg>
-                </button>
-
-                <button class="action-btn icon-only" id="theme-toggle-btn" aria-label="Toggle Light/Dark Mode" title="Toggle Light/Dark Mode">
+                <button class="action-btn icon-only" id="theme-toggle-btn" aria-label="Light mode" title="Light mode">
                     <span id="theme-toggle-icon"></span>
                 </button>
 
                 <a href="https://github.com/glosings0n/gemmea" target="_blank" rel="noopener noreferrer"
-                    class="action-btn icon-only" aria-label="Open Gemmea GitHub Repository" title="Open Gemmea GitHub Repository">
+                    class="action-btn icon-only" aria-label="Open the GitHub repo" title="Open the GitHub repo">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
                         <path
@@ -292,9 +283,62 @@
 └──────────────────────────────────────────────────────────────────────┘</code></pre>
                     </div>
 
-                    <h3>1. Configure <code>pubspec.yaml</code></h3>
+                    <h3>1. Create the Flutter Project &amp; Minimal File Structure</h3>
                     <p>
-                        Here are the exact production dependencies used in Gemmea's <code>pubspec.yaml</code>. Notice that we pair <code>flutter_gemma</code> with <code>flutter_gemma_litertlm</code> (Google's LiteRT-LM runtime for mobile) and <code>sqflite</code> for FTS5 full-text RAG:
+                        If you are coding along from scratch, create a new Flutter project and set up only the <strong>6 essential files</strong> below (skipping custom fonts, PDF reports, and extra UI screens so you can run a working offline AI app in minutes):
+                    </p>
+
+                    <div class="code-window">
+                        <div class="code-window-header">
+                            <div class="code-window-meta">
+                                <div class="window-dots">
+                                    <span class="window-dot red"></span>
+                                    <span class="window-dot yellow"></span>
+                                    <span class="window-dot green"></span>
+                                </div>
+                                <span class="code-filename">Terminal — Create Project &amp; Folders</span>
+                                <span class="code-lang-badge">BASH</span>
+                            </div>
+                            <button class="copy-code-btn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                Copy
+                            </button>
+                        </div>
+                        <pre><code>flutter create --org com.gemmea gemmea
+cd gemmea
+mkdir -p lib/core/services lib/core/utils lib/data/datasources lib/data/repositories</code></pre>
+                    </div>
+
+                    <div class="code-window">
+                        <div class="code-window-header">
+                            <div class="code-window-meta">
+                                <div class="window-dots">
+                                    <span class="window-dot red"></span>
+                                    <span class="window-dot yellow"></span>
+                                    <span class="window-dot green"></span>
+                                </div>
+                                <span class="code-filename">Minimal Runnable Project Structure (6 Files)</span>
+                                <span class="code-lang-badge">TREE</span>
+                            </div>
+                        </div>
+                        <pre><code>lib/
+├── core/
+│   ├── services/
+│   │   └── gemma_engine_manager.dart    # Step 4: Native FFI Mutex &amp; Hot-Reload Lock
+│   └── utils/
+│       └── text_sanitizer.dart          # Step 7: Real-time LaTeX &amp; Emoji Sanitizer
+├── data/
+│   ├── datasources/
+│   │   ├── gemma_local_source.dart      # Step 5: 512px Vision VLM &amp; Early-Exit Guardrail
+│   │   └── sqlite_helper.dart           # Step 6: Zero-RAM SQLite FTS5 + BM25 Local RAG
+│   └── repositories/
+│       └── chat_repository_impl.dart    # Steps 3 &amp; 7: Atomic .tmp Download &amp; Token Stream
+└── main.dart                            # Step 9: Minimal Runnable UI (Download + Scan + Chat)</code></pre>
+                    </div>
+
+                    <h3>2. Configure <code>pubspec.yaml</code></h3>
+                    <p>
+                        Add the core dependencies in <code>pubspec.yaml</code> (pairing <code>flutter_gemma</code> with <code>flutter_gemma_litertlm</code> and <code>sqflite</code> for FTS5 full-text RAG):
                     </p>
 
                     <div class="code-window">
@@ -346,7 +390,7 @@ dependencies:
   printing: ^5.14.3</code></pre>
                     </div>
 
-                    <h3>2. Android Hardware Acceleration &amp; Permissions</h3>
+                    <h3>3. Android Hardware Acceleration &amp; Permissions</h3>
                     <p>
                         In <code>android/app/src/main/AndroidManifest.xml</code>, ensure <code>android:hardwareAccelerated="true"</code> is enabled on <code>MainActivity</code> and declare permissions for camera, offline voice recognition, and the one-time initial model download:
                     </p>
@@ -1183,6 +1227,47 @@ if (lowercaseText.contains("rain") || lowercaseText.contains("wet") ||
 }</code></pre>
                     </div>
 
+                    <h3>3. Clean Raw LaTeX &amp; Emoji Tokens with <code>TextSanitizer</code></h3>
+                    <p>
+                        Create <code>lib/core/utils/text_sanitizer.dart</code> so chemical formulas like <code>$NaHCO_3$</code> are converted into clean plain text while streaming:
+                    </p>
+
+                    <div class="code-window">
+                        <div class="code-window-header">
+                            <div class="code-window-meta">
+                                <div class="window-dots">
+                                    <span class="window-dot red"></span>
+                                    <span class="window-dot yellow"></span>
+                                    <span class="window-dot green"></span>
+                                </div>
+                                <span class="code-filename">lib/core/utils/text_sanitizer.dart</span>
+                                <span class="code-lang-badge">DART</span>
+                            </div>
+                            <button class="copy-code-btn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                Copy
+                            </button>
+                        </div>
+                        <pre><code>class TextSanitizer {
+  static String cleanLatexAndFormatting(String input, {bool preserveWhitespace = false}) {
+    if (input.isEmpty) return input;
+    String text = input;
+
+    // Convert common LaTeX chemical formulas to farmer-friendly plain text
+    text = text.replaceAll(
+      RegExp(r'\$?\\?text\{NaHCO\}_?\{?3\}?\\?\$?|\$NaHCO_3\\?\$?', caseSensitive: false),
+      'Baking soda (NaHCO3)',
+    );
+    text = text.replaceAllMapped(
+      RegExp(r'([A-Za-z]+)_\{?(\d+)\}?'),
+      (m) =&gt; '${m.group(1)}${m.group(2)}',
+    );
+    text = text.replaceAll(r'$', '');
+    return preserveWhitespace ? text : text.trim();
+  }
+}</code></pre>
+                    </div>
+
                     <div class="step-pagination">
                         <button class="nav-step-btn" data-step-target="5">&larr; Previous</button>
                         <button class="nav-step-btn primary" data-step-target="7">Next: Distilling Gemma &lt; 150 MB &rarr;</button>
@@ -1434,12 +1519,181 @@ print(f"Success! Final SLM Bundle Size: {size_mb:.1f} MB (&lt; 150 MB target)")
                      ========================================================= -->
                 <article class="codelab-step" id="step-9" data-duration="2">
                     <div class="step-header">
-                        <div class="step-eyebrow">Step 9 of 9 • Wrap-Up</div>
-                        <h2 class="step-title">Live Offline Demo Script &amp; Engineering Takeaways</h2>
+                        <div class="step-eyebrow">Step 9 of 9 • Minimal Runnable App &amp; Wrap-Up</div>
+                        <h2 class="step-title">Run the Minimal App &amp; Key Engineering Takeaways</h2>
                     </div>
 
+                    <h3>1. Minimal <code>lib/main.dart</code> to Test Your Codelab App</h3>
                     <p>
-                        Want to test or demonstrate Gemmea live on a physical Android device with zero connectivity? Clone the repository and run the release build:
+                        If you created the files in Steps 2–7, paste this minimal, self-contained <code>lib/main.dart</code> to get a complete working UI (Model Downloader + Offline Leaf Scanner + Streaming RAG Chat) without needing the full repository's custom themes:
+                    </p>
+
+                    <div class="code-window">
+                        <div class="code-window-header">
+                            <div class="code-window-meta">
+                                <div class="window-dots">
+                                    <span class="window-dot red"></span>
+                                    <span class="window-dot yellow"></span>
+                                    <span class="window-dot green"></span>
+                                </div>
+                                <span class="code-filename">lib/main.dart</span>
+                                <span class="code-lang-badge">DART</span>
+                            </div>
+                            <button class="copy-code-btn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                Copy
+                            </button>
+                        </div>
+                        <pre><code>import 'dart:io';
+import 'package:flutter/material.dart';
+import 'package:flutter_gemma/flutter_gemma.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:gemmea/data/datasources/gemma_local_source.dart';
+import 'package:gemmea/data/repositories/chat_repository_impl.dart';
+
+void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  runApp(const MaterialApp(
+    debugShowCheckedModeBanner: false,
+    home: MinimalGemmeaScreen(),
+  ));
+}
+
+class MinimalGemmeaScreen extends StatefulWidget {
+  const MinimalGemmeaScreen({super.key});
+
+  @override
+  State&lt;MinimalGemmeaScreen&gt; createState() =&gt; _MinimalGemmeaScreenState();
+}
+
+class _MinimalGemmeaScreenState extends State&lt;MinimalGemmeaScreen&gt; {
+  final _chatRepo = ChatRepositoryImpl();
+  final _visionSource = GemmaLocalSourceImpl();
+  final _controller = TextEditingController();
+
+  bool _isReady = false;
+  double _downloadProgress = 0.0;
+  String _output = "Tap 'Initialize Model' once, then switch on Airplane Mode!";
+  bool _isBusy = false;
+
+  Future&lt;void&gt; _initModel() async {
+    setState(() =&gt; _isBusy = true);
+    try {
+      await _chatRepo.initializeGemma((p) =&gt; setState(() =&gt; _downloadProgress = p));
+      setState(() {
+        _isReady = true;
+        _output = "Gemma LiteRT-LM Ready (100% Offline)! Ask a question or scan a leaf.";
+      });
+    } catch (e) {
+      setState(() =&gt; _output = "Setup error: $e");
+    } finally {
+      setState(() =&gt; _isBusy = false);
+    }
+  }
+
+  Future&lt;void&gt; _sendChat() async {
+    final query = _controller.text.trim();
+    if (query.isEmpty || _isBusy) return;
+    _controller.clear();
+    setState(() {
+      _isBusy = true;
+      _output = "";
+    });
+    try {
+      await for (final chunk in _chatRepo.getGemmaResponseStream(query)) {
+        if (chunk is TextResponse) {
+          setState(() =&gt; _output += chunk.token);
+        }
+      }
+    } catch (e) {
+      setState(() =&gt; _output = "Error: $e");
+    } finally {
+      setState(() =&gt; _isBusy = false);
+    }
+  }
+
+  Future&lt;void&gt; _scanLeaf() async {
+    final picked = await ImagePicker().pickImage(source: ImageSource.camera);
+    if (picked == null) return;
+    setState(() {
+      _isBusy = true;
+      _output = "Analyzing leaf image (512px) + SQLite FTS5 RAG...";
+    });
+    try {
+      final result = await _visionSource.evaluateCropImage(
+        File(picked.path),
+        "Diagnose this leaf and provide FAO/IITA organic remedies.",
+      );
+      setState(() =&gt; _output = result);
+    } catch (e) {
+      setState(() =&gt; _output = "Vision error: $e");
+    } finally {
+      setState(() =&gt; _isBusy = false);
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Gemmea Minimal Codelab"),
+        actions: [
+          if (_isReady)
+            IconButton(
+              icon: const Icon(Icons.camera_alt),
+              tooltip: "Scan Crop Leaf",
+              onPressed: _isBusy ? null : _scanLeaf,
+            ),
+        ],
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          children: [
+            if (!_isReady) ...[
+              LinearProgressIndicator(value: _downloadProgress &gt; 0 ? _downloadProgress : null),
+              const SizedBox(height: 12),
+              ElevatedButton(
+                onPressed: _isBusy ? null : _initModel,
+                child: Text(_downloadProgress &gt; 0
+                    ? "Downloading ${(100 * _downloadProgress).toInt()}%..."
+                    : "Initialize / Download Gemma (.litertlm)"),
+              ),
+              const Divider(height: 32),
+            ],
+            Expanded(
+              child: SingleChildScrollView(
+                child: SelectableText(_output, style: const TextStyle(fontSize: 15, height: 1.5)),
+              ),
+            ),
+            if (_isReady)
+              Row(
+                children: [
+                  Expanded(
+                    child: TextField(
+                      controller: _controller,
+                      decoration: const InputDecoration(
+                        hintText: "Ask about cassava mosaic, maize spacing, or rain...",
+                      ),
+                    ),
+                  ),
+                  IconButton(
+                    icon: const Icon(Icons.send),
+                    onPressed: _isBusy ? null : _sendChat,
+                  ),
+                ],
+              ),
+          ],
+        ),
+      ),
+    );
+  }
+}</code></pre>
+                    </div>
+
+                    <h3>2. Or Clone &amp; Run the Full Production Gemmea Repo</h3>
+                    <p>
+                        Want the full production app with BLoC state management, Swahili/French voice assistant, irrigation calendar, and PDF farm health reports? Clone the repository and run in release mode:
                     </p>
 
                     <div class="code-window">

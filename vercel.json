@@ -10,21 +10,21 @@
           "value": "codelabs.glosings0n.dev"
         }
       ],
-      "destination": "/codelabs/index.html"
+      "destination": "/codelabs"
     },
     {
       "source": "/flutter-gemma-droidcon-ug-2026",
-      "destination": "/codelabs/flutter-gemma-droidcon-ug-2026/index.html"
+      "destination": "/codelabs/flutter-gemma-droidcon-ug-2026"
     },
     {
-      "source": "/:slug",
+      "source": "/:slug([^/.]+)",
       "has": [
         {
           "type": "host",
           "value": "codelabs.glosings0n.dev"
         }
       ],
-      "destination": "/codelabs/:slug/index.html"
+      "destination": "/codelabs/:slug"
     }
   ]
 }

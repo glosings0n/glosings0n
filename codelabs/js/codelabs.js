@@ -1,7 +1,7 @@
 /**
  * glosings0n Codelabs Interactive Engine
- * Supports: Light/Dark Theme, Step Navigation, Progress Bar, Time Remaining,
- * Keyboard Shortcuts, Presentation Scroll Mode, and One-Click Code Copy.
+ * Supports: Light/Dark Theme, Step-by-Step Navigation, Progress Bar,
+ * Time Remaining, Keyboard Shortcuts, and One-Click Code Copy.
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -9,7 +9,6 @@ document.addEventListener('DOMContentLoaded', () => {
     initStepNavigation();
     initCodeCopyButtons();
     initMobileSidebar();
-    initScrollModeToggle();
 });
 
 /**
@@ -32,12 +31,15 @@ function initThemeToggle() {
 
 function applyTheme(theme) {
     document.documentElement.setAttribute('data-theme', theme);
-    const label = document.getElementById('theme-toggle-label');
+    const toggleBtn = document.getElementById('theme-toggle-btn');
     const iconContainer = document.getElementById('theme-toggle-icon');
 
-    if (label) {
-        label.textContent = theme === 'dark' ? 'Light' : 'Dark';
+    const targetModeLabel = theme === 'dark' ? 'Light mode' : 'Dark mode';
+    if (toggleBtn) {
+        toggleBtn.setAttribute('title', targetModeLabel);
+        toggleBtn.setAttribute('aria-label', targetModeLabel);
     }
+
     if (iconContainer) {
         if (theme === 'dark') {
             // Sun icon for switching to Light mode
@@ -104,11 +106,7 @@ function initStepNavigation() {
         if (sidebar) sidebar.classList.remove('open');
 
         // Scroll to top of step smoothly
-        if (!document.body.classList.contains('mode-all-steps')) {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        } else {
-            steps[index].scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
     // Sidebar item clicks
@@ -127,7 +125,6 @@ function initStepNavigation() {
     // Keyboard navigation (Left / Right arrows when not inside an input)
     document.addEventListener('keydown', (e) => {
         if (['INPUT', 'TEXTAREA'].includes(document.activeElement?.tagName)) return;
-        if (document.body.classList.contains('mode-all-steps')) return;
 
         if (e.key === 'ArrowRight') {
             if (currentStepIndex < steps.length - 1) {
@@ -199,22 +196,6 @@ function initMobileSidebar() {
     document.addEventListener('click', (e) => {
         if (sidebar.classList.contains('open') && !sidebar.contains(e.target) && !toggleBtn.contains(e.target)) {
             sidebar.classList.remove('open');
-        }
-    });
-}
-
-/**
- * 5. Toggle "All Steps (Scroll Mode)" vs "Step-by-Step Mode"
- */
-function initScrollModeToggle() {
-    const modeBtn = document.getElementById('view-mode-btn');
-    const modeLabel = document.getElementById('view-mode-label');
-    if (!modeBtn) return;
-
-    modeBtn.addEventListener('click', () => {
-        const isAll = document.body.classList.toggle('mode-all-steps');
-        if (modeLabel) {
-            modeLabel.textContent = isAll ? 'Step View' : 'All Steps';
         }
     });
 }
