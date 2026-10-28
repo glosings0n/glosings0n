@@ -1,6 +1,19 @@
 {
   "version": 2,
   "cleanUrls": true,
+  "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/codelabs",
+      "destination": "https://codelabs.glosings0n.dev/",
+      "permanent": false
+    },
+    {
+      "source": "/codelabs/",
+      "destination": "https://codelabs.glosings0n.dev/",
+      "permanent": false
+    }
+  ],
   "rewrites": [
     {
       "source": "/",
@@ -10,7 +23,11 @@
           "value": "codelabs.glosings0n.dev"
         }
       ],
-      "destination": "/codelabs"
+      "destination": "/codelabs/hub"
+    },
+    {
+      "source": "/",
+      "destination": "/home"
     },
     {
       "source": "/flutter-gemma-droidcon-ug-2026",
