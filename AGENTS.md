@@ -48,3 +48,21 @@ These rules are mandatory across all web, codelab, slide, documentation, and app
 - **Copyright Year Policy:**
   - The main Portfolio (`index.html`) and the Codelabs Hub (`codelabs/hub.html`) use a **dynamic** `currentYear` (`new Date().getFullYear()` via `#current-year`) so the year updates automatically every year.
   - Individual Codelab Session pages (`codelabs/<slug>/index.html`) use a **fixed static year** in `.sidebar-copyright` matching the year of that specific talk/session (e.g., `&copy; 2026 glosings0n`), so a 2026 session still displays `2026` in 2028.
+
+---
+
+## 4. Mandatory Codelab Metadata, Spacing & SEO/AEO Indexing Rules
+- **Symmetric Top & Bottom Step Spacing:**
+  - In `.codelab-main`, the bottom vertical padding must ALWAYS match the top vertical padding (`padding: 36px 24px` on desktop, `padding: 20px 14px` on tablet, `padding: 12px 10px` on mobile), and `.codelab-step` must have `margin-bottom: 0`.
+- **Mandatory `Last updated` Timestamp (Update on Every Code Change):**
+  - Every codelab MUST display a visible `<span class="codelab-last-updated">Last updated: <time datetime="YYYY-MM-DD">Month DD, YYYY</time></span>` at the very start of Step 1 (inside `.step-header`).
+  - **Whenever any code or content in a codelab is updated**, you MUST obligatoriiy update:
+    1. The visible `<time datetime="YYYY-MM-DD">` in Step 1 of the codelab.
+    2. `<meta property="article:modified_time" content="YYYY-MM-DD">` and JSON-LD `"dateModified": "YYYY-MM-DD"` in the codelab HTML and in `codelabs/hub.html`.
+    3. The `<lastmod>YYYY-MM-DD</lastmod>` entry in `sitemap.xml`.
+- **Mandatory Google SEO & AI Engine (AEO) Indexing on Every Codelab:**
+  - Every existing and future codelab (`codelabs/<slug>/index.html`) and the Codelabs Hub (`codelabs/hub.html`) MUST include:
+    1. Comprehensive `<meta name="keywords">`, `<meta name="description">`, `<meta name="author" content="Georges Byona">`, `<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">`, and `<link rel="canonical" href="https://codelabs.glosings0n.dev/<slug>">`.
+    2. Complete OpenGraph (`og:*`, `article:*`) and Twitter Card (`twitter:*`) tags referencing `@glosings0n`.
+    3. A complete Schema.org JSON-LD `@graph` (`TechArticle`, `LearningResource`, `BreadcrumbList`, `Person` for **Georges Byona** with all aliases `glosings0n`, `@glosings0n`, `Losingson`, `Losings0n`, `@losingson`, `Georges Losingson`, `Byona Georges`, `g-losingson`, and `Organization` entities for **LosingTek** and **FlutterFire Summer Camp**, plus all technical topic tags).
+    4. Registration of the new codelab URL in `sitemap.xml` and in the `hasPart` array of `codelabs/hub.html`'s `CollectionPage` JSON-LD.

@@ -558,7 +558,7 @@ body.codelab-page {
     overscroll-behavior-y: contain;
     -webkit-overflow-scrolling: touch;
     margin-left: var(--sidebar-width);
-    padding: 36px 24px 90px;
+    padding: 36px 24px;
     display: flex;
     justify-content: center;
     align-items: flex-start;
@@ -578,7 +578,7 @@ body.codelab-page {
     border-radius: 16px;
     padding: 36px;
     box-shadow: var(--shadow-sm);
-    margin-bottom: 28px;
+    margin-bottom: 0;
     width: 100%;
     max-width: 100%;
     min-width: 0;
@@ -622,6 +622,16 @@ body.mode-all-steps .codelab-step {
     font-weight: 600;
     color: var(--color-cyan);
     margin-bottom: 8px;
+}
+
+.codelab-last-updated {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-family: var(--font-mono);
+    font-size: 0.76rem;
+    font-weight: 500;
+    color: var(--text-muted);
 }
 
 .step-title {
@@ -1173,7 +1183,7 @@ body.mode-all-steps .codelab-step {
 
     .codelab-main {
         margin-left: 0;
-        padding: 20px 14px 72px;
+        padding: 20px 14px;
     }
 
     .codelab-step {
@@ -1292,13 +1302,13 @@ body.mode-all-steps .codelab-step {
 
     /* Codelab Steps Mobile */
     .codelab-main {
-        padding: 12px 10px 60px;
+        padding: 12px 10px;
     }
 
     .codelab-step {
         padding: 16px 13px;
         border-radius: 12px;
-        margin-bottom: 18px;
+        margin-bottom: 0;
     }
 
     .step-header {

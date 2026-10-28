@@ -6,17 +6,158 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>On-Device AI with Flutter &amp; Gemma: Building Offline-First AI Mobile Apps for Africa | glosings0n Codelabs</title>
     <meta name="description"
-        content="Official droidCon Uganda 2026 Codelab by Georges Byona (@glosings0n). Build 100% offline multimodal Flutter AI apps with flutter_gemma, LiteRT-LM, SQLite FTS5 RAG, and distill Gemma under 150 MB.">
+        content="Official droidCon Uganda 2026 Codelab by Georges Byona (@glosings0n), Founder @ LosingTek &amp; Initiator of FlutterFire Summer Camp. Build 100% offline multimodal Flutter AI apps with flutter_gemma, LiteRT-LM, SQLite FTS5 RAG, and distill Gemma under 150 MB.">
+    <meta name="keywords"
+        content="On-Device AI with Flutter and Gemma, flutter_gemma, flutter_gemma_litertlm, Google Gemma, Gemma 4, LiteRT-LM, MediaPipe LLM Inference, Offline AI Mobile Apps Africa, droidCon Uganda 2026, Kampala, Gemmea, GDG on Campus UCB Build with Gemma 2026, SQLite FTS5 RAG, BM25 Local RAG, Model Distillation under 150MB, INT4 Quantization, ai-edge-torch, Georges Byona, Georges Losingson, Byona Georges, glosings0n, @glosings0n, Losingson, Losings0n, @losingson, g-losingson, LosingTek, Losing Tek, FlutterFire Summer Camp, FlutterFire Camp">
     <meta name="author" content="Georges Byona">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <link rel="canonical" href="https://codelabs.glosings0n.dev/flutter-gemma-droidcon-ug-2026">
 
     <!-- OpenGraph -->
-    <meta property="og:title" content="On-Device AI with Flutter & Gemma | droidCon Uganda 2026 Codelab">
+    <meta property="og:title" content="On-Device AI with Flutter &amp; Gemma | droidCon Uganda 2026 Codelab">
     <meta property="og:description"
-        content="Run Google's Gemma models 100% offline on mid-tier Android phones using Flutter, LiteRT-LM, and SQLite FTS5 RAG, and distill an SLM under 150 MB.">
+        content="Run Google's Gemma models 100% offline on mid-tier Android phones using Flutter, LiteRT-LM, and SQLite FTS5 RAG, and distill an SLM under 150 MB. By Georges Byona (@glosings0n).">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://codelabs.glosings0n.dev/flutter-gemma-droidcon-ug-2026">
     <meta property="og:image" content="https://glosings0n.dev/assets/hero.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="On-Device AI with Flutter &amp; Gemma | Georges Byona (@glosings0n)">
+    <meta property="og:site_name" content="glosings0n Codelabs">
+    <meta property="article:published_time" content="2026-10-28">
+    <meta property="article:modified_time" content="2026-10-28">
+    <meta property="article:author" content="https://glosings0n.dev">
+    <meta property="article:section" content="Mobile AI &amp; Flutter Engineering">
+    <meta property="article:tag" content="Flutter">
+    <meta property="article:tag" content="Google Gemma">
+    <meta property="article:tag" content="On-Device AI">
+    <meta property="article:tag" content="LiteRT-LM">
+    <meta property="article:tag" content="SQLite FTS5 RAG">
+    <meta property="article:tag" content="droidCon Uganda 2026">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@glosings0n">
+    <meta name="twitter:creator" content="@glosings0n">
+    <meta name="twitter:title" content="On-Device AI with Flutter &amp; Gemma | droidCon Uganda 2026 Codelab">
+    <meta name="twitter:description"
+        content="Build 100% offline multimodal Flutter AI apps with flutter_gemma, LiteRT-LM, SQLite FTS5 RAG, and distill Gemma under 150 MB. By Georges Byona (@glosings0n).">
+    <meta name="twitter:image" content="https://glosings0n.dev/assets/hero.png">
+
+    <!-- Schema.org JSON-LD for Google Search & AI Engines -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Person",
+          "@id": "https://glosings0n.dev/#person",
+          "name": "Georges Byona",
+          "additionalName": "Georges Losingson",
+          "alternateName": [
+            "glosings0n",
+            "@glosings0n",
+            "Glosingson",
+            "Georges Byona",
+            "Georges Losingson",
+            "Losingson",
+            "Byona Georges",
+            "Losings0n",
+            "@losingson",
+            "g-losingson",
+            "LosingTek"
+          ],
+          "url": "https://glosings0n.dev",
+          "image": "https://glosings0n.dev/assets/hero.png",
+          "jobTitle": "Software Engineer & Edge-AI Researcher",
+          "sameAs": [
+            "https://github.com/glosings0n",
+            "https://linkedin.com/in/glosings0n",
+            "https://x.com/glosings0n",
+            "https://medium.com/@glosings0n",
+            "https://youtube.com/@FlutterFireCamp"
+          ],
+          "founder": [
+            {
+              "@type": "Organization",
+              "@id": "https://glosings0n.dev/#losingtek",
+              "name": "LosingTek",
+              "url": "https://losingtek.com"
+            },
+            {
+              "@type": "EducationalOrganization",
+              "@id": "https://glosings0n.dev/#flutterfirecamp",
+              "name": "FlutterFire Summer Camp",
+              "alternateName": "FlutterFire Camp",
+              "url": "https://flutterfirecamp.dev"
+            }
+          ]
+        },
+        {
+          "@type": ["TechArticle", "LearningResource"],
+          "@id": "https://codelabs.glosings0n.dev/flutter-gemma-droidcon-ug-2026#codelab",
+          "headline": "On-Device AI with Flutter & Gemma: Building Offline-First AI Mobile Apps for Africa",
+          "name": "On-Device AI with Flutter & Gemma: Building Offline-First AI Mobile Apps for Africa",
+          "description": "Official droidCon Uganda 2026 interactive engineering codelab by Georges Byona (@glosings0n). Learn how to run Google's Gemma models 100% offline on mid-tier Android phones using Flutter, flutter_gemma, LiteRT-LM, and SQLite FTS5 RAG, and distill a custom SLM under 150 MB.",
+          "url": "https://codelabs.glosings0n.dev/flutter-gemma-droidcon-ug-2026",
+          "image": "https://glosings0n.dev/assets/hero.png",
+          "datePublished": "2026-10-28",
+          "dateModified": "2026-10-28",
+          "inLanguage": "en",
+          "proficiencyLevel": "Intermediate",
+          "educationalLevel": "Intermediate",
+          "learningResourceType": "Codelab",
+          "timeRequired": "PT45M",
+          "author": {
+            "@id": "https://glosings0n.dev/#person"
+          },
+          "publisher": {
+            "@id": "https://glosings0n.dev/#losingtek"
+          },
+          "isPartOf": {
+            "@id": "https://codelabs.glosings0n.dev/#website"
+          },
+          "about": [
+            "Flutter",
+            "Google Gemma",
+            "On-Device AI",
+            "Edge AI",
+            "LiteRT-LM",
+            "MediaPipe LLM Inference",
+            "SQLite FTS5 RAG",
+            "Model Quantization",
+            "Knowledge Distillation",
+            "droidCon Uganda 2026",
+            "Gemmea"
+          ],
+          "keywords": "Flutter, Google Gemma, flutter_gemma, LiteRT-LM, On-Device AI, Offline-First Mobile Apps, SQLite FTS5 RAG, BM25, Model Distillation, INT4 Quantization, droidCon Uganda 2026, Gemmea, Georges Byona, glosings0n, LosingTek, FlutterFire Summer Camp"
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "glosings0n Portfolio",
+              "item": "https://glosings0n.dev"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "glosings0n Codelabs",
+              "item": "https://codelabs.glosings0n.dev"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "On-Device AI with Flutter & Gemma (droidCon Uganda 2026)",
+              "item": "https://codelabs.glosings0n.dev/flutter-gemma-droidcon-ug-2026"
+            }
+          ]
+        }
+      ]
+    }
+    </script>
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" sizes="192x192" href="/assets/favicon.png">
@@ -143,7 +284,10 @@
                      ========================================================= -->
                 <article class="codelab-step active" id="step-1" data-duration="4">
                     <div class="step-header">
-                        <div class="step-eyebrow">Step 1 of 9 | Context &amp; Motivation</div>
+                        <div class="step-eyebrow">
+                            <span>Step 1 of 9 | Context &amp; Motivation</span>
+                            <span class="codelab-last-updated">Last updated: <time datetime="2026-10-28">October 28, 2026</time></span>
+                        </div>
                         <h1 class="step-title">Overview: Why Offline-First Edge AI Matters in Africa</h1>
                     </div>
 
