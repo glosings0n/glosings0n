@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>On-Device AI with Flutter &amp; Gemma: Building Offline-First AI Mobile Apps for Africa | glosings0n Codelabs</title>
     <meta name="description"
-        content="Official droidCon Uganda 2026 Codelab by Georges Byona (@glosings0n), Founder @ LosingTek &amp; Initiator of FlutterFire Summer Camp. Build 100% offline multimodal Flutter AI apps with flutter_gemma, LiteRT-LM, SQLite FTS5 RAG, and distill Gemma under 150 MB.">
+        content="Official droidCon Uganda 2026 Codelab by Georges Byona (@glosings0n), Founder @ LosingTek &amp; Founder of FlutterFire Summer Camp. Build 100% offline multimodal Flutter AI apps with flutter_gemma, LiteRT-LM, SQLite FTS5 RAG, and distill Gemma under 150 MB.">
     <meta name="keywords"
         content="On-Device AI with Flutter and Gemma, flutter_gemma, flutter_gemma_litertlm, Google Gemma, Gemma 4, LiteRT-LM, MediaPipe LLM Inference, Offline AI Mobile Apps Africa, droidCon Uganda 2026, Kampala, Gemmea, GDG on Campus UCB Build with Gemma 2026, SQLite FTS5 RAG, BM25 Local RAG, Model Distillation under 150MB, INT4 Quantization, ai-edge-torch, Georges Byona, Georges Losingson, Byona Georges, glosings0n, @glosings0n, Losingson, Losings0n, @losingson, g-losingson, LosingTek, Losing Tek, FlutterFire Summer Camp, FlutterFire Camp">
     <meta name="author" content="Georges Byona">
@@ -184,7 +184,7 @@
                 </a>
                 <a href="/" id="codelab-sub-link" class="brand-subtext" style="text-decoration: none;">/ codelabs</a>
                 <span class="topbar-divider">/</span>
-                <span class="codelab-header-title">On-Device AI with Flutter &amp; Gemma (droidCon Uganda 2026)</span>
+                <span class="codelab-header-title" data-en="On-Device AI with Flutter &amp; Gemma (droidCon Uganda 2026)" data-fr="IA Embarquée avec Flutter &amp; Gemma (droidCon Uganda 2026)">On-Device AI with Flutter &amp; Gemma (droidCon Uganda 2026)</span>
             </div>
 
             <div class="topbar-right">
@@ -197,12 +197,17 @@
                     <span id="time-remaining-label">45 min left</span>
                 </div>
 
+                <div class="lang-switch" role="group" aria-label="Language switcher">
+                    <button class="lang-btn active" data-lang="en" aria-pressed="true">EN</button>
+                    <button class="lang-btn" data-lang="fr" aria-pressed="false">FR</button>
+                </div>
+
                 <button class="action-btn icon-only" id="theme-toggle-btn" aria-label="Light mode" title="Light mode">
                     <span id="theme-toggle-icon"></span>
                 </button>
 
-                <a href="https://github.com/glosings0n/gemmea" target="_blank" rel="noopener noreferrer"
-                    class="action-btn icon-only" aria-label="Open the GitHub repo" title="Open the GitHub repo">
+                <a href="https://github.com/glosings0n/gemmea" id="codelab-github-btn" target="_blank" rel="noopener noreferrer"
+                    class="action-btn icon-only codelab-github-btn" aria-label="Open the GitHub repo" title="Open the GitHub repo">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
                         <path
@@ -223,54 +228,54 @@
             <ul class="step-nav-list">
                 <li class="step-nav-item active" data-step="0">
                     <span class="step-num">1</span>
-                    <span class="step-nav-title">Overview &amp; Context</span>
+                    <span class="step-nav-title" data-en="Overview &amp; Context" data-fr="Vue d'ensemble &amp; Contexte">Overview &amp; Context</span>
                     <span class="step-nav-time">4m</span>
                 </li>
                 <li class="step-nav-item" data-step="1">
                     <span class="step-num">2</span>
-                    <span class="step-nav-title">Architecture &amp; Setup</span>
+                    <span class="step-nav-title" data-en="Architecture &amp; Setup" data-fr="Architecture &amp; Configuration">Architecture &amp; Setup</span>
                     <span class="step-nav-time">5m</span>
                 </li>
                 <li class="step-nav-item" data-step="2">
                     <span class="step-num">3</span>
-                    <span class="step-nav-title">Quantization &amp; Atomic Download</span>
+                    <span class="step-nav-title" data-en="Quantization &amp; Atomic Download" data-fr="Quantification &amp; Téléchargement Atomique">Quantization &amp; Atomic Download</span>
                     <span class="step-nav-time">6m</span>
                 </li>
                 <li class="step-nav-item" data-step="3">
                     <span class="step-num">4</span>
-                    <span class="step-nav-title">FFI Mutex &amp; Deadlock Recovery</span>
+                    <span class="step-nav-title" data-en="FFI Mutex &amp; Deadlock Recovery" data-fr="Mutex FFI &amp; Récupération Deadlock">FFI Mutex &amp; Deadlock Recovery</span>
                     <span class="step-nav-time">5m</span>
                 </li>
                 <li class="step-nav-item" data-step="4">
                     <span class="step-num">5</span>
-                    <span class="step-nav-title">512px Vision VLM &amp; Early-Exit</span>
+                    <span class="step-nav-title" data-en="512px Vision VLM &amp; Early-Exit" data-fr="Vision VLM 512px &amp; Arrêt Anticipé">512px Vision VLM &amp; Early-Exit</span>
                     <span class="step-nav-time">6m</span>
                 </li>
                 <li class="step-nav-item" data-step="5">
                     <span class="step-num">6</span>
-                    <span class="step-nav-title">Zero-RAM SQLite FTS5 RAG</span>
+                    <span class="step-nav-title" data-en="Zero-RAM SQLite FTS5 RAG" data-fr="RAG Local SQLite FTS5 Zéro-RAM">Zero-RAM SQLite FTS5 RAG</span>
                     <span class="step-nav-time">6m</span>
                 </li>
                 <li class="step-nav-item" data-step="6">
                     <span class="step-num">7</span>
-                    <span class="step-nav-title">Streaming &amp; Function Calling</span>
+                    <span class="step-nav-title" data-en="Streaming &amp; Function Calling" data-fr="Streaming &amp; Function Calling">Streaming &amp; Function Calling</span>
                     <span class="step-nav-time">5m</span>
                 </li>
                 <li class="step-nav-item" data-step="7">
                     <span class="step-num">8</span>
-                    <span class="step-nav-title">Distilling Gemma &lt; 150 MB</span>
+                    <span class="step-nav-title" data-en="Distilling Gemma &lt; 150 MB" data-fr="Distiller Gemma &lt; 150 Mo">Distilling Gemma &lt; 150 MB</span>
                     <span class="step-nav-time">6m</span>
                 </li>
                 <li class="step-nav-item" data-step="8">
                     <span class="step-num">9</span>
-                    <span class="step-nav-title">Live Demo &amp; Takeaways</span>
+                    <span class="step-nav-title" data-en="Live Demo &amp; Takeaways" data-fr="Démo Live &amp; Points Clés">Live Demo &amp; Takeaways</span>
                     <span class="step-nav-time">2m</span>
                 </li>
             </ul>
 
             <div class="sidebar-footer">
-                <div><strong>Speaker:</strong> Georges Byona (<span class="font-mono">@glosings0n</span>)</div>
-                <div><strong>Event:</strong> droidCon Uganda 2026 | Kampala</div>
+                <div><strong data-en="Speaker:" data-fr="Intervenant :">Speaker:</strong> Georges Byona (<span class="font-mono">@glosings0n</span>)</div>
+                <div><strong data-en="Event:" data-fr="Événement :">Event:</strong> droidCon Uganda 2026 | Kampala</div>
                 <div class="sidebar-copyright">&copy; 2026 <span class="font-mono">glosings0n</span></div>
             </div>
         </aside>
@@ -285,14 +290,17 @@
                 <article class="codelab-step active" id="step-1" data-duration="4">
                     <div class="step-header">
                         <div class="step-eyebrow">
-                            <span>Step 1 of 9 | Context &amp; Motivation</span>
-                            <span class="codelab-last-updated">Last updated: <time datetime="2026-10-28">October 28, 2026</time></span>
+                            <span data-en="Step 1 of 9 | Context &amp; Motivation" data-fr="Étape 1 sur 9 | Contexte &amp; Motivation">Step 1 of 9 | Context &amp; Motivation</span>
+                            <span class="codelab-last-updated" data-en="Last updated: &lt;time datetime=&quot;2026-10-28&quot;&gt;October 28, 2026&lt;/time&gt;" data-fr="Dernière mise à jour : &lt;time datetime=&quot;2026-10-28&quot;&gt;28 octobre 2026&lt;/time&gt;">Last updated: <time datetime="2026-10-28">October 28, 2026</time></span>
                         </div>
-                        <h1 class="step-title">Overview: Why Offline-First Edge AI Matters in Africa</h1>
+                        <h1 class="step-title" data-en="Overview: Why Offline-First Edge AI Matters in Africa" data-fr="Vue d'ensemble : Pourquoi l'IA Embarquée Offline-First est vitale en Afrique">Overview: Why Offline-First Edge AI Matters in Africa</h1>
                     </div>
 
-                    <p>
+                    <p class="lang-en">
                         Welcome to the official companion codelab for <strong>"On-Device AI with Flutter &amp; Gemma: Building Offline-First AI Mobile Apps for Africa"</strong> at <strong>droidCon Uganda 2026</strong> in Kampala!
+                    </p>
+                    <p class="lang-fr">
+                        Bienvenue dans le codelab officiel de la session <strong>"On-Device AI with Flutter &amp; Gemma: Building Offline-First AI Mobile Apps for Africa"</strong> présentée au <strong>droidCon Uganda 2026</strong> à Kampala !
                     </p>
 
                     <div class="callout callout-info">
@@ -302,22 +310,30 @@
                             <circle cx="12" cy="8" r="1.25" fill="currentColor" stroke="none"></circle>
                         </svg>
                         <div class="callout-body">
-                            <div class="callout-title">Proven Production Architecture</div>
-                            <p>
+                            <div class="callout-title" data-en="Proven Production Architecture" data-fr="Architecture de Production Éprouvée">Proven Production Architecture</div>
+                            <p class="lang-en">
                                 Every code snippet in this codelab comes directly from <strong>Gemmea</strong> (<em>Gemma</em> + <em>Mmea</em>, Kiswahili for "plant/crop"), winner of <strong>1st Place at GDG on Campus UCB Build with Gemma 2026</strong>.
+                            </p>
+                            <p class="lang-fr">
+                                Chaque extrait de code de ce codelab provient directement de <strong>Gemmea</strong> (<em>Gemma</em> + <em>Mmea</em>, qui signifie "plante/culture" en kiswahili), lauréat du <strong>1er Prix au hackathon GDG on Campus UCB Build with Gemma 2026</strong>.
                             </p>
                         </div>
                     </div>
 
-                    <h3>Three Questions of Context</h3>
-                    <ol>
+                    <h3 data-en="1. Context &amp; The &quot;Why&quot;" data-fr="1. Contexte &amp; Pourquoi">1. Context &amp; The "Why"</h3>
+                    <ol class="lang-en">
                         <li><strong>The Connectivity Reality:</strong> How often do your users lose signal when traveling outside Kampala to Gulu, Mbarara, Entebbe, or across the border into rural Kivu?</li>
                         <li><strong>The Unit Economics Trap:</strong> Can an African startup sustainably pay Cloud LLM API bills in <strong>USD</strong> while users pay in <strong>UGX</strong> or <strong>CDF</strong>; or cannot afford daily mobile data bundles at all?</li>
                         <li><strong>The Hardware Boundary:</strong> What happens when you load an unoptimized LLM onto a $120 Android phone with <strong>3GB to 6GB RAM</strong>? (Spoiler: Android's Low Memory Killer terminates your process immediately).</li>
                     </ol>
+                    <ol class="lang-fr">
+                        <li><strong>La réalité de la connectivité :</strong> À quelle fréquence vos utilisateurs perdent-ils le réseau lorsqu'ils quittent Kampala pour Gulu, Mbarara, Entebbe ou les zones rurales du Kivu ?</li>
+                        <li><strong>Le piège économique des API Cloud :</strong> Une startup africaine peut-elle durablement payer des factures d'API LLM Cloud en <strong>USD</strong> alors que ses utilisateurs paient en <strong>UGX</strong> ou <strong>CDF</strong>, ou n'ont pas les moyens d'acheter des forfaits data quotidiens ?</li>
+                        <li><strong>La limite matérielle :</strong> Que se passe-t-il lorsque vous chargez un LLM non optimisé sur un smartphone Android à 120 $ doté de <strong>3 Go à 6 Go de RAM</strong> ? (Spoiler : le Low Memory Killer d'Android tue votre processus instantanément).</li>
+                    </ol>
 
-                    <h3>Cloud AI vs. On-Device Edge AI in East Africa</h3>
-                    <div class="table-responsive">
+                    <h4 data-en="Cloud AI vs. On-Device Edge AI in East Africa" data-fr="IA Cloud vs IA Embarquée (On-Device) en Afrique de l'Est">Cloud AI vs. On-Device Edge AI in East Africa</h4>
+                    <div class="table-responsive lang-en">
                         <table class="codelab-table">
                             <thead>
                                 <tr>
@@ -355,9 +371,47 @@
                             </tbody>
                         </table>
                     </div>
+                    <div class="table-responsive lang-fr">
+                        <table class="codelab-table">
+                            <thead>
+                                <tr>
+                                    <th>Métrique</th>
+                                    <th>API LLM Cloud (REST / WebSocket)</th>
+                                    <th>IA Embarquée (<code>flutter_gemma</code> + LiteRT-LM)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Disponibilité Hors-Ligne</strong></td>
+                                    <td>0 % (Échoue totalement en zone rurale)</td>
+                                    <td><strong>100 % (Fonctionne en Mode Avion)</strong></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Time-to-First-Token (TTFT)</strong></td>
+                                    <td>2 000 ms à 8 000 ms sur 3G/Edge instable</td>
+                                    <td><strong>180 ms à 600 ms sur CPU/GPU local</strong></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Coût Data par Scan Photo</strong></td>
+                                    <td>2 Mo à 5 Mo d'upload par photo de feuille</td>
+                                    <td><strong>0 Mo de données mobiles consommées</strong></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Coût Récurrent par Token API</strong></td>
+                                    <td>Augmente linéairement avec les utilisateurs ($$$)</td>
+                                    <td><strong>0,00 $ / token à vie</strong></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Confidentialité &amp; Souveraineté</strong></td>
+                                    <td>Photos et voix envoyées sur des serveurs distants</td>
+                                    <td><strong>100 % privé sur l'appareil</strong></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
 
-                    <h3>What You Will Learn &amp; Build</h3>
-                    <ul>
+                    <h3 data-en="2. Learning Goals &amp; What You Will Build" data-fr="2. Objectifs &amp; Ce que vous allez construire">2. Learning Goals &amp; What You Will Build</h3>
+                    <ul class="lang-en">
                         <li>Configure <code>flutter_gemma</code> and <code>flutter_gemma_litertlm</code> to run multimodal Gemma models locally on Android and iOS.</li>
                         <li>Implement <strong>atomic <code>.tmp</code> chunked model downloads</strong> via <code>path_provider</code> so interrupted 3G downloads never corrupt native binaries or bloat your APK.</li>
                         <li>Prevent <strong>native C++ FFI concurrency deadlocks</strong> and Flutter Hot-Reload freezes with a thread-safe <code>GemmaEngineManager</code> mutex.</li>
@@ -365,13 +419,24 @@
                         <li>Ground small quantized models without a heavy vector database using <strong>Zero-RAM SQLite FTS5 + BM25 Local RAG</strong>.</li>
                         <li><strong>Bonus Finale:</strong> Distill and quantize a domain-specific Gemma Small Language Model (SLM) to <strong>under 150 MB</strong> (<code>134 MB</code> INT4) using PyTorch and <code>ai-edge-torch</code>.</li>
                     </ul>
+                    <ul class="lang-fr">
+                        <li>Configurer <code>flutter_gemma</code> et <code>flutter_gemma_litertlm</code> pour exécuter des modèles Gemma multimodaux localement sur Android et iOS.</li>
+                        <li>Implémenter le <strong>téléchargement atomique par blocs via fichier <code>.tmp</code></strong> avec <code>path_provider</code> afin que les coupures 3G ne corrompent jamais les binaires natifs et n'alourdissent pas votre APK.</li>
+                        <li>Prévenir les <strong>deadlocks de concurrence C++ FFI natifs</strong> et les blocages lors du Hot-Reload Flutter grâce au mutex thread-safe <code>GemmaEngineManager</code>.</li>
+                        <li>Éliminer les crashs Out-Of-Memory (OOM) lors des scans caméra multimodaux en réduisant les images à <code>512px</code> et en intégrant des <strong>garde-fous d'arrêt anticipé (Early-Exit)</strong> dans le prompt.</li>
+                        <li>Ancrer factuellement les petits modèles quantifiés sans base vectorielle lourde grâce au <strong>RAG local SQLite FTS5 + BM25 à Zéro-RAM</strong>.</li>
+                        <li><strong>Bonus Final :</strong> Distiller et quantifier un modèle Gemma spécialisé (SLM) sous la barre des <strong>150 Mo</strong> (<code>134 Mo</code> en INT4) avec PyTorch et <code>ai-edge-torch</code>.</li>
+                    </ul>
 
-                    <h3>Prerequisites &amp; System Requirements</h3>
-                    <p>
+                    <h3 data-en="3. Prerequisites &amp; System Requirements" data-fr="3. Prérequis &amp; Configuration Système">3. Prerequisites &amp; System Requirements</h3>
+                    <p class="lang-en">
                         Before starting the hands-on steps, verify that your laptop and test device meet the following requirements so native C++ MediaPipe / LiteRT-LM bindings compile and execute without errors:
                     </p>
+                    <p class="lang-fr">
+                        Avant de commencer les étapes pratiques, vérifiez que votre ordinateur et votre téléphone de test respectent la configuration suivante afin que les bindings C++ natifs MediaPipe / LiteRT-LM compilent et s'exécutent sans erreur :
+                    </p>
 
-                    <div class="table-responsive">
+                    <div class="table-responsive lang-en">
                         <table class="codelab-table">
                             <thead>
                                 <tr>
@@ -409,6 +474,44 @@
                             </tbody>
                         </table>
                     </div>
+                    <div class="table-responsive lang-fr">
+                        <table class="codelab-table">
+                            <thead>
+                                <tr>
+                                    <th>Composant</th>
+                                    <th>Spécification Minimale / Recommandée</th>
+                                    <th>Pourquoi c'est requis</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>SDK Flutter &amp; Dart</strong></td>
+                                    <td><strong>Flutter 3.24.0+</strong> (Dart <strong>3.5.0+</strong>)</td>
+                                    <td>Requis par <code>flutter_gemma</code>, <code>flutter_gemma_litertlm</code> et les bindings FFI modernes.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Java Development Kit</strong></td>
+                                    <td><strong>JDK 17</strong> (inclus avec Android Studio Ladybug+)</td>
+                                    <td>Requis par Android Gradle Plugin (AGP 8+) pour compiler l'APK.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Android SDK &amp; NDK</strong></td>
+                                    <td><code>compileSdk 34+</code> et <strong><code>minSdk 26</code></strong> (Android 8.0+)</td>
+                                    <td>Les librairies natives <code>.so</code> de LiteRT-LM exigent Android API 26+ (le défaut Flutter est 21/24).</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Appareil Android Cible</strong></td>
+                                    <td><strong>Smartphone physique ARM 64-bit (<code>arm64-v8a</code>)</strong> avec <strong>3 Go à 6 Go+ de RAM</strong> et <strong>2,0 Go d'espace libre</strong></td>
+                                    <td>Les émulateurs PC x86_64 n'ont pas l'accélération ARM64 GenAI native ; testez sur un vrai téléphone via débogage USB (ou simulateur ARM64 sur Apple Silicon).</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Python / Colab (Optionnel)</strong></td>
+                                    <td>Google Colab (GPU T4 gratuit) ou Python 3.10+</td>
+                                    <td>Uniquement nécessaire si vous exécutez les scripts bonus de distillation à l'Étape 8.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
 
                     <div class="code-window">
                         <div class="code-window-header">
@@ -422,7 +525,7 @@
                                 <span class="code-lang-badge">BASH / POWERSHELL</span>
                             </div>
                             <button class="copy-code-btn">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
                                 Copy
                             </button>
                         </div>
@@ -434,8 +537,8 @@ flutter devices</code></pre>
                     </div>
 
                     <div class="step-pagination">
-                        <button class="nav-step-btn" disabled>&larr; Previous</button>
-                        <button class="nav-step-btn primary" data-step-target="1">Next: Architecture &amp; Setup &rarr;</button>
+                        <button class="nav-step-btn" disabled data-en="&larr; Previous" data-fr="&larr; Précédent">&larr; Previous</button>
+                        <button class="nav-step-btn primary" data-step-target="1" data-en="Next: Architecture &amp; Setup &rarr;" data-fr="Suivant : Architecture &amp; Configuration &rarr;">Next: Architecture &amp; Setup &rarr;</button>
                     </div>
                 </article>
 
@@ -444,12 +547,17 @@ flutter devices</code></pre>
                      ========================================================= -->
                 <article class="codelab-step" id="step-2" data-duration="5">
                     <div class="step-header">
-                        <div class="step-eyebrow">Step 2 of 9 | System Design</div>
-                        <h2 class="step-title">Offline-First Architecture &amp; <code>flutter_gemma</code> Setup</h2>
+                        <div class="step-eyebrow">
+                            <span data-en="Step 2 of 9 | System Design" data-fr="Étape 2 sur 9 | Architecture Système">Step 2 of 9 | System Design</span>
+                        </div>
+                        <h2 class="step-title" data-en="Offline-First Architecture &amp; &lt;code&gt;flutter_gemma&lt;/code&gt; Setup" data-fr="Architecture Offline-First &amp; Configuration de &lt;code&gt;flutter_gemma&lt;/code&gt;">Offline-First Architecture &amp; <code>flutter_gemma</code> Setup</h2>
                     </div>
 
-                    <p>
+                    <p class="lang-en">
                         Smallholder farmers across Uganda, DRC, Rwanda, and Burundi lose 40% to 80% of their yields to threats like <strong>Cassava Mosaic Disease (CMD)</strong>, <strong>Banana Bacterial Wilt (BXW / Kayovu)</strong>, and <strong>Maize Rust</strong>. To give farmers accurate, scientifically grounded remedies in the middle of a field with zero connectivity, Gemmea combines three local subsystems:
+                    </p>
+                    <p class="lang-fr">
+                        Les petits exploitants agricoles en Ouganda, en RDC, au Rwanda et au Burundi perdent entre 40 % et 80 % de leurs récoltes à cause de fléaux tels que la <strong>Mosaïque du Manioc (CMD)</strong>, le <strong>Flétrissement Bactérien du Bananier (BXW / Kayovu)</strong> et la <strong>Rouille du Maïs</strong>. Pour offrir aux agriculteurs des remèdes précis et scientifiquement fondés au milieu d'un champ sans aucune connexion, Gemmea combine trois sous-systèmes locaux :
                     </p>
 
                     <div class="code-window">
@@ -491,9 +599,12 @@ flutter devices</code></pre>
 └──────────────────────────────────────────────────────────────────────┘</code></pre>
                     </div>
 
-                    <h3>1. Create the Flutter Project &amp; Minimal File Structure</h3>
-                    <p>
+                    <h3 data-en="1. Create the Flutter Project &amp; Minimal File Structure" data-fr="1. Créer le projet Flutter &amp; l'arborescence minimale">1. Create the Flutter Project &amp; Minimal File Structure</h3>
+                    <p class="lang-en">
                         If you are coding along from scratch, create a new Flutter project and set up only the <strong>6 self-contained Dart files</strong> below (skipping custom fonts, PDF assets, and extra screens so your app compiles and runs on any laptop in minutes):
+                    </p>
+                    <p class="lang-fr">
+                        Si vous codez depuis zéro durant l'atelier, créez un nouveau projet Flutter et préparez uniquement les <strong>6 fichiers Dart autonomes</strong> ci-dessous (sans polices personnalisées, assets PDF ni écrans secondaires afin que votre application compile et tourne en quelques minutes) :
                     </p>
 
                     <div class="code-window">
@@ -508,7 +619,7 @@ flutter devices</code></pre>
                                 <span class="code-lang-badge">BASH</span>
                             </div>
                             <button class="copy-code-btn">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
                                 Copy
                             </button>
                         </div>
@@ -529,7 +640,7 @@ mkdir -p lib/core/services lib/core/utils lib/data/datasources lib/data/reposito
                                 <span class="code-lang-badge">POWERSHELL</span>
                             </div>
                             <button class="copy-code-btn">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
                                 Copy
                             </button>
                         </div>
@@ -565,9 +676,12 @@ New-Item -ItemType Directory -Force -Path lib/core/services, lib/core/utils, lib
 └── main.dart                            # Step 9: Minimal Runnable UI (Download + Scan + Chat)</code></pre>
                     </div>
 
-                    <h3>2. Replace <code>pubspec.yaml</code> &amp; Fetch Packages</h3>
-                    <p>
+                    <h3 data-en="2. Replace &lt;code&gt;pubspec.yaml&lt;/code&gt; &amp; Fetch Packages" data-fr="2. Remplacer &lt;code&gt;pubspec.yaml&lt;/code&gt; &amp; installer les dépendances">2. Replace <code>pubspec.yaml</code> &amp; Fetch Packages</h3>
+                    <p class="lang-en">
                         Replace your <code>pubspec.yaml</code> with the complete configuration below (compatible with Dart <code>&gt;=3.5.0 &lt;4.0.0</code> and including <code>uses-material-design: true</code> so Material icons render properly), then run <code>flutter pub get</code>:
+                    </p>
+                    <p class="lang-fr">
+                        Remplacez votre fichier <code>pubspec.yaml</code> par la configuration complète ci-dessous (compatible avec Dart <code>&gt;=3.5.0 &lt;4.0.0</code> et incluant <code>uses-material-design: true</code> pour l'affichage des icônes Material), puis exécutez <code>flutter pub get</code> :
                     </p>
 
                     <div class="code-window">
@@ -582,7 +696,7 @@ New-Item -ItemType Directory -Force -Path lib/core/services, lib/core/utils, lib
                                 <span class="code-lang-badge">YAML</span>
                             </div>
                             <button class="copy-code-btn">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
                                 Copy
                             </button>
                         </div>
@@ -620,9 +734,12 @@ flutter:
   uses-material-design: true</code></pre>
                     </div>
 
-                    <h3>3. Set Android <code>minSdk = 26</code> &amp; Hardware Acceleration</h3>
-                    <p>
+                    <h3 data-en="3. Set Android &lt;code&gt;minSdk = 26&lt;/code&gt; &amp; Hardware Acceleration" data-fr="3. Configurer Android &lt;code&gt;minSdk = 26&lt;/code&gt; &amp; l'accélération matérielle">3. Set Android <code>minSdk = 26</code> &amp; Hardware Acceleration</h3>
+                    <p class="lang-en">
                         <strong>Crucial Step:</strong> <code>flutter_gemma</code> and <code>flutter_gemma_litertlm</code> link native 64-bit C++ MediaPipe / LiteRT-LM binaries that require <strong>Android API 26+ (Android 8.0)</strong>. Open <code>android/app/build.gradle.kts</code> (or <code>android/app/build.gradle</code>) and update <code>minSdk</code> inside <code>defaultConfig</code> from <code>flutter.minSdkVersion</code> to <code>26</code>:
+                    </p>
+                    <p class="lang-fr">
+                        <strong>Étape cruciale :</strong> <code>flutter_gemma</code> et <code>flutter_gemma_litertlm</code> lient des binaires C++ 64-bit natifs MediaPipe / LiteRT-LM qui exigent <strong>Android API 26+ (Android 8.0)</strong>. Ouvrez <code>android/app/build.gradle.kts</code> (ou <code>android/app/build.gradle</code>) et remplacez <code>minSdk</code> dans <code>defaultConfig</code> par <code>26</code> :
                     </p>
 
                     <div class="code-window">
@@ -637,7 +754,7 @@ flutter:
                                 <span class="code-lang-badge">KOTLIN DSL</span>
                             </div>
                             <button class="copy-code-btn">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
                                 Copy
                             </button>
                         </div>
@@ -651,8 +768,11 @@ flutter:
     }</code></pre>
                     </div>
 
-                    <p>
+                    <p class="lang-en">
                         Next, replace <code>android/app/src/main/AndroidManifest.xml</code> with this complete manifest so <code>INTERNET</code> and <code>CAMERA</code> permissions and GPU/CPU hardware acceleration are enabled while preserving the default <code>@mipmap/ic_launcher</code> icon and <code>MAIN</code> launcher intent:
+                    </p>
+                    <p class="lang-fr">
+                        Ensuite, remplacez <code>android/app/src/main/AndroidManifest.xml</code> par ce manifeste complet afin d'activer les permissions <code>INTERNET</code> et <code>CAMERA</code> ainsi que l'accélération matérielle GPU/CPU tout en conservant l'icône par défaut <code>@mipmap/ic_launcher</code> et l'intent <code>MAIN</code> :
                     </p>
 
                     <div class="code-window">
@@ -667,7 +787,7 @@ flutter:
                                 <span class="code-lang-badge">XML</span>
                             </div>
                             <button class="copy-code-btn">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
                                 Copy
                             </button>
                         </div>
@@ -707,8 +827,8 @@ flutter:
                     </div>
 
                     <div class="step-pagination">
-                        <button class="nav-step-btn" data-step-target="0">&larr; Previous</button>
-                        <button class="nav-step-btn primary" data-step-target="2">Next: Quantization &amp; Atomic Download &rarr;</button>
+                        <button class="nav-step-btn" data-step-target="0" data-en="&larr; Previous" data-fr="&larr; Précédent">&larr; Previous</button>
+                        <button class="nav-step-btn primary" data-step-target="2" data-en="Next: Quantization &amp; Atomic Download &rarr;" data-fr="Suivant : Quantification &amp; Téléchargement Atomique &rarr;">Next: Quantization &amp; Atomic Download &rarr;</button>
                     </div>
                 </article>
 
@@ -717,30 +837,35 @@ flutter:
                      ========================================================= -->
                 <article class="codelab-step" id="step-3" data-duration="6">
                     <div class="step-header">
-                        <div class="step-eyebrow">Step 3 of 9 | Memory &amp; Distribution</div>
-                        <h2 class="step-title">Model Quantization (INT4 vs. INT8) &amp; Atomic Asset Delivery</h2>
+                        <div class="step-eyebrow">
+                            <span data-en="Step 3 of 9 | Memory &amp; Distribution" data-fr="Étape 3 sur 9 | Mémoire &amp; Distribution">Step 3 of 9 | Memory &amp; Distribution</span>
+                        </div>
+                        <h2 class="step-title" data-en="Model Quantization (INT4 vs. INT8) &amp; Atomic Asset Delivery" data-fr="Quantification du Modèle (INT4 vs INT8) &amp; Livraison Atomique">Model Quantization (INT4 vs. INT8) &amp; Atomic Asset Delivery</h2>
                     </div>
 
-                    <p>
+                    <p class="lang-en">
                         On a mid-tier <strong>4GB RAM Android phone</strong>, Android OS and system services consume ~1.6GB of RAM, and the Flutter UI + Dart VM take ~300MB. That leaves a strict ceiling of <strong>~1.8GB to 2.0GB</strong> before Android's Low Memory Killer (<code>lmkd</code>) terminates your app.
+                    </p>
+                    <p class="lang-fr">
+                        Sur un smartphone Android milieu de gamme doté de <strong>4 Go de RAM</strong>, le système Android et ses services consomment ~1,6 Go de RAM, tandis que l'interface Flutter et la VM Dart occupent ~300 Mo. Cela laisse un plafond strict de <strong>~1,8 Go à 2,0 Go</strong> avant que le Low Memory Killer d'Android (<code>lmkd</code>) ne tue votre application.
                     </p>
 
                     <div class="metric-cards">
                         <div class="metric-card">
                             <span class="metric-value">~4.0 GB</span>
-                            <span class="metric-label">2B Model in FP16 (Crashes on 4GB RAM)</span>
+                            <span class="metric-label" data-en="2B Model in FP16 (Crashes on 4GB RAM)" data-fr="Modèle 2B en FP16 (Crash sur 4 Go RAM)">2B Model in FP16 (Crashes on 4GB RAM)</span>
                         </div>
                         <div class="metric-card">
                             <span class="metric-value">~2.1 GB</span>
-                            <span class="metric-label">2B Model in INT8 (Zero headroom for Vision)</span>
+                            <span class="metric-label" data-en="2B Model in INT8 (Zero headroom for Vision)" data-fr="Modèle 2B en INT8 (Aucune marge pour la Vision)">2B Model in INT8 (Zero headroom for Vision)</span>
                         </div>
                         <div class="metric-card">
                             <span class="metric-value">~1.2 GB</span>
-                            <span class="metric-label">E2B in INT4 <code>.litertlm</code> (75% smaller!)</span>
+                            <span class="metric-label" data-en="E2B in INT4 &lt;code&gt;.litertlm&lt;/code&gt; (75% smaller!)" data-fr="E2B en INT4 &lt;code&gt;.litertlm&lt;/code&gt; (75 % plus léger !)">E2B in INT4 <code>.litertlm</code> (75% smaller!)</span>
                         </div>
                         <div class="metric-card">
                             <span class="metric-value">134 MB</span>
-                            <span class="metric-label">Distilled 240M SLM in INT4 (See Step 8)</span>
+                            <span class="metric-label" data-en="Distilled 240M SLM in INT4 (See Step 8)" data-fr="SLM 240M distillé en INT4 (Voir Étape 8)">Distilled 240M SLM in INT4 (See Step 8)</span>
                         </div>
                     </div>
 
@@ -751,16 +876,22 @@ flutter:
                             <circle cx="12" cy="17" r="1.25" fill="currentColor" stroke="none"></circle>
                         </svg>
                         <div class="callout-body">
-                            <div class="callout-title">Production Pitfall: Never Put Multi-Hundred-MB Models in Flutter <code>assets/</code></div>
-                            <p>
+                            <div class="callout-title" data-en="Production Pitfall: Never Put Multi-Hundred-MB Models in Flutter &lt;code&gt;assets/&lt;/code&gt;" data-fr="Piège en Production : Ne jamais inclure des modèles de plusieurs centaines de Mo dans &lt;code&gt;assets/&lt;/code&gt;">Production Pitfall: Never Put Multi-Hundred-MB Models in Flutter <code>assets/</code></div>
+                            <p class="lang-en">
                                 Bundling a 1.3GB model inside <code>pubspec.yaml</code> assets violates Google Play's 150MB base APK/AAB limit and forces Flutter to copy/decompress the asset on first boot: causing instant <code>OutOfMemoryError</code> crashes on budget phones.
+                            </p>
+                            <p class="lang-fr">
+                                Embarquer un modèle de 1,3 Go dans les assets de <code>pubspec.yaml</code> dépasse la limite de 150 Mo d'un APK/AAB Google Play et oblige Flutter à copier/décompresser l'asset au premier démarrage : ce qui provoque un crash <code>OutOfMemoryError</code> immédiat sur les téléphones d'entrée de gamme.
                             </p>
                         </div>
                     </div>
 
-                    <h3>The Solution: Chunked Streaming + Atomic <code>.tmp</code> Swap</h3>
-                    <p>
+                    <h3 data-en="The Solution: Chunked Streaming + Atomic &lt;code&gt;.tmp&lt;/code&gt; Swap" data-fr="La Solution : Streaming par blocs + Renommage Atomique &lt;code&gt;.tmp&lt;/code&gt;">The Solution: Chunked Streaming + Atomic <code>.tmp</code> Swap</h3>
+                    <p class="lang-en">
                         In <code>lib/data/repositories/chat_repository_impl.dart</code>, we stream the quantized <code>.litertlm</code> binary directly to <code>getApplicationDocumentsDirectory()</code> using an <code>IOSink</code> (so Dart's RAM heap stays flat at &lt;5MB). Crucially, we write to <code>gemma.litertlm.tmp</code> first and <strong>only rename it to <code>gemma.litertlm</code> when 100% of bytes are on disk</strong>. If a user's connection drops at 89%, the native C++ engine will never attempt to memory-map a corrupted binary! (You will paste the complete <code>chat_repository_impl.dart</code> file in Step 7).
+                    </p>
+                    <p class="lang-fr">
+                        Dans <code>lib/data/repositories/chat_repository_impl.dart</code>, nous streamons le binaire quantifié <code>.litertlm</code> directement vers <code>getApplicationDocumentsDirectory()</code> à l'aide d'un <code>IOSink</code> (afin que le tas mémoire Dart reste sous 5 Mo). Point crucial : nous écrivons d'abord dans <code>gemma.litertlm.tmp</code> et <strong>ne le renommons en <code>gemma.litertlm</code> qu'une fois 100 % des octets écrits sur le disque</strong>. Si la connexion coupe à 89 %, le moteur C++ natif ne tentera jamais de projeter en mémoire (<code>mmap</code>) un fichier corrompu ! (Vous collerez le fichier complet <code>chat_repository_impl.dart</code> à l'Étape 7).
                     </p>
 
                     <div class="code-window">
@@ -775,7 +906,7 @@ flutter:
                                 <span class="code-lang-badge">DART</span>
                             </div>
                             <button class="copy-code-btn">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
                                 Copy
                             </button>
                         </div>
@@ -859,8 +990,8 @@ Future&lt;void&gt; initializeGemma(Function(double) onProgress) async {
                     </div>
 
                     <div class="step-pagination">
-                        <button class="nav-step-btn" data-step-target="1">&larr; Previous</button>
-                        <button class="nav-step-btn primary" data-step-target="3">Next: FFI Mutex &amp; Deadlock Recovery &rarr;</button>
+                        <button class="nav-step-btn" data-step-target="1" data-en="&larr; Previous" data-fr="&larr; Précédent">&larr; Previous</button>
+                        <button class="nav-step-btn primary" data-step-target="3" data-en="Next: FFI Mutex &amp; Deadlock Recovery &rarr;" data-fr="Suivant : Mutex FFI &amp; Récupération Deadlock &rarr;">Next: FFI Mutex &amp; Deadlock Recovery &rarr;</button>
                     </div>
                 </article>
 
@@ -869,8 +1000,10 @@ Future&lt;void&gt; initializeGemma(Function(double) onProgress) async {
                      ========================================================= -->
                 <article class="codelab-step" id="step-4" data-duration="5">
                     <div class="step-header">
-                        <div class="step-eyebrow">Step 4 of 9 | Native Concurrency</div>
-                        <h2 class="step-title">Preventing Native FFI Crashes &amp; Hot-Reload Deadlocks</h2>
+                        <div class="step-eyebrow">
+                            <span data-en="Step 4 of 9 | Native Concurrency" data-fr="Étape 4 sur 9 | Concurrence Native">Step 4 of 9 | Native Concurrency</span>
+                        </div>
+                        <h2 class="step-title" data-en="Preventing Native FFI Crashes &amp; Hot-Reload Deadlocks" data-fr="Prévenir les Crashs FFI Natifs &amp; les Deadlocks au Hot-Reload">Preventing Native FFI Crashes &amp; Hot-Reload Deadlocks</h2>
                     </div>
 
                     <div class="callout callout-danger">
@@ -880,16 +1013,22 @@ Future&lt;void&gt; initializeGemma(Function(double) onProgress) async {
                             <line x1="9" y1="9" x2="15" y2="15"></line>
                         </svg>
                         <div class="callout-body">
-                            <div class="callout-title">What Failed in Production #1: Concurrent Native Sessions &amp; Orphaned Isolates</div>
-                            <p>
+                            <div class="callout-title" data-en="What Failed in Production #1: Concurrent Native Sessions &amp; Orphaned Isolates" data-fr="Ce qui a échoué en Production #1 : Sessions Natives Concurrentes &amp; Isolates Orphelins">What Failed in Production #1: Concurrent Native Sessions &amp; Orphaned Isolates</div>
+                            <p class="lang-en">
                                 MediaPipe / LiteRT-LM allocates a single native C++ execution graph in memory. During field testing, if a user started a leaf scan and switched to the Chat tab before the scan finished; or if a developer triggered a Flutter <strong>Hot Reload</strong> while a stream was open: the native FFI channel deadlocked permanently or threw <code>PlatformException(channel-error)</code>.
+                            </p>
+                            <p class="lang-fr">
+                                MediaPipe / LiteRT-LM alloue un seul graphe d'exécution C++ natif en mémoire. Lors des tests sur le terrain, si un utilisateur lançait un scan de feuille puis basculait vers l'onglet Chat avant la fin du scan, ou si un développeur déclenchait un <strong>Hot Reload</strong> Flutter pendant qu'un flux était ouvert : le canal FFI natif se bloquait définitivement (deadlock) ou levait une <code>PlatformException(channel-error)</code>.
                             </p>
                         </div>
                     </div>
 
-                    <h3>The Solution: <code>GemmaEngineManager</code></h3>
-                    <p>
+                    <h3 data-en="The Solution: &lt;code&gt;GemmaEngineManager&lt;/code&gt;" data-fr="La Solution : &lt;code&gt;GemmaEngineManager&lt;/code&gt;">The Solution: <code>GemmaEngineManager</code></h3>
+                    <p class="lang-en">
                         To make on-device inference rock-solid, we built <code>GemmaEngineManager</code> in <code>lib/core/services/gemma_engine_manager.dart</code>. It serializes all Future and Stream operations through a <code>Completer</code> mutex lock, includes an <strong>8-second deadlock timeout</strong> to recover from orphaned Hot-Reload isolates, and automatically resets stale chat session pointers when a native channel error occurs:
+                    </p>
+                    <p class="lang-fr">
+                        Pour rendre l'inférence embarquée infaillible, nous avons conçu <code>GemmaEngineManager</code> dans <code>lib/core/services/gemma_engine_manager.dart</code>. Il sérialise toutes les opérations Future et Stream via un verrou mutex <code>Completer</code>, intègre un <strong>timeout anti-deadlock de 8 secondes</strong> pour récupérer après un Hot-Reload, et réinitialise automatiquement les pointeurs de session obsolètes en cas d'erreur de canal natif :
                     </p>
 
                     <div class="code-window">
@@ -904,7 +1043,7 @@ Future&lt;void&gt; initializeGemma(Function(double) onProgress) async {
                                 <span class="code-lang-badge">DART</span>
                             </div>
                             <button class="copy-code-btn">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
                                 Copy
                             </button>
                         </div>
@@ -1020,8 +1159,8 @@ class GemmaEngineManager {
                     </div>
 
                     <div class="step-pagination">
-                        <button class="nav-step-btn" data-step-target="2">&larr; Previous</button>
-                        <button class="nav-step-btn primary" data-step-target="4">Next: 512px Vision VLM &amp; Early-Exit &rarr;</button>
+                        <button class="nav-step-btn" data-step-target="2" data-en="&larr; Previous" data-fr="&larr; Précédent">&larr; Previous</button>
+                        <button class="nav-step-btn primary" data-step-target="4" data-en="Next: 512px Vision VLM &amp; Early-Exit &rarr;" data-fr="Suivant : Vision VLM 512px &amp; Arrêt Anticipé &rarr;">Next: 512px Vision VLM &amp; Early-Exit &rarr;</button>
                     </div>
                 </article>
 
@@ -1030,8 +1169,10 @@ class GemmaEngineManager {
                      ========================================================= -->
                 <article class="codelab-step" id="step-5" data-duration="6">
                     <div class="step-header">
-                        <div class="step-eyebrow">Step 5 of 9 | Multimodal Vision</div>
-                        <h2 class="step-title">512px Image Optimization &amp; Prompt-Level Early-Exit Guardrails</h2>
+                        <div class="step-eyebrow">
+                            <span data-en="Step 5 of 9 | Multimodal Vision" data-fr="Étape 5 sur 9 | Vision Multimodale">Step 5 of 9 | Multimodal Vision</span>
+                        </div>
+                        <h2 class="step-title" data-en="512px Image Optimization &amp; Prompt-Level Early-Exit Guardrails" data-fr="Optimisation Image 512px &amp; Garde-Fous d'Arrêt Anticipé (Early-Exit)">512px Image Optimization &amp; Prompt-Level Early-Exit Guardrails</h2>
                     </div>
 
                     <div class="callout callout-danger">
@@ -1041,22 +1182,32 @@ class GemmaEngineManager {
                             <line x1="9" y1="9" x2="15" y2="15"></line>
                         </svg>
                         <div class="callout-body">
-                            <div class="callout-title">What Failed in Production #2 &amp; #3: 12MP Camera OOMs &amp; CPU Thermal Throttling</div>
-                            <p>
+                            <div class="callout-title" data-en="What Failed in Production #2 &amp; #3: 12MP Camera OOMs &amp; CPU Thermal Throttling" data-fr="Ce qui a échoué en Production #2 &amp; #3 : Crashs OOM Caméra 12MP &amp; Surchauffe CPU">What Failed in Production #2 &amp; #3: 12MP Camera OOMs &amp; CPU Thermal Throttling</div>
+                            <p class="lang-en">
                                 <strong>1. Vision OOMs:</strong> Passing a raw 4000x3000 (12MP) camera image into <code>Message.withImage()</code> allocates a 48MB RGBA buffer plus huge vision encoder tensors: crashing 4GB RAM phones.<br>
                                 <strong>2. Wasted Compute on Non-Leaves:</strong> When a farmer accidentally photographed their shoe, face, or tool, Gemma generated 800+ tokens of hallucinated plant advice, heating up the CPU and draining battery.
+                            </p>
+                            <p class="lang-fr">
+                                <strong>1. Crashs OOM Vision :</strong> Passer une photo brute de 4000x3000 (12 MP) à <code>Message.withImage()</code> alloue un tampon RGBA de 48 Mo ainsi que d'énormes tenseurs d'encodage visuel, faisant planter les téléphones de 4 Go de RAM.<br>
+                                <strong>2. Calcul gaspillé hors-sujet :</strong> Lorsqu'un agriculteur photographiait par erreur sa chaussure, son visage ou un outil, Gemma générait plus de 800 tokens de conseils agricoles hallucinés, faisant chauffer le CPU et vidant la batterie.
                             </p>
                         </div>
                     </div>
 
-                    <h3>1. Downsample Camera Images to <code>512px</code> &amp; Dispose Native Handles</h3>
-                    <p>
+                    <h3 data-en="1. Downsample Camera Images to &lt;code&gt;512px&lt;/code&gt; &amp; Dispose Native Handles" data-fr="1. Réduire les images caméra à &lt;code&gt;512px&lt;/code&gt; &amp; libérer les pointeurs natifs">1. Downsample Camera Images to <code>512px</code> &amp; Dispose Native Handles</h3>
+                    <p class="lang-en">
                         Gemma's vision encoder downscales inputs internally anyway. By resizing the image to <code>targetWidth: 512</code> in Dart's <code>dart:ui</code> codec and calling <code>image.dispose()</code> immediately before invoking LiteRT-LM, we cut vision memory consumption by <strong>85%</strong> and speed up vision encoding by <strong>4x</strong>.
                     </p>
+                    <p class="lang-fr">
+                        L'encodeur visuel de Gemma réduit de toute façon la résolution des images en interne. En redimensionnant l'image à <code>targetWidth: 512</code> via le codec <code>dart:ui</code> et en appelant immédiatement <code>image.dispose()</code> avant d'invoquer LiteRT-LM, nous réduisons la consommation mémoire de <strong>85 %</strong> et accélérons l'encodage visuel d'un facteur <strong>4x</strong>.
+                    </p>
 
-                    <h3>2. Two-Stage Prompt with Immediate Early-Exit Short-Circuit</h3>
-                    <p>
+                    <h3 data-en="2. Two-Stage Prompt with Immediate Early-Exit Short-Circuit" data-fr="2. Prompt à deux étapes avec court-circuit d'arrêt anticipé (Early-Exit)">2. Two-Stage Prompt with Immediate Early-Exit Short-Circuit</h3>
+                    <p class="lang-en">
                         Below is the complete implementation from <code>lib/data/datasources/gemma_local_source.dart</code> (with the prompt translated to English for this workshop). Notice how <strong>Step 1 of the prompt</strong> forces Gemma to output a single 18-token rejection sentence and halt immediately if the image is not a plant leaf:
+                    </p>
+                    <p class="lang-fr">
+                        Voici l'implémentation complète de <code>lib/data/datasources/gemma_local_source.dart</code>. Observez comment <strong>l'Étape 1 du prompt</strong> oblige Gemma à produire une seule phrase de rejet de 18 tokens et à s'arrêter immédiatement si l'image n'est pas une feuille de plante :
                     </p>
 
                     <div class="code-window">
@@ -1071,7 +1222,7 @@ class GemmaEngineManager {
                                 <span class="code-lang-badge">DART</span>
                             </div>
                             <button class="copy-code-btn">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
                                 Copy
                             </button>
                         </div>
@@ -1202,8 +1353,8 @@ User instruction: $prompt
                     </div>
 
                     <div class="step-pagination">
-                        <button class="nav-step-btn" data-step-target="3">&larr; Previous</button>
-                        <button class="nav-step-btn primary" data-step-target="5">Next: Zero-RAM SQLite FTS5 RAG &rarr;</button>
+                        <button class="nav-step-btn" data-step-target="3" data-en="&larr; Previous" data-fr="&larr; Précédent">&larr; Previous</button>
+                        <button class="nav-step-btn primary" data-step-target="5" data-en="Next: Zero-RAM SQLite FTS5 RAG &rarr;" data-fr="Suivant : RAG Local SQLite FTS5 Zéro-RAM &rarr;">Next: Zero-RAM SQLite FTS5 RAG &rarr;</button>
                     </div>
                 </article>
 
@@ -1212,12 +1363,17 @@ User instruction: $prompt
                      ========================================================= -->
                 <article class="codelab-step" id="step-6" data-duration="6">
                     <div class="step-header">
-                        <div class="step-eyebrow">Step 6 of 9 | Grounded Local Retrieval</div>
-                        <h2 class="step-title">Zero-RAM-Overhead Local RAG with SQLite FTS5 &amp; BM25</h2>
+                        <div class="step-eyebrow">
+                            <span data-en="Step 6 of 9 | Grounded Local Retrieval" data-fr="Étape 6 sur 9 | Recherche Locale Ancrée">Step 6 of 9 | Grounded Local Retrieval</span>
+                        </div>
+                        <h2 class="step-title" data-en="Zero-RAM-Overhead Local RAG with SQLite FTS5 &amp; BM25" data-fr="RAG Local Zéro-RAM avec SQLite FTS5 &amp; BM25">Zero-RAM-Overhead Local RAG with SQLite FTS5 &amp; BM25</h2>
                     </div>
 
-                    <p>
+                    <p class="lang-en">
                         Quantized 2B models can hallucinate exact biopesticide dosages or regional planting dates if left ungrounded. However, on a 4GB RAM phone where Gemma is already consuming ~1.3GB of RAM, <strong>loading a second neural embedding model + vector database into RAM will push your app over the OOM cliff</strong>.
+                    </p>
+                    <p class="lang-fr">
+                        Les modèles 2B quantifiés peuvent halluciner les dosages exacts de biopesticides ou les dates de semis régionales s'ils ne sont pas ancrés sur des données vérifiées. Cependant, sur un téléphone de 4 Go de RAM où Gemma consomme déjà ~1,3 Go, <strong>charger un second modèle d'embeddings neuronaux et une base vectorielle en RAM fera basculer l'application en crash OOM</strong>.
                     </p>
 
                     <div class="callout callout-success">
@@ -1225,16 +1381,22 @@ User instruction: $prompt
                             <polyline points="20 6 9 17 4 12"></polyline>
                         </svg>
                         <div class="callout-body">
-                            <div class="callout-title">Architectural Win: SQLite FTS5 + BM25 Ranking = 0 MB Extra RAM</div>
-                            <p>
+                            <div class="callout-title" data-en="Architectural Win: SQLite FTS5 + BM25 Ranking = 0 MB Extra RAM" data-fr="Victoire Architecturale : SQLite FTS5 + Classement BM25 = 0 Mo de RAM Supplémentaire">Architectural Win: SQLite FTS5 + BM25 Ranking = 0 MB Extra RAM</div>
+                            <p class="lang-en">
                                 SQLite's built-in <strong>FTS5 (Full-Text Search 5)</strong> engine executes in native C directly on disk using the <strong>BM25 relevance algorithm</strong>. It requires <strong>0 MB of neural embedding RAM</strong>, completes searches in <strong>&lt;2 milliseconds</strong>, and includes a multi-term weighted scorer fallback for custom Android OEM ROMs.
+                            </p>
+                            <p class="lang-fr">
+                                Le moteur intégré <strong>FTS5 (Full-Text Search 5)</strong> de SQLite s'exécute en C natif directement sur le disque avec l'algorithme de pertinence <strong>BM25</strong>. Il nécessite <strong>0 Mo de RAM d'embedding neuronal</strong>, répond en <strong>moins de 2 millisecondes</strong> et inclut un scoreur pondéré multi-termes de secours pour les ROM Android OEM personnalisées.
                             </p>
                         </div>
                     </div>
 
-                    <h3>Complete File: <code>lib/data/datasources/sqlite_helper.dart</code></h3>
-                    <p>
+                    <h3 data-en="Complete File: &lt;code&gt;lib/data/datasources/sqlite_helper.dart&lt;/code&gt;" data-fr="Fichier Complet : &lt;code&gt;lib/data/datasources/sqlite_helper.dart&lt;/code&gt;">Complete File: <code>lib/data/datasources/sqlite_helper.dart</code></h3>
+                    <p class="lang-en">
                         Copy this complete, self-contained SQLite FTS5 + BM25 RAG helper into <code>lib/data/datasources/sqlite_helper.dart</code>:
+                    </p>
+                    <p class="lang-fr">
+                        Copiez ce helper RAG SQLite FTS5 + BM25 complet et autonome dans <code>lib/data/datasources/sqlite_helper.dart</code> :
                     </p>
 
                     <div class="code-window">
@@ -1249,7 +1411,7 @@ User instruction: $prompt
                                 <span class="code-lang-badge">DART / SQL</span>
                             </div>
                             <button class="copy-code-btn">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
                                 Copy
                             </button>
                         </div>
@@ -1471,8 +1633,8 @@ class SQLiteHelper {
                     </div>
 
                     <div class="step-pagination">
-                        <button class="nav-step-btn" data-step-target="4">&larr; Previous</button>
-                        <button class="nav-step-btn primary" data-step-target="6">Next: Streaming &amp; Function Calling &rarr;</button>
+                        <button class="nav-step-btn" data-step-target="4" data-en="&larr; Previous" data-fr="&larr; Précédent">&larr; Previous</button>
+                        <button class="nav-step-btn primary" data-step-target="6" data-en="Next: Streaming &amp; Function Calling &rarr;" data-fr="Suivant : Streaming &amp; Function Calling &rarr;">Next: Streaming &amp; Function Calling &rarr;</button>
                     </div>
                 </article>
 
@@ -1481,21 +1643,33 @@ class SQLiteHelper {
                      ========================================================= -->
                 <article class="codelab-step" id="step-7" data-duration="5">
                     <div class="step-header">
-                        <div class="step-eyebrow">Step 7 of 9 | Conversational UX &amp; Agents</div>
-                        <h2 class="step-title">60 FPS Token Streaming, KV-Cache Sliding Window &amp; Offline Function Calling</h2>
+                        <div class="step-eyebrow">
+                            <span data-en="Step 7 of 9 | Conversational UX &amp; Agents" data-fr="Étape 7 sur 9 | UX Conversationnelle &amp; Agents">Step 7 of 9 | Conversational UX &amp; Agents</span>
+                        </div>
+                        <h2 class="step-title" data-en="60 FPS Token Streaming, KV-Cache Sliding Window &amp; Offline Function Calling" data-fr="Streaming de Tokens à 60 FPS, Fenêtre Glissante KV-Cache &amp; Function Calling Hors-Ligne">60 FPS Token Streaming, KV-Cache Sliding Window &amp; Offline Function Calling</h2>
                     </div>
 
-                    <p>
+                    <p class="lang-en">
                         In conversational mode, we face two engineering challenges on budget smartphones:
                     </p>
-                    <ol>
+                    <p class="lang-fr">
+                        En mode conversationnel, nous faisons face à deux défis d'ingénierie sur les smartphones d'entrée de gamme :
+                    </p>
+                    <ol class="lang-en">
                         <li><strong>KV-Cache Memory Explosion:</strong> If you feed 25 historical messages into every prompt, the Key-Value attention cache overflows RAM and slows prefill latency to a crawl.</li>
                         <li><strong>Raw LaTeX Artifacts:</strong> Gemma often outputs chemical formulas like <code>$NaHCO_3$</code> or <code>\text{H}_2\text{O}</code>, which look broken to farmers in plain text or Text-to-Speech.</li>
                     </ol>
+                    <ol class="lang-fr">
+                        <li><strong>Explosion mémoire du KV-Cache :</strong> Si vous injectez 25 messages d'historique dans chaque prompt, le cache d'attention Clé-Valeur (KV-Cache) sature la RAM et ralentit considérablement la latence de pré-remplissage (prefill).</li>
+                        <li><strong>Artefacts LaTeX bruts :</strong> Gemma génère souvent des formules chimiques telles que <code>$NaHCO_3$</code> ou <code>\text{H}_2\text{O}</code>, illisibles pour un agriculteur en texte brut ou en synthèse vocale (TTS).</li>
+                    </ol>
 
-                    <h3>1. Complete File: <code>lib/data/repositories/chat_repository_impl.dart</code></h3>
-                    <p>
+                    <h3 data-en="1. Complete File: &lt;code&gt;lib/data/repositories/chat_repository_impl.dart&lt;/code&gt;" data-fr="1. Fichier Complet : &lt;code&gt;lib/data/repositories/chat_repository_impl.dart&lt;/code&gt;">1. Complete File: <code>lib/data/repositories/chat_repository_impl.dart</code></h3>
+                    <p class="lang-en">
                         Copy this complete, self-contained repository into <code>lib/data/repositories/chat_repository_impl.dart</code>. It combines Step 3's atomic <code>.tmp</code> model downloader, SQLite FTS5 RAG injection, the 5-turn KV-Cache sliding window, and autonomous offline Function Calling for the irrigation calendar:
+                    </p>
+                    <p class="lang-fr">
+                        Copiez ce repository complet et autonome dans <code>lib/data/repositories/chat_repository_impl.dart</code>. Il réunit le téléchargeur atomique <code>.tmp</code> de l'Étape 3, l'injection RAG SQLite FTS5, la fenêtre glissante KV-Cache de 5 messages et le Function Calling autonome hors-ligne pour le calendrier d'irrigation :
                     </p>
 
                     <div class="code-window">
@@ -1510,7 +1684,7 @@ class SQLiteHelper {
                                 <span class="code-lang-badge">DART</span>
                             </div>
                             <button class="copy-code-btn">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
                                 Copy
                             </button>
                         </div>
@@ -1720,9 +1894,12 @@ ${faoContext.isNotEmpty ? '\n\nOFFICIAL FAO/IITA REFERENCE DATA:\n$faoContext' :
 }</code></pre>
                     </div>
 
-                    <h3>2. Complete File: <code>lib/core/utils/text_sanitizer.dart</code></h3>
-                    <p>
+                    <h3 data-en="2. Complete File: &lt;code&gt;lib/core/utils/text_sanitizer.dart&lt;/code&gt;" data-fr="2. Fichier Complet : &lt;code&gt;lib/core/utils/text_sanitizer.dart&lt;/code&gt;">2. Complete File: <code>lib/core/utils/text_sanitizer.dart</code></h3>
+                    <p class="lang-en">
                         Create <code>lib/core/utils/text_sanitizer.dart</code> so chemical formulas like <code>$NaHCO_3$</code> and stray emojis are converted into clean plain text while streaming:
+                    </p>
+                    <p class="lang-fr">
+                        Créez <code>lib/core/utils/text_sanitizer.dart</code> afin que les formules chimiques telles que <code>$NaHCO_3$</code> soient converties en texte brut lisible à la volée pendant le streaming :
                     </p>
 
                     <div class="code-window">
@@ -1737,7 +1914,7 @@ ${faoContext.isNotEmpty ? '\n\nOFFICIAL FAO/IITA REFERENCE DATA:\n$faoContext' :
                                 <span class="code-lang-badge">DART</span>
                             </div>
                             <button class="copy-code-btn">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
                                 Copy
                             </button>
                         </div>
@@ -1772,8 +1949,8 @@ ${faoContext.isNotEmpty ? '\n\nOFFICIAL FAO/IITA REFERENCE DATA:\n$faoContext' :
                     </div>
 
                     <div class="step-pagination">
-                        <button class="nav-step-btn" data-step-target="5">&larr; Previous</button>
-                        <button class="nav-step-btn primary" data-step-target="7">Next: Distilling Gemma &lt; 150 MB &rarr;</button>
+                        <button class="nav-step-btn" data-step-target="5" data-en="&larr; Previous" data-fr="&larr; Précédent">&larr; Previous</button>
+                        <button class="nav-step-btn primary" data-step-target="7" data-en="Next: Distilling Gemma &lt; 150 MB &rarr;" data-fr="Suivant : Distiller Gemma &lt; 150 Mo &rarr;">Next: Distilling Gemma &lt; 150 MB &rarr;</button>
                     </div>
                 </article>
 
@@ -1782,16 +1959,25 @@ ${faoContext.isNotEmpty ? '\n\nOFFICIAL FAO/IITA REFERENCE DATA:\n$faoContext' :
                      ========================================================= -->
                 <article class="codelab-step" id="step-8" data-duration="6">
                     <div class="step-header">
-                        <div class="step-eyebrow">Step 8 of 9 | Model Compression &amp; Distillation</div>
-                        <h2 class="step-title">The Finale: Distilling Gemma into a Custom SLM Under 150 MB</h2>
+                        <div class="step-eyebrow">
+                            <span data-en="Step 8 of 9 | Model Compression &amp; Distillation" data-fr="Étape 8 sur 9 | Compression &amp; Distillation">Step 8 of 9 | Model Compression &amp; Distillation</span>
+                        </div>
+                        <h2 class="step-title" data-en="The Finale: Distilling Gemma into a Custom SLM Under 150 MB" data-fr="Le Final : Distiller Gemma en un SLM Personnalisé sous 150 Mo">The Finale: Distilling Gemma into a Custom SLM Under 150 MB</h2>
                     </div>
 
-                    <p>
+                    <p class="lang-en">
                         While an INT4 2B model (~1.2GB) runs well on 4GB to 8GB phones, two barriers remain for rural mass adoption across Africa:
                     </p>
-                    <ul>
+                    <p class="lang-fr">
+                        Bien qu'un modèle 2B en INT4 (~1,2 Go) tourne très bien sur les téléphones de 4 Go à 8 Go de RAM, deux obstacles subsistent pour une adoption massive en zone rurale en Afrique :
+                    </p>
+                    <ul class="lang-en">
                         <li><strong>The 1.2GB Initial Download:</strong> Even a one-time 1.2GB download is expensive on prepaid mobile data bundles.</li>
                         <li><strong>2GB to 3GB Android Go Devices:</strong> Entry-level phones without NPUs take 5 to 10 seconds for CPU inference on a 2B model.</li>
+                    </ul>
+                    <ul class="lang-fr">
+                        <li><strong>Le téléchargement initial de 1,2 Go :</strong> Même ponctuel, un téléchargement de 1,2 Go coûte cher sur des forfaits mobiles prépayés.</li>
+                        <li><strong>Les appareils Android Go de 2 Go à 3 Go de RAM :</strong> Les téléphones d'entrée de gamme sans NPU mettent 5 à 10 secondes par inférence CPU sur un modèle 2B.</li>
                     </ul>
 
                     <div class="callout callout-info">
@@ -1799,15 +1985,18 @@ ${faoContext.isNotEmpty ? '\n\nOFFICIAL FAO/IITA REFERENCE DATA:\n$faoContext' :
                             <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
                         </svg>
                         <div class="callout-body">
-                            <div class="callout-title">Why 150 MB is the Magic Threshold on Android</div>
-                            <p>
+                            <div class="callout-title" data-en="Why 150 MB is the Magic Threshold on Android" data-fr="Pourquoi 150 Mo est le Seuil Magique sur Android">Why 150 MB is the Magic Threshold on Android</div>
+                            <p class="lang-en">
                                 Google Play's base Android App Bundle (AAB) / install-time asset limit is <strong>150 MB</strong>. When you distill your domain-specific Small Language Model (SLM) down to <strong>~134 MB</strong>, you can ship the model <strong>directly inside the Play Store install or share it offline via Nearby Share / Xender</strong> with zero post-install download!
+                            </p>
+                            <p class="lang-fr">
+                                La limite de taille d'un Android App Bundle (AAB) de base sur Google Play est de <strong>150 Mo</strong>. Lorsque vous distillez votre Small Language Model (SLM) métier jusqu'à <strong>~134 Mo</strong>, vous pouvez embarquer le modèle <strong>directement dans l'installation Play Store ou le partager hors-ligne via Nearby Share / Xender</strong> sans aucun téléchargement supplémentaire après l'installation !
                             </p>
                         </div>
                     </div>
 
-                    <h3>How the Math Works: Getting from 1.35 GB to 134 MB</h3>
-                    <ol>
+                    <h3 data-en="How the Math Works: Getting from 1.35 GB to 134 MB" data-fr="Comment fonctionne le calcul : passer de 1,35 Go à 134 Mo">How the Math Works: Getting from 1.35 GB to 134 MB</h3>
+                    <ol class="lang-en">
                         <li>
                             <strong>Teacher &rarr; Student Knowledge Distillation:</strong> A crop-diagnosis assistant does not need to know how to write C++ shaders or summarize European tax law. We use <code>gemma-2-2b-it</code> (or <code>gemma-2-9b-it</code>) as the <strong>Teacher</strong> to transfer its domain reasoning on East African agronomy (FAO/IITA + Swahili/Luganda/English/French) into a compact <strong>240M to 270M parameter Student SLM</strong>.
                         </li>
@@ -1819,10 +2008,25 @@ ${faoContext.isNotEmpty ? '\n\nOFFICIAL FAO/IITA REFERENCE DATA:\n$faoContext' :
                             <code>240M parameters * 0.5 bytes/weight (120 MB) + 14 MB SentencePiece Tokenizer &amp; Flatbuffer metadata = 134 MB (&lt; 150 MB!)</code>.
                         </li>
                     </ol>
+                    <ol class="lang-fr">
+                        <li>
+                            <strong>Distillation de connaissances Teacher &rarr; Student :</strong> Un assistant de diagnostic agricole n'a pas besoin de savoir écrire des shaders C++ ou résumer le droit fiscal européen. Nous utilisons <code>gemma-2-2b-it</code> (ou <code>gemma-2-9b-it</code>) comme <strong>Teacher (Professeur)</strong> pour transférer son raisonnement agronomique est-africain (FAO/IITA + swahili/luganda/anglais/français) vers un <strong>SLM Student compact de 240M à 270M de paramètres</strong>.
+                        </li>
+                        <li>
+                            <strong>Élagage du vocabulaire (256k &rarr; 32k tokens) :</strong> La matrice d'embeddings de 256 000 tokens de Gemma occupe à elle seule ~260 Mo même en INT4 ! Élaguer les alphabets inutilisés pour conserver les <strong>32 000 tokens métier et est-africains</strong> réduit la table d'embeddings de <strong>87,5 %</strong> (à ~16 Mo).
+                        </li>
+                        <li>
+                            <strong>Quantification INT4 par blocs de 32 (<code>dynamic_int4_block32</code>) :</strong>
+                            <code>240M paramètres * 0,5 octet/poids (120 Mo) + 14 Mo de tokenizer SentencePiece &amp; métadonnées Flatbuffer = 134 Mo (&lt; 150 Mo !)</code>.
+                        </li>
+                    </ol>
 
-                    <h3>Prerequisites for Step 8 (Google Colab / Kaggle GPU)</h3>
-                    <p>
+                    <h3 data-en="Prerequisites for Step 8 (Google Colab / Kaggle GPU)" data-fr="Prérequis pour l'Étape 8 (GPU Google Colab / Kaggle)">Prerequisites for Step 8 (Google Colab / Kaggle GPU)</h3>
+                    <p class="lang-en">
                         If you want to run the distillation pipeline yourself, open a free <strong>Google Colab T4 GPU</strong> notebook and install the Google AI Edge and HuggingFace libraries first:
+                    </p>
+                    <p class="lang-fr">
+                        Si vous souhaitez exécuter le pipeline de distillation vous-même, ouvrez un notebook <strong>Google Colab GPU T4</strong> gratuit et installez d'abord les librairies Google AI Edge et HuggingFace :
                     </p>
 
                     <div class="code-window">
@@ -1837,7 +2041,7 @@ ${faoContext.isNotEmpty ? '\n\nOFFICIAL FAO/IITA REFERENCE DATA:\n$faoContext' :
                                 <span class="code-lang-badge">BASH</span>
                             </div>
                             <button class="copy-code-btn">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
                                 Copy
                             </button>
                         </div>
@@ -1845,9 +2049,12 @@ ${faoContext.isNotEmpty ? '\n\nOFFICIAL FAO/IITA REFERENCE DATA:\n$faoContext' :
 huggingface-cli login</code></pre>
                     </div>
 
-                    <h3>Part A: PyTorch Logit Distillation Script (Teacher &rarr; Student)</h3>
-                    <p>
+                    <h3 data-en="Part A: PyTorch Logit Distillation Script (Teacher &rarr; Student)" data-fr="Partie A : Script PyTorch de Distillation des Logits (Teacher &rarr; Student)">Part A: PyTorch Logit Distillation Script (Teacher &rarr; Student)</h3>
+                    <p class="lang-en">
                         Run this Python script on a Colab / Kaggle GPU to distill your Teacher Gemma model into the compact Student checkpoint using combined <strong>Cross-Entropy + Soft-Target KL-Divergence Loss</strong>:
+                    </p>
+                    <p class="lang-fr">
+                        Exécutez ce script Python sur un GPU Colab / Kaggle pour distiller votre modèle Gemma Teacher vers le checkpoint Student compact en combinant la perte <strong>Cross-Entropy + divergence KL sur cibles douces (Soft-Targets)</strong> :
                     </p>
 
                     <div class="code-window">
@@ -1862,7 +2069,7 @@ huggingface-cli login</code></pre>
                                 <span class="code-lang-badge">PYTHON</span>
                             </div>
                             <button class="copy-code-btn">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
                                 Copy
                             </button>
                         </div>
@@ -1940,9 +2147,12 @@ student.save_pretrained("./checkpoints/gemmea-student-merged")
 tokenizer.save_pretrained("./checkpoints/gemmea-student-merged")</code></pre>
                     </div>
 
-                    <h3>Part B: Quantize &amp; Bundle into a <code>134 MB</code> <code>.litertlm</code> File</h3>
-                    <p>
+                    <h3 data-en="Part B: Quantize &amp; Bundle into a &lt;code&gt;134 MB&lt;/code&gt; &lt;code&gt;.litertlm&lt;/code&gt; File" data-fr="Partie B : Quantifier &amp; Empaqueter en un fichier &lt;code&gt;.litertlm&lt;/code&gt; de &lt;code&gt;134 Mo&lt;/code&gt;">Part B: Quantize &amp; Bundle into a <code>134 MB</code> <code>.litertlm</code> File</h3>
+                    <p class="lang-en">
                         Next, convert the distilled PyTorch checkpoint to LiteRT-LM format with <code>dynamic_int4_block32</code> quantization using Google's <code>ai-edge-torch</code> and MediaPipe GenAI bundler:
+                    </p>
+                    <p class="lang-fr">
+                        Ensuite, convertissez le checkpoint PyTorch distillé au format LiteRT-LM avec la quantification <code>dynamic_int4_block32</code> via <code>ai-edge-torch</code> et le bundler MediaPipe GenAI de Google :
                     </p>
 
                     <div class="code-window">
@@ -1957,7 +2167,7 @@ tokenizer.save_pretrained("./checkpoints/gemmea-student-merged")</code></pre>
                                 <span class="code-lang-badge">PYTHON</span>
                             </div>
                             <button class="copy-code-btn">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
                                 Copy
                             </button>
                         </div>
@@ -1996,8 +2206,8 @@ print(f"Success! Final SLM Bundle Size: {size_mb:.1f} MB (&lt; 150 MB target)")
 # Output: Success! Final SLM Bundle Size: 134.2 MB (&lt; 150 MB target)</code></pre>
                     </div>
 
-                    <h3>Part C: Benchmark | Base E2B vs. Distilled 134 MB SLM on 3GB to 4GB Android</h3>
-                    <div class="table-responsive">
+                    <h3 data-en="Part C: Benchmark | Base E2B vs. Distilled 134 MB SLM on 3GB to 4GB Android" data-fr="Partie C : Benchmark | E2B de Base vs SLM Distillé de 134 Mo sur Android 3 Go à 4 Go">Part C: Benchmark | Base E2B vs. Distilled 134 MB SLM on 3GB to 4GB Android</h3>
+                    <div class="table-responsive lang-en">
                         <table class="codelab-table">
                             <thead>
                                 <tr>
@@ -2035,10 +2245,48 @@ print(f"Success! Final SLM Bundle Size: {size_mb:.1f} MB (&lt; 150 MB target)")
                             </tbody>
                         </table>
                     </div>
+                    <div class="table-responsive lang-fr">
+                        <table class="codelab-table">
+                            <thead>
+                                <tr>
+                                    <th>Métrique</th>
+                                    <th>Modèle de base <code>gemma-4-E2B-it</code> (INT4)</th>
+                                    <th>SLM distillé <code>gemmea_agro_134mb.litertlm</code></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Taille du binaire sur disque</strong></td>
+                                    <td>~1 350 Mo</td>
+                                    <td><strong>134,2 Mo (Respecte la limite Play Store de 150 Mo !)</strong></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>RAM maximale à l'exécution</strong></td>
+                                    <td>~1 450 Mo</td>
+                                    <td><strong>~215 Mo (Tourne sur Android Go 2 Go / 3 Go)</strong></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Time-to-First-Token (CPU)</strong></td>
+                                    <td>~1 400 ms</td>
+                                    <td><strong>~180 ms</strong></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Vitesse de génération</strong></td>
+                                    <td>~11 tokens/s</td>
+                                    <td><strong>~46 tokens/s</strong></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Précision RAG FAO/IITA</strong></td>
+                                    <td>96,0 %</td>
+                                    <td><strong>94,5 % (Spécialisé sur le domaine)</strong></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
 
                     <div class="step-pagination">
-                        <button class="nav-step-btn" data-step-target="6">&larr; Previous</button>
-                        <button class="nav-step-btn primary" data-step-target="8">Next: Live Demo &amp; Takeaways &rarr;</button>
+                        <button class="nav-step-btn" data-step-target="6" data-en="&larr; Previous" data-fr="&larr; Précédent">&larr; Previous</button>
+                        <button class="nav-step-btn primary" data-step-target="8" data-en="Next: Live Demo &amp; Takeaways &rarr;" data-fr="Suivant : Démo Live &amp; Points Clés &rarr;">Next: Live Demo &amp; Takeaways &rarr;</button>
                     </div>
                 </article>
 
@@ -2047,13 +2295,18 @@ print(f"Success! Final SLM Bundle Size: {size_mb:.1f} MB (&lt; 150 MB target)")
                      ========================================================= -->
                 <article class="codelab-step" id="step-9" data-duration="2">
                     <div class="step-header">
-                        <div class="step-eyebrow">Step 9 of 9 | Minimal Runnable App &amp; Wrap-Up</div>
-                        <h2 class="step-title">Run the Minimal App &amp; Key Engineering Takeaways</h2>
+                        <div class="step-eyebrow">
+                            <span data-en="Step 9 of 9 | Minimal Runnable App &amp; Wrap-Up" data-fr="Étape 9 sur 9 | Application Exécutable &amp; Conclusion">Step 9 of 9 | Minimal Runnable App &amp; Wrap-Up</span>
+                        </div>
+                        <h2 class="step-title" data-en="Run the Minimal App, Verification &amp; Key Engineering Takeaways" data-fr="Exécuter l'Application, Vérification &amp; Points Clés à Retenir">Run the Minimal App, Verification &amp; Key Engineering Takeaways</h2>
                     </div>
 
-                    <h3>1. Complete File: <code>lib/main.dart</code></h3>
-                    <p>
+                    <h3 data-en="1. Complete File: &lt;code&gt;lib/main.dart&lt;/code&gt;" data-fr="1. Fichier Complet : &lt;code&gt;lib/main.dart&lt;/code&gt;">1. Complete File: <code>lib/main.dart</code></h3>
+                    <p class="lang-en">
                         Once you have saved the 5 files from Steps 4 to 7, replace <code>lib/main.dart</code> with this complete, self-contained UI (Atomic Model Downloader + 512px Camera/Gallery Leaf Scanner + Streaming SQLite FTS5 RAG Chat + Autonomous Calendar Function Calling):
+                    </p>
+                    <p class="lang-fr">
+                        Une fois les 5 fichiers des Étapes 4 à 7 enregistrés, remplacez <code>lib/main.dart</code> par cette interface complète et autonome (Téléchargeur atomique du modèle + Scanner de feuille Caméra/Galerie en 512px + Chat RAG SQLite FTS5 en streaming + Function Calling autonome sur le calendrier) :
                     </p>
 
                     <div class="code-window">
@@ -2068,7 +2321,7 @@ print(f"Success! Final SLM Bundle Size: {size_mb:.1f} MB (&lt; 150 MB target)")
                                 <span class="code-lang-badge">DART</span>
                             </div>
                             <button class="copy-code-btn">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
                                 Copy
                             </button>
                         </div>
@@ -2264,9 +2517,12 @@ class _MinimalGemmeaScreenState extends State&lt;MinimalGemmeaScreen&gt; {
 }</code></pre>
                     </div>
 
-                    <h3>2. Or Clone &amp; Run the Full Production Gemmea Repo</h3>
-                    <p>
-                        Want the full production app with BLoC state management, Swahili/French voice assistant, irrigation calendar, and PDF farm health reports? Clone the repository and run in release mode:
+                    <h3 data-en="2. End-to-End Verification Checklist" data-fr="2. Checklist de vérification finale">2. End-to-End Verification Checklist</h3>
+                    <p class="lang-en">
+                        Run static analysis to verify that all 6 files compile with zero warnings, or clone the full production <strong>Gemmea</strong> repository (with BLoC state management, Swahili/French voice assistant, irrigation calendar, and PDF farm health reports) and run in release mode:
+                    </p>
+                    <p class="lang-fr">
+                        Exécutez l'analyse statique pour vérifier que les 6 fichiers compilent sans aucun avertissement, ou clonez le dépôt de production complet <strong>Gemmea</strong> (avec gestion d'état BLoC, assistant vocal swahili/français, calendrier d'irrigation et rapports PDF) et lancez-le en mode release :
                     </p>
 
                     <div class="code-window">
@@ -2277,29 +2533,55 @@ class _MinimalGemmeaScreenState extends State&lt;MinimalGemmeaScreen&gt; {
                                     <span class="window-dot yellow"></span>
                                     <span class="window-dot green"></span>
                                 </div>
-                                <span class="code-filename">Terminal | Clone &amp; Run Gemmea in Release Mode</span>
+                                <span class="code-filename">Terminal | Verify &amp; Run in Release Mode</span>
                                 <span class="code-lang-badge">BASH</span>
                             </div>
                             <button class="copy-code-btn">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
                                 Copy
                             </button>
                         </div>
-                        <pre><code>git clone https://github.com/glosings0n/gemmea.git
+                        <pre><code># Verify your 6-file codelab project compiles with zero issues:
+flutter analyze
+flutter run --release
+
+# Or clone and run the full production Gemmea repository:
+git clone https://github.com/glosings0n/gemmea.git
 cd gemmea
 flutter pub get
 flutter test
 flutter run --release</code></pre>
                     </div>
 
-                    <h3>The 5 Golden Rules for Offline-First Mobile AI in 2026</h3>
-                    <ol>
+                    <h3 data-en="3. Key Engineering Takeaways" data-fr="3. Points clés à retenir">3. Key Engineering Takeaways</h3>
+                    <ol class="lang-en">
                         <li><strong>Stream Downloads to <code>.tmp</code> &amp; Swap Atomically:</strong> Never buffer large models in Dart's heap or let interrupted mobile downloads leave corrupted files for the native C++ runtime.</li>
                         <li><strong>Serialize Native FFI Access:</strong> Wrap every <code>flutter_gemma</code> call and stream in a mutex lock (<code>GemmaEngineManager</code>) with deadlock timeouts for Hot Reload resilience.</li>
                         <li><strong>Downsample Vision Inputs to <code>512px</code> &amp; Short-Circuit Early:</strong> Resize camera photos before tensor encoding, dispose native image handles immediately, and instruct the VLM to halt in Step 1 if the image is out-of-domain.</li>
                         <li><strong>Choose SQLite FTS5 + BM25 Over Heavy Vector DBs on Budget RAM:</strong> Get sub-2ms factual grounding with <strong>0 MB of extra RAM overhead</strong>.</li>
                         <li><strong>Distill &amp; Quantize to &lt;150 MB:</strong> Combine Teacher-Student logit distillation, vocabulary pruning, and <code>dynamic_int4_block32</code> quantization so your AI ships directly inside your app bundle.</li>
                     </ol>
+                    <ol class="lang-fr">
+                        <li><strong>Streamer les téléchargements vers <code>.tmp</code> &amp; renommer atomiquement :</strong> Ne chargez jamais un modèle entier dans le tas mémoire Dart et ne laissez jamais un téléchargement interrompu exposer un binaire corrompu au moteur C++ natif.</li>
+                        <li><strong>Sérialiser les accès FFI natifs :</strong> Enveloppez chaque appel et flux <code>flutter_gemma</code> dans un verrou mutex (<code>GemmaEngineManager</code>) avec timeout anti-deadlock pour résister aux Hot Reloads.</li>
+                        <li><strong>Réduire les images Vision à <code>512px</code> &amp; court-circuiter tôt :</strong> Redimensionnez les photos avant l'encodage tensoriel, libérez immédiatement les textures natives et ordonnez au VLM de s'arrêter dès l'Étape 1 si l'image est hors-sujet.</li>
+                        <li><strong>Privilégier SQLite FTS5 + BM25 aux bases vectorielles lourdes sur RAM limitée :</strong> Obtenez un ancrage factuel en moins de 2 ms avec <strong>0 Mo de surcharge RAM supplémentaire</strong>.</li>
+                        <li><strong>Distiller &amp; quantifier sous 150 Mo :</strong> Combinez la distillation de logits Teacher-Student, l'élagage du vocabulaire et la quantification <code>dynamic_int4_block32</code> pour embarquer votre IA directement dans l'installation Play Store.</li>
+                    </ol>
+
+                    <h3 data-en="4. Official Documentation &amp; Further Resources" data-fr="4. Ressources officielles &amp; Pour aller plus loin">4. Official Documentation &amp; Further Resources</h3>
+                    <ul class="lang-en">
+                        <li><strong>Gemmea Production Source Code (Public GitHub):</strong> <a href="https://github.com/glosings0n/gemmea" target="_blank" rel="noopener">github.com/glosings0n/gemmea</a></li>
+                        <li><strong>Flutter Gemma Package on pub.dev:</strong> <a href="https://pub.dev/packages/flutter_gemma" target="_blank" rel="noopener">pub.dev/packages/flutter_gemma</a></li>
+                        <li><strong>Google AI Edge &amp; LiteRT-LM Documentation:</strong> <a href="https://ai.google.dev/edge/litert" target="_blank" rel="noopener">ai.google.dev/edge/litert</a></li>
+                        <li><strong>SQLite FTS5 &amp; BM25 Official Specification:</strong> <a href="https://www.sqlite.org/fts5.html" target="_blank" rel="noopener">sqlite.org/fts5.html</a></li>
+                    </ul>
+                    <ul class="lang-fr">
+                        <li><strong>Code source complet de Gemmea (Dépôt GitHub public) :</strong> <a href="https://github.com/glosings0n/gemmea" target="_blank" rel="noopener">github.com/glosings0n/gemmea</a></li>
+                        <li><strong>Package Flutter Gemma sur pub.dev :</strong> <a href="https://pub.dev/packages/flutter_gemma" target="_blank" rel="noopener">pub.dev/packages/flutter_gemma</a></li>
+                        <li><strong>Documentation Google AI Edge &amp; LiteRT-LM :</strong> <a href="https://ai.google.dev/edge/litert" target="_blank" rel="noopener">ai.google.dev/edge/litert</a></li>
+                        <li><strong>Spécification officielle SQLite FTS5 &amp; BM25 :</strong> <a href="https://www.sqlite.org/fts5.html" target="_blank" rel="noopener">sqlite.org/fts5.html</a></li>
+                    </ul>
 
                     <div class="callout callout-info">
                         <svg class="callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -2309,17 +2591,21 @@ flutter run --release</code></pre>
                             <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
                         </svg>
                         <div class="callout-body">
-                            <div class="callout-title">Webale Nnyo / Asante Sana, droidCon Uganda 2026!</div>
-                            <p>
-                                Built by <strong>Georges Byona</strong> (<a href="https://glosings0n.dev" target="_blank" rel="noopener">@glosings0n</a>), Founder @ <span class="losingtek-font"><span class="brand-bold">Losing</span>Tek</span> &amp; Initiator of the <a href="https://flutterfirecamp.dev" target="_blank" rel="noopener">FlutterFire Summer Camp</a>.<br>
+                            <div class="callout-title" data-en="Webale Nnyo / Asante Sana, droidCon Uganda 2026!" data-fr="Webale Nnyo / Asante Sana, droidCon Uganda 2026 !">Webale Nnyo / Asante Sana, droidCon Uganda 2026!</div>
+                            <p class="lang-en">
+                                Built by <strong>Georges Byona</strong> (<a href="https://glosings0n.dev" target="_blank" rel="noopener">@glosings0n</a>), Founder @ <span class="losingtek-font"><span class="brand-bold">Losing</span>Tek</span> &amp; Founder of the <a href="https://flutterfirecamp.dev" target="_blank" rel="noopener" class="ffsc-brand"><span class="brand-bold">FlutterFire Summer</span> <span class="brand-regular">Camp</span></a>.<br>
                                 Star the repo on GitHub: <a href="https://github.com/glosings0n/gemmea" target="_blank" rel="noopener">github.com/glosings0n/gemmea</a>
+                            </p>
+                            <p class="lang-fr">
+                                Conçu par <strong>Georges Byona</strong> (<a href="https://glosings0n.dev" target="_blank" rel="noopener">@glosings0n</a>), Fondateur @ <span class="losingtek-font"><span class="brand-bold">Losing</span>Tek</span> &amp; Fondateur du <a href="https://flutterfirecamp.dev" target="_blank" rel="noopener" class="ffsc-brand"><span class="brand-bold">FlutterFire Summer</span> <span class="brand-regular">Camp</span></a>.<br>
+                                Ajoutez une étoile au dépôt sur GitHub : <a href="https://github.com/glosings0n/gemmea" target="_blank" rel="noopener">github.com/glosings0n/gemmea</a>
                             </p>
                         </div>
                     </div>
 
                     <div class="step-pagination">
-                        <button class="nav-step-btn" data-step-target="7">&larr; Previous</button>
-                        <a href="https://github.com/glosings0n/gemmea" target="_blank" rel="noopener noreferrer" class="nav-step-btn primary">
+                        <button class="nav-step-btn" data-step-target="7" data-en="&larr; Previous" data-fr="&larr; Précédent">&larr; Previous</button>
+                        <a href="https://github.com/glosings0n/gemmea" target="_blank" rel="noopener noreferrer" class="nav-step-btn primary" data-en="Explore Full Repo on GitHub &rarr;" data-fr="Explorer le Dépôt Complet sur GitHub &rarr;">
                             Explore Full Repo on GitHub &rarr;
                         </a>
                     </div>

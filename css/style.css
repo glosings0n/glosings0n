@@ -81,6 +81,21 @@ a[href^="mailto:"] {
     font-weight: 400;
 }
 
+/* FlutterFire Summer Camp Brand Styling: 'FlutterFire Summer' bold (700), 'Camp' regular (400) */
+.ffsc-brand {
+    font-weight: 400;
+}
+
+.ffsc-brand .brand-bold,
+.ffsc-brand strong,
+.ffsc-brand b {
+    font-weight: 700;
+}
+
+.ffsc-brand .brand-regular {
+    font-weight: 400;
+}
+
 /* 2. Base, Typography & Ultra-Thin App-Themed Scrollbars */
 * {
     margin: 0;

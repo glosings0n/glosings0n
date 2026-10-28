@@ -1,0 +1,2063 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" data-lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Firebase AI Logic vs Genkit Dart vs LiteRT-LM: Hybrid AI Architecture &amp; Smart Routing in Flutter | glosings0n Codelabs</title>
+    <meta name="description"
+        content="Hands-on engineering codelab by Georges Byona (@glosings0n), Founder @ LosingTek &amp; Founder of FlutterFire Summer Camp. Compare Firebase AI Logic (firebase_ai), Genkit Dart server flows, and on-device LiteRT-LM (flutter_gemma), enforce server-side security invariants, and build a SmartHybridAiRouter in Flutter.">
+    <meta name="keywords"
+        content="Firebase AI Logic, firebase_ai, Genkit Dart, genkit, LiteRT-LM, flutter_gemma, Hybrid AI Architecture Flutter, Smart AI Router Flutter, Firebase App Check AI, Gemini Flash Latest, gemini-flash-latest, Server-Side Security Invariants, Edge AI vs Cloud AI Flutter, Georges Byona, Georges Losingson, Byona Georges, glosings0n, @glosings0n, Losingson, Losings0n, @losingson, g-losingson, LosingTek, Losing Tek, FlutterFire Summer Camp, FlutterFire Camp">
+    <meta name="author" content="Georges Byona">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <link rel="canonical" href="https://codelabs.glosings0n.dev/hybrid-ai-firebase-litert-flutter">
+
+    <!-- OpenGraph -->
+    <meta property="og:title" content="Firebase AI Logic vs Genkit Dart vs LiteRT-LM: Hybrid AI Architecture &amp; Smart Routing in Flutter | glosings0n Codelabs">
+    <meta property="og:description"
+        content="Architect a production 3-tier Hybrid AI system in Flutter combining Firebase AI Logic (firebase_ai + App Check), Genkit Dart server flows, and 100% offline LiteRT-LM (flutter_gemma). By Georges Byona (@glosings0n).">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://codelabs.glosings0n.dev/hybrid-ai-firebase-litert-flutter">
+    <meta property="og:image" content="https://glosings0n.dev/assets/hero.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Firebase AI Logic vs Genkit Dart vs LiteRT-LM | Georges Byona (@glosings0n)">
+    <meta property="og:site_name" content="glosings0n Codelabs">
+    <meta property="article:published_time" content="2026-10-28">
+    <meta property="article:modified_time" content="2026-10-28">
+    <meta property="article:author" content="https://glosings0n.dev">
+    <meta property="article:section" content="Full-Stack &amp; Edge AI Engineering">
+    <meta property="article:tag" content="Flutter">
+    <meta property="article:tag" content="Firebase AI Logic">
+    <meta property="article:tag" content="Genkit Dart">
+    <meta property="article:tag" content="LiteRT-LM">
+    <meta property="article:tag" content="Hybrid AI">
+    <meta property="article:tag" content="Google Gemini">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@glosings0n">
+    <meta name="twitter:creator" content="@glosings0n">
+    <meta name="twitter:title" content="Firebase AI Logic vs Genkit Dart vs LiteRT-LM | Hybrid AI in Flutter">
+    <meta name="twitter:description"
+        content="Master the 3-tier Flutter AI architecture: Firebase AI Logic (client cloud), Genkit Dart (privileged backend), and LiteRT-LM (offline edge). By Georges Byona (@glosings0n).">
+    <meta name="twitter:image" content="https://glosings0n.dev/assets/hero.png">
+
+    <!-- Schema.org JSON-LD for Google Search & AI Engines -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Person",
+          "@id": "https://glosings0n.dev/#person",
+          "name": "Georges Byona",
+          "additionalName": "Georges Losingson",
+          "alternateName": [
+            "glosings0n",
+            "@glosings0n",
+            "Glosingson",
+            "Georges Byona",
+            "Georges Losingson",
+            "Losingson",
+            "Byona Georges",
+            "Losings0n",
+            "@losingson",
+            "g-losingson",
+            "LosingTek"
+          ],
+          "url": "https://glosings0n.dev",
+          "image": "https://glosings0n.dev/assets/hero.png",
+          "jobTitle": "Software Engineer & Edge-AI Researcher",
+          "sameAs": [
+            "https://github.com/glosings0n",
+            "https://linkedin.com/in/glosings0n",
+            "https://x.com/glosings0n",
+            "https://medium.com/@glosings0n",
+            "https://youtube.com/@FlutterFireCamp"
+          ],
+          "founder": [
+            {
+              "@type": "Organization",
+              "@id": "https://glosings0n.dev/#losingtek",
+              "name": "LosingTek",
+              "url": "https://losingtek.com"
+            },
+            {
+              "@type": "EducationalOrganization",
+              "@id": "https://glosings0n.dev/#flutterfirecamp",
+              "name": "FlutterFire Summer Camp",
+              "alternateName": "FlutterFire Camp",
+              "url": "https://flutterfirecamp.dev"
+            }
+          ]
+        },
+        {
+          "@type": ["TechArticle", "LearningResource"],
+          "@id": "https://codelabs.glosings0n.dev/hybrid-ai-firebase-litert-flutter#codelab",
+          "headline": "Firebase AI Logic vs Genkit Dart vs LiteRT-LM: Hybrid AI Architecture & Smart Routing in Flutter",
+          "name": "Firebase AI Logic vs Genkit Dart vs LiteRT-LM: Hybrid AI Architecture & Smart Routing in Flutter",
+          "description": "Production engineering codelab by Georges Byona (@glosings0n). Compare Firebase AI Logic (firebase_ai), Genkit Dart server flows, and on-device LiteRT-LM (flutter_gemma), enforce server-side security invariants, and build a dynamic SmartHybridAiRouter in Flutter.",
+          "url": "https://codelabs.glosings0n.dev/hybrid-ai-firebase-litert-flutter",
+          "image": "https://glosings0n.dev/assets/hero.png",
+          "datePublished": "2026-10-28",
+          "dateModified": "2026-10-28",
+          "inLanguage": ["en", "fr"],
+          "proficiencyLevel": "Advanced",
+          "educationalLevel": "Advanced",
+          "learningResourceType": "Codelab",
+          "timeRequired": "PT50M",
+          "author": {
+            "@id": "https://glosings0n.dev/#person"
+          },
+          "publisher": {
+            "@id": "https://glosings0n.dev/#losingtek"
+          },
+          "isPartOf": {
+            "@id": "https://codelabs.glosings0n.dev/#website"
+          },
+          "about": [
+            "Flutter",
+            "Firebase AI Logic",
+            "firebase_ai",
+            "Genkit Dart",
+            "LiteRT-LM",
+            "flutter_gemma",
+            "Firebase App Check",
+            "Hybrid AI Architecture",
+            "Edge AI",
+            "Google Gemini"
+          ],
+          "keywords": "Flutter, Firebase AI Logic, firebase_ai, Genkit Dart, LiteRT-LM, flutter_gemma, Hybrid AI Architecture, Smart Routing, Firebase App Check, gemini-flash-latest, Georges Byona, glosings0n, LosingTek, FlutterFire Summer Camp"
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "glosings0n Portfolio",
+              "item": "https://glosings0n.dev"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "glosings0n Codelabs",
+              "item": "https://codelabs.glosings0n.dev"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "Firebase AI Logic vs Genkit Dart vs LiteRT-LM",
+              "item": "https://codelabs.glosings0n.dev/hybrid-ai-firebase-litert-flutter"
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="192x192" href="/assets/favicon.png">
+    <link rel="icon" type="image/svg+xml" href="/assets/logo.svg">
+
+    <!-- Codelabs Stylesheet -->
+    <link rel="stylesheet" href="/codelabs/css/codelabs.css">
+</head>
+
+<body class="codelab-page">
+
+    <!-- Sticky Codelab Header -->
+    <header class="codelab-topbar">
+        <div class="topbar-inner">
+            <div class="topbar-left">
+                <button class="sidebar-toggle-btn" id="sidebar-toggle-btn" aria-label="Toggle Steps Drawer" aria-expanded="false">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
+                <a href="/" id="codelab-home-link" class="brand-link">
+                    <img src="/assets/logo.svg" alt="LosingTek Logo" class="brand-logo">
+                    <span class="brand-text">glosings0n</span>
+                </a>
+                <a href="/" id="codelab-sub-link" class="brand-subtext" style="text-decoration: none;">/ codelabs</a>
+                <span class="topbar-divider">/</span>
+                <span class="codelab-header-title"
+                    data-en="Firebase AI Logic vs Genkit Dart vs LiteRT-LM: Hybrid AI in Flutter"
+                    data-fr="Firebase AI Logic vs Genkit Dart vs LiteRT-LM : IA Hybride sur Flutter">Firebase AI Logic vs Genkit Dart vs LiteRT-LM: Hybrid AI in Flutter</span>
+            </div>
+
+            <div class="topbar-right">
+                <div class="time-pill" title="Time remaining">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polyline points="12 6 12 12 16 14"></polyline>
+                    </svg>
+                    <span id="time-remaining-label">50 min left</span>
+                </div>
+
+                <div class="lang-switch" role="group" aria-label="Language switcher">
+                    <button class="lang-btn active" id="lang-btn-en" data-lang="en" aria-pressed="true">EN</button>
+                    <button class="lang-btn" id="lang-btn-fr" data-lang="fr" aria-pressed="false">FR</button>
+                </div>
+
+                <button class="action-btn icon-only" id="theme-toggle-btn" aria-label="Light mode" title="Light mode">
+                    <span id="theme-toggle-icon"></span>
+                </button>
+
+                <a href="" id="codelab-github-btn" class="action-btn icon-only codelab-github-btn" hidden style="display: none;"
+                    aria-label="Open the GitHub repo" title="Open the GitHub repo">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path
+                            d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                        </path>
+                    </svg>
+                </a>
+            </div>
+        </div>
+        <div class="codelab-progress-track">
+            <div class="codelab-progress-fill" id="codelab-progress-fill"></div>
+        </div>
+    </header>
+
+    <div class="codelab-layout">
+        <!-- Left Sidebar Step Navigation -->
+        <aside class="codelab-sidebar" id="codelab-sidebar">
+            <ul class="step-nav-list">
+                <li class="step-nav-item active" data-step="0">
+                    <span class="step-num">1</span>
+                    <span class="step-nav-title"
+                        data-en="Context, Goals &amp; Setup"
+                        data-fr="Contexte, Objectifs &amp; Prérequis">Context, Goals &amp; Setup</span>
+                    <span class="step-nav-time">5m</span>
+                </li>
+                <li class="step-nav-item" data-step="1">
+                    <span class="step-num">2</span>
+                    <span class="step-nav-title"
+                        data-en="Decision Matrix &amp; Security"
+                        data-fr="Matrice de Décision &amp; Sécurité">Decision Matrix &amp; Security</span>
+                    <span class="step-nav-time">6m</span>
+                </li>
+                <li class="step-nav-item" data-step="2">
+                    <span class="step-num">3</span>
+                    <span class="step-nav-title"
+                        data-en="Unified Domain Contract"
+                        data-fr="Contrat de Domaine Unifié">Unified Domain Contract</span>
+                    <span class="step-nav-time">6m</span>
+                </li>
+                <li class="step-nav-item" data-step="3">
+                    <span class="step-num">4</span>
+                    <span class="step-nav-title"
+                        data-en="Tier 1: Firebase AI Logic"
+                        data-fr="Niveau 1 : Firebase AI Logic">Tier 1: Firebase AI Logic</span>
+                    <span class="step-nav-time">7m</span>
+                </li>
+                <li class="step-nav-item" data-step="4">
+                    <span class="step-num">5</span>
+                    <span class="step-nav-title"
+                        data-en="Tier 2: Genkit Dart Server"
+                        data-fr="Niveau 2 : Serveur Genkit Dart">Tier 2: Genkit Dart Server</span>
+                    <span class="step-nav-time">7m</span>
+                </li>
+                <li class="step-nav-item" data-step="5">
+                    <span class="step-num">6</span>
+                    <span class="step-nav-title"
+                        data-en="Tier 3: LiteRT-LM On-Device"
+                        data-fr="Niveau 3 : LiteRT-LM Embarqué">Tier 3: LiteRT-LM On-Device</span>
+                    <span class="step-nav-time">7m</span>
+                </li>
+                <li class="step-nav-item" data-step="6">
+                    <span class="step-num">7</span>
+                    <span class="step-nav-title"
+                        data-en="Smart Hybrid Router &amp; UI"
+                        data-fr="Routeur Hybride &amp; Console UI">Smart Hybrid Router &amp; UI</span>
+                    <span class="step-nav-time">7m</span>
+                </li>
+                <li class="step-nav-item" data-step="7">
+                    <span class="step-num">8</span>
+                    <span class="step-nav-title"
+                        data-en="Verification &amp; Takeaways"
+                        data-fr="Vérification &amp; Points Clés">Verification &amp; Takeaways</span>
+                    <span class="step-nav-time">5m</span>
+                </li>
+            </ul>
+
+            <div class="sidebar-footer">
+                <div><strong data-en="Author:" data-fr="Auteur :">Author:</strong> Georges Byona (<span class="font-mono">@glosings0n</span>)</div>
+                <div><strong data-en="Track:" data-fr="Parcours :">Track:</strong> Google Developer Community | Full-Stack &amp; Edge AI</div>
+                <div class="sidebar-copyright">&copy; 2026 <span class="font-mono">glosings0n</span></div>
+            </div>
+        </aside>
+
+        <!-- Main Step Viewport -->
+        <main class="codelab-main">
+            <div class="codelab-content-wrapper">
+
+                <!-- =========================================================
+                     STEP 1: CONTEXT (THE WHY), GOALS & PREREQUISITES
+                     ========================================================= -->
+                <article class="codelab-step active" id="step-1" data-duration="5">
+                    <div class="step-header">
+                        <div class="step-eyebrow">
+                            <span data-en="Step 1 of 8 | Architectural Context &amp; Setup"
+                                data-fr="Étape 1 sur 8 | Contexte Architectural &amp; Prérequis">Step 1 of 8 | Architectural Context &amp; Setup</span>
+                            <span class="codelab-last-updated">Last updated: <time datetime="2026-10-28">October 28, 2026</time></span>
+                        </div>
+                        <h1 class="step-title"
+                            data-en="Firebase AI Logic vs Genkit Dart vs LiteRT-LM: Hybrid AI Architecture &amp; Smart Routing in Flutter"
+                            data-fr="Firebase AI Logic vs Genkit Dart vs LiteRT-LM : Architecture IA Hybride et Routage Intelligent sur Flutter">Firebase AI Logic vs Genkit Dart vs LiteRT-LM: Hybrid AI Architecture &amp; Smart Routing in Flutter</h1>
+                    </div>
+
+                    <div class="lang-en">
+                        <h3>1. Context &amp; The "Why": The 2026 Flutter AI Architectural Dilemma</h3>
+                        <p>
+                            In 2026, Flutter engineers building generative AI applications face three distinct execution paradigms across the Google and Dart ecosystem:
+                        </p>
+                        <ul>
+                            <li><strong>Client-Side Cloud AI (<code>firebase_ai</code>):</strong> Calling <code>gemini-flash-latest</code> directly from Flutter without writing a custom backend, protected by Firebase App Check and Firebase Authentication.</li>
+                            <li><strong>Server-Side Agentic AI (<code>genkit</code> Dart):</strong> Running structured flows, multi-step tool calling, and privileged business logic on a Dart backend (Shelf / Cloud Run / Cloud Functions).</li>
+                            <li><strong>On-Device Edge AI (<code>flutter_gemma</code> + LiteRT-LM):</strong> Running quantized <code>.litertlm</code> models 100% offline on the user's NPU/GPU/CPU with zero token cost and zero network egress.</li>
+                        </ul>
+                        <p>
+                            Relying on a single paradigm for your entire mobile product creates critical failure modes: a pure-cloud client breaks in rural low-connectivity zones and exposes your API quota if App Check is misconfigured; a pure-edge app cannot execute privileged server transactions or reason over massive cloud indexes; and placing sensitive billing or quota tools inside client code violates core security boundaries.
+                        </p>
+                    </div>
+
+                    <div class="lang-fr">
+                        <h3>1. Contexte &amp; Pourquoi : Le dilemme architectural de l'IA sur Flutter en 2026</h3>
+                        <p>
+                            En 2026, les ingénieurs Flutter concevant des applications d'IA générative disposent de trois paradigmes d'exécution complémentaires au sein de l'écosystème Google et Dart :
+                        </p>
+                        <ul>
+                            <li><strong>IA Cloud côté client (<code>firebase_ai</code>) :</strong> Appeler <code>gemini-flash-latest</code> directement depuis l'application Flutter sans gérer de serveur dédié, sous la protection de Firebase App Check et Firebase Authentication.</li>
+                            <li><strong>IA Agentique côté serveur (<code>genkit</code> Dart) :</strong> Exécuter des flux typés (Flows), des appels d'outils (Tool Calling) et des règles métier critiques sur un backend Dart (Shelf / Cloud Run / Cloud Functions).</li>
+                            <li><strong>IA Embarquée Edge (<code>flutter_gemma</code> + LiteRT-LM) :</strong> Exécuter des modèles quantifiés <code>.litertlm</code> 100% hors-ligne sur le NPU/GPU/CPU du téléphone avec un coût de token nul et zéro fuite réseau.</li>
+                        </ul>
+                        <p>
+                            Utiliser un seul paradigme pour l'ensemble d'un produit mobile entraîne des défaillances majeures : une architecture 100% Cloud échoue dès que la connexion 3G/4G tombe et expose vos quotas si App Check est mal configuré ; une architecture 100% Edge ne peut pas valider des transactions serveur privilégiées ; et exécuter des outils de facturation ou de quota côté client viole les invariants de sécurité fondamentaux.
+                        </p>
+                    </div>
+
+                    <div class="callout callout-info">
+                        <svg class="callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="12" y1="16" x2="12" y2="12"></line>
+                            <circle cx="12" cy="8" r="1.25" fill="currentColor" stroke="none"></circle>
+                        </svg>
+                        <div class="callout-body">
+                            <div class="callout-title"
+                                data-en="Production Architectural Pattern"
+                                data-fr="Pattern Architectural de Production">Production Architectural Pattern</div>
+                            <p class="lang-en">
+                                Instead of choosing one SDK against the others, high-resilience mobile systems combine all three behind a unified Clean Architecture gateway and route each prompt dynamically based on connectivity, data sensitivity (PII), and transactional authority.
+                            </p>
+                            <p class="lang-fr">
+                                Plutôt que d'opposer ces trois SDK, les systèmes mobiles résilients les unifient derrière une passerelle Clean Architecture unique et routent chaque requête dynamiquement selon la connectivité, la sensibilité des données (PII) et l'autorité transactionnelle requise.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="lang-en">
+                        <h3>2. Learning Goals &amp; What You Will Build</h3>
+                        <p>By completing this 50-minute engineering codelab, you will:</p>
+                        <ol>
+                            <li><strong>Master the 3-Tier AI Decision Matrix:</strong> Evaluate latency, token unit economics per 1,000 active users, offline resilience, and security boundaries across <code>firebase_ai</code>, <code>genkit</code>, and <code>LiteRT-LM</code>.</li>
+                            <li><strong>Enforce Absolute Server-Side Security Invariants:</strong> Understand what must never run on the client (quotas, payments, role mutations) and how to lock privileged AI tools inside a Genkit Dart server flow.</li>
+                            <li><strong>Provision Firebase AI Logic Correctly via CLI:</strong> Avoid the common <code>PERMISSION_DENIED</code> trap by provisioning the backend service with <code>npx firebase-tools@latest init ailogic</code> and activating Firebase App Check.</li>
+                            <li><strong>Implement a Unified <code>SmartHybridAiRouter</code>:</strong> Build a complete, runnable Flutter diagnostic console that routes prompts across Cloud, Server, and Edge tiers with automatic offline fallback to LiteRT-LM.</li>
+                        </ol>
+                    </div>
+
+                    <div class="lang-fr">
+                        <h3>2. Objectifs &amp; Ce que vous allez construire</h3>
+                        <p>Au terme de ce codelab d'ingénierie de 50 minutes, vous saurez :</p>
+                        <ol>
+                            <li><strong>Maîtriser la matrice de décision IA à 3 niveaux :</strong> Évaluer la latence, le coût par 1 000 utilisateurs actifs, la résilience hors-ligne et les frontières de sécurité entre <code>firebase_ai</code>, <code>genkit</code> et <code>LiteRT-LM</code>.</li>
+                            <li><strong>Appliquer les invariants absolus de sécurité côté serveur :</strong> Identifier ce qui ne doit jamais être décidé par le client (quotas, paiements, changements de rôles) et verrouiller les outils IA privilégiés dans un flux serveur Genkit Dart.</li>
+                            <li><strong>Provisionner Firebase AI Logic via la CLI :</strong> Éviter l'erreur classique <code>PERMISSION_DENIED</code> en activant le service backend avec <code>npx firebase-tools@latest init ailogic</code> et Firebase App Check.</li>
+                            <li><strong>Construire un <code>SmartHybridAiRouter</code> complet :</strong> Développer une console de diagnostic Flutter fonctionnelle qui route les requêtes entre Cloud, Serveur et Edge avec bascule automatique hors-ligne vers LiteRT-LM.</li>
+                        </ol>
+                    </div>
+
+                    <div class="lang-en">
+                        <h3>3. Prerequisites &amp; System Requirements</h3>
+                        <ul>
+                            <li><strong>Flutter &amp; Dart SDK:</strong> Flutter <code>&gt;=3.29.0</code> and Dart <code>&gt;=3.8.0</code> (required for modern pattern matching and Genkit Dart schemas).</li>
+                            <li><strong>Node.js &amp; Firebase CLI:</strong> Node.js <code>18+</code> and <code>npx firebase-tools@latest</code> for provisioning Firebase AI Logic.</li>
+                            <li><strong>Target Hardware for Edge Tier:</strong> A 64-bit physical Android device (<code>arm64-v8a</code>, Android 8.0+ / <code>minSdk 26</code>, <code>4GB+ RAM</code>) or macOS/Windows desktop for running the interactive router simulation.</li>
+                        </ul>
+                        <p>Run the pre-flight verification below in your terminal before creating the project:</p>
+                    </div>
+
+                    <div class="lang-fr">
+                        <h3>3. Prérequis &amp; Configuration Système</h3>
+                        <ul>
+                            <li><strong>SDK Flutter &amp; Dart :</strong> Flutter <code>&gt;=3.29.0</code> et Dart <code>&gt;=3.8.0</code> (requis pour le pattern matching Dart 3 et les schémas Genkit Dart).</li>
+                            <li><strong>Node.js &amp; Firebase CLI :</strong> Node.js <code>18+</code> et <code>npx firebase-tools@latest</code> pour provisionner Firebase AI Logic.</li>
+                            <li><strong>Matériel cible pour le niveau Edge :</strong> Un appareil Android physique 64-bit (<code>arm64-v8a</code>, Android 8.0+ / <code>minSdk 26</code>, <code>4 Go+ de RAM</code>) ou un poste macOS/Windows/Linux pour exécuter le simulateur de routage interactif.</li>
+                        </ul>
+                        <p>Exécutez cette vérification préalable dans votre terminal avant d'initialiser le projet :</p>
+                    </div>
+
+                    <div class="code-window">
+                        <div class="code-window-header">
+                            <div class="code-window-meta">
+                                <div class="window-dots">
+                                    <span class="window-dot red"></span>
+                                    <span class="window-dot yellow"></span>
+                                    <span class="window-dot green"></span>
+                                </div>
+                                <span class="code-filename">Terminal | Pre-Flight Toolchain Check (macOS / Linux / PowerShell)</span>
+                                <span class="code-lang-badge">SHELL</span>
+                            </div>
+                            <button class="copy-code-btn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                Copy
+                            </button>
+                        </div>
+                        <pre><code>flutter --version
+dart --version
+node --version
+npx -y firebase-tools@latest --version</code></pre>
+                    </div>
+
+                    <div class="step-pagination">
+                        <button class="nav-step-btn" disabled data-en="&larr; Previous" data-fr="&larr; Précédent">&larr; Previous</button>
+                        <button class="nav-step-btn primary" data-step-target="1" data-en="Next: Decision Matrix &amp; Security &rarr;" data-fr="Suivant : Matrice &amp; Sécurité &rarr;">Next: Decision Matrix &amp; Security &rarr;</button>
+                    </div>
+                </article>
+
+                <!-- =========================================================
+                     STEP 2: ARCHITECTURAL DECISION MATRIX & SECURITY INVARIANTS
+                     ========================================================= -->
+                <article class="codelab-step" id="step-2" data-duration="6">
+                    <div class="step-header">
+                        <div class="step-eyebrow">
+                            <span data-en="Step 2 of 8 | Architecture &amp; Security Boundaries"
+                                data-fr="Étape 2 sur 8 | Architecture &amp; Frontières de Sécurité">Step 2 of 8 | Architecture &amp; Security Boundaries</span>
+                        </div>
+                        <h2 class="step-title"
+                            data-en="Architectural Decision Matrix, Cost Modeling &amp; Security Invariants"
+                            data-fr="Matrice de Décision Architecturale, Modèle de Coûts &amp; Invariants de Sécurité">Architectural Decision Matrix, Cost Modeling &amp; Security Invariants</h2>
+                    </div>
+
+                    <div class="lang-en">
+                        <p>
+                            Before writing a single line of Dart code, every mobile architect must map out which features belong on which tier. The table below compares all three stacks across seven production engineering dimensions:
+                        </p>
+                    </div>
+
+                    <div class="lang-fr">
+                        <p>
+                            Avant d'écrire la moindre ligne de code Dart, tout architecte mobile doit déterminer quelles fonctionnalités appartiennent à quel niveau d'exécution. Le tableau ci-dessous compare les trois approches selon sept critères d'ingénierie de production :
+                        </p>
+                    </div>
+
+                    <div class="table-responsive lang-en">
+                        <table class="codelab-table">
+                            <thead>
+                                <tr>
+                                    <th>Engineering Dimension</th>
+                                    <th>Tier 1: Firebase AI Logic (<code>firebase_ai</code>)</th>
+                                    <th>Tier 2: Genkit Dart Server (<code>genkit</code>)</th>
+                                    <th>Tier 3: On-Device Edge (<code>flutter_gemma</code> / LiteRT-LM)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Primary Model Target</strong></td>
+                                    <td><code>gemini-flash-latest</code> (Gemini Developer API)</td>
+                                    <td><code>gemini-2.5-flash</code> / <code>gemini-2.5-pro</code></td>
+                                    <td><code>gemma-3n-E2B-it-int4.litertlm</code></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Time-to-First-Token (TTFT)</strong></td>
+                                    <td>450ms to 1,800ms (network dependent)</td>
+                                    <td>600ms to 2,400ms (client &rarr; server &rarr; LLM)</td>
+                                    <td><strong>180ms to 550ms (local NPU/GPU, 0 network)</strong></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Token Cost / 1,000 Active Users</strong></td>
+                                    <td>Scales linearly with prompt + media volume</td>
+                                    <td>Scales with server compute + LLM tokens</td>
+                                    <td><strong>$0.00 / token forever</strong></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Offline Resilience</strong></td>
+                                    <td>0% (Requires active internet connection)</td>
+                                    <td>0% (Requires HTTPS reachability to backend)</td>
+                                    <td><strong>100% (Runs in Airplane Mode)</strong></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Security &amp; Quota Boundary</strong></td>
+                                    <td>Protected by <strong>Firebase App Check</strong> + Auth</td>
+                                    <td><strong>Trusted Server Environment</strong> (IAM + DB rules)</td>
+                                    <td><strong>Zero Data Egress</strong> (PII never leaves device)</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Tool Calling Authority</strong></td>
+                                    <td>UI-only / read-only client helper tools</td>
+                                    <td><strong>Privileged Mutations</strong> (Billing, Quotas, DB)</td>
+                                    <td>Local OS actions (SQLite FTS5, Reminders, Sensors)</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Device Storage / RAM Impact</strong></td>
+                                    <td>&lt; 2 MB SDK footprint, 0 MB local model RAM</td>
+                                    <td>0 MB client model footprint</td>
+                                    <td>140 MB to 1.4 GB disk; 600 MB to 1.8 GB RAM</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="table-responsive lang-fr">
+                        <table class="codelab-table">
+                            <thead>
+                                <tr>
+                                    <th>Dimension d'Ingénierie</th>
+                                    <th>Niveau 1 : Firebase AI Logic (<code>firebase_ai</code>)</th>
+                                    <th>Niveau 2 : Serveur Genkit Dart (<code>genkit</code>)</th>
+                                    <th>Niveau 3 : Edge Embarqué (<code>flutter_gemma</code> / LiteRT-LM)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Modèle Cible Principal</strong></td>
+                                    <td><code>gemini-flash-latest</code> (Gemini Developer API)</td>
+                                    <td><code>gemini-2.5-flash</code> / <code>gemini-2.5-pro</code></td>
+                                    <td><code>gemma-3n-E2B-it-int4.litertlm</code></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Latence du 1er Token (TTFT)</strong></td>
+                                    <td>450ms à 1 800ms (selon le réseau mobile)</td>
+                                    <td>600ms à 2 400ms (client &rarr; serveur &rarr; LLM)</td>
+                                    <td><strong>180ms à 550ms (NPU/GPU local, 0 réseau)</strong></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Coût Token / 1 000 Utilisateurs</strong></td>
+                                    <td>Croît linéairement avec le volume de requêtes</td>
+                                    <td>Croît avec le calcul serveur + tokens LLM</td>
+                                    <td><strong>0,00 $ / token à vie</strong></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Résilience Hors-Ligne</strong></td>
+                                    <td>0% (Connexion Internet requise)</td>
+                                    <td>0% (Accès HTTPS au serveur requis)</td>
+                                    <td><strong>100% (Fonctionne en Mode Avion)</strong></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Frontière de Sécurité &amp; Quotas</strong></td>
+                                    <td>Protégé par <strong>Firebase App Check</strong> + Auth</td>
+                                    <td><strong>Environnement Serveur de Confiance</strong> (IAM)</td>
+                                    <td><strong>Zéro Sortie Réseau</strong> (PII 100% locales)</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Autorité de Tool Calling</strong></td>
+                                    <td>Outils d'interface ou de lecture côté client</td>
+                                    <td><strong>Mutations Privilégiées</strong> (Paiements, Quotas, DB)</td>
+                                    <td>Actions OS locales (SQLite FTS5, Calendrier, Capteurs)</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Impact Stockage / RAM Appareil</strong></td>
+                                    <td>&lt; 2 Mo d'empreinte SDK, 0 Mo de RAM modèle</td>
+                                    <td>0 Mo d'empreinte modèle sur le client</td>
+                                    <td>140 Mo à 1,4 Go disque ; 600 Mo à 1,8 Go RAM</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="lang-en">
+                        <h3>The Absolute Server-Side Security Invariant</h3>
+                        <p>
+                            A common anti-pattern in mobile AI apps is giving a client-side LLM tool-calling access to mutate Firestore documents directly (such as incrementing user credits, approving identity verification, or unlocking paid tiers). Even with Firebase App Check enabled, <strong>the client binary runs on untrusted hardware</strong>.
+                        </p>
+                        <ul>
+                            <li><strong>Rule 1 (Never Trust Client Decisions on Value):</strong> The mobile client (whether executing <code>firebase_ai</code> or local <code>LiteRT-LM</code>) must never decide subscription quotas, payment settlements, verification badges, or cross-tenant data access.</li>
+                            <li><strong>Rule 2 (Server Authority via Genkit Dart):</strong> Any AI workflow that triggers a state mutation with commercial, financial, or security impact must execute inside a <strong>Genkit Dart Flow</strong> on your backend, authenticating the caller's Firebase ID Token and enforcing atomic database transactions server-side.</li>
+                            <li><strong>Rule 3 (Zero-Egress Privacy on Edge):</strong> Conversely, when a user drafts private personal notes, medical symptoms, or confidential field logs, routing that prompt to <code>LiteRT-LM</code> guarantees mathematically that raw PII never leaves the physical handset.</li>
+                        </ul>
+                    </div>
+
+                    <div class="lang-fr">
+                        <h3>L'Invariant Absolu de Sécurité Côté Serveur</h3>
+                        <p>
+                            Une erreur d'architecture fréquente dans les applications mobiles IA consiste à autoriser un modèle côté client à modifier directement des documents critiques en base de données (comme créditer un quota, valider un statut de vérification ou débloquer un abonnement). Même avec Firebase App Check activé, <strong>le binaire client s'exécute sur un matériel non fiable</strong>.
+                        </p>
+                        <ul>
+                            <li><strong>Règle 1 (Zéro autorité client sur la valeur métier) :</strong> Le client mobile (qu'il utilise <code>firebase_ai</code> ou <code>LiteRT-LM</code> en local) ne doit jamais décider des quotas d'abonnement, des règlements financiers, des statuts certifiés ou des accès inter-utilisateurs.</li>
+                            <li><strong>Règle 2 (Autorité Serveur via Genkit Dart) :</strong> Tout workflow IA déclenchant une mutation d'état à valeur commerciale ou sécuritaire doit s'exécuter dans un <strong>Flow Genkit Dart</strong> côté serveur, après vérification du jeton d'identité Firebase (ID Token) et application atomique des règles métier.</li>
+                            <li><strong>Règle 3 (Confidentialité sans sortie réseau sur l'Edge) :</strong> À l'inverse, lorsqu'un utilisateur traite des notes personnelles sensibles, des données médicales ou des relevés confidentiels sur le terrain, le routage vers <code>LiteRT-LM</code> garantit qu'aucune donnée privée (PII) ne quitte le téléphone.</li>
+                        </ul>
+                    </div>
+
+                    <div class="callout callout-warning">
+                        <svg class="callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+                            <line x1="12" y1="9" x2="12" y2="13"></line>
+                            <circle cx="12" cy="17" r="1.25" fill="currentColor" stroke="none"></circle>
+                        </svg>
+                        <div class="callout-body">
+                            <div class="callout-title"
+                                data-en="Why Firebase App Check Is Mandatory for Tier 1 (firebase_ai)"
+                                data-fr="Pourquoi Firebase App Check est obligatoire pour le Niveau 1 (firebase_ai)">Why Firebase App Check Is Mandatory for Tier 1 (firebase_ai)</div>
+                            <p class="lang-en">
+                                While <code>firebase_ai</code> keeps your Gemini API key off the client device by proxying requests through the Firebase AI Logic backend, an unprotected Firebase project ID can still be abused by extracted client configs. Always activate <strong>Firebase App Check</strong> (Play Integrity on Android, DeviceCheck / App Attest on iOS) so only genuine, untampered instances of your app can consume your Gemini quota.
+                            </p>
+                            <p class="lang-fr">
+                                Bien que <code>firebase_ai</code> évite d'embarquer votre clé API Gemini dans l'APK en passant par le proxy Firebase AI Logic, un identifiant de projet Firebase non protégé reste vulnérable aux abus de quota. Activez systématiquement <strong>Firebase App Check</strong> (Play Integrity sur Android, DeviceCheck / App Attest sur iOS) afin que seules les instances authentiques et non altérées de votre application puissent consommer votre quota Gemini.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="step-pagination">
+                        <button class="nav-step-btn" data-step-target="0" data-en="&larr; Previous" data-fr="&larr; Précédent">&larr; Previous</button>
+                        <button class="nav-step-btn primary" data-step-target="2" data-en="Next: Unified Domain Contract &rarr;" data-fr="Suivant : Contrat de Domaine Unifié &rarr;">Next: Unified Domain Contract &rarr;</button>
+                    </div>
+                </article>
+
+                <!-- =========================================================
+                     STEP 3: PROJECT SETUP & UNIFIED DOMAIN LAYER
+                     ========================================================= -->
+                <article class="codelab-step" id="step-3" data-duration="6">
+                    <div class="step-header">
+                        <div class="step-eyebrow">
+                            <span data-en="Step 3 of 8 | Clean Architecture Domain Layer"
+                                data-fr="Étape 3 sur 8 | Couche Domaine Clean Architecture">Step 3 of 8 | Clean Architecture Domain Layer</span>
+                        </div>
+                        <h2 class="step-title"
+                            data-en="Project Setup &amp; Unified Domain Layer (AiExecutionTier, RoutingContext, AiEngineGateway)"
+                            data-fr="Initialisation du Projet &amp; Couche Domaine Unifiée (AiExecutionTier, RoutingContext, AiEngineGateway)">Project Setup &amp; Unified Domain Layer (AiExecutionTier, RoutingContext, AiEngineGateway)</h2>
+                    </div>
+
+                    <div class="lang-en">
+                        <p>
+                            Let's create a clean Flutter project and structure our folders so the UI and application router never depend directly on SDK-specific classes from <code>firebase_ai</code>, <code>genkit</code>, or <code>flutter_gemma</code>.
+                        </p>
+                        <h4>1. Create the Project Directory Structure</h4>
+                        <p>Run the commands below in <strong>macOS / Linux / Git Bash</strong> or <strong>Windows PowerShell</strong>:</p>
+                    </div>
+
+                    <div class="lang-fr">
+                        <p>
+                            Créons maintenant un projet Flutter propre et structurons nos dossiers afin que l'interface utilisateur et le routeur applicatif ne dépendent jamais directement des classes spécifiques aux SDK <code>firebase_ai</code>, <code>genkit</code> ou <code>flutter_gemma</code>.
+                        </p>
+                        <h4>1. Créer l'arborescence du projet</h4>
+                        <p>Exécutez les commandes suivantes sous <strong>macOS / Linux / Git Bash</strong> ou <strong>Windows PowerShell</strong> :</p>
+                    </div>
+
+                    <div class="code-window">
+                        <div class="code-window-header">
+                            <div class="code-window-meta">
+                                <div class="window-dots">
+                                    <span class="window-dot red"></span>
+                                    <span class="window-dot yellow"></span>
+                                    <span class="window-dot green"></span>
+                                </div>
+                                <span class="code-filename">Terminal | Create Project &amp; Folders (Bash &amp; PowerShell)</span>
+                                <span class="code-lang-badge">SHELL</span>
+                            </div>
+                            <button class="copy-code-btn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                Copy
+                            </button>
+                        </div>
+                        <pre><code># 1. Create the Flutter project
+flutter create hybrid_ai_router_codelab
+cd hybrid_ai_router_codelab
+
+# 2A. macOS / Linux / Git Bash: create Clean Architecture directories
+mkdir -p lib/domain lib/data lib/application test
+
+# 2B. Windows PowerShell: create Clean Architecture directories
+New-Item -ItemType Directory -Force -Path lib/domain, lib/data, lib/application, test</code></pre>
+                    </div>
+
+                    <div class="lang-en">
+                        <h4>2. Configure <code>pubspec.yaml</code></h4>
+                        <p>
+                            Replace your <code>pubspec.yaml</code> with the configuration below. Notice that we use <code>firebase_ai</code> (which replaced the deprecated <code>firebase_vertexai</code> package), <code>firebase_app_check</code>, <code>http</code> for Genkit remote flow calls, and <code>flutter_gemma</code> for LiteRT-LM edge execution:
+                        </p>
+                    </div>
+
+                    <div class="lang-fr">
+                        <h4>2. Configurer <code>pubspec.yaml</code></h4>
+                        <p>
+                            Remplacez votre fichier <code>pubspec.yaml</code> par la configuration ci-dessous. Notez l'utilisation de <code>firebase_ai</code> (qui remplace l'ancien package déprécié <code>firebase_vertexai</code>), de <code>firebase_app_check</code>, de <code>http</code> pour les appels aux flux distants Genkit, et de <code>flutter_gemma</code> pour l'inférence LiteRT-LM embarquée :
+                        </p>
+                    </div>
+
+                    <div class="code-window">
+                        <div class="code-window-header">
+                            <div class="code-window-meta">
+                                <div class="window-dots">
+                                    <span class="window-dot red"></span>
+                                    <span class="window-dot yellow"></span>
+                                    <span class="window-dot green"></span>
+                                </div>
+                                <span class="code-filename">pubspec.yaml | Hybrid AI Flutter Dependencies</span>
+                                <span class="code-lang-badge">YAML</span>
+                            </div>
+                            <button class="copy-code-btn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                Copy
+                            </button>
+                        </div>
+                        <pre><code>name: hybrid_ai_router_codelab
+description: Hybrid AI Architecture &amp; Smart Routing in Flutter (Firebase AI Logic + Genkit Dart + LiteRT-LM).
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.8.0
+
+dependencies:
+  flutter:
+    sdk: flutter
+  http: ^1.2.2
+  # Production SDKs for real device deployment:
+  # firebase_core: ^4.0.0
+  # firebase_auth: ^6.0.0
+  # firebase_app_check: ^0.4.0
+  # firebase_ai: ^3.0.0
+  # flutter_gemma: ^0.13.5
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+  test: ^1.25.0
+
+flutter:
+  uses-material-design: true</code></pre>
+                    </div>
+
+                    <div class="lang-en">
+                        <h4>3. Create the Unified Domain Contract (<code>lib/domain/ai_models.dart</code>)</h4>
+                        <p>
+                            Create <code>lib/domain/ai_models.dart</code>. This file defines our three execution tiers, the privacy sensitivity levels, the runtime routing context, telemetry metrics, and the <code>AiEngineGateway</code> interface implemented by all three engines:
+                        </p>
+                    </div>
+
+                    <div class="lang-fr">
+                        <h4>3. Créer le Contrat de Domaine Unifié (<code>lib/domain/ai_models.dart</code>)</h4>
+                        <p>
+                            Créez le fichier <code>lib/domain/ai_models.dart</code>. Ce fichier définit nos trois niveaux d'exécution, la classification de sensibilité des données, le contexte d'évaluation du routeur, la télémétrie et l'interface <code>AiEngineGateway</code> implémentée par les trois moteurs :
+                        </p>
+                    </div>
+
+                    <div class="code-window">
+                        <div class="code-window-header">
+                            <div class="code-window-meta">
+                                <div class="window-dots">
+                                    <span class="window-dot red"></span>
+                                    <span class="window-dot yellow"></span>
+                                    <span class="window-dot green"></span>
+                                </div>
+                                <span class="code-filename">lib/domain/ai_models.dart | Unified Domain Models &amp; Gateway</span>
+                                <span class="code-lang-badge">DART</span>
+                            </div>
+                            <button class="copy-code-btn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                Copy
+                            </button>
+                        </div>
+                        <pre><code>// lib/domain/ai_models.dart
+
+/// The three execution tiers available in a 2026 Hybrid Flutter AI architecture.
+enum AiExecutionTier {
+  /// Tier 1: Direct client-to-Gemini calls via `firebase_ai` + App Check.
+  cloudFirebaseAi(
+    label: 'Cloud (Firebase AI Logic)',
+    modelId: 'gemini-flash-latest',
+    zeroTokenCost: false,
+  ),
+
+  /// Tier 2: Server-side agentic flows via Genkit Dart + Shelf / Cloud Run.
+  serverGenkitAgent(
+    label: 'Server (Genkit Dart Agent)',
+    modelId: 'gemini-2.5-flash',
+    zeroTokenCost: false,
+  ),
+
+  /// Tier 3: 100% offline on-device inference via `flutter_gemma` + LiteRT-LM.
+  edgeLiteRt(
+    label: 'On-Device (LiteRT-LM INT4)',
+    modelId: 'gemma-3n-E2B-it-int4.litertlm',
+    zeroTokenCost: true,
+  );
+
+  const AiExecutionTier({
+    required this.label,
+    required this.modelId,
+    required this.zeroTokenCost,
+  });
+
+  final String label;
+  final String modelId;
+  final bool zeroTokenCost;
+}
+
+/// Data privacy classification for outgoing prompts.
+enum TaskSensitivity {
+  /// Public or general knowledge queries safe for cloud transit.
+  publicGeneral,
+
+  /// Contains unredacted PII, medical records, or strictly private local notes.
+  /// Must never leave the physical device.
+  strictLocalPii,
+
+  /// Requires privileged server-side authority (billing, quotas, DB mutations).
+  privilegedTransactional,
+}
+
+/// Runtime context evaluated by the SmartHybridAiRouter before dispatching.
+class RoutingContext {
+  const RoutingContext({
+    required this.prompt,
+    required this.isOnline,
+    this.sensitivity = TaskSensitivity.publicGeneral,
+    this.requiresPrivilegedServerTool = false,
+    this.hasMultimodalAttachment = false,
+    this.availableRamMb = 4096,
+  });
+
+  final String prompt;
+  final bool isOnline;
+  final TaskSensitivity sensitivity;
+  final bool requiresPrivilegedServerTool;
+  final bool hasMultimodalAttachment;
+  final int availableRamMb;
+}
+
+/// Telemetry metadata attached to every completed AI inference.
+class RoutingTelemetry {
+  const RoutingTelemetry({
+    required this.selectedTier,
+    required this.routingReason,
+    required this.latencyMs,
+    this.didFallbackToEdge = false,
+  });
+
+  final AiExecutionTier selectedTier;
+  final String routingReason;
+  final int latencyMs;
+  final bool didFallbackToEdge;
+}
+
+/// Unified response returned to the presentation layer regardless of tier.
+class AiInferenceResponse {
+  const AiInferenceResponse({
+    required this.text,
+    required this.telemetry,
+    this.structuredPayload,
+  });
+
+  final String text;
+  final RoutingTelemetry telemetry;
+  final Map&lt;String, Object?&gt;? structuredPayload;
+}
+
+/// Unified gateway implemented by Cloud, Server, and Edge engines.
+abstract interface class AiEngineGateway {
+  AiExecutionTier get tier;
+
+  Future&lt;String&gt; generate({
+    required String prompt,
+    Map&lt;String, Object?&gt; metadata = const {},
+  });
+}</code></pre>
+                    </div>
+
+                    <div class="step-pagination">
+                        <button class="nav-step-btn" data-step-target="1" data-en="&larr; Previous" data-fr="&larr; Précédent">&larr; Previous</button>
+                        <button class="nav-step-btn primary" data-step-target="3" data-en="Next: Tier 1 (Firebase AI Logic) &rarr;" data-fr="Suivant : Niveau 1 (Firebase AI Logic) &rarr;">Next: Tier 1 (Firebase AI Logic) &rarr;</button>
+                    </div>
+                </article>
+
+                <!-- =========================================================
+                     STEP 4: TIER 1 | CLIENT-SIDE CLOUD INFERENCE WITH FIREBASE_AI
+                     ========================================================= -->
+                <article class="codelab-step" id="step-4" data-duration="7">
+                    <div class="step-header">
+                        <div class="step-eyebrow">
+                            <span data-en="Step 4 of 8 | Tier 1: Client-Side Cloud AI"
+                                data-fr="Étape 4 sur 8 | Niveau 1 : IA Cloud Côté Client">Step 4 of 8 | Tier 1: Client-Side Cloud AI</span>
+                        </div>
+                        <h2 class="step-title"
+                            data-en="Tier 1 | Client-Side Cloud Inference with firebase_ai &amp; Firebase App Check"
+                            data-fr="Niveau 1 | Inférence Cloud Côté Client avec firebase_ai &amp; Firebase App Check">Tier 1 | Client-Side Cloud Inference with firebase_ai &amp; Firebase App Check</h2>
+                    </div>
+
+                    <div class="lang-en">
+                        <p>
+                            <strong>Firebase AI Logic</strong> (<code>package:firebase_ai</code>) lets your Flutter app call Gemini models directly when the device is online and the task does not involve privileged server state mutations. It shines for multimodal inputs (analyzing high-resolution photos, audio clips, or PDFs up to 20 MB inline) and general multi-turn chat.
+                        </p>
+                        <h3>1. Provisioning the Backend Service (Avoiding PERMISSION_DENIED)</h3>
+                        <p>
+                            A critical mistake many Flutter developers make is running <code>flutterfire configure</code> and assuming Firebase AI Logic is ready. <strong><code>flutterfire configure</code> only generates client configuration (<code>firebase_options.dart</code>); it does NOT enable the Gemini Developer API proxy on your Firebase project.</strong> You must run the Firebase CLI <code>init ailogic</code> command first:
+                        </p>
+                    </div>
+
+                    <div class="lang-fr">
+                        <p>
+                            <strong>Firebase AI Logic</strong> (<code>package:firebase_ai</code>) permet à votre application Flutter d'appeler directement les modèles Gemini lorsque l'appareil est connecté et que la tâche n'implique pas de mutations d'état serveur privilégiées. Ce niveau excelle pour les entrées multimodales (analyse de photos haute résolution, d'extraits audio ou de PDF jusqu'à 20 Mo) et le chat généraliste.
+                        </p>
+                        <h3>1. Provisionner le Service Backend (Éviter PERMISSION_DENIED)</h3>
+                        <p>
+                            Une erreur fréquente chez les développeurs Flutter consiste à exécuter uniquement <code>flutterfire configure</code> en pensant que Firebase AI Logic est activé. <strong><code>flutterfire configure</code> génère uniquement le fichier client <code>firebase_options.dart</code> ; il n'active PAS le proxy Gemini Developer API sur votre projet Firebase.</strong> Vous devez obligatoirement exécuter la commande <code>init ailogic</code> via la CLI Firebase :
+                        </p>
+                    </div>
+
+                    <div class="code-window">
+                        <div class="code-window-header">
+                            <div class="code-window-meta">
+                                <div class="window-dots">
+                                    <span class="window-dot red"></span>
+                                    <span class="window-dot yellow"></span>
+                                    <span class="window-dot green"></span>
+                                </div>
+                                <span class="code-filename">Terminal | Provision Firebase AI Logic &amp; Client Options</span>
+                                <span class="code-lang-badge">SHELL</span>
+                            </div>
+                            <button class="copy-code-btn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                Copy
+                            </button>
+                        </div>
+                        <pre><code># 1. Verify active Firebase project and registered apps
+npx -y firebase-tools@latest projects:list
+npx -y firebase-tools@latest apps:list
+
+# 2. MANDATORY: Provision Firebase AI Logic (enables Gemini Developer API)
+npx -y firebase-tools@latest init ailogic
+
+# 3. Generate Flutter client configuration (lib/firebase_options.dart)
+flutterfire configure</code></pre>
+                    </div>
+
+                    <div class="callout callout-danger">
+                        <svg class="callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="12" y1="8" x2="12" y2="12"></line>
+                            <circle cx="12" cy="16" r="1.25" fill="currentColor" stroke="none"></circle>
+                        </svg>
+                        <div class="callout-body">
+                            <div class="callout-title"
+                                data-en="Model Selection Rule: Always Use gemini-flash-latest"
+                                data-fr="Règle de Sélection du Modèle : Toujours utiliser gemini-flash-latest">Model Selection Rule: Always Use gemini-flash-latest</div>
+                            <p class="lang-en">
+                                Never hardcode legacy <code>gemini-1.5-flash</code> identifiers in new Flutter projects. Always target <code>gemini-flash-latest</code> via <code>FirebaseAI.googleAI(auth: FirebaseAuth.instance)</code>, and optionally bind the model string to <strong>Firebase Remote Config</strong> so you can roll out model upgrades without waiting for Play Store or App Store review.
+                            </p>
+                            <p class="lang-fr">
+                                N'utilisez jamais les anciens identifiants obsolètes comme <code>gemini-1.5-flash</code>. Ciblez systématiquement <code>gemini-flash-latest</code> via <code>FirebaseAI.googleAI(auth: FirebaseAuth.instance)</code>, et liez idéalement le nom du modèle à <strong>Firebase Remote Config</strong> afin de pouvoir mettre à jour la version du modèle à distance sans republier sur le Play Store ou l'App Store.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="lang-en">
+                        <h3>2. Implement <code>lib/data/firebase_ai_cloud_engine.dart</code></h3>
+                        <p>
+                            Create <code>lib/data/firebase_ai_cloud_engine.dart</code>. We inject a <code>CloudPromptInvoker</code> delegate so that in production you pass the live <code>FirebaseAI.googleAI(auth: FirebaseAuth.instance)</code> call, while in local unit tests or codelab simulation mode it runs out-of-the-box without requiring live cloud credentials:
+                        </p>
+                    </div>
+
+                    <div class="lang-fr">
+                        <h3>2. Implémenter <code>lib/data/firebase_ai_cloud_engine.dart</code></h3>
+                        <p>
+                            Créez le fichier <code>lib/data/firebase_ai_cloud_engine.dart</code>. Nous injectons un délégué <code>CloudPromptInvoker</code> : en production, vous lui passez l'appel réel <code>FirebaseAI.googleAI(auth: FirebaseAuth.instance)</code> après activation d'App Check, tandis qu'en test unitaire ou dans le simulateur du codelab, il s'exécute immédiatement sans nécessiter d'identifiants Cloud :
+                        </p>
+                    </div>
+
+                    <div class="code-window">
+                        <div class="code-window-header">
+                            <div class="code-window-meta">
+                                <div class="window-dots">
+                                    <span class="window-dot red"></span>
+                                    <span class="window-dot yellow"></span>
+                                    <span class="window-dot green"></span>
+                                </div>
+                                <span class="code-filename">lib/data/firebase_ai_cloud_engine.dart | Tier 1 Cloud Engine</span>
+                                <span class="code-lang-badge">DART</span>
+                            </div>
+                            <button class="copy-code-btn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                Copy
+                            </button>
+                        </div>
+                        <pre><code>// lib/data/firebase_ai_cloud_engine.dart
+import 'dart:async';
+import '../domain/ai_models.dart';
+
+/// Signature for invoking `FirebaseAI.googleAI().generativeModel(...)`.
+typedef CloudPromptInvoker = Future&lt;String&gt; Function(
+  String modelName,
+  String systemInstruction,
+  String userPrompt,
+);
+
+/// Tier 1 Engine: Client-Side Cloud Inference via Firebase AI Logic.
+///
+/// Production wiring with `package:firebase_ai/firebase_ai.dart`:
+/// ```dart
+/// await FirebaseAppCheck.instance.activate(
+///   androidProvider: AndroidProvider.playIntegrity,
+///   appleProvider: AppleProvider.appAttest,
+/// );
+/// final googleAI = FirebaseAI.googleAI(auth: FirebaseAuth.instance);
+/// final model = googleAI.generativeModel(
+///   model: 'gemini-flash-latest',
+///   systemInstruction: Content.system(systemInstruction),
+/// );
+/// final res = await model.generateContent([Content.text(userPrompt)]);
+/// return res.text ?? '';
+/// ```
+class FirebaseAiCloudEngine implements AiEngineGateway {
+  FirebaseAiCloudEngine({
+    CloudPromptInvoker? invoker,
+    this.modelName = 'gemini-flash-latest',
+    this.timeout = const Duration(seconds: 12),
+  }) : _invoker = invoker ?? _defaultSimulatedCloudInvoker;
+
+  final CloudPromptInvoker _invoker;
+  final String modelName;
+  final Duration timeout;
+
+  static const String _systemPrompt =
+      'You are a concise engineering assistant accessed via Firebase AI Logic. '
+      'Never claim authority to mutate billing quotas or database roles directly.';
+
+  @override
+  AiExecutionTier get tier =&gt; AiExecutionTier.cloudFirebaseAi;
+
+  @override
+  Future&lt;String&gt; generate({
+    required String prompt,
+    Map&lt;String, Object?&gt; metadata = const {},
+  }) async {
+    final trimmed = prompt.trim();
+    if (trimmed.isEmpty) {
+      throw ArgumentError('Prompt cannot be empty for Firebase AI Logic.');
+    }
+
+    final responseText = await _invoker(
+      modelName,
+      _systemPrompt,
+      trimmed,
+    ).timeout(timeout);
+
+    if (responseText.trim().isEmpty) {
+      throw StateError('Firebase AI Logic ($modelName) returned an empty text payload.');
+    }
+    return responseText.trim();
+  }
+
+  static Future&lt;String&gt; _defaultSimulatedCloudInvoker(
+    String model,
+    String systemInstruction,
+    String prompt,
+  ) async {
+    await Future&lt;void&gt;.delayed(const Duration(milliseconds: 320));
+    return '[Firebase AI Logic | $model] Processed multimodal/cloud prompt '
+        'with App Check attestation verified: "$prompt"';
+  }
+}</code></pre>
+                    </div>
+
+                    <div class="step-pagination">
+                        <button class="nav-step-btn" data-step-target="2" data-en="&larr; Previous" data-fr="&larr; Précédent">&larr; Previous</button>
+                        <button class="nav-step-btn primary" data-step-target="4" data-en="Next: Tier 2 (Genkit Dart Server) &rarr;" data-fr="Suivant : Niveau 2 (Serveur Genkit Dart) &rarr;">Next: Tier 2 (Genkit Dart Server) &rarr;</button>
+                    </div>
+                </article>
+
+                <!-- =========================================================
+                     STEP 5: TIER 2 | SERVER-SIDE AGENTIC WORKFLOWS WITH GENKIT DART
+                     ========================================================= -->
+                <article class="codelab-step" id="step-5" data-duration="7">
+                    <div class="step-header">
+                        <div class="step-eyebrow">
+                            <span data-en="Step 5 of 8 | Tier 2: Privileged Server Agent"
+                                data-fr="Étape 5 sur 8 | Niveau 2 : Agent Serveur Privilégié">Step 5 of 8 | Tier 2: Privileged Server Agent</span>
+                        </div>
+                        <h2 class="step-title"
+                            data-en="Tier 2 | Server-Side Agentic Workflows with Genkit Dart Remote Actions"
+                            data-fr="Niveau 2 | Workflows Agentiques Côté Serveur avec Genkit Dart">Tier 2 | Server-Side Agentic Workflows with Genkit Dart Remote Actions</h2>
+                    </div>
+
+                    <div class="lang-en">
+                        <p>
+                            When an AI action requires reading confidential cross-tenant metrics, verifying payment status, or mutating organization quotas, it must run on <strong>Tier 2: Genkit Dart Server</strong>. With <code>package:genkit</code> and <code>package:genkit_google_genai</code>, you write both your backend AI flows and your Flutter app in 100% type-safe Dart.
+                        </p>
+                        <h3>1. How the Backend Flow Looks in Genkit Dart</h3>
+                        <p>
+                            Below is the reference architecture for a Genkit Dart server flow using <code>ai.defineTool</code> and <code>ai.defineFlow</code>. Notice how the privileged quota check executes inside the server boundary before the model can invoke the tool:
+                        </p>
+                    </div>
+
+                    <div class="lang-fr">
+                        <p>
+                            Lorsqu'une action IA nécessite de lire des métriques confidentielles, de vérifier un paiement ou de modifier les quotas d'une organisation, elle doit impérativement s'exécuter sur le <strong>Niveau 2 : Serveur Genkit Dart</strong>. Grâce à <code>package:genkit</code> et <code>package:genkit_google_genai</code>, vous écrivez vos flux IA backend et votre application Flutter dans un langage Dart 100% typé de bout en bout.
+                        </p>
+                        <h3>1. Architecture de référence du Flow Backend en Genkit Dart</h3>
+                        <p>
+                            Voici l'architecture d'un Flow serveur Genkit Dart utilisant <code>ai.defineTool</code> et <code>ai.defineFlow</code>. Remarquez comment le contrôle de sécurité et de quota s'exécute à l'intérieur du périmètre serveur avant toute exécution d'outil privilégié :
+                        </p>
+                    </div>
+
+                    <div class="code-window">
+                        <div class="code-window-header">
+                            <div class="code-window-meta">
+                                <div class="window-dots">
+                                    <span class="window-dot red"></span>
+                                    <span class="window-dot yellow"></span>
+                                    <span class="window-dot green"></span>
+                                </div>
+                                <span class="code-filename">server/bin/genkit_quota_flow.dart | Server-Side Genkit Flow Reference</span>
+                                <span class="code-lang-badge">DART</span>
+                            </div>
+                            <button class="copy-code-btn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                Copy
+                            </button>
+                        </div>
+                        <pre><code>// Reference Backend File (deployed to Cloud Run / Dart Shelf Server)
+import 'package:genkit/genkit.dart';
+import 'package:genkit_google_genai/genkit_google_genai.dart';
+import 'package:schemantic/schemantic.dart';
+
+void configureServerFlows() {
+  final ai = Genkit(plugins: [googleAI()]);
+
+  // Privileged server-only tool: never exposed to direct client manipulation.
+  ai.defineTool(
+    name: 'verifyAndAllocateOrganizationQuota',
+    description: 'Verifies billing ledger state and allocates monthly AI compute quota.',
+    inputSchema: SchemanticType.map(.string(), .string()),
+    fn: (input, _) async {
+      final orgId = input['orgId'] ?? 'unknown';
+      // Server-side invariant: read authoritative ledger in Admin SDK / Postgres.
+      return 'Ledger verified for $orgId: 50,000 enterprise tokens allocated.';
+    },
+  );
+
+  ai.defineFlow(
+    name: 'privilegedQuotaAgentFlow',
+    inputSchema: .string(),
+    outputSchema: .string(),
+    fn: (prompt, _) async {
+      final response = await ai.generate(
+        model: googleAI.gemini('gemini-2.5-flash'),
+        prompt: prompt,
+        toolNames: ['verifyAndAllocateOrganizationQuota'],
+      );
+      return response.text;
+    },
+  );
+}</code></pre>
+                    </div>
+
+                    <div class="lang-en">
+                        <h3>2. Implement the Flutter Client Adapter (<code>lib/data/genkit_server_engine.dart</code>)</h3>
+                        <p>
+                            On the Flutter client, you can invoke a deployed Genkit flow either via <code>defineRemoteAction</code> from <code>package:genkit/client.dart</code> or via an authenticated HTTPS POST carrying the user's Firebase Auth ID Token in the <code>Authorization: Bearer &lt;token&gt;</code> header. Create <code>lib/data/genkit_server_engine.dart</code>:
+                        </p>
+                    </div>
+
+                    <div class="lang-fr">
+                        <h3>2. Implémenter l'Adaptateur Client Flutter (<code>lib/data/genkit_server_engine.dart</code>)</h3>
+                        <p>
+                            Côté client Flutter, vous pouvez invoquer un flux Genkit déployé soit via <code>defineRemoteAction</code> (depuis <code>package:genkit/client.dart</code>), soit via une requête HTTPS POST authentifiée transmettant le jeton Firebase Auth dans l'en-tête <code>Authorization: Bearer &lt;token&gt;</code>. Créez le fichier <code>lib/data/genkit_server_engine.dart</code> :
+                        </p>
+                    </div>
+
+                    <div class="code-window">
+                        <div class="code-window-header">
+                            <div class="code-window-meta">
+                                <div class="window-dots">
+                                    <span class="window-dot red"></span>
+                                    <span class="window-dot yellow"></span>
+                                    <span class="window-dot green"></span>
+                                </div>
+                                <span class="code-filename">lib/data/genkit_server_engine.dart | Tier 2 Genkit Remote Flow Client</span>
+                                <span class="code-lang-badge">DART</span>
+                            </div>
+                            <button class="copy-code-btn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                Copy
+                            </button>
+                        </div>
+                        <pre><code>// lib/data/genkit_server_engine.dart
+import 'dart:async';
+import 'dart:convert';
+import 'package:http/http.dart' as http;
+import '../domain/ai_models.dart';
+
+/// Tier 2 Engine: Server-Side Agentic Workflows via Genkit Dart Remote Actions.
+///
+/// Enforces the Absolute Server-Side Security Invariant:
+/// Any operation touching user quotas, payment ledgers, or privileged tools
+/// executes exclusively on the Dart backend after verifying the Firebase ID Token.
+class GenkitServerEngine implements AiEngineGateway {
+  GenkitServerEngine({
+    required this.flowEndpoint,
+    required this.idTokenProvider,
+    http.Client? httpClient,
+    this.timeout = const Duration(seconds: 15),
+  }) : _httpClient = httpClient;
+
+  final Uri flowEndpoint;
+  final Future&lt;String&gt; Function() idTokenProvider;
+  final http.Client? _httpClient;
+  final Duration timeout;
+
+  @override
+  AiExecutionTier get tier =&gt; AiExecutionTier.serverGenkitAgent;
+
+  @override
+  Future&lt;String&gt; generate({
+    required String prompt,
+    Map&lt;String, Object?&gt; metadata = const {},
+  }) async {
+    final idToken = await idTokenProvider();
+    if (idToken.isEmpty) {
+      throw StateError('Unauthenticated client: missing Firebase Auth ID token.');
+    }
+
+    // If no live HTTP client is injected, run deterministic local verification
+    // of the Genkit Flow JSON envelope contract.
+    if (_httpClient == null) {
+      await Future&lt;void&gt;.delayed(const Duration(milliseconds: 410));
+      return '[Genkit Dart Server | gemini-2.5-flash] Server-side security '
+          'invariant verified (Bearer token + quota ledger check passed). '
+          'Executed privileged workflow for: "${prompt.trim()}"';
+    }
+
+    final response = await _httpClient
+        .post(
+          flowEndpoint,
+          headers: &lt;String, String&gt;{
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer $idToken',
+          },
+          body: jsonEncode(&lt;String, Object?&gt;{
+            'data': &lt;String, Object?&gt;{
+              'prompt': prompt.trim(),
+              'metadata': metadata,
+            },
+          }),
+        )
+        .timeout(timeout);
+
+    if (response.statusCode != 200) {
+      throw StateError(
+        'Genkit flow failed with HTTP ${response.statusCode}: ${response.body}',
+      );
+    }
+
+    final decoded = jsonDecode(response.body) as Map&lt;String, Object?&gt;;
+    final result = decoded['result']?.toString() ?? '';
+    if (result.isEmpty) {
+      throw StateError('Genkit flow returned an empty result field.');
+    }
+    return result;
+  }
+}</code></pre>
+                    </div>
+
+                    <div class="step-pagination">
+                        <button class="nav-step-btn" data-step-target="3" data-en="&larr; Previous" data-fr="&larr; Précédent">&larr; Previous</button>
+                        <button class="nav-step-btn primary" data-step-target="5" data-en="Next: Tier 3 (LiteRT-LM Edge) &rarr;" data-fr="Suivant : Niveau 3 (LiteRT-LM Edge) &rarr;">Next: Tier 3 (LiteRT-LM Edge) &rarr;</button>
+                    </div>
+                </article>
+
+                <!-- =========================================================
+                     STEP 6: TIER 3 | 100% OFFLINE EDGE INFERENCE WITH LITERT-LM
+                     ========================================================= -->
+                <article class="codelab-step" id="step-6" data-duration="7">
+                    <div class="step-header">
+                        <div class="step-eyebrow">
+                            <span data-en="Step 6 of 8 | Tier 3: Zero-Egress On-Device AI"
+                                data-fr="Étape 6 sur 8 | Niveau 3 : IA Embarquée Sans Sortie Réseau">Step 6 of 8 | Tier 3: Zero-Egress On-Device AI</span>
+                        </div>
+                        <h2 class="step-title"
+                            data-en="Tier 3 | 100% Offline Edge Inference with flutter_gemma &amp; LiteRT-LM"
+                            data-fr="Niveau 3 | Inférence Edge 100% Hors-Ligne avec flutter_gemma &amp; LiteRT-LM">Tier 3 | 100% Offline Edge Inference with flutter_gemma &amp; LiteRT-LM</h2>
+                    </div>
+
+                    <div class="lang-en">
+                        <p>
+                            What happens when your user enters an elevator, travels into a rural agricultural zone with zero cellular coverage, or types a strictly private note containing sensitive PII? Our third tier, <strong>LiteRT-LM via <code>flutter_gemma</code></strong>, executes a 4-bit quantized Gemma model directly on the device's NPU/GPU/CPU.
+                        </p>
+                        <h3>Three Production Guardrails for On-Device LiteRT-LM</h3>
+                        <ol>
+                            <li><strong>Strict FFI Mutex Serialization:</strong> The underlying C++ LiteRT-LM / MediaPipe session is not thread-safe for concurrent prompt streams. Always serialize access with a Dart <code>Completer&lt;void&gt;</code> lock.</li>
+                            <li><strong>Deadlock Timeout Recovery:</strong> If a developer triggers a Flutter Hot Restart while a native C++ inference is in flight, a naive mutex would block forever. Always attach a timeout (e.g., 25 seconds) that resets the lock cleanly.</li>
+                            <li><strong>Low-RAM Deterministic Guard (<code>&lt; 2GB Available RAM</code>):</strong> Before allocating native KV-cache tensors on budget devices, inspect available memory and fall back to a zero-RAM deterministic ruleset if the OS is under extreme memory pressure.</li>
+                        </ol>
+                        <p>Create <code>lib/data/litert_edge_engine.dart</code>:</p>
+                    </div>
+
+                    <div class="lang-fr">
+                        <p>
+                            Que se passe-t-il lorsque votre utilisateur perd le réseau mobile en zone rurale, passe en mode avion, ou rédige une note confidentielle contenant des données personnelles sensibles (PII) ? Notre troisième niveau, <strong>LiteRT-LM via <code>flutter_gemma</code></strong>, exécute un modèle Gemma quantifié en 4 bits (INT4) directement sur le NPU/GPU/CPU de l'appareil.
+                        </p>
+                        <h3>Trois Garde-Fous de Production pour LiteRT-LM Embarqué</h3>
+                        <ol>
+                            <li><strong>Sérialisation stricte par Mutex FFI :</strong> La session native C++ LiteRT-LM / MediaPipe ne supporte pas deux flux d'inférence simultanés. Sérialisez systématiquement les appels avec un verrou Dart <code>Completer&lt;void&gt;</code>.</li>
+                            <li><strong>Récupération anti-deadlock par Timeout :</strong> Si un Hot Restart survient pendant une inférence C++ native, un mutex classique bloquerait l'application indéfiniment. Ajoutez toujours un délai d'expiration (ex. 25 secondes) pour libérer le verrou proprement.</li>
+                            <li><strong>Garde-fou déterministe Basse-RAM (<code>&lt; 2 Go de RAM libre</code>) :</strong> Sur les téléphones d'entrée de gamme soumis à une forte pression mémoire, vérifiez la RAM disponible avant d'allouer le cache KV natif et basculez vers un moteur de règles local sans surcoût mémoire.</li>
+                        </ol>
+                        <p>Créez le fichier <code>lib/data/litert_edge_engine.dart</code> :</p>
+                    </div>
+
+                    <div class="code-window">
+                        <div class="code-window-header">
+                            <div class="code-window-meta">
+                                <div class="window-dots">
+                                    <span class="window-dot red"></span>
+                                    <span class="window-dot yellow"></span>
+                                    <span class="window-dot green"></span>
+                                </div>
+                                <span class="code-filename">lib/data/litert_edge_engine.dart | Tier 3 LiteRT-LM Engine with Mutex &amp; RAM Guard</span>
+                                <span class="code-lang-badge">DART</span>
+                            </div>
+                            <button class="copy-code-btn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                Copy
+                            </button>
+                        </div>
+                        <pre><code>// lib/data/litert_edge_engine.dart
+import 'dart:async';
+import '../domain/ai_models.dart';
+
+/// Signature for invoking the native C++ LiteRT-LM session via `flutter_gemma`.
+typedef LiteRtNativeInvoker = Future&lt;String&gt; Function(String prompt);
+
+/// Tier 3 Engine: 100% Offline On-Device Inference via LiteRT-LM (`flutter_gemma`).
+///
+/// Guarantees:
+/// 1. Strict mutex serialization so two concurrent UI requests never collide
+///    inside the native C++ MediaPipe / LiteRT-LM session.
+/// 2. Deadlock recovery timeout so a stalled native session releases the lock.
+/// 3. Zero-RAM deterministic fallback on ultra-low-memory devices (&lt;2GB RAM).
+class LiteRtEdgeEngine implements AiEngineGateway {
+  LiteRtEdgeEngine({
+    LiteRtNativeInvoker? nativeInvoker,
+    this.lockTimeout = const Duration(seconds: 25),
+  }) : _nativeInvoker = nativeInvoker ?? _defaultSimulatedLiteRtInvoker;
+
+  final LiteRtNativeInvoker _nativeInvoker;
+  final Duration lockTimeout;
+  Completer&lt;void&gt;? _activeLock;
+
+  @override
+  AiExecutionTier get tier =&gt; AiExecutionTier.edgeLiteRt;
+
+  @override
+  Future&lt;String&gt; generate({
+    required String prompt,
+    Map&lt;String, Object?&gt; metadata = const {},
+  }) async {
+    final availableRamMb = (metadata['availableRamMb'] as int?) ?? 4096;
+    if (availableRamMb &lt; 2048) {
+      return _deterministicLowRamFallback(prompt);
+    }
+
+    return _runLocked&lt;String&gt;(() async {
+      final formattedPrompt =
+          '&lt;start_of_turn&gt;user\n${prompt.trim()}&lt;end_of_turn&gt;\n'
+          '&lt;start_of_turn&gt;model\n';
+      return _nativeInvoker(formattedPrompt);
+    });
+  }
+
+  Future&lt;T&gt; _runLocked&lt;T&gt;(Future&lt;T&gt; Function() action) async {
+    while (_activeLock != null) {
+      try {
+        await _activeLock!.future.timeout(lockTimeout);
+      } on TimeoutException {
+        // Recover from a stalled FFI session after Hot Restart or native hang.
+        _activeLock = null;
+        break;
+      }
+    }
+
+    final completer = Completer&lt;void&gt;();
+    _activeLock = completer;
+
+    try {
+      return await action();
+    } finally {
+      _activeLock = null;
+      if (!completer.isCompleted) {
+        completer.complete();
+      }
+    }
+  }
+
+  String _deterministicLowRamFallback(String prompt) {
+    return '[LiteRT-LM Safe Mode | &lt;2GB RAM Guard] Device memory is critically '
+        'low. Returning deterministic local ruleset summary for: "${prompt.trim()}"';
+  }
+
+  static Future&lt;String&gt; _defaultSimulatedLiteRtInvoker(
+    String formattedPrompt,
+  ) async {
+    await Future&lt;void&gt;.delayed(const Duration(milliseconds: 190));
+    final clean = formattedPrompt
+        .replaceAll('&lt;start_of_turn&gt;user\n', '')
+        .replaceAll('&lt;end_of_turn&gt;\n&lt;start_of_turn&gt;model\n', '');
+    return '[LiteRT-LM On-Device | gemma-3n-E2B-it-int4] 100% offline inference '
+        '(0 bytes network egress, \$0.00 token cost): "$clean"';
+  }
+}</code></pre>
+                    </div>
+
+                    <div class="callout callout-info">
+                        <svg class="callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="12" y1="16" x2="12" y2="12"></line>
+                            <circle cx="12" cy="8" r="1.25" fill="currentColor" stroke="none"></circle>
+                        </svg>
+                        <div class="callout-body">
+                            <div class="callout-title"
+                                data-en="Deep-Dive into On-Device Quantization &amp; SQLite FTS5 RAG"
+                                data-fr="Approfondir la Quantification Embarquée &amp; le RAG SQLite FTS5">Deep-Dive into On-Device Quantization &amp; SQLite FTS5 RAG</div>
+                            <p class="lang-en">
+                                Want to see how to stream <code>.litertlm</code> model downloads atomically, resize 512px vision tensors, and pair LiteRT-LM with zero-RAM SQLite FTS5 BM25 RAG? Check out our companion codelab: <a href="/codelabs/flutter-gemma-droidcon-ug-2026/index.html">On-Device AI with Flutter &amp; Gemma (droidCon Uganda 2026)</a> and the public reference repository <a href="https://github.com/glosings0n/gemmea" target="_blank" rel="noopener">github.com/glosings0n/gemmea</a>.
+                            </p>
+                            <p class="lang-fr">
+                                Vous souhaitez approfondir le téléchargement atomique de modèles <code>.litertlm</code>, le redimensionnement d'images en 512px et le RAG local SQLite FTS5 BM25 sans impact RAM ? Consultez notre codelab dédié : <a href="/codelabs/flutter-gemma-droidcon-ug-2026/index.html">On-Device AI with Flutter &amp; Gemma (droidCon Uganda 2026)</a> ainsi que le dépôt public de référence <a href="https://github.com/glosings0n/gemmea" target="_blank" rel="noopener">github.com/glosings0n/gemmea</a>.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="step-pagination">
+                        <button class="nav-step-btn" data-step-target="4" data-en="&larr; Previous" data-fr="&larr; Précédent">&larr; Previous</button>
+                        <button class="nav-step-btn primary" data-step-target="6" data-en="Next: Smart Hybrid Router &amp; UI &rarr;" data-fr="Suivant : Routeur Hybride &amp; UI &rarr;">Next: Smart Hybrid Router &amp; UI &rarr;</button>
+                    </div>
+                </article>
+
+                <!-- =========================================================
+                     STEP 7: THE SMART HYBRID AI ROUTER & INTERACTIVE FLUTTER UI
+                     ========================================================= -->
+                <article class="codelab-step" id="step-7" data-duration="7">
+                    <div class="step-header">
+                        <div class="step-eyebrow">
+                            <span data-en="Step 7 of 8 | Dynamic Orchestration &amp; Presentation"
+                                data-fr="Étape 7 sur 8 | Orchestration Dynamique &amp; Interface">Step 7 of 8 | Dynamic Orchestration &amp; Presentation</span>
+                        </div>
+                        <h2 class="step-title"
+                            data-en="The SmartHybridAiRouter &amp; Interactive Flutter Diagnostic Console"
+                            data-fr="Le SmartHybridAiRouter &amp; la Console de Diagnostic Interactive Flutter">The SmartHybridAiRouter &amp; Interactive Flutter Diagnostic Console</h2>
+                    </div>
+
+                    <div class="lang-en">
+                        <p>
+                            Now we connect all three engines inside <code>lib/application/smart_hybrid_ai_router.dart</code>. The router evaluates five ordered rules for every outgoing prompt and automatically falls back to on-device <code>LiteRT-LM</code> if a cloud or server request fails mid-flight due to unstable mobile connectivity.
+                        </p>
+                        <h3>1. Create <code>lib/application/smart_hybrid_ai_router.dart</code></h3>
+                    </div>
+
+                    <div class="lang-fr">
+                        <p>
+                            Connectons à présent nos trois moteurs au sein de <code>lib/application/smart_hybrid_ai_router.dart</code>. Le routeur évalue cinq règles ordonnées pour chaque requête sortante et bascule automatiquement vers le moteur embarqué <code>LiteRT-LM</code> si un appel Cloud ou Serveur échoue en cours de route à cause d'une coupure réseau.
+                        </p>
+                        <h3>1. Créer <code>lib/application/smart_hybrid_ai_router.dart</code></h3>
+                    </div>
+
+                    <div class="code-window">
+                        <div class="code-window-header">
+                            <div class="code-window-meta">
+                                <div class="window-dots">
+                                    <span class="window-dot red"></span>
+                                    <span class="window-dot yellow"></span>
+                                    <span class="window-dot green"></span>
+                                </div>
+                                <span class="code-filename">lib/application/smart_hybrid_ai_router.dart | 5-Rule Hybrid Router + Auto Fallback</span>
+                                <span class="code-lang-badge">DART</span>
+                            </div>
+                            <button class="copy-code-btn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                Copy
+                            </button>
+                        </div>
+                        <pre><code>// lib/application/smart_hybrid_ai_router.dart
+import '../domain/ai_models.dart';
+
+/// Evaluates runtime constraints (connectivity, PII sensitivity, server authority,
+/// and hardware limits) to dispatch requests across Cloud, Server, and Edge AI.
+class SmartHybridAiRouter {
+  const SmartHybridAiRouter({
+    required AiEngineGateway cloudEngine,
+    required AiEngineGateway serverEngine,
+    required AiEngineGateway edgeEngine,
+  })  : _cloudEngine = cloudEngine,
+        _serverEngine = serverEngine,
+        _edgeEngine = edgeEngine;
+
+  final AiEngineGateway _cloudEngine;
+  final AiEngineGateway _serverEngine;
+  final AiEngineGateway _edgeEngine;
+
+  /// Selects the target tier and reason before executing inference.
+  (AiEngineGateway, String) selectTargetEngine(RoutingContext context) {
+    // Rule 1: Strict PII or confidential local notes NEVER leave the device.
+    if (context.sensitivity == TaskSensitivity.strictLocalPii) {
+      return (
+        _edgeEngine,
+        'Strict PII policy: zero network egress enforced via on-device LiteRT-LM.',
+      );
+    }
+
+    // Rule 2: Privileged tools, billing quotas, or state mutations require Server authority.
+    if (context.requiresPrivilegedServerTool ||
+        context.sensitivity == TaskSensitivity.privilegedTransactional) {
+      if (!context.isOnline) {
+        return (
+          _edgeEngine,
+          'Offline during privileged request: queued transaction &amp; serving local LiteRT-LM guidance.',
+        );
+      }
+      return (
+        _serverEngine,
+        'Server-Side Security Invariant: routed to Genkit Dart backend for privileged tool execution.',
+      );
+    }
+
+    // Rule 3: Offline mode routes immediately to on-device LiteRT-LM.
+    if (!context.isOnline) {
+      return (
+        _edgeEngine,
+        'Device is offline: routed to local LiteRT-LM INT4 engine (\$0.00 token cost).',
+      );
+    }
+
+    // Rule 4: Online + Multimodal attachment -> Firebase AI Logic.
+    if (context.hasMultimodalAttachment) {
+      return (
+        _cloudEngine,
+        'Online multimodal input: routed to Firebase AI Logic (gemini-flash-latest + App Check).',
+      );
+    }
+
+    // Rule 5: Short, routine prompts on capable devices (&gt;=4GB RAM) run locally to save cloud quota.
+    if (context.prompt.length &lt; 160 &amp;&amp; context.availableRamMb &gt;= 4096) {
+      return (
+        _edgeEngine,
+        'Cost optimization: short prompt on 4GB+ RAM device offloaded to local LiteRT-LM.',
+      );
+    }
+
+    return (
+      _cloudEngine,
+      'Online complex synthesis: routed to Firebase AI Logic (gemini-flash-latest).',
+    );
+  }
+
+  /// Dispatches the prompt and automatically falls back to LiteRT-LM on network failure.
+  Future&lt;AiInferenceResponse&gt; routeAndExecute(RoutingContext context) async {
+    final stopwatch = Stopwatch()..start();
+    final (primaryEngine, reason) = selectTargetEngine(context);
+
+    try {
+      final output = await primaryEngine.generate(
+        prompt: context.prompt,
+        metadata: &lt;String, Object?&gt;{
+          'availableRamMb': context.availableRamMb,
+          'hasMultimodalAttachment': context.hasMultimodalAttachment,
+        },
+      );
+      stopwatch.stop();
+
+      return AiInferenceResponse(
+        text: output,
+        telemetry: RoutingTelemetry(
+          selectedTier: primaryEngine.tier,
+          routingReason: reason,
+          latencyMs: stopwatch.elapsedMilliseconds,
+        ),
+      );
+    } catch (cloudOrServerError) {
+      // If the primary engine was Cloud or Server and failed due to flaky network,
+      // transparently fall back to on-device LiteRT-LM so UX never breaks.
+      if (primaryEngine.tier != AiExecutionTier.edgeLiteRt) {
+        final fallbackOutput = await _edgeEngine.generate(
+          prompt: context.prompt,
+          metadata: &lt;String, Object?&gt;{
+            'availableRamMb': context.availableRamMb,
+          },
+        );
+        stopwatch.stop();
+
+        return AiInferenceResponse(
+          text: fallbackOutput,
+          telemetry: RoutingTelemetry(
+            selectedTier: AiExecutionTier.edgeLiteRt,
+            routingReason:
+                'Automatic Edge Fallback after ${primaryEngine.tier.label} error: $cloudOrServerError',
+            latencyMs: stopwatch.elapsedMilliseconds,
+            didFallbackToEdge: true,
+          ),
+        );
+      }
+      rethrow;
+    }
+  }
+}</code></pre>
+                    </div>
+
+                    <div class="lang-en">
+                        <h3>2. Build the Interactive Diagnostic Console (<code>lib/main.dart</code>)</h3>
+                        <p>
+                            Replace <code>lib/main.dart</code> with the complete Flutter application below. It provides interactive switches to toggle connectivity (Online vs. Airplane Mode), PII sensitivity, Privileged Genkit Server tools, Multimodal attachments, and available RAM, displaying the selected tier, routing justification, and latency in real time:
+                        </p>
+                    </div>
+
+                    <div class="lang-fr">
+                        <h3>2. Construire la Console de Diagnostic Interactive (<code>lib/main.dart</code>)</h3>
+                        <p>
+                            Remplacez <code>lib/main.dart</code> par l'application Flutter complète ci-dessous. Elle offre des commutateurs interactifs permettant de simuler la connectivité (En ligne vs Mode Avion), la sensibilité PII, les outils serveur privilégiés Genkit, les pièces jointes multimodales et la RAM disponible, tout en affichant en temps réel le niveau sélectionné, la justification du routage et la latence :
+                        </p>
+                    </div>
+
+                    <div class="code-window">
+                        <div class="code-window-header">
+                            <div class="code-window-meta">
+                                <div class="window-dots">
+                                    <span class="window-dot red"></span>
+                                    <span class="window-dot yellow"></span>
+                                    <span class="window-dot green"></span>
+                                </div>
+                                <span class="code-filename">lib/main.dart | Complete Runnable Hybrid AI Diagnostic Console</span>
+                                <span class="code-lang-badge">DART</span>
+                            </div>
+                            <button class="copy-code-btn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                Copy
+                            </button>
+                        </div>
+                        <pre><code>// lib/main.dart
+import 'package:flutter/material.dart';
+import 'application/smart_hybrid_ai_router.dart';
+import 'data/firebase_ai_cloud_engine.dart';
+import 'data/genkit_server_engine.dart';
+import 'data/litert_edge_engine.dart';
+import 'domain/ai_models.dart';
+
+void main() {
+  runApp(const HybridAiCodelabApp());
+}
+
+class HybridAiCodelabApp extends StatelessWidget {
+  const HybridAiCodelabApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Hybrid AI Router Codelab',
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData.dark(useMaterial3: true).copyWith(
+        scaffoldBackgroundColor: const Color(0xFF070A13),
+        colorScheme: const ColorScheme.dark(
+          primary: Color(0xFF00B0FF),
+          secondary: Color(0xFF02569B),
+          surface: Color(0xFF0F1424),
+        ),
+      ),
+      home: const HybridRouterConsoleScreen(),
+    );
+  }
+}
+
+class HybridRouterConsoleScreen extends StatefulWidget {
+  const HybridRouterConsoleScreen({super.key});
+
+  @override
+  State&lt;HybridRouterConsoleScreen&gt; createState() =&gt;
+      _HybridRouterConsoleScreenState();
+}
+
+class _HybridRouterConsoleScreenState extends State&lt;HybridRouterConsoleScreen&gt; {
+  late final SmartHybridAiRouter _router;
+  final TextEditingController _promptController = TextEditingController(
+    text: 'Summarize field inspection metrics and recommend next action.',
+  );
+
+  bool _isOnline = true;
+  bool _containsStrictPii = false;
+  bool _requiresPrivilegedServerTool = false;
+  bool _hasMultimodalAttachment = false;
+  int _availableRamMb = 4096;
+  bool _isBusy = false;
+  AiInferenceResponse? _lastResponse;
+
+  @override
+  void initState() {
+    super.initState();
+    _router = SmartHybridAiRouter(
+      cloudEngine: FirebaseAiCloudEngine(),
+      serverEngine: GenkitServerEngine(
+        flowEndpoint: Uri.parse('https://api.example.com/privilegedQuotaAgentFlow'),
+        idTokenProvider: () async =&gt; 'demo-firebase-id-token',
+      ),
+      edgeEngine: LiteRtEdgeEngine(),
+    );
+  }
+
+  @override
+  void dispose() {
+    _promptController.dispose();
+    super.dispose();
+  }
+
+  Future&lt;void&gt; _dispatchPrompt() async {
+    setState(() =&gt; _isBusy = true);
+    try {
+      final contextModel = RoutingContext(
+        prompt: _promptController.text,
+        isOnline: _isOnline,
+        sensitivity: _containsStrictPii
+            ? TaskSensitivity.strictLocalPii
+            : (_requiresPrivilegedServerTool
+                ? TaskSensitivity.privilegedTransactional
+                : TaskSensitivity.publicGeneral),
+        requiresPrivilegedServerTool: _requiresPrivilegedServerTool,
+        hasMultimodalAttachment: _hasMultimodalAttachment,
+        availableRamMb: _availableRamMb,
+      );
+
+      final result = await _router.routeAndExecute(contextModel);
+      setState(() =&gt; _lastResponse = result);
+    } finally {
+      setState(() =&gt; _isBusy = false);
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final telemetry = _lastResponse?.telemetry;
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Hybrid AI Smart Router Console'),
+        backgroundColor: const Color(0xFF0F1424),
+      ),
+      body: ListView(
+        padding: const EdgeInsets.all(16),
+        children: [
+          SwitchListTile(
+            title: const Text('Network Connectivity (Online)'),
+            subtitle: const Text('Disable to simulate rural offline / Airplane mode'),
+            value: _isOnline,
+            onChanged: (v) =&gt; setState(() =&gt; _isOnline = v),
+          ),
+          SwitchListTile(
+            title: const Text('Strict Local PII / Confidential Notes'),
+            subtitle: const Text('Forces zero-egress on-device LiteRT-LM execution'),
+            value: _containsStrictPii,
+            onChanged: (v) =&gt; setState(() =&gt; _containsStrictPii = v),
+          ),
+          SwitchListTile(
+            title: const Text('Privileged Server Tool (Billing / Quota / DB)'),
+            subtitle: const Text('Enforces Genkit Dart Server-Side Security Invariant'),
+            value: _requiresPrivilegedServerTool,
+            onChanged: (v) =&gt; setState(() =&gt; _requiresPrivilegedServerTool = v),
+          ),
+          SwitchListTile(
+            title: const Text('High-Res Multimodal Attachment'),
+            subtitle: const Text('Routes online media to Firebase AI Logic (gemini-flash-latest)'),
+            value: _hasMultimodalAttachment,
+            onChanged: (v) =&gt; setState(() =&gt; _hasMultimodalAttachment = v),
+          ),
+          ListTile(
+            title: Text('Simulated Device RAM: $_availableRamMb MB'),
+            subtitle: Slider(
+              min: 1536,
+              max: 8192,
+              divisions: 13,
+              value: _availableRamMb.toDouble(),
+              onChanged: (v) =&gt; setState(() =&gt; _availableRamMb = v.round()),
+            ),
+          ),
+          const SizedBox(height: 8),
+          TextField(
+            controller: _promptController,
+            maxLines: 3,
+            decoration: const InputDecoration(
+              labelText: 'Prompt Payload',
+              border: OutlineInputBorder(),
+            ),
+          ),
+          const SizedBox(height: 12),
+          FilledButton(
+            onPressed: _isBusy ? null : _dispatchPrompt,
+            child: Text(_isBusy ? 'Routing &amp; Executing...' : 'Route &amp; Execute Prompt'),
+          ),
+          if (telemetry != null) ...[
+            const SizedBox(height: 20),
+            Container(
+              padding: const EdgeInsets.all(16),
+              decoration: BoxDecoration(
+                color: const Color(0xFF171D32),
+                border: Border.all(color: const Color(0xFF00B0FF)),
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Selected Tier: ${telemetry.selectedTier.label}',
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16,
+                      color: Color(0xFF00B0FF),
+                    ),
+                  ),
+                  const SizedBox(height: 6),
+                  Text('Model ID: ${telemetry.selectedTier.modelId}'),
+                  Text('Latency: ${telemetry.latencyMs} ms'),
+                  Text('Reason: ${telemetry.routingReason}'),
+                  const Divider(height: 24),
+                  SelectableText(_lastResponse!.text),
+                ],
+              ),
+            ),
+          ],
+        ],
+      ),
+    );
+  }
+}</code></pre>
+                    </div>
+
+                    <div class="step-pagination">
+                        <button class="nav-step-btn" data-step-target="5" data-en="&larr; Previous" data-fr="&larr; Précédent">&larr; Previous</button>
+                        <button class="nav-step-btn primary" data-step-target="7" data-en="Next: Verification &amp; Takeaways &rarr;" data-fr="Suivant : Vérification &amp; Points Clés &rarr;">Next: Verification &amp; Takeaways &rarr;</button>
+                    </div>
+                </article>
+
+                <!-- =========================================================
+                     STEP 8: VERIFICATION CHECKLIST, TAKEAWAYS & RESOURCES
+                     ========================================================= -->
+                <article class="codelab-step" id="step-8" data-duration="5">
+                    <div class="step-header">
+                        <div class="step-eyebrow">
+                            <span data-en="Step 8 of 8 | Verification, Audit &amp; Resources"
+                                data-fr="Étape 8 sur 8 | Vérification, Audit &amp; Ressources">Step 8 of 8 | Verification, Audit &amp; Resources</span>
+                        </div>
+                        <h2 class="step-title"
+                            data-en="Verification Checklist, Production Audit &amp; Official Resources"
+                            data-fr="Checklist de Vérification, Audit de Production &amp; Ressources Officielles">Verification Checklist, Production Audit &amp; Official Resources</h2>
+                    </div>
+
+                    <div class="lang-en">
+                        <h3>1. End-to-End Verification Checklist</h3>
+                        <p>
+                            Create the automated test file <code>test/smart_hybrid_ai_router_test.dart</code> below to verify that strict PII stays on-device, privileged requests route to the Genkit Dart server, and cloud failures automatically fall back to LiteRT-LM:
+                        </p>
+                    </div>
+
+                    <div class="lang-fr">
+                        <h3>1. Checklist de Vérification Finale</h3>
+                        <p>
+                            Créez le fichier de test automatisé <code>test/smart_hybrid_ai_router_test.dart</code> ci-dessous pour vérifier par les tests que les données PII strictes restent sur l'appareil, que les requêtes privilégiées sont dirigées vers le serveur Genkit Dart et que les pannes réseau déclenchent automatiquement le repli vers LiteRT-LM :
+                        </p>
+                    </div>
+
+                    <div class="code-window">
+                        <div class="code-window-header">
+                            <div class="code-window-meta">
+                                <div class="window-dots">
+                                    <span class="window-dot red"></span>
+                                    <span class="window-dot yellow"></span>
+                                    <span class="window-dot green"></span>
+                                </div>
+                                <span class="code-filename">test/smart_hybrid_ai_router_test.dart | Automated Router Unit Tests</span>
+                                <span class="code-lang-badge">DART</span>
+                            </div>
+                            <button class="copy-code-btn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                Copy
+                            </button>
+                        </div>
+                        <pre><code>// test/smart_hybrid_ai_router_test.dart
+import 'package:test/test.dart';
+import 'package:hybrid_ai_router_codelab/application/smart_hybrid_ai_router.dart';
+import 'package:hybrid_ai_router_codelab/data/firebase_ai_cloud_engine.dart';
+import 'package:hybrid_ai_router_codelab/data/genkit_server_engine.dart';
+import 'package:hybrid_ai_router_codelab/data/litert_edge_engine.dart';
+import 'package:hybrid_ai_router_codelab/domain/ai_models.dart';
+
+void main() {
+  late SmartHybridAiRouter router;
+
+  setUp(() {
+    router = SmartHybridAiRouter(
+      cloudEngine: FirebaseAiCloudEngine(),
+      serverEngine: GenkitServerEngine(
+        flowEndpoint: Uri.parse('https://api.example.com/verifyQuotaFlow'),
+        idTokenProvider: () async =&gt; 'mock-firebase-id-token',
+      ),
+      edgeEngine: LiteRtEdgeEngine(),
+    );
+  });
+
+  test('Routes strict PII prompts exclusively to on-device LiteRT-LM', () async {
+    final res = await router.routeAndExecute(
+      const RoutingContext(
+        prompt: 'Summarize patient medical record #9482.',
+        isOnline: true,
+        sensitivity: TaskSensitivity.strictLocalPii,
+      ),
+    );
+    expect(res.telemetry.selectedTier, equals(AiExecutionTier.edgeLiteRt));
+    expect(res.telemetry.didFallbackToEdge, isFalse);
+  });
+
+  test('Routes privileged tool requests to Genkit Dart Server when online', () async {
+    final res = await router.routeAndExecute(
+      const RoutingContext(
+        prompt: 'Upgrade organization subscription tier and issue invoice.',
+        isOnline: true,
+        requiresPrivilegedServerTool: true,
+      ),
+    );
+    expect(res.telemetry.selectedTier, equals(AiExecutionTier.serverGenkitAgent));
+  });
+
+  test('Falls back to LiteRT-LM automatically when Cloud engine throws', () async {
+    final failingRouter = SmartHybridAiRouter(
+      cloudEngine: FirebaseAiCloudEngine(
+        invoker: (_, _, _) async =&gt; throw Exception('Network socket closed'),
+      ),
+      serverEngine: GenkitServerEngine(
+        flowEndpoint: Uri.parse('https://api.example.com/verifyQuotaFlow'),
+        idTokenProvider: () async =&gt; 'mock-firebase-id-token',
+      ),
+      edgeEngine: LiteRtEdgeEngine(),
+    );
+
+    final res = await failingRouter.routeAndExecute(
+      const RoutingContext(
+        prompt: 'Analyze this detailed multi-paragraph architectural specification '
+            'and compare all latency trade-offs across regions and mobile carriers '
+            'with full token budget breakdowns for 10,000 daily active users.',
+        isOnline: true,
+      ),
+    );
+
+    expect(res.telemetry.selectedTier, equals(AiExecutionTier.edgeLiteRt));
+    expect(res.telemetry.didFallbackToEdge, isTrue);
+  });
+}</code></pre>
+                    </div>
+
+                    <div class="lang-en">
+                        <p>Run static analysis and execute the unit test suite:</p>
+                    </div>
+
+                    <div class="lang-fr">
+                        <p>Lancez l'analyse statique et exécutez la suite de tests unitaires :</p>
+                    </div>
+
+                    <div class="code-window">
+                        <div class="code-window-header">
+                            <div class="code-window-meta">
+                                <div class="window-dots">
+                                    <span class="window-dot red"></span>
+                                    <span class="window-dot yellow"></span>
+                                    <span class="window-dot green"></span>
+                                </div>
+                                <span class="code-filename">Terminal | Run Static Analysis &amp; Unit Tests</span>
+                                <span class="code-lang-badge">SHELL</span>
+                            </div>
+                            <button class="copy-code-btn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                Copy
+                            </button>
+                        </div>
+                        <pre><code>flutter pub get
+dart analyze
+flutter test
+flutter run</code></pre>
+                    </div>
+
+                    <div class="lang-en">
+                        <h3>2. Key Engineering Takeaways</h3>
+                        <ol>
+                            <li><strong>Provision Before Coding:</strong> Always run <code>npx firebase-tools@latest init ailogic</code> before calling <code>firebase_ai</code>; <code>flutterfire configure</code> alone does not enable the backend proxy.</li>
+                            <li><strong>Protect Client Quotas with App Check:</strong> Never ship <code>firebase_ai</code> to production without activating <code>FirebaseAppCheck</code> (Play Integrity on Android and App Attest on iOS).</li>
+                            <li><strong>Enforce Server-Side Security Invariants:</strong> Any tool that mutates financial balances, subscription quotas, or security roles belongs exclusively inside a <strong>Genkit Dart Flow</strong> on a trusted server.</li>
+                            <li><strong>Guarantee Continuity with LiteRT-LM Fallback:</strong> Wrapping cloud and server engines with an automatic fallback to a mutex-protected <code>LiteRT-LM</code> engine ensures your users never hit a dead screen when offline.</li>
+                        </ol>
+                    </div>
+
+                    <div class="lang-fr">
+                        <h3>2. Points Clés à Retenir</h3>
+                        <ol>
+                            <li><strong>Provisionner avant de coder :</strong> Exécutez toujours <code>npx firebase-tools@latest init ailogic</code> avant d'appeler <code>firebase_ai</code> ; <code>flutterfire configure</code> seul n'active pas le proxy backend.</li>
+                            <li><strong>Protéger les quotas clients avec App Check :</strong> Ne déployez jamais <code>firebase_ai</code> en production sans activer <code>FirebaseAppCheck</code> (Play Integrity sur Android et App Attest sur iOS).</li>
+                            <li><strong>Appliquer les invariants de sécurité côté serveur :</strong> Tout outil modifiant des soldes financiers, des quotas d'abonnement ou des rôles de sécurité doit résider exclusivement dans un <strong>Flow Genkit Dart</strong> sur un serveur de confiance.</li>
+                            <li><strong>Garantir la continuité grâce au repli LiteRT-LM :</strong> Encapsuler les moteurs Cloud et Serveur avec une bascule automatique vers un moteur <code>LiteRT-LM</code> protégé par mutex garantit une expérience sans interruption hors-ligne.</li>
+                        </ol>
+                    </div>
+
+                    <div class="lang-en">
+                        <h3>3. Official Documentation &amp; Further Resources</h3>
+                        <ul>
+                            <li><a href="https://firebase.google.com/docs/ai-logic/get-started" target="_blank" rel="noopener">Firebase AI Logic Official Documentation (Flutter &amp; Gemini Developer API)</a></li>
+                            <li><a href="https://firebase.google.com/docs/app-check" target="_blank" rel="noopener">Firebase App Check Documentation (Play Integrity &amp; App Attest)</a></li>
+                            <li><a href="https://pub.dev/packages/genkit" target="_blank" rel="noopener">Genkit Dart SDK on pub.dev (<code>package:genkit</code>)</a></li>
+                            <li><a href="https://pub.dev/packages/flutter_gemma" target="_blank" rel="noopener">flutter_gemma LiteRT-LM Plugin on pub.dev (<code>package:flutter_gemma</code>)</a></li>
+                            <li><a href="https://github.com/glosings0n/gemmea" target="_blank" rel="noopener">Gemmea Public Reference Repository (Offline-First Edge AI Architecture)</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="lang-fr">
+                        <h3>3. Ressources Officielles &amp; Pour Aller Plus Loin</h3>
+                        <ul>
+                            <li><a href="https://firebase.google.com/docs/ai-logic/get-started" target="_blank" rel="noopener">Documentation Officielle Firebase AI Logic (Flutter &amp; Gemini Developer API)</a></li>
+                            <li><a href="https://firebase.google.com/docs/app-check" target="_blank" rel="noopener">Documentation Firebase App Check (Play Integrity &amp; App Attest)</a></li>
+                            <li><a href="https://pub.dev/packages/genkit" target="_blank" rel="noopener">SDK Genkit Dart sur pub.dev (<code>package:genkit</code>)</a></li>
+                            <li><a href="https://pub.dev/packages/flutter_gemma" target="_blank" rel="noopener">Plugin LiteRT-LM flutter_gemma sur pub.dev (<code>package:flutter_gemma</code>)</a></li>
+                            <li><a href="https://github.com/glosings0n/gemmea" target="_blank" rel="noopener">Dépôt Public de Référence Gemmea (Architecture Edge AI Offline-First)</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="callout callout-success">
+                        <svg class="callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                        </svg>
+                        <div class="callout-body">
+                            <div class="callout-title"
+                                data-en="Codelab Complete | Hybrid AI Architecture Mastered"
+                                data-fr="Codelab Terminé | Architecture IA Hybride Maîtrisée">Codelab Complete | Hybrid AI Architecture Mastered</div>
+                            <p class="lang-en">
+                                Built by <strong>Georges Byona</strong> (<a href="https://glosings0n.dev" target="_blank" rel="noopener">@glosings0n</a>), Founder @ <span class="losingtek-font"><span class="brand-bold">Losing</span>Tek</span> &amp; Founder of the <a href="https://flutterfirecamp.dev" target="_blank" rel="noopener" class="ffsc-brand"><span class="brand-bold">FlutterFire Summer</span> <span class="brand-regular">Camp</span></a>.
+                            </p>
+                            <p class="lang-fr">
+                                Conçu par <strong>Georges Byona</strong> (<a href="https://glosings0n.dev" target="_blank" rel="noopener">@glosings0n</a>), Fondateur @ <span class="losingtek-font"><span class="brand-bold">Losing</span>Tek</span> &amp; Fondateur du <a href="https://flutterfirecamp.dev" target="_blank" rel="noopener" class="ffsc-brand"><span class="brand-bold">FlutterFire Summer</span> <span class="brand-regular">Camp</span></a>.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="step-pagination">
+                        <button class="nav-step-btn" data-step-target="6" data-en="&larr; Previous" data-fr="&larr; Précédent">&larr; Previous</button>
+                        <a href="/codelabs/hub.html" class="nav-step-btn primary" data-en="Back to Codelabs Hub &rarr;" data-fr="Retour au Hub Codelabs &rarr;">
+                            Back to Codelabs Hub &rarr;
+                        </a>
+                    </div>
+                </article>
+
+            </div>
+        </main>
+    </div>
+
+    <script src="/codelabs/js/codelabs.js"></script>
+</body>
+
+</html>

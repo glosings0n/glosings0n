@@ -169,6 +169,21 @@ code, pre, kbd, samp, .font-mono {
     font-weight: 700;
 }
 
+/* FlutterFire Summer Camp Brand Styling: 'FlutterFire Summer' bold (700), 'Camp' regular (400) */
+.ffsc-brand {
+    font-weight: 400;
+}
+
+.ffsc-brand .brand-bold,
+.ffsc-brand strong,
+.ffsc-brand b {
+    font-weight: 700;
+}
+
+.ffsc-brand .brand-regular {
+    font-weight: 400;
+}
+
 a {
     color: var(--color-cyan);
     text-decoration: none;
@@ -395,6 +410,58 @@ a:hover {
     width: 17px;
     height: 17px;
     flex-shrink: 0;
+}
+
+.action-btn[hidden],
+.codelab-github-btn[hidden],
+.is-hidden {
+    display: none !important;
+}
+
+/* Bilingual Switcher (EN | FR) in Topbar */
+.lang-switch {
+    display: inline-flex;
+    align-items: center;
+    background-color: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 2px;
+    height: 36px;
+    flex-shrink: 0;
+}
+
+.lang-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    font-family: var(--font-mono);
+    font-size: 0.74rem;
+    font-weight: 700;
+    padding: 0 8px;
+    height: 100%;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    line-height: 1;
+}
+
+.lang-btn:hover {
+    color: var(--text-primary);
+}
+
+.lang-btn.active {
+    background-color: var(--color-cyan);
+    color: var(--text-on-accent);
+}
+
+/* Bilingual Prose Visibility Rules (Code windows remain 100% English) */
+html[data-lang="fr"] .lang-en {
+    display: none !important;
+}
+
+html[data-lang="en"] .lang-fr,
+html:not([data-lang]) .lang-fr {
+    display: none !important;
 }
 
 /* Progress Bar along bottom of topbar */
@@ -1260,6 +1327,15 @@ body.mode-all-steps .codelab-step {
     .action-btn svg {
         width: 15px;
         height: 15px;
+    }
+
+    .lang-switch {
+        height: 32px;
+    }
+
+    .lang-btn {
+        font-size: 0.68rem;
+        padding: 0 6px;
     }
 
     /* Hub Mobile */

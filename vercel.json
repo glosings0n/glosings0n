@@ -36,6 +36,18 @@
       "destination": "/codelabs/flutter-gemma-droidcon-ug-2026"
     },
     {
+      "source": "/genkit-dart-agentic-workflows",
+      "destination": "/codelabs/genkit-dart-agentic-workflows"
+    },
+    {
+      "source": "/agentic-coding-flutter-mcp-skills",
+      "destination": "/codelabs/agentic-coding-flutter-mcp-skills"
+    },
+    {
+      "source": "/hybrid-ai-firebase-litert-flutter",
+      "destination": "/codelabs/hybrid-ai-firebase-litert-flutter"
+    },
+    {
       "source": "/:slug([^/.]+)",
       "has": [
         {

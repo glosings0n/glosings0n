@@ -36,11 +36,12 @@ These rules are mandatory across all web, codelab, slide, documentation, and app
 ## 3. Brand Identity & Typography
 - **Brand Name:** Always write `glosings0n` (strictly NO trailing dot: never write `glosings0n.`).
 - **Author & Organization Identity:**
-  - **Georges Byona** (`@glosings0n`), Software Engineer, Edge-AI Researcher, Founder @ **LosingTek**, Initiator of **FlutterFire Summer Camp**.
+  - **Georges Byona** (`@glosings0n`), Software Engineer, Edge-AI Researcher, Founder @ **LosingTek**, Founder of **FlutterFire Summer Camp**.
 - **Typography System:**
   - **UI & Body Text:** `'Figtree'`
   - **Code, Numbers/Digits (`0-9`, `+`), Technical Metrics & `@glosings0n` Handle:** `'JetBrains Mono'` (with `JetBrainsMonoDigits` `unicode-range: U+0030-0039, U+002B` so all numbers render in monospace automatically).
   - **LosingTek Brand Wordmark:** Always use `'Urbanist'` via `<span class="losingtek-font"><span class="brand-bold">Losing</span>Tek</span>` (`Losing` in bold `700`, `Tek` in regular `400`).
+  - **FlutterFire Summer Camp Brand Wordmark:** In HTML, always write `<span class="ffsc-brand"><span class="brand-bold">FlutterFire Summer</span> <span class="brand-regular">Camp</span></span>` (`FlutterFire Summer` in bold `700`, `Camp` in regular `400`).
 - **Domain & Routing (`codelabs.glosings0n.dev`):**
   - `https://codelabs.glosings0n.dev/` serves the Codelabs hub directly at `/` (never `/codelabs/`).
   - Each codelab is served at `https://codelabs.glosings0n.dev/<session-slug>` (e.g., `/flutter-gemma-droidcon-ug-2026`).
@@ -69,10 +70,27 @@ These rules are mandatory across all web, codelab, slide, documentation, and app
 
 ---
 
-## 5. Mandatory Codelab Prerequisites & Runnable Code Verification
-- **Always Start with Prerequisites & System Requirements:**
-  - Every codelab MUST include an explicit **Prerequisites & System Requirements** section in Step 1 (and environment verification commands in Step 1/Step 2) listing exact SDK versions, OS/tool dependencies (e.g., Flutter SDK, Dart SDK, JDK 17, Android SDK `minSdk`, Xcode), hardware/device requirements (RAM, storage, 64-bit `arm64-v8a` physical device vs. emulator), and pre-flight terminal checks (`flutter doctor -v`, `adb devices`).
-- **100% Self-Contained, Cross-Platform & Verified Code Snippets:**
+## 5. Mandatory Codelab Pedagogical Flow, Bilingual Structure & Public Repo Policy
+- **Mandatory Step 1 Opening Structure (The Why, The Goal, and Prerequisites):**
+  - Every codelab MUST open Step 1 with three explicit, structured sections in this exact order:
+    1. **Context & The "Why" (`Contexte & Pourquoi`)**: Explain the real-world engineering problem, architectural bottleneck, or field constraint being solved.
+    2. **Learning Goals & What You Will Build (`Objectifs & Ce que vous allez construire`)**: List the concrete outcomes, architectural artifacts, and skills the participant will master by the end of the codelab.
+    3. **Prerequisites & System Requirements (`Prérequis & Configuration Système`)**: List exact SDK versions, OS/tool dependencies (e.g., Flutter SDK, Dart SDK, JDK 17, Android SDK `minSdk`, Xcode, Firebase CLI, Genkit CLI), hardware/device requirements, and pre-flight terminal checks (`flutter doctor -v`, `dart --version`, `adb devices`).
+- **Mandatory Final Step Closing Structure (Takeaways, Verification & Official Resources):**
+  - The final step of every codelab MUST conclude with:
+    1. **End-to-End Verification Checklist (`Checklist de vérification finale`)**: Commands and runtime checks confirming the project compiles (`flutter analyze` / `dart analyze`) and runs cleanly.
+    2. **Key Engineering Takeaways (`Points clés à retenir`)**: Summary of the architectural patterns and production invariants covered.
+    3. **Official Documentation & Further Resources (`Ressources officielles & Pour aller plus loin`)**: Verified links to official SDK documentation, packages, and related codelabs.
+- **Strict Public-Only GitHub Policy & Dynamic GitHub Button Visibility:**
+  - **NEVER mention, reference, or link to any private project or private GitHub repository (`private: true`)** anywhere in codelabs, hub pages, metadata, JSON-LD, or prose. Always verify repository visibility via the GitHub API (`https://api.github.com/users/glosings0n/repos`) before referencing a project by name.
+  - In every codelab topbar (`#codelab-github-btn`):
+    - If a verified public GitHub repository exists for that codelab (such as `https://github.com/glosings0n/gemmea`), link the GitHub button to it and keep it visible.
+    - If no dedicated public GitHub repository exists for that codelab, the GitHub button MUST be hidden (`href="" hidden style="display: none;"`) so no dead or private link is ever exposed.
+- **Mandatory Bilingual Prose (`EN` / `FR`) with 100% English Code Blocks:**
+  - The Codelabs Hub (`codelabs/hub.html`) and every Codelab session page (`codelabs/<slug>/index.html`) MUST support interactive bilingual switching between **English (`EN`)** and **French (`FR`)** via the topbar language switcher (`#lang-btn-en`, `#lang-btn-fr`), using `.lang-en` / `.lang-fr` blocks and `data-en` / `data-fr` attributes.
+  - **Code blocks MUST remain strictly in English (`100% EN`)**: Every copy-pasteable code snippet (`<div class="code-window">`), terminal command, identifier, class name, log string, and inline code comment MUST be written exclusively in English across both language modes to prevent syntax errors, encoding issues, or broken copy-paste workflows.
+- **100% Self-Contained, Sanitized & Verified Code Snippets:**
+  - **Zero Sensitive Data:** Audit every snippet to guarantee zero hardcoded API keys, tokens, credentials, internal URLs, or personal data. Always use environment variables or placeholder configuration patterns.
   - Every file listed in a codelab's minimal project structure MUST be presented as a complete, self-contained, copy-pasteable file (with all required `import` statements, class declarations, and helper methods included) so a participant can copy the files from Step 1 to the final step and run the project without any missing symbols, missing assets, or SDK version mismatch errors.
-  - Provide terminal commands for both **macOS / Linux / Git Bash** and **Windows PowerShell** whenever shell syntax differs (such as creating nested folders).
+  - Provide terminal commands for both **macOS / Linux / Git Bash** and **Windows PowerShell** whenever shell syntax differs (such as creating nested folders or setting environment variables).
   - Always verify codelab code with `flutter analyze` / `dart analyze` before publishing.

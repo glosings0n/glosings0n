@@ -1,0 +1,2105 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agentic Coding for Flutter: Mastering Dart MCP Server, AGENTS.md &amp; Custom Skills | glosings0n Codelabs</title>
+    <meta name="description"
+        content="Hands-on Agentic Engineering Codelab for Flutter &amp; Dart developers by Georges Byona (@glosings0n), Founder @ LosingTek &amp; Founder of FlutterFire Summer Camp. Eliminate the AI Verification Tax with dart mcp-server, AGENTS.md, reusable SKILL.md modules, and custom genkit_mcp servers.">
+    <meta name="keywords"
+        content="Agentic Coding for Flutter, Dart MCP Server, dart mcp-server, Model Context Protocol Flutter, AGENTS.md Flutter, SKILL.md Agent Skills, genkit_mcp Dart, Genkit Dart Middleware, Vibe Coding vs Agentic Engineering, AI Verification Tax, Flutter Clean Architecture AI Agent, Georges Byona, Georges Losingson, Byona Georges, glosings0n, @glosings0n, Losingson, Losings0n, @losingson, g-losingson, LosingTek, Losing Tek, FlutterFire Summer Camp, FlutterFire Camp">
+    <meta name="author" content="Georges Byona">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <link rel="canonical" href="https://codelabs.glosings0n.dev/agentic-coding-flutter-mcp-skills">
+
+    <!-- OpenGraph -->
+    <meta property="og:title" content="Agentic Coding for Flutter: Mastering Dart MCP Server, AGENTS.md &amp; Custom Skills | glosings0n Codelabs">
+    <meta property="og:description"
+        content="Turn AI coding assistants into deterministic Flutter software engineers using dart mcp-server, a zero-drift AGENTS.md constitution, modular SKILL.md workflows, and custom genkit_mcp tools. By Georges Byona (@glosings0n).">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://codelabs.glosings0n.dev/agentic-coding-flutter-mcp-skills">
+    <meta property="og:image" content="https://glosings0n.dev/assets/hero.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Agentic Coding for Flutter | Georges Byona (@glosings0n)">
+    <meta property="og:site_name" content="glosings0n Codelabs">
+    <meta property="article:published_time" content="2026-10-28">
+    <meta property="article:modified_time" content="2026-10-28">
+    <meta property="article:author" content="https://glosings0n.dev">
+    <meta property="article:section" content="Agentic Engineering &amp; Flutter Architecture">
+    <meta property="article:tag" content="Flutter">
+    <meta property="article:tag" content="Dart MCP Server">
+    <meta property="article:tag" content="Model Context Protocol">
+    <meta property="article:tag" content="AGENTS.md">
+    <meta property="article:tag" content="Agent Skills">
+    <meta property="article:tag" content="Genkit Dart">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@glosings0n">
+    <meta name="twitter:creator" content="@glosings0n">
+    <meta name="twitter:title" content="Agentic Coding for Flutter: Mastering Dart MCP Server, AGENTS.md &amp; Custom Skills | glosings0n Codelabs">
+    <meta name="twitter:description"
+        content="Eliminate the AI Verification Tax in Flutter projects using dart mcp-server, AGENTS.md, modular SKILL.md files, and custom genkit_mcp servers. By Georges Byona (@glosings0n).">
+    <meta name="twitter:image" content="https://glosings0n.dev/assets/hero.png">
+
+    <!-- Schema.org JSON-LD for Google Search & AI Engines -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Person",
+          "@id": "https://glosings0n.dev/#person",
+          "name": "Georges Byona",
+          "additionalName": "Georges Losingson",
+          "alternateName": [
+            "glosings0n",
+            "@glosings0n",
+            "Glosingson",
+            "Georges Byona",
+            "Georges Losingson",
+            "Losingson",
+            "Byona Georges",
+            "Losings0n",
+            "@losingson",
+            "g-losingson",
+            "LosingTek"
+          ],
+          "url": "https://glosings0n.dev",
+          "image": "https://glosings0n.dev/assets/hero.png",
+          "jobTitle": "Software Engineer & Edge-AI Researcher",
+          "sameAs": [
+            "https://github.com/glosings0n",
+            "https://linkedin.com/in/glosings0n",
+            "https://x.com/glosings0n",
+            "https://medium.com/@glosings0n",
+            "https://youtube.com/@FlutterFireCamp"
+          ],
+          "founder": [
+            {
+              "@type": "Organization",
+              "@id": "https://glosings0n.dev/#losingtek",
+              "name": "LosingTek",
+              "url": "https://losingtek.com"
+            },
+            {
+              "@type": "EducationalOrganization",
+              "@id": "https://glosings0n.dev/#flutterfirecamp",
+              "name": "FlutterFire Summer Camp",
+              "alternateName": "FlutterFire Camp",
+              "url": "https://flutterfirecamp.dev"
+            }
+          ]
+        },
+        {
+          "@type": ["TechArticle", "LearningResource"],
+          "@id": "https://codelabs.glosings0n.dev/agentic-coding-flutter-mcp-skills#codelab",
+          "headline": "Agentic Coding for Flutter: Mastering Dart MCP Server, AGENTS.md & Custom Skills",
+          "name": "Agentic Coding for Flutter: Mastering Dart MCP Server, AGENTS.md & Custom Skills",
+          "description": "Hands-on Agentic Engineering codelab by Georges Byona (@glosings0n). Learn how to wire the official Dart & Flutter MCP server, author a deterministic AGENTS.md constitution, build on-demand SKILL.md workflows, and create a custom architecture-guard MCP server in Dart with genkit_mcp.",
+          "url": "https://codelabs.glosings0n.dev/agentic-coding-flutter-mcp-skills",
+          "image": "https://glosings0n.dev/assets/hero.png",
+          "datePublished": "2026-10-28",
+          "dateModified": "2026-10-28",
+          "inLanguage": ["en", "fr"],
+          "proficiencyLevel": "Intermediate",
+          "educationalLevel": "Intermediate",
+          "learningResourceType": "Codelab",
+          "timeRequired": "PT40M",
+          "author": {
+            "@id": "https://glosings0n.dev/#person"
+          },
+          "publisher": {
+            "@id": "https://glosings0n.dev/#losingtek"
+          },
+          "isPartOf": {
+            "@id": "https://codelabs.glosings0n.dev/#website"
+          },
+          "about": [
+            "Flutter",
+            "Dart",
+            "Model Context Protocol",
+            "Dart MCP Server",
+            "AGENTS.md",
+            "Agent Skills",
+            "Genkit Dart",
+            "Software Architecture",
+            "Automated Verification"
+          ],
+          "keywords": "Agentic Coding for Flutter, Dart MCP Server, dart mcp-server, AGENTS.md, SKILL.md, genkit_mcp, Model Context Protocol, Flutter Clean Architecture, Georges Byona, glosings0n, LosingTek, FlutterFire Summer Camp"
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "glosings0n Portfolio",
+              "item": "https://glosings0n.dev"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "glosings0n Codelabs",
+              "item": "https://codelabs.glosings0n.dev"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "Agentic Coding for Flutter: Mastering Dart MCP Server, AGENTS.md & Custom Skills",
+              "item": "https://codelabs.glosings0n.dev/agentic-coding-flutter-mcp-skills"
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="192x192" href="/assets/favicon.png">
+    <link rel="icon" type="image/svg+xml" href="/assets/logo.svg">
+
+    <!-- Codelabs Stylesheet -->
+    <link rel="stylesheet" href="/codelabs/css/codelabs.css">
+</head>
+
+<body class="codelab-page">
+
+    <!-- Sticky Codelab Header -->
+    <header class="codelab-topbar">
+        <div class="topbar-inner">
+            <div class="topbar-left">
+                <button class="sidebar-toggle-btn" id="sidebar-toggle-btn" aria-label="Toggle Steps Drawer" aria-expanded="false">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
+                <a href="/" id="codelab-home-link" class="brand-link">
+                    <img src="/assets/logo.svg" alt="LosingTek Logo" class="brand-logo">
+                    <span class="brand-text">glosings0n</span>
+                </a>
+                <a href="/" id="codelab-sub-link" class="brand-subtext" style="text-decoration: none;">/ codelabs</a>
+                <span class="topbar-divider">/</span>
+                <span class="codelab-header-title"
+                    data-en="Agentic Coding for Flutter: Mastering Dart MCP Server, AGENTS.md &amp; Custom Skills"
+                    data-fr="Agentic Coding pour Flutter : Maîtriser Dart MCP Server, AGENTS.md et les Skills Personnalisés">Agentic Coding for Flutter: Mastering Dart MCP Server, AGENTS.md &amp; Custom Skills</span>
+            </div>
+
+            <div class="topbar-right">
+                <div class="time-pill" title="Time remaining">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polyline points="12 6 12 12 16 14"></polyline>
+                    </svg>
+                    <span id="time-remaining-label">40 min left</span>
+                </div>
+
+                <div class="lang-switch" role="group" aria-label="Language switcher">
+                    <button class="lang-btn active" id="lang-btn-en" data-lang="en" aria-pressed="true">EN</button>
+                    <button class="lang-btn" id="lang-btn-fr" data-lang="fr" aria-pressed="false">FR</button>
+                </div>
+
+                <button class="action-btn icon-only" id="theme-toggle-btn" aria-label="Light mode" title="Light mode">
+                    <span id="theme-toggle-icon"></span>
+                </button>
+
+                <a href="" id="codelab-github-btn" class="action-btn icon-only codelab-github-btn" hidden style="display: none;"
+                    aria-label="Open the GitHub repo" title="Open the GitHub repo">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path
+                            d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                        </path>
+                    </svg>
+                </a>
+            </div>
+        </div>
+        <div class="codelab-progress-track">
+            <div class="codelab-progress-fill" id="codelab-progress-fill"></div>
+        </div>
+    </header>
+
+    <div class="codelab-layout">
+        <!-- Left Sidebar Step Navigation -->
+        <aside class="codelab-sidebar" id="codelab-sidebar">
+            <ul class="step-nav-list">
+                <li class="step-nav-item active" data-step="0">
+                    <span class="step-num">1</span>
+                    <span class="step-nav-title" data-en="Context, Goals &amp; Prerequisites" data-fr="Contexte, Objectifs &amp; Prérequis">Context, Goals &amp; Prerequisites</span>
+                    <span class="step-nav-time">5m</span>
+                </li>
+                <li class="step-nav-item" data-step="1">
+                    <span class="step-num">2</span>
+                    <span class="step-nav-title" data-en="Dart &amp; Flutter MCP Server" data-fr="Serveur MCP Dart &amp; Flutter">Dart &amp; Flutter MCP Server</span>
+                    <span class="step-nav-time">5m</span>
+                </li>
+                <li class="step-nav-item" data-step="2">
+                    <span class="step-num">3</span>
+                    <span class="step-nav-title" data-en="Zero-Drift AGENTS.md Constitution" data-fr="Constitution AGENTS.md Zéro-Dérive">Zero-Drift AGENTS.md Constitution</span>
+                    <span class="step-nav-time">5m</span>
+                </li>
+                <li class="step-nav-item" data-step="3">
+                    <span class="step-num">4</span>
+                    <span class="step-nav-title" data-en="Modular On-Demand SKILL.md" data-fr="Skills Modulaires SKILL.md">Modular On-Demand SKILL.md</span>
+                    <span class="step-nav-time">5m</span>
+                </li>
+                <li class="step-nav-item" data-step="4">
+                    <span class="step-num">5</span>
+                    <span class="step-nav-title" data-en="Governed Flutter Feature" data-fr="Feature Flutter sous Gouvernance">Governed Flutter Feature</span>
+                    <span class="step-nav-time">6m</span>
+                </li>
+                <li class="step-nav-item" data-step="5">
+                    <span class="step-num">6</span>
+                    <span class="step-nav-title" data-en="Custom Architecture MCP Server" data-fr="Serveur MCP d'Architecture en Dart">Custom Architecture MCP Server</span>
+                    <span class="step-nav-time">5m</span>
+                </li>
+                <li class="step-nav-item" data-step="6">
+                    <span class="step-num">7</span>
+                    <span class="step-nav-title" data-en="Automated Verification Loops" data-fr="Boucles de Vérification Automatisées">Automated Verification Loops</span>
+                    <span class="step-nav-time">5m</span>
+                </li>
+                <li class="step-nav-item" data-step="7">
+                    <span class="step-num">8</span>
+                    <span class="step-nav-title" data-en="Checklist, Takeaways &amp; Resources" data-fr="Checklist, Points Clés &amp; Ressources">Checklist, Takeaways &amp; Resources</span>
+                    <span class="step-nav-time">4m</span>
+                </li>
+            </ul>
+
+            <div class="sidebar-footer">
+                <div><strong data-en="Author:" data-fr="Auteur :">Author:</strong> Georges Byona (<span class="font-mono">@glosings0n</span>)</div>
+                <div><strong data-en="Track:" data-fr="Parcours :">Track:</strong> Google Developer Community | Agentic Engineering</div>
+                <div class="sidebar-copyright">&copy; 2026 <span class="font-mono">glosings0n</span></div>
+            </div>
+        </aside>
+
+        <!-- Main Step Viewport -->
+        <main class="codelab-main">
+            <div class="codelab-content-wrapper">
+
+                <!-- =========================================================
+                     STEP 1: CONTEXT, GOALS & PREREQUISITES
+                     ========================================================= -->
+                <article class="codelab-step active" id="step-1" data-duration="5">
+                    <div class="step-header">
+                        <div class="step-eyebrow">
+                            <span data-en="Step 1 of 8 | Context, Learning Goals &amp; System Requirements" data-fr="Étape 1 sur 8 | Contexte, Objectifs &amp; Configuration Système">Step 1 of 8 | Context, Learning Goals &amp; System Requirements</span>
+                            <span class="codelab-last-updated">Last updated: <time datetime="2026-10-28">October 28, 2026</time></span>
+                        </div>
+                        <h1 class="step-title"
+                            data-en="Eliminating the AI Verification Tax with Agentic Engineering"
+                            data-fr="Éliminer la Taxe de Vérification IA grâce à l'Agentic Engineering">Eliminating the AI Verification Tax with Agentic Engineering</h1>
+                    </div>
+
+                    <div class="lang-en">
+                        <h3>1. Context &amp; The "Why": Escaping the Vibe-Coding Verification Tax</h3>
+                        <p>
+                            Over 79% of Flutter and Dart developers now use AI coding assistants daily. Yet across production mobile teams, a painful paradox has emerged: while raw code generation is faster than ever, engineers spend hours fixing hallucinated <code>pub.dev</code> APIs, unbounded <code>RenderFlex</code> layout overflows, leaked <code>BuildContext</code> references across async gaps, and broken layer boundaries where database DTOs leak directly into UI widgets.
+                        </p>
+                        <p>
+                            This hidden productivity drain is known as <strong>The Verification Tax</strong>. It happens when developers rely on unconstrained <em>Vibe-Coding</em> (prompting an LLM in a vacuum without compiler grounding or architectural contracts) instead of <strong>Agentic Engineering</strong>.
+                        </p>
+
+                        <div class="callout callout-info">
+                            <svg class="callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <line x1="12" y1="16" x2="12" y2="12"></line>
+                                <circle cx="12" cy="8" r="1.25" fill="currentColor" stroke="none"></circle>
+                            </svg>
+                            <div class="callout-body">
+                                <div class="callout-title">Core Thesis of Agentic Engineering</div>
+                                <p>
+                                    An AI coding agent is only as reliable as the tools it can invoke, the architectural constitution it must obey, and the deterministic verification loop that gates its output.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="table-responsive">
+                            <table class="codelab-table">
+                                <thead>
+                                    <tr>
+                                        <th>Engineering Dimension</th>
+                                        <th>Unconstrained Vibe-Coding</th>
+                                        <th>Deterministic Agentic Engineering</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>Compiler &amp; Runtime Awareness</strong></td>
+                                        <td>Blind text prediction; guesses method signatures</td>
+                                        <td>Live AST &amp; VM introspection via <code>dart mcp-server</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Architectural Boundaries</strong></td>
+                                        <td>Imports data/network classes directly inside Widgets</td>
+                                        <td>Governed by a root <code>AGENTS.md</code> constitution</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Context Window Hygiene</strong></td>
+                                        <td>Bloated prompts that degrade model reasoning</td>
+                                        <td>Modular on-demand <code>SKILL.md</code> procedural files</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Domain Guardrails</strong></td>
+                                        <td>Manual human code review after every prompt</td>
+                                        <td>Custom project MCP tools built with <code>genkit_mcp</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Definition of Done</strong></td>
+                                        <td>"It looks plausible in the chat window"</td>
+                                        <td><code>flutter analyze --fatal-infos</code> &amp; <code>flutter test</code> pass</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h3>2. Learning Goals &amp; What You Will Build</h3>
+                        <p>
+                            By the end of this hands-on codelab, you will design and verify a complete <strong>Agentic Flutter Engineering Workspace</strong>:
+                        </p>
+                        <ol>
+                            <li><strong>Wire the Official Dart &amp; Flutter MCP Server (<code>dart mcp-server</code>):</strong> Connect your IDE or CLI coding agent to the Dart analyzer, pub package manager, live Widget Inspector, and stateful Hot Reload over the Model Context Protocol.</li>
+                            <li><strong>Engineer a Zero-Drift <code>AGENTS.md</code> Constitution:</strong> Write a concise, high-signal project constitution enforcing strict Domain/Application/Presentation separation, immutable entities, explicit <code>Result&lt;T&gt;</code> error handling, and design token invariants.</li>
+                            <li><strong>Build On-Demand Procedural Skills (<code>SKILL.md</code>):</strong> Package complex, multi-step feature scaffolding rules into <code>.agents/skills/flutter-clean-feature/SKILL.md</code> so agents load procedural instructions only when needed.</li>
+                            <li><strong>Implement a Governed Flutter Telemetry Feature:</strong> Build a 100% self-contained Flutter application using <code>flutter_bloc</code> and Dart 3 sealed classes that passes strict static analysis with zero warnings.</li>
+                            <li><strong>Build a Custom Architecture-Guard MCP Server in Dart (<code>genkit_mcp</code>):</strong> Write a custom MCP server in Dart that exposes a live <code>checkLayerImports</code> tool and a <code>project://design-tokens</code> resource to any MCP-compatible agent.</li>
+                            <li><strong>Enforce Automated Verification Loops:</strong> Write deterministic widget tests and cross-platform pre-commit verification scripts that prevent broken agent code from ever landing in your branch.</li>
+                        </ol>
+
+                        <h3>3. Prerequisites &amp; System Requirements</h3>
+                        <ul>
+                            <li><strong>Dart SDK:</strong> <code>&gt;=3.8.0</code> (includes the built-in <code>dart mcp-server</code> command).</li>
+                            <li><strong>Flutter SDK:</strong> <code>&gt;=3.29.0</code> (stable channel recommended).</li>
+                            <li><strong>Git:</strong> <code>&gt;=2.40.0</code> for workspace state inspection.</li>
+                            <li><strong>MCP-Compatible Agent Host:</strong> Google Antigravity, Gemini CLI, Cursor, VS Code with GitHub Copilot Agent mode, or Claude Code.</li>
+                        </ul>
+                        <p>
+                            Run the pre-flight verification commands below in your terminal to confirm your local SDK toolchain is ready:
+                        </p>
+                    </div>
+
+                    <div class="lang-fr">
+                        <h3>1. Contexte &amp; Pourquoi : Échapper à la Taxe de Vérification du Vibe-Coding</h3>
+                        <p>
+                            Plus de 79 % des développeurs Flutter et Dart utilisent aujourd'hui des assistants IA au quotidien. Pourtant, au sein des équipes mobiles en production, un paradoxe coûteux est apparu : bien que la génération brute de code soit plus rapide que jamais, les ingénieurs passent des heures à corriger des APIs <code>pub.dev</code> hallucinées, des erreurs de rendu <code>RenderFlex</code> non bornées, des fuites de <code>BuildContext</code> après des appels asynchrones, et des violations d'architecture où les DTOs de base de données fuient directement dans les widgets UI.
+                        </p>
+                        <p>
+                            Cette perte de productivité cachée s'appelle la <strong>Taxe de Vérification (Verification Tax)</strong>. Elle survient lorsque les développeurs s'appuient sur du <em>Vibe-Coding</em> non contraint (solliciter un LLM à l'aveugle sans ancrage dans le compilateur ni contrat architectural) au lieu de pratiquer l'<strong>Agentic Engineering</strong>.
+                        </p>
+
+                        <div class="callout callout-info">
+                            <svg class="callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <line x1="12" y1="16" x2="12" y2="12"></line>
+                                <circle cx="12" cy="8" r="1.25" fill="currentColor" stroke="none"></circle>
+                            </svg>
+                            <div class="callout-body">
+                                <div class="callout-title">Thèse Centrale de l'Agentic Engineering</div>
+                                <p>
+                                    Un agent de programmation IA n'est fiable que dans la mesure des outils qu'il peut invoquer, de la constitution architecturale à laquelle il obéit, et de la boucle de vérification déterministe qui valide son code.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="table-responsive">
+                            <table class="codelab-table">
+                                <thead>
+                                    <tr>
+                                        <th>Dimension d'Ingénierie</th>
+                                        <th>Vibe-Coding Non Contraint</th>
+                                        <th>Agentic Engineering Déterministe</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>Conscience du Compilateur &amp; VM</strong></td>
+                                        <td>Prédiction textuelle à l'aveugle ; devine les signatures</td>
+                                        <td>Introspection AST &amp; VM en direct via <code>dart mcp-server</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Frontières Architecturales</strong></td>
+                                        <td>Importe les classes réseau/données directement dans les Widgets</td>
+                                        <td>Gouverné par une constitution racine <code>AGENTS.md</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Hygiène de la Fenêtre de Contexte</strong></td>
+                                        <td>Prompts surchargés qui dégradent le raisonnement</td>
+                                        <td>Fichiers procéduraux modulaires <code>SKILL.md</code> chargés à la demande</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Garde-fous Métier</strong></td>
+                                        <td>Revue manuelle humaine après chaque prompt</td>
+                                        <td>Outils MCP personnalisés construits avec <code>genkit_mcp</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Définition de "Terminé"</strong></td>
+                                        <td>"Le code a l'air plausible dans le chat"</td>
+                                        <td><code>flutter analyze --fatal-infos</code> &amp; <code>flutter test</code> passent à 100 %</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h3>2. Objectifs &amp; Ce que vous allez construire</h3>
+                        <p>
+                            À la fin de ce codelab pratique, vous aurez conçu et vérifié un <strong>Environnement Flutter d'Agentic Engineering</strong> complet :
+                        </p>
+                        <ol>
+                            <li><strong>Connecter le Serveur MCP Officiel Dart &amp; Flutter (<code>dart mcp-server</code>) :</strong> Relier votre IDE ou agent CLI à l'analyseur Dart, au gestionnaire de paquets pub, au Widget Inspector en direct et au Hot Reload via le Model Context Protocol.</li>
+                            <li><strong>Concevoir une Constitution <code>AGENTS.md</code> Zéro-Dérive :</strong> Rédiger une constitution de projet concise et déterministe imposant la séparation Domain/Application/Presentation, l'immuabilité des entités, la gestion d'erreurs explicite via <code>Result&lt;T&gt;</code> et le respect des jetons de design.</li>
+                            <li><strong>Créer des Skills Procéduraux à la Demande (<code>SKILL.md</code>) :</strong> Encapsuler les règles de génération de fonctionnalités dans <code>.agents/skills/flutter-clean-feature/SKILL.md</code> afin que l'agent ne les charge qu'au moment opportun.</li>
+                            <li><strong>Implémenter une Feature Flutter Gouvernée :</strong> Construire une application Flutter de télémétrie 100 % autonome utilisant <code>flutter_bloc</code> et les classes scellées Dart 3, compilant sans aucun avertissement d'analyse statique.</li>
+                            <li><strong>Construire un Serveur MCP d'Architecture en Dart (<code>genkit_mcp</code>) :</strong> Écrire un serveur MCP personnalisé en Dart exposant un outil <code>checkLayerImports</code> et une ressource <code>project://design-tokens</code> à tout agent compatible MCP.</li>
+                            <li><strong>Imposer des Boucles de Vérification Automatisées :</strong> Écrire des tests de widgets déterministes et des scripts multiplateformes qui empêchent tout code défectueux d'entrer dans votre branche.</li>
+                        </ol>
+
+                        <h3>3. Prérequis &amp; Configuration Système</h3>
+                        <ul>
+                            <li><strong>SDK Dart :</strong> <code>&gt;=3.8.0</code> (inclut nativement la commande <code>dart mcp-server</code>).</li>
+                            <li><strong>SDK Flutter :</strong> <code>&gt;=3.29.0</code> (canal stable recommandé).</li>
+                            <li><strong>Git :</strong> <code>&gt;=2.40.0</code> pour l'inspection de l'espace de travail.</li>
+                            <li><strong>Hôte Agent Compatible MCP :</strong> Google Antigravity, Gemini CLI, Cursor, VS Code avec GitHub Copilot Agent, ou Claude Code.</li>
+                        </ul>
+                        <p>
+                            Exécutez les commandes de vérification pré-vol ci-dessous dans votre terminal pour confirmer que votre chaîne d'outils SDK est prête :
+                        </p>
+                    </div>
+
+                    <div class="code-window">
+                        <div class="code-window-header">
+                            <div class="code-window-meta">
+                                <div class="window-dots">
+                                    <span class="window-dot red"></span>
+                                    <span class="window-dot yellow"></span>
+                                    <span class="window-dot green"></span>
+                                </div>
+                                <span class="code-filename">Terminal | Pre-Flight SDK &amp; MCP Check (macOS / Linux / Windows PowerShell)</span>
+                                <span class="code-lang-badge">SH / PS1</span>
+                            </div>
+                            <button class="copy-code-btn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                Copy
+                            </button>
+                        </div>
+                        <pre><code># 1. Verify Flutter &amp; Dart SDK versions (Dart &gt;= 3.8.0 required)
+flutter --version
+dart --version
+
+# 2. Verify the built-in Dart MCP Server binary responds
+dart mcp-server --help
+
+# 3. Create a clean workspace for this codelab
+flutter create --empty agentic_telemetry_demo
+cd agentic_telemetry_demo
+flutter pub add flutter_bloc</code></pre>
+                    </div>
+
+                    <div class="step-pagination">
+                        <span></span>
+                        <button class="nav-step-btn primary" data-step-target="1"
+                            data-en="Next: Dart &amp; Flutter MCP Server &rarr;"
+                            data-fr="Suivant : Serveur MCP Dart &amp; Flutter &rarr;">Next: Dart &amp; Flutter MCP Server &rarr;</button>
+                    </div>
+                </article>
+
+                <!-- =========================================================
+                     STEP 2: CONNECTING THE OFFICIAL DART & FLUTTER MCP SERVER
+                     ========================================================= -->
+                <article class="codelab-step" id="step-2" data-duration="5">
+                    <div class="step-header">
+                        <div class="step-eyebrow">
+                            <span data-en="Step 2 of 8 | Model Context Protocol Integration" data-fr="Étape 2 sur 8 | Intégration du Model Context Protocol">Step 2 of 8 | Model Context Protocol Integration</span>
+                        </div>
+                        <h1 class="step-title"
+                            data-en="Connecting the Official Dart &amp; Flutter MCP Server"
+                            data-fr="Connecter le Serveur MCP Officiel Dart &amp; Flutter">Connecting the Official Dart &amp; Flutter MCP Server</h1>
+                    </div>
+
+                    <div class="lang-en">
+                        <p>
+                            Without tool grounding, an LLM treats Dart like untyped plain text. It frequently invents named parameters that do not exist in your installed version of <code>flutter_bloc</code> or <code>MaterialApp</code>, and it cannot see runtime layout exceptions thrown inside your running emulator.
+                        </p>
+                        <p>
+                            Starting with Dart 3.8, the Dart SDK ships with a first-party Model Context Protocol server invoked via <code>dart mcp-server</code>. It bridges your coding agent directly to the Dart Analysis Server, the <code>pub</code> package manager, and the Dart Tooling Daemon (DTD) connected to your running Flutter VM.
+                        </p>
+
+                        <h3>The 5 Live Superpowers of <code>dart mcp-server</code></h3>
+                        <div class="table-responsive">
+                            <table class="codelab-table">
+                                <thead>
+                                    <tr>
+                                        <th>MCP Tool Category</th>
+                                        <th>Exposed MCP Tool Name</th>
+                                        <th>What It Replaces in Agent Workflows</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>Static Analysis</strong></td>
+                                        <td><code>analyze_files</code></td>
+                                        <td>Eliminates hallucinated imports, type mismatches, and unused variables before you even read the diff.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>AST Symbol Lookup</strong></td>
+                                        <td><code>signature_help</code> / <code>hover</code></td>
+                                        <td>Lets the agent inspect exact constructor parameters and doc comments from your local <code>.pub-cache</code>.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Package Management</strong></td>
+                                        <td><code>pub</code> / <code>pub_dev_search</code></td>
+                                        <td>Searches <code>pub.dev</code> for current package versions and executes <code>flutter pub add</code> safely.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Runtime Inspection</strong></td>
+                                        <td><code>get_widget_tree</code> / <code>get_runtime_errors</code></td>
+                                        <td>Reads live <code>RenderFlex</code> overflow trees and active stack traces directly from the running Flutter app.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Stateful Iteration</strong></td>
+                                        <td><code>hot_reload</code> / <code>hot_restart</code></td>
+                                        <td>Applies edits to the running VM in sub-second cycles and verifies that runtime errors disappear.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h3>1. Register <code>dart mcp-server</code> in Your Agent Host</h3>
+                        <p>
+                            Create the MCP configuration file in your project root for your preferred agent environment (such as <code>.gemini/settings.json</code> for Gemini CLI / Google Antigravity, or <code>.cursor/mcp.json</code> for Cursor):
+                        </p>
+                    </div>
+
+                    <div class="lang-fr">
+                        <p>
+                            Sans ancrage d'outils, un LLM traite le code Dart comme du simple texte non typé. Il invente régulièrement des paramètres nommés qui n'existent pas dans votre version installée de <code>flutter_bloc</code> ou <code>MaterialApp</code>, et il est aveugle aux exceptions de rendu déclenchées dans votre émulateur en cours d'exécution.
+                        </p>
+                        <p>
+                            Depuis Dart 3.8, le SDK Dart intègre nativement un serveur officiel Model Context Protocol accessible via <code>dart mcp-server</code>. Il connecte directement votre agent de codage au serveur d'analyse Dart, au gestionnaire de paquets <code>pub</code>, ainsi qu'au Dart Tooling Daemon (DTD) relié à la machine virtuelle Flutter active.
+                        </p>
+
+                        <h3>Les 5 Super-Pouvoirs en Direct de <code>dart mcp-server</code></h3>
+                        <div class="table-responsive">
+                            <table class="codelab-table">
+                                <thead>
+                                    <tr>
+                                        <th>Catégorie d'Outil MCP</th>
+                                        <th>Outil MCP Exposé</th>
+                                        <th>Ce qu'il remplace dans le flux de l'agent</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>Analyse Statique</strong></td>
+                                        <td><code>analyze_files</code></td>
+                                        <td>Élimine les imports hallucinés, erreurs de typage et variables inutilisées avant même la lecture du diff.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Résolution AST</strong></td>
+                                        <td><code>signature_help</code> / <code>hover</code></td>
+                                        <td>Permet à l'agent d'inspecter les constructeurs exacts et la documentation depuis votre <code>.pub-cache</code> local.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Gestion de Paquets</strong></td>
+                                        <td><code>pub</code> / <code>pub_dev_search</code></td>
+                                        <td>Recherche les versions actuelles sur <code>pub.dev</code> et exécute <code>flutter pub add</code> proprement.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Inspection Runtime</strong></td>
+                                        <td><code>get_widget_tree</code> / <code>get_runtime_errors</code></td>
+                                        <td>Lit l'arbre des widgets et les erreurs <code>RenderFlex</code> directement depuis l'application Flutter active.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Itération Stateful</strong></td>
+                                        <td><code>hot_reload</code> / <code>hot_restart</code></td>
+                                        <td>Applique les modifications à la VM active en moins d'une seconde et vérifie la disparition des erreurs.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h3>1. Enregistrer <code>dart mcp-server</code> dans votre Hôte Agent</h3>
+                        <p>
+                            Créez le fichier de configuration MCP à la racine de votre projet pour votre environnement d'agent (par exemple <code>.gemini/settings.json</code> pour Gemini CLI / Google Antigravity, ou <code>.cursor/mcp.json</code> pour Cursor) :
+                        </p>
+                    </div>
+
+                    <div class="code-window">
+                        <div class="code-window-header">
+                            <div class="code-window-meta">
+                                <div class="window-dots">
+                                    <span class="window-dot red"></span>
+                                    <span class="window-dot yellow"></span>
+                                    <span class="window-dot green"></span>
+                                </div>
+                                <span class="code-filename">.gemini/settings.json | Workspace MCP Server Configuration</span>
+                                <span class="code-lang-badge">JSON</span>
+                            </div>
+                            <button class="copy-code-btn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                Copy
+                            </button>
+                        </div>
+                        <pre><code>{
+  "mcpServers": {
+    "dart": {
+      "command": "dart",
+      "args": [
+        "mcp-server",
+        "--force-roots-fallback"
+      ],
+      "env": {}
+    }
+  }
+}</code></pre>
+                    </div>
+
+                    <div class="lang-en">
+                        <div class="callout callout-warning">
+                            <svg class="callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+                                <line x1="12" y1="9" x2="12" y2="13"></line>
+                                <circle cx="12" cy="17" r="1.25" fill="currentColor" stroke="none"></circle>
+                            </svg>
+                            <div class="callout-body">
+                                <div class="callout-title">Why Pass <code>--force-roots-fallback</code>?</div>
+                                <p>
+                                    Some CLI and editor MCP clients do not yet implement the MCP <code>roots/list</code> capability natively. Passing <code>--force-roots-fallback</code> allows the agent to register workspace roots dynamically via tool calls so <code>analyze_files</code> and <code>pub</code> always resolve your project directory accurately.
+                                </p>
+                            </div>
+                        </div>
+
+                        <h3>2. Launching Flutter with the Dart Tooling Daemon (DTD)</h3>
+                        <p>
+                            When you run your Flutter app during an agentic coding session, pass <code>--print-dtd</code> so your agent (or IDE) can attach to the live VM service and inspect the widget tree or trigger Hot Reloads:
+                        </p>
+                    </div>
+
+                    <div class="lang-fr">
+                        <div class="callout callout-warning">
+                            <svg class="callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+                                <line x1="12" y1="9" x2="12" y2="13"></line>
+                                <circle cx="12" cy="17" r="1.25" fill="currentColor" stroke="none"></circle>
+                            </svg>
+                            <div class="callout-body">
+                                <div class="callout-title">Pourquoi passer l'argument <code>--force-roots-fallback</code> ?</div>
+                                <p>
+                                    Certains clients MCP en ligne de commande ou éditeurs n'implémentent pas encore nativement la capacité MCP <code>roots/list</code>. L'option <code>--force-roots-fallback</code> permet à l'agent d'enregistrer dynamiquement la racine du projet via un appel d'outil afin que <code>analyze_files</code> et <code>pub</code> ciblent toujours le bon dossier.
+                                </p>
+                            </div>
+                        </div>
+
+                        <h3>2. Lancer Flutter avec le Dart Tooling Daemon (DTD)</h3>
+                        <p>
+                            Lorsque vous lancez votre application Flutter pendant une session de codage agentique, passez le drapeau <code>--print-dtd</code> pour permettre à votre agent d'inspecter l'arbre de widgets ou de déclencher un Hot Reload :
+                        </p>
+                    </div>
+
+                    <div class="code-window">
+                        <div class="code-window-header">
+                            <div class="code-window-meta">
+                                <div class="window-dots">
+                                    <span class="window-dot red"></span>
+                                    <span class="window-dot yellow"></span>
+                                    <span class="window-dot green"></span>
+                                </div>
+                                <span class="code-filename">Terminal | Launch Flutter with DTD URI Exposed for MCP</span>
+                                <span class="code-lang-badge">BASH</span>
+                            </div>
+                            <button class="copy-code-btn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                Copy
+                            </button>
+                        </div>
+                        <pre><code># Start Flutter on your target device/emulator and print the DTD connection URI
+flutter run --print-dtd
+
+# Example output:
+# The Dart Tooling Daemon is listening on ws://127.0.0.1:58432/AbCdEfGhIjKl=/
+# Your agent passes this URI to the `connect_dart_tooling_daemon` MCP tool!</code></pre>
+                    </div>
+
+                    <div class="step-pagination">
+                        <button class="nav-step-btn" data-step-target="0"
+                            data-en="&larr; Previous"
+                            data-fr="&larr; Précédent">&larr; Previous</button>
+                        <button class="nav-step-btn primary" data-step-target="2"
+                            data-en="Next: Zero-Drift AGENTS.md Constitution &rarr;"
+                            data-fr="Suivant : Constitution AGENTS.md Zéro-Dérive &rarr;">Next: Zero-Drift AGENTS.md Constitution &rarr;</button>
+                    </div>
+                </article>
+
+                <!-- =========================================================
+                     STEP 3: ENGINEERING A ZERO-DRIFT AGENTS.MD CONSTITUTION
+                     ========================================================= -->
+                <article class="codelab-step" id="step-3" data-duration="5">
+                    <div class="step-header">
+                        <div class="step-eyebrow">
+                            <span data-en="Step 3 of 8 | Project Governance &amp; System Invariants" data-fr="Étape 3 sur 8 | Gouvernance Projet &amp; Invariants Système">Step 3 of 8 | Project Governance &amp; System Invariants</span>
+                        </div>
+                        <h1 class="step-title"
+                            data-en="Engineering a Zero-Drift AGENTS.md Constitution"
+                            data-fr="Concevoir une Constitution AGENTS.md Zéro-Dérive">Engineering a Zero-Drift AGENTS.md Constitution</h1>
+                    </div>
+
+                    <div class="lang-en">
+                        <p>
+                            <code>dart mcp-server</code> tells the agent whether your code <em>compiles</em>, but it does not tell the agent how your team <em>architects</em> software. Without explicit architectural rules, an agent will happily mix HTTP calls inside <code>StatefulWidget.build()</code>, hardcode hex colors across 40 files, or swallow exceptions with empty <code>catch (_) {}</code> blocks.
+                        </p>
+                        <p>
+                            <code>AGENTS.md</code> is the open standard for repository-level instructions read automatically at the start of every session by modern coding agents. Think of <code>AGENTS.md</code> as a <strong>compiler constitution for agent behavior</strong>: it must be concise, unambiguous, and strictly focused on global invariants that apply to <em>every</em> task in the repository.
+                        </p>
+
+                        <h3>Anatomy of a High-Signal Flutter <code>AGENTS.md</code></h3>
+                        <ul>
+                            <li><strong>Keep it under 150 lines:</strong> Every token in <code>AGENTS.md</code> is injected into every conversation turn. Put universal invariants in <code>AGENTS.md</code> and move task-specific playbooks into modular <code>SKILL.md</code> files (Step 4).</li>
+                            <li><strong>Define Strict Layer Dependency Direction:</strong> Explicitly forbid <code>lib/domain/</code> from importing <code>package:flutter/</code> or data-layer DTOs.</li>
+                            <li><strong>Mandate Exhaustive Pattern Matching:</strong> Require Dart 3 <code>sealed class</code> hierarchies for states and results so the compiler forces exhaustive <code>switch</code> expressions in widgets.</li>
+                            <li><strong>Define the Verification Gate:</strong> Instruct the agent that no task is complete until <code>analyze_files</code> (or <code>flutter analyze --fatal-infos</code>) and <code>flutter test</code> return zero issues.</li>
+                        </ul>
+
+                        <p>
+                            Create the following <code>AGENTS.md</code> file at the root of your <code>agentic_telemetry_demo</code> workspace:
+                        </p>
+                    </div>
+
+                    <div class="lang-fr">
+                        <p>
+                            <code>dart mcp-server</code> indique à l'agent si votre code <em>compile</em>, mais ne lui dit pas comment votre équipe <em>architecture</em> ses logiciels. Sans règles architecturales explicites, un agent mélangera volontiers des appels HTTP directement dans <code>StatefulWidget.build()</code>, codera en dur des couleurs hexadécimales dans 40 fichiers, ou masquera les exceptions avec des blocs <code>catch (_) {}</code> vides.
+                        </p>
+                        <p>
+                            <code>AGENTS.md</code> est le standard ouvert d'instructions au niveau du dépôt, lu automatiquement au début de chaque session par les agents de codage modernes. Considérez <code>AGENTS.md</code> comme une <strong>constitution de compilateur pour le comportement de l'agent</strong> : elle doit être concise, sans ambiguïté et strictement concentrée sur les invariants globaux qui s'appliquent à <em>chaque</em> tâche du dépôt.
+                        </p>
+
+                        <h3>Anatomie d'un <code>AGENTS.md</code> Flutter à Fort Signal</h3>
+                        <ul>
+                            <li><strong>Rester sous les 150 lignes :</strong> Chaque jeton de <code>AGENTS.md</code> est injecté à chaque tour de conversation. Placez uniquement les invariants universels dans <code>AGENTS.md</code> et déportez les procédures spécifiques dans des fichiers modulaires <code>SKILL.md</code> (Étape 4).</li>
+                            <li><strong>Définir la Direction Stricte des Dépendances :</strong> Interdire explicitement à <code>lib/domain/</code> d'importer <code>package:flutter/</code> ou des DTOs de la couche de données.</li>
+                            <li><strong>Imposer le Pattern Matching Exhaustif :</strong> Exiger des hiérarchies <code>sealed class</code> Dart 3 pour les états et résultats afin que le compilateur impose des expressions <code>switch</code> exhaustives dans les widgets.</li>
+                            <li><strong>Définir la Porte de Vérification :</strong> Instruire l'agent qu'aucune tâche n'est terminée tant que <code>analyze_files</code> (ou <code>flutter analyze --fatal-infos</code>) et <code>flutter test</code> ne retournent pas zéro erreur.</li>
+                        </ul>
+
+                        <p>
+                            Créez le fichier <code>AGENTS.md</code> suivant à la racine de votre projet <code>agentic_telemetry_demo</code> :
+                        </p>
+                    </div>
+
+                    <div class="code-window">
+                        <div class="code-window-header">
+                            <div class="code-window-meta">
+                                <div class="window-dots">
+                                    <span class="window-dot red"></span>
+                                    <span class="window-dot yellow"></span>
+                                    <span class="window-dot green"></span>
+                                </div>
+                                <span class="code-filename">AGENTS.md | Root Architectural Constitution for Flutter Agents</span>
+                                <span class="code-lang-badge">MARKDOWN</span>
+                            </div>
+                            <button class="copy-code-btn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                Copy
+                            </button>
+                        </div>
+                        <pre><code># AGENTS.md | Flutter &amp; Dart Engineering Constitution
+
+These architectural and verification rules are mandatory across all files in this repository.
+
+## 1. Strict Layered Architecture &amp; Dependency Rule
+- `lib/domain/`: Pure Dart only. Contains immutable entities, value objects, `sealed class Result&lt;T&gt;`, and `abstract interface class` repository contracts.
+  - FORBIDDEN in `lib/domain/`: Never import `package:flutter/...`, `package:flutter_bloc/...`, HTTP clients, or JSON serialization packages.
+- `lib/application/`: State management (`Cubit` / `Bloc`) and use-case orchestration.
+  - Every state hierarchy MUST be a `sealed class` with `final class` subtypes (`Initial`, `Loading`, `Loaded`, `Error`).
+- `lib/main.dart` &amp; `lib/presentation/`: Flutter widgets consuming `Cubit`/`Bloc` states via exhaustive Dart 3 `switch` expressions.
+  - Widgets MUST NOT instantiate repositories directly or perform raw I/O inside `build()`.
+
+## 2. Error Handling &amp; Type Safety Invariants
+- Never throw raw strings or swallow exceptions with empty `catch (_) {}` blocks.
+- All repository methods that can fail MUST return `Future&lt;Result&lt;T&gt;&gt;` (`Success&lt;T&gt;` or `Failure&lt;T&gt;` with `message` and `code`).
+- Always use `const` constructors wherever possible and enable `prefer_const_constructors`.
+
+## 3. UI Design Tokens &amp; Accessibility
+- Surface Primary: `Color(0xFF070A13)` | Surface Card: `Color(0xFF0F1424)` | Border: `Color(0xFF202B46)`
+- Accent Cyan: `Color(0xFF00B0FF)` | Accent Blue: `Color(0xFF02569B)`
+- Status Nominal: `Color(0xFF10B981)` | Degraded: `Color(0xFFF59E0B)` | Critical: `Color(0xFFEF4444)`
+- Zero gradients: use solid fills and crisp `1px` borders (`Border.all(color: Color(0xFF202B46))`).
+- Every interactive `IconButton` or action button MUST include a stable `Key(...)` for deterministic widget testing and a descriptive `tooltip`.
+
+## 4. Mandatory MCP &amp; Verification Workflow
+1. Before adding any dependency, query `pub_dev_search` via the Dart MCP server.
+2. After creating or modifying any Dart file, run the `analyze_files` MCP tool (or `flutter analyze --fatal-infos`).
+3. Never report a task as finished until `flutter analyze --fatal-infos` and `flutter test` pass with 0 warnings and 0 failures.</code></pre>
+                    </div>
+
+                    <div class="step-pagination">
+                        <button class="nav-step-btn" data-step-target="1"
+                            data-en="&larr; Previous"
+                            data-fr="&larr; Précédent">&larr; Previous</button>
+                        <button class="nav-step-btn primary" data-step-target="3"
+                            data-en="Next: Modular On-Demand SKILL.md &rarr;"
+                            data-fr="Suivant : Skills Modulaires SKILL.md &rarr;">Next: Modular On-Demand SKILL.md &rarr;</button>
+                    </div>
+                </article>
+
+                <!-- =========================================================
+                     STEP 4: CREATING ON-DEMAND PROCEDURAL SKILLS (SKILL.MD)
+                     ========================================================= -->
+                <article class="codelab-step" id="step-4" data-duration="5">
+                    <div class="step-header">
+                        <div class="step-eyebrow">
+                            <span data-en="Step 4 of 8 | Progressive Context Disclosure" data-fr="Étape 4 sur 8 | Divulgation Progressive du Contexte">Step 4 of 8 | Progressive Context Disclosure</span>
+                        </div>
+                        <h1 class="step-title"
+                            data-en="Creating On-Demand Procedural Skills (SKILL.md)"
+                            data-fr="Créer des Skills Procéduraux à la Demande (SKILL.md)">Creating On-Demand Procedural Skills (SKILL.md)</h1>
+                    </div>
+
+                    <div class="lang-en">
+                        <p>
+                            A common mistake when adopting AI agents is dumping 3,000 lines of feature templates, database migration guides, release checklists, and widget testing recipes into <code>AGENTS.md</code>. When your root instruction file grows too large, the agent suffers from <strong>instruction dilution</strong> (attention degradation in the middle of long prompts) and burns unnecessary context tokens on every single chat turn.
+                        </p>
+                        <p>
+                            The solution is <strong>Agent Skills</strong>: self-contained folders inside <code>.agents/skills/&lt;skill-name&gt;/SKILL.md</code>. Each skill begins with a compact YAML frontmatter containing only <code>name</code> and <code>description</code>. At startup, the agent reads <em>only</em> the 2-line YAML frontmatter of each skill. When your prompt matches a skill's description (for example, scaffolding a new Clean Architecture feature), the agent dynamically loads the full <code>SKILL.md</code> body into context!
+                        </p>
+
+                        <div class="callout callout-success">
+                            <svg class="callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                            </svg>
+                            <div class="callout-body">
+                                <div class="callout-title">Rule of Thumb: <code>AGENTS.md</code> vs. <code>SKILL.md</code></div>
+                                <p>
+                                    Put <strong>"What must always be true"</strong> (invariants, forbidden imports, verification gates) in <code>AGENTS.md</code>. Put <strong>"How to execute a specific workflow step-by-step"</strong> (scaffolding a feature, writing FFI bindings, migrating tests) in <code>.agents/skills/&lt;name&gt;/SKILL.md</code>.
+                                </p>
+                            </div>
+                        </div>
+
+                        <h3>Create the <code>flutter-clean-feature</code> Skill</h3>
+                        <p>
+                            Create the file <code>.agents/skills/flutter-clean-feature/SKILL.md</code> in your workspace:
+                        </p>
+                    </div>
+
+                    <div class="lang-fr">
+                        <p>
+                            Une erreur fréquente lors de l'adoption d'agents IA consiste à déverser 3 000 lignes de modèles de fonctionnalités, de guides de migration SQLite, de checklists de publication et de recettes de tests dans <code>AGENTS.md</code>. Lorsque votre fichier d'instructions racine devient trop volumineux, l'agent souffre de <strong>dilution d'instructions</strong> (dégradation de l'attention au milieu de longs contextes) et consomme inutilement des milliers de jetons à chaque message.
+                        </p>
+                        <p>
+                            La solution repose sur les <strong>Agent Skills</strong> : des dossiers modulaires situés dans <code>.agents/skills/&lt;nom-du-skill&gt;/SKILL.md</code>. Chaque skill commence par un en-tête YAML compact contenant uniquement <code>name</code> et <code>description</code>. Au démarrage, l'agent ne lit <em>que</em> ces deux lignes. Lorsque votre demande correspond à la description du skill (par exemple, générer une nouvelle fonctionnalité Clean Architecture), l'agent charge dynamiquement le contenu complet de <code>SKILL.md</code> !
+                        </p>
+
+                        <div class="callout callout-success">
+                            <svg class="callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                            </svg>
+                            <div class="callout-body">
+                                <div class="callout-title">Règle d'Or : <code>AGENTS.md</code> vs <code>SKILL.md</code></div>
+                                <p>
+                                    Placez <strong>"Ce qui doit toujours être vrai"</strong> (invariants, imports interdits, portes de validation) dans <code>AGENTS.md</code>. Placez <strong>"Comment exécuter une procédure étape par étape"</strong> (créer une feature, générer des bindings FFI, écrire des tests) dans <code>.agents/skills/&lt;nom&gt;/SKILL.md</code>.
+                                </p>
+                            </div>
+                        </div>
+
+                        <h3>Créer le Skill <code>flutter-clean-feature</code></h3>
+                        <p>
+                            Créez le fichier <code>.agents/skills/flutter-clean-feature/SKILL.md</code> dans votre espace de travail :
+                        </p>
+                    </div>
+
+                    <div class="code-window">
+                        <div class="code-window-header">
+                            <div class="code-window-meta">
+                                <div class="window-dots">
+                                    <span class="window-dot red"></span>
+                                    <span class="window-dot yellow"></span>
+                                    <span class="window-dot green"></span>
+                                </div>
+                                <span class="code-filename">.agents/skills/flutter-clean-feature/SKILL.md | On-Demand Procedural Skill</span>
+                                <span class="code-lang-badge">MARKDOWN</span>
+                            </div>
+                            <button class="copy-code-btn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                Copy
+                            </button>
+                        </div>
+                        <pre><code>---
+name: flutter-clean-feature
+description: Step-by-step playbook for scaffolding, wiring, and widget-testing a layered Flutter feature with pure Dart domain models, Cubit state management, and exhaustive switch expressions. Use whenever creating or refactoring a Flutter feature.
+---
+
+# Flutter Clean Feature Scaffolding Playbook
+
+Follow these exact steps in order whenever asked to create or update a feature:
+
+## Step 1: Pure Domain Layer (`lib/domain/&lt;feature&gt;.dart`)
+1. Define immutable entities with `final` fields, `const` constructors, and `copyWith`.
+2. Compute derived domain properties (such as `HealthStatus`) via pure getters on the entity.
+3. Define repository contracts as `abstract interface class` returning `Future&lt;Result&lt;T&gt;&gt;`.
+4. Verify zero `package:flutter/` imports in this file.
+
+## Step 2: Application State &amp; Cubit (`lib/application/&lt;feature&gt;_cubit.dart`)
+1. Declare a `sealed class &lt;Feature&gt;State` with `const` constructor.
+2. Create four `final class` subtypes: `Initial`, `Loading`, `Loaded`, and `Error`.
+3. In the `Cubit`, emit `Loading`, await the repository's `Result&lt;T&gt;`, and use an exhaustive `switch (result)` with pattern destructuring (`case Success(:final value):`, `case Failure(:final message, :final code):`).
+
+## Step 3: Presentation Layer (`lib/main.dart` or `lib/presentation/`)
+1. Inject the `Cubit` via `BlocProvider` and render state via `BlocBuilder`.
+2. Use an exhaustive `switch (state)` expression inside `BlocBuilder.builder`.
+3. Attach explicit `const Key('...')` identifiers to loading indicators, status badges, and action buttons.
+
+## Step 4: Mandatory Verification
+1. Write a `testWidgets` test in `test/&lt;feature&gt;_widget_test.dart` covering both the nominal `Loaded` path and the `Error` recovery path.
+2. Call `analyze_files` via the Dart MCP server and run `flutter test`.</code></pre>
+                    </div>
+
+                    <div class="step-pagination">
+                        <button class="nav-step-btn" data-step-target="2"
+                            data-en="&larr; Previous"
+                            data-fr="&larr; Précédent">&larr; Previous</button>
+                        <button class="nav-step-btn primary" data-step-target="4"
+                            data-en="Next: Governed Flutter Feature &rarr;"
+                            data-fr="Suivant : Feature Flutter sous Gouvernance &rarr;">Next: Governed Flutter Feature &rarr;</button>
+                    </div>
+                </article>
+
+                <!-- =========================================================
+                     STEP 5: BUILDING THE GOVERNED FLUTTER FEATURE
+                     ========================================================= -->
+                <article class="codelab-step" id="step-5" data-duration="6">
+                    <div class="step-header">
+                        <div class="step-eyebrow">
+                            <span data-en="Step 5 of 8 | Clean Layered Implementation" data-fr="Étape 5 sur 8 | Implémentation en Couches Propres">Step 5 of 8 | Clean Layered Implementation</span>
+                        </div>
+                        <h1 class="step-title"
+                            data-en="Building the Reference Flutter Feature Under Agent Governance"
+                            data-fr="Construire la Feature Flutter de Référence sous Gouvernance Agent">Building the Reference Flutter Feature Under Agent Governance</h1>
+                    </div>
+
+                    <div class="lang-en">
+                        <p>
+                            With <code>dart mcp-server</code> active, <code>AGENTS.md</code> at the project root, and <code>.agents/skills/flutter-clean-feature/SKILL.md</code> registered, let us examine the exact 4-file Flutter application produced under these constraints. Every file below is 100% self-contained and verified against <code>flutter analyze --fatal-infos</code>.
+                        </p>
+
+                        <h3>1. Project Dependencies (<code>pubspec.yaml</code>)</h3>
+                        <p>
+                            Ensure your <code>pubspec.yaml</code> declares Dart <code>^3.8.0</code> and <code>flutter_bloc</code>:
+                        </p>
+                    </div>
+
+                    <div class="lang-fr">
+                        <p>
+                            Avec <code>dart mcp-server</code> actif, <code>AGENTS.md</code> à la racine du projet et <code>.agents/skills/flutter-clean-feature/SKILL.md</code> enregistré, examinons l'application Flutter complète en 4 fichiers produite sous ces contraintes. Chaque fichier ci-dessous est 100 % autonome et vérifié avec <code>flutter analyze --fatal-infos</code>.
+                        </p>
+
+                        <h3>1. Dépendances du Projet (<code>pubspec.yaml</code>)</h3>
+                        <p>
+                            Assurez-vous que votre fichier <code>pubspec.yaml</code> déclare Dart <code>^3.8.0</code> et <code>flutter_bloc</code> :
+                        </p>
+                    </div>
+
+                    <div class="code-window">
+                        <div class="code-window-header">
+                            <div class="code-window-meta">
+                                <div class="window-dots">
+                                    <span class="window-dot red"></span>
+                                    <span class="window-dot yellow"></span>
+                                    <span class="window-dot green"></span>
+                                </div>
+                                <span class="code-filename">pubspec.yaml | Governed Flutter Workspace Manifest</span>
+                                <span class="code-lang-badge">YAML</span>
+                            </div>
+                            <button class="copy-code-btn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                Copy
+                            </button>
+                        </div>
+                        <pre><code>name: agentic_telemetry_demo
+description: Deterministic Flutter feature governed by AGENTS.md, Skills, and Dart MCP.
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.8.0
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_bloc: ^9.1.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+
+flutter:
+  uses-material-design: true</code></pre>
+                    </div>
+
+                    <div class="lang-en">
+                        <h3>2. Pure Dart Domain Layer (<code>lib/domain/telemetry_snapshot.dart</code>)</h3>
+                        <p>
+                            Notice how this file obeys Section 1 and Section 2 of <code>AGENTS.md</code>: it has zero Flutter or third-party imports, defines a sealed <code>Result&lt;T&gt;</code> algebraic type, computes <code>HealthStatus</code> deterministically, and exposes an <code>abstract interface class TelemetryRepository</code>:
+                        </p>
+                    </div>
+
+                    <div class="lang-fr">
+                        <h3>2. Couche Domaine Pure Dart (<code>lib/domain/telemetry_snapshot.dart</code>)</h3>
+                        <p>
+                            Observez comment ce fichier respecte les sections 1 et 2 de <code>AGENTS.md</code> : il ne contient aucun import Flutter ou tiers, définit un type algébrique scellé <code>Result&lt;T&gt;</code>, calcule <code>HealthStatus</code> de façon déterministe et expose un contrat <code>abstract interface class TelemetryRepository</code> :
+                        </p>
+                    </div>
+
+                    <div class="code-window">
+                        <div class="code-window-header">
+                            <div class="code-window-meta">
+                                <div class="window-dots">
+                                    <span class="window-dot red"></span>
+                                    <span class="window-dot yellow"></span>
+                                    <span class="window-dot green"></span>
+                                </div>
+                                <span class="code-filename">lib/domain/telemetry_snapshot.dart | Pure Domain Entities &amp; Contracts</span>
+                                <span class="code-lang-badge">DART</span>
+                            </div>
+                            <button class="copy-code-btn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                Copy
+                            </button>
+                        </div>
+                        <pre><code>// lib/domain/telemetry_snapshot.dart
+// Pure Dart domain layer: zero Flutter UI or platform imports allowed.
+
+sealed class Result&lt;T&gt; {
+  const Result();
+}
+
+final class Success&lt;T&gt; extends Result&lt;T&gt; {
+  final T value;
+  const Success(this.value);
+}
+
+final class Failure&lt;T&gt; extends Result&lt;T&gt; {
+  final String message;
+  final String code;
+  const Failure({required this.message, required this.code});
+}
+
+enum HealthStatus { nominal, degraded, critical }
+
+final class TelemetrySnapshot {
+  final String nodeId;
+  final int latencyMs;
+  final double memoryUsageMb;
+  final int activeIsolates;
+  final DateTime recordedAt;
+
+  const TelemetrySnapshot({
+    required this.nodeId,
+    required this.latencyMs,
+    required this.memoryUsageMb,
+    required this.activeIsolates,
+    required this.recordedAt,
+  });
+
+  HealthStatus get status {
+    if (latencyMs &gt;= 500 || memoryUsageMb &gt;= 512.0) {
+      return HealthStatus.critical;
+    }
+    if (latencyMs &gt;= 200 || memoryUsageMb &gt;= 256.0) {
+      return HealthStatus.degraded;
+    }
+    return HealthStatus.nominal;
+  }
+
+  TelemetrySnapshot copyWith({
+    String? nodeId,
+    int? latencyMs,
+    double? memoryUsageMb,
+    int? activeIsolates,
+    DateTime? recordedAt,
+  }) {
+    return TelemetrySnapshot(
+      nodeId: nodeId ?? this.nodeId,
+      latencyMs: latencyMs ?? this.latencyMs,
+      memoryUsageMb: memoryUsageMb ?? this.memoryUsageMb,
+      activeIsolates: activeIsolates ?? this.activeIsolates,
+      recordedAt: recordedAt ?? this.recordedAt,
+    );
+  }
+}
+
+abstract interface class TelemetryRepository {
+  Future&lt;Result&lt;TelemetrySnapshot&gt;&gt; fetchLatestSnapshot({
+    required String nodeId,
+  });
+}</code></pre>
+                    </div>
+
+                    <div class="lang-en">
+                        <h3>3. Application Layer Cubit &amp; Sealed States (<code>lib/application/telemetry_cubit.dart</code>)</h3>
+                        <p>
+                            Next, create <code>lib/application/telemetry_cubit.dart</code>. It uses Dart 3 pattern matching (<code>case Success(:final value):</code>) to transition cleanly from <code>TelemetryLoading</code> to either <code>TelemetryLoaded</code> or <code>TelemetryError</code>:
+                        </p>
+                    </div>
+
+                    <div class="lang-fr">
+                        <h3>3. Couche Application Cubit &amp; États Scellés (<code>lib/application/telemetry_cubit.dart</code>)</h3>
+                        <p>
+                            Créez ensuite <code>lib/application/telemetry_cubit.dart</code>. Il utilise la déstructuration par motif de Dart 3 (<code>case Success(:final value):</code>) pour passer proprement de <code>TelemetryLoading</code> à <code>TelemetryLoaded</code> ou <code>TelemetryError</code> :
+                        </p>
+                    </div>
+
+                    <div class="code-window">
+                        <div class="code-window-header">
+                            <div class="code-window-meta">
+                                <div class="window-dots">
+                                    <span class="window-dot red"></span>
+                                    <span class="window-dot yellow"></span>
+                                    <span class="window-dot green"></span>
+                                </div>
+                                <span class="code-filename">lib/application/telemetry_cubit.dart | Sealed State &amp; Cubit Orchestration</span>
+                                <span class="code-lang-badge">DART</span>
+                            </div>
+                            <button class="copy-code-btn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                Copy
+                            </button>
+                        </div>
+                        <pre><code>// lib/application/telemetry_cubit.dart
+import 'package:flutter_bloc/flutter_bloc.dart';
+import '../domain/telemetry_snapshot.dart';
+
+sealed class TelemetryState {
+  const TelemetryState();
+}
+
+final class TelemetryInitial extends TelemetryState {
+  const TelemetryInitial();
+}
+
+final class TelemetryLoading extends TelemetryState {
+  const TelemetryLoading();
+}
+
+final class TelemetryLoaded extends TelemetryState {
+  final TelemetrySnapshot snapshot;
+  const TelemetryLoaded(this.snapshot);
+}
+
+final class TelemetryError extends TelemetryState {
+  final String message;
+  final String code;
+  const TelemetryError({required this.message, required this.code});
+}
+
+class InMemoryTelemetryRepository implements TelemetryRepository {
+  bool simulateFailure;
+  final Duration latency;
+
+  InMemoryTelemetryRepository({
+    this.simulateFailure = false,
+    this.latency = const Duration(milliseconds: 120),
+  });
+
+  @override
+  Future&lt;Result&lt;TelemetrySnapshot&gt;&gt; fetchLatestSnapshot({
+    required String nodeId,
+  }) async {
+    await Future&lt;void&gt;.delayed(latency);
+    if (simulateFailure) {
+      return const Failure&lt;TelemetrySnapshot&gt;(
+        message: 'Telemetry node unreachable over local socket.',
+        code: 'ERR_NODE_TIMEOUT',
+      );
+    }
+    return Success&lt;TelemetrySnapshot&gt;(
+      TelemetrySnapshot(
+        nodeId: nodeId,
+        latencyMs: 42,
+        memoryUsageMb: 118.4,
+        activeIsolates: 3,
+        recordedAt: DateTime.utc(2026, 10, 28, 12, 0),
+      ),
+    );
+  }
+}
+
+class TelemetryCubit extends Cubit&lt;TelemetryState&gt; {
+  final TelemetryRepository _repository;
+
+  TelemetryCubit(this._repository) : super(const TelemetryInitial());
+
+  Future&lt;void&gt; refreshSnapshot({String nodeId = 'edge-node-kampala-01'}) async {
+    emit(const TelemetryLoading());
+    final result = await _repository.fetchLatestSnapshot(nodeId: nodeId);
+    switch (result) {
+      case Success&lt;TelemetrySnapshot&gt;(:final value):
+        emit(TelemetryLoaded(value));
+      case Failure&lt;TelemetrySnapshot&gt;(:final message, :final code):
+        emit(TelemetryError(message: message, code: code));
+    }
+  }
+}</code></pre>
+                    </div>
+
+                    <div class="lang-en">
+                        <h3>4. Presentation Layer &amp; Exhaustive Switch UI (<code>lib/main.dart</code>)</h3>
+                        <p>
+                            Finally, create <code>lib/main.dart</code>. Every color token (<code>0xFF070A13</code>, <code>0xFF0F1424</code>, <code>0xFF202B46</code>, <code>0xFF00B0FF</code>) and widget key (<code>toggle_failure_btn</code>, <code>refresh_telemetry_btn</code>, <code>retry_telemetry_btn</code>, <code>health_status_badge</code>) matches the exact contract in <code>AGENTS.md</code>:
+                        </p>
+                    </div>
+
+                    <div class="lang-fr">
+                        <h3>4. Couche Présentation &amp; UI par Switch Exhaustif (<code>lib/main.dart</code>)</h3>
+                        <p>
+                            Enfin, créez <code>lib/main.dart</code>. Chaque jeton de couleur (<code>0xFF070A13</code>, <code>0xFF0F1424</code>, <code>0xFF202B46</code>, <code>0xFF00B0FF</code>) et chaque clé de widget (<code>toggle_failure_btn</code>, <code>refresh_telemetry_btn</code>, <code>retry_telemetry_btn</code>, <code>health_status_badge</code>) respecte strictement le contrat défini dans <code>AGENTS.md</code> :
+                        </p>
+                    </div>
+
+                    <div class="code-window">
+                        <div class="code-window-header">
+                            <div class="code-window-meta">
+                                <div class="window-dots">
+                                    <span class="window-dot red"></span>
+                                    <span class="window-dot yellow"></span>
+                                    <span class="window-dot green"></span>
+                                </div>
+                                <span class="code-filename">lib/main.dart | Exhaustive Pattern-Matched Flutter UI</span>
+                                <span class="code-lang-badge">DART</span>
+                            </div>
+                            <button class="copy-code-btn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                Copy
+                            </button>
+                        </div>
+                        <pre><code>// lib/main.dart
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'application/telemetry_cubit.dart';
+import 'domain/telemetry_snapshot.dart';
+
+void main() {
+  final repository = InMemoryTelemetryRepository();
+  runApp(AgenticTelemetryApp(repository: repository));
+}
+
+class AgenticTelemetryApp extends StatelessWidget {
+  final InMemoryTelemetryRepository repository;
+
+  const AgenticTelemetryApp({super.key, required this.repository});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Agentic Telemetry Monitor',
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData.dark().copyWith(
+        scaffoldBackgroundColor: const Color(0xFF070A13),
+        colorScheme: const ColorScheme.dark(
+          primary: Color(0xFF00B0FF),
+          secondary: Color(0xFF02569B),
+          surface: Color(0xFF0F1424),
+        ),
+      ),
+      home: BlocProvider&lt;TelemetryCubit&gt;(
+        create: (_) =&gt; TelemetryCubit(repository)..refreshSnapshot(),
+        child: TelemetryDashboardScreen(repository: repository),
+      ),
+    );
+  }
+}
+
+class TelemetryDashboardScreen extends StatelessWidget {
+  final InMemoryTelemetryRepository repository;
+
+  const TelemetryDashboardScreen({super.key, required this.repository});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: const Color(0xFF0F1424),
+        title: const Text('Edge Telemetry Monitor'),
+        actions: [
+          IconButton(
+            key: const Key('toggle_failure_btn'),
+            tooltip: 'Toggle simulated socket failure',
+            icon: const Icon(Icons.bug_report_outlined),
+            onPressed: () {
+              repository.simulateFailure = !repository.simulateFailure;
+              context.read&lt;TelemetryCubit&gt;().refreshSnapshot();
+            },
+          ),
+          IconButton(
+            key: const Key('refresh_telemetry_btn'),
+            tooltip: 'Refresh telemetry snapshot',
+            icon: const Icon(Icons.refresh),
+            onPressed: () =&gt; context.read&lt;TelemetryCubit&gt;().refreshSnapshot(),
+          ),
+        ],
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(24),
+        child: BlocBuilder&lt;TelemetryCubit, TelemetryState&gt;(
+          builder: (context, state) {
+            return switch (state) {
+              TelemetryInitial() =&gt; const Center(
+                child: Text('Ready to query telemetry node.'),
+              ),
+              TelemetryLoading() =&gt; const Center(
+                child: CircularProgressIndicator(
+                  key: Key('telemetry_loading_indicator'),
+                ),
+              ),
+              TelemetryLoaded(:final snapshot) =&gt; _TelemetryMetricView(
+                snapshot: snapshot,
+              ),
+              TelemetryError(:final message, :final code) =&gt; _TelemetryErrorView(
+                message: message,
+                code: code,
+                onRetry: () {
+                  repository.simulateFailure = false;
+                  context.read&lt;TelemetryCubit&gt;().refreshSnapshot();
+                },
+              ),
+            };
+          },
+        ),
+      ),
+    );
+  }
+}
+
+class _TelemetryMetricView extends StatelessWidget {
+  final TelemetrySnapshot snapshot;
+
+  const _TelemetryMetricView({required this.snapshot});
+
+  @override
+  Widget build(BuildContext context) {
+    final statusColor = switch (snapshot.status) {
+      HealthStatus.nominal =&gt; const Color(0xFF10B981),
+      HealthStatus.degraded =&gt; const Color(0xFFF59E0B),
+      HealthStatus.critical =&gt; const Color(0xFFEF4444),
+    };
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Container(
+          padding: const EdgeInsets.all(16),
+          decoration: BoxDecoration(
+            color: const Color(0xFF0F1424),
+            border: Border.all(color: const Color(0xFF202B46)),
+            borderRadius: BorderRadius.circular(12),
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                'Node: ${snapshot.nodeId}',
+                style: const TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+              Container(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 12,
+                  vertical: 4,
+                ),
+                decoration: BoxDecoration(
+                  color: statusColor.withValues(alpha: 0.15),
+                  border: Border.all(color: statusColor),
+                  borderRadius: BorderRadius.circular(999),
+                ),
+                child: Text(
+                  snapshot.status.name.toUpperCase(),
+                  key: const Key('health_status_badge'),
+                  style: TextStyle(
+                    color: statusColor,
+                    fontWeight: FontWeight.w700,
+                    fontSize: 12,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+        const SizedBox(height: 16),
+        Row(
+          children: [
+            Expanded(
+              child: _MetricTile(
+                label: 'Latency',
+                value: '${snapshot.latencyMs} ms',
+              ),
+            ),
+            const SizedBox(width: 16),
+            Expanded(
+              child: _MetricTile(
+                label: 'Heap RAM',
+                value: '${snapshot.memoryUsageMb.toStringAsFixed(1)} MB',
+              ),
+            ),
+            const SizedBox(width: 16),
+            Expanded(
+              child: _MetricTile(
+                label: 'Isolates',
+                value: '${snapshot.activeIsolates}',
+              ),
+            ),
+          ],
+        ),
+      ],
+    );
+  }
+}
+
+class _MetricTile extends StatelessWidget {
+  final String label;
+  final String value;
+
+  const _MetricTile({required this.label, required this.value});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        color: const Color(0xFF0F1424),
+        border: Border.all(color: const Color(0xFF202B46)),
+        borderRadius: BorderRadius.circular(12),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            label,
+            style: const TextStyle(color: Color(0xFF94A3B8), fontSize: 13),
+          ),
+          const SizedBox(height: 8),
+          Text(
+            value,
+            style: const TextStyle(
+              color: Color(0xFFF8FAFC),
+              fontSize: 20,
+              fontWeight: FontWeight.w700,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _TelemetryErrorView extends StatelessWidget {
+  final String message;
+  final String code;
+  final VoidCallback onRetry;
+
+  const _TelemetryErrorView({
+    required this.message,
+    required this.code,
+    required this.onRetry,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        color: const Color(0xFF0F1424),
+        border: Border.all(color: const Color(0xFFEF4444)),
+        borderRadius: BorderRadius.circular(12),
+      ),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'Error [$code]',
+            style: const TextStyle(
+              color: Color(0xFFEF4444),
+              fontWeight: FontWeight.w700,
+              fontSize: 16,
+            ),
+          ),
+          const SizedBox(height: 8),
+          Text(message),
+          const SizedBox(height: 16),
+          ElevatedButton(
+            key: const Key('retry_telemetry_btn'),
+            onPressed: onRetry,
+            child: const Text('Retry Connection'),
+          ),
+        ],
+      ),
+    );
+  }
+}</code></pre>
+                    </div>
+
+                    <div class="step-pagination">
+                        <button class="nav-step-btn" data-step-target="3"
+                            data-en="&larr; Previous"
+                            data-fr="&larr; Précédent">&larr; Previous</button>
+                        <button class="nav-step-btn primary" data-step-target="5"
+                            data-en="Next: Custom Architecture MCP Server &rarr;"
+                            data-fr="Suivant : Serveur MCP d'Architecture en Dart &rarr;">Next: Custom Architecture MCP Server &rarr;</button>
+                    </div>
+                </article>
+
+                <!-- =========================================================
+                     STEP 6: BUILDING A CUSTOM ARCHITECTURE-GUARD MCP SERVER
+                     ========================================================= -->
+                <article class="codelab-step" id="step-6" data-duration="5">
+                    <div class="step-header">
+                        <div class="step-eyebrow">
+                            <span data-en="Step 6 of 8 | Custom Tooling with genkit_mcp" data-fr="Étape 6 sur 8 | Outillage Personnalisé avec genkit_mcp">Step 6 of 8 | Custom Tooling with genkit_mcp</span>
+                        </div>
+                        <h1 class="step-title"
+                            data-en="Building a Custom Architecture-Guard MCP Server in Dart"
+                            data-fr="Construire un Serveur MCP Garde-Fou d'Architecture en Dart">Building a Custom Architecture-Guard MCP Server in Dart</h1>
+                    </div>
+
+                    <div class="lang-en">
+                        <p>
+                            What if you want your coding agent to verify custom domain rules automatically, such as scanning <code>lib/domain/</code> to prove that zero Flutter UI or data-layer imports slipped in, or querying your canonical design system tokens as an MCP resource?
+                        </p>
+                        <p>
+                            With <code>genkit</code> and <code>genkit_mcp</code> in Dart, you can build and expose a custom Model Context Protocol server in ~60 lines of Dart code using <code>createMcpServer</code>, <code>ai.defineTool</code>, and <code>ai.defineResource</code>!
+                        </p>
+
+                        <h3>1. Write the Custom Dart MCP Server (<code>tools/architecture_mcp_server.dart</code>)</h3>
+                        <p>
+                            This standalone Dart script exposes two MCP primitives over standard I/O (<code>stdio</code>):
+                        </p>
+                        <ul>
+                            <li><strong>Tool <code>checkLayerImports</code>:</strong> Recursively scans every <code>.dart</code> file in <code>lib/domain</code> and reports any forbidden <code>package:flutter/</code>, <code>package:flutter_bloc/</code>, or <code>/data/</code> imports.</li>
+                            <li><strong>Resource <code>project://design-tokens</code>:</strong> Serves the canonical JSON design tokens so any connected agent can read exact hex codes on demand.</li>
+                        </ul>
+                    </div>
+
+                    <div class="lang-fr">
+                        <p>
+                            Que faire si vous souhaitez que votre agent vérifie automatiquement des règles métier personnalisées, comme scanner <code>lib/domain/</code> pour prouver qu'aucun import Flutter UI ou couche de données ne s'y est glissé, ou interroger vos jetons de design sous forme de ressource MCP ?
+                        </p>
+                        <p>
+                            Grâce aux paquets <code>genkit</code> et <code>genkit_mcp</code> en Dart, vous pouvez créer et exposer votre propre serveur Model Context Protocol en une soixantaine de lignes de Dart avec <code>createMcpServer</code>, <code>ai.defineTool</code> et <code>ai.defineResource</code> !
+                        </p>
+
+                        <h3>1. Écrire le Serveur MCP Dart Personnalisé (<code>tools/architecture_mcp_server.dart</code>)</h3>
+                        <p>
+                            Ce script Dart autonome expose deux primitives MCP sur l'entrée/sortie standard (<code>stdio</code>) :
+                        </p>
+                        <ul>
+                            <li><strong>Outil <code>checkLayerImports</code> :</strong> Parcourt récursivement chaque fichier <code>.dart</code> dans <code>lib/domain</code> et signale tout import interdit vers <code>package:flutter/</code>, <code>package:flutter_bloc/</code> ou <code>/data/</code>.</li>
+                            <li><strong>Ressource <code>project://design-tokens</code> :</strong> Sert les jetons de design JSON canoniques afin que tout agent connecté puisse lire les codes hexadécimaux exacts à la demande.</li>
+                        </ul>
+                    </div>
+
+                    <div class="code-window">
+                        <div class="code-window-header">
+                            <div class="code-window-meta">
+                                <div class="window-dots">
+                                    <span class="window-dot red"></span>
+                                    <span class="window-dot yellow"></span>
+                                    <span class="window-dot green"></span>
+                                </div>
+                                <span class="code-filename">tools/architecture_mcp_server.dart | Custom MCP Server with genkit_mcp</span>
+                                <span class="code-lang-badge">DART</span>
+                            </div>
+                            <button class="copy-code-btn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                Copy
+                            </button>
+                        </div>
+                        <pre><code>// tools/architecture_mcp_server.dart
+// Run with: dart run tools/architecture_mcp_server.dart
+import 'dart:convert';
+import 'dart:io';
+import 'package:genkit/genkit.dart';
+import 'package:genkit_mcp/genkit_mcp.dart';
+import 'package:schemantic/schemantic.dart';
+
+void main() async {
+  final ai = Genkit();
+
+  // 1. Expose an MCP Tool that audits lib/domain/ for layer boundary violations
+  ai.defineTool(
+    name: 'checkLayerImports',
+    description:
+        'Scans lib/domain/ to verify zero package:flutter, flutter_bloc, or data-layer imports.',
+    inputSchema: SchemanticType.map(
+      SchemanticType.string(),
+      SchemanticType.dynamicSchema(),
+    ),
+    fn: (input, _) async {
+      final domainPath = (input['domainPath'] as String?) ?? 'lib/domain';
+      final dir = Directory(domainPath);
+      if (!dir.existsSync()) {
+        return jsonEncode({
+          'status': 'error',
+          'message': 'Directory $domainPath does not exist.',
+        });
+      }
+
+      final violations = &lt;String&gt;[];
+      final forbiddenPatterns = [
+        'package:flutter/',
+        'package:flutter_bloc/',
+        '/data/',
+        '/presentation/',
+      ];
+
+      await for (final entity in dir.list(recursive: true)) {
+        if (entity is File &amp;&amp; entity.path.endsWith('.dart')) {
+          final lines = await entity.readAsLines();
+          for (var i = 0; i &lt; lines.length; i++) {
+            final line = lines[i].trim();
+            if (line.startsWith('import ')) {
+              for (final pattern in forbiddenPatterns) {
+                if (line.contains(pattern)) {
+                  violations.add('${entity.path}:${i + 1} -&gt; $line');
+                }
+              }
+            }
+          }
+        }
+      }
+
+      return jsonEncode({
+        'status': violations.isEmpty ? 'passed' : 'failed',
+        'checkedDirectory': domainPath,
+        'violationCount': violations.length,
+        'violations': violations,
+      });
+    },
+  );
+
+  // 2. Expose an MCP Resource serving canonical UI design tokens
+  ai.defineResource(
+    name: 'design-tokens',
+    uri: 'project://design-tokens',
+    fn: (_, _) async =&gt; ResourceOutput(
+      content: [
+        TextPart(
+          text: jsonEncode({
+            'surfacePrimary': '#070A13',
+            'surfaceCard': '#0F1424',
+            'borderColor': '#202B46',
+            'accentCyan': '#00B0FF',
+            'accentBlue': '#02569B',
+            'statusNominal': '#10B981',
+            'statusDegraded': '#F59E0B',
+            'statusCritical': '#EF4444',
+          }),
+        ),
+      ],
+    ),
+  );
+
+  // 3. Start the MCP Server over stdio transport
+  final server = createMcpServer(
+    ai,
+    McpServerOptions(name: 'flutter-arch-guard', version: '1.0.0'),
+  );
+  await server.start();
+}</code></pre>
+                    </div>
+
+                    <div class="lang-en">
+                        <h3>2. Register Both MCP Servers Together in <code>.gemini/settings.json</code></h3>
+                        <p>
+                            Add <code>flutter-arch-guard</code> right alongside the official <code>dart</code> MCP server so your agent can invoke both compiler tools and your custom architectural audit tool in the same session:
+                        </p>
+                    </div>
+
+                    <div class="lang-fr">
+                        <h3>2. Enregistrer les Deux Serveurs MCP dans <code>.gemini/settings.json</code></h3>
+                        <p>
+                            Ajoutez <code>flutter-arch-guard</code> aux côtés du serveur MCP officiel <code>dart</code> afin que votre agent puisse invoquer à la fois les outils du compilateur et votre outil d'audit architectural personnalisé dans la même session :
+                        </p>
+                    </div>
+
+                    <div class="code-window">
+                        <div class="code-window-header">
+                            <div class="code-window-meta">
+                                <div class="window-dots">
+                                    <span class="window-dot red"></span>
+                                    <span class="window-dot yellow"></span>
+                                    <span class="window-dot green"></span>
+                                </div>
+                                <span class="code-filename">.gemini/settings.json | Combined Official + Custom Dart MCP Configuration</span>
+                                <span class="code-lang-badge">JSON</span>
+                            </div>
+                            <button class="copy-code-btn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                Copy
+                            </button>
+                        </div>
+                        <pre><code>{
+  "mcpServers": {
+    "dart": {
+      "command": "dart",
+      "args": ["mcp-server", "--force-roots-fallback"]
+    },
+    "flutter-arch-guard": {
+      "command": "dart",
+      "args": ["run", "tools/architecture_mcp_server.dart"]
+    }
+  }
+}</code></pre>
+                    </div>
+
+                    <div class="step-pagination">
+                        <button class="nav-step-btn" data-step-target="4"
+                            data-en="&larr; Previous"
+                            data-fr="&larr; Précédent">&larr; Previous</button>
+                        <button class="nav-step-btn primary" data-step-target="6"
+                            data-en="Next: Automated Verification Loops &rarr;"
+                            data-fr="Suivant : Boucles de Vérification Automatisées &rarr;">Next: Automated Verification Loops &rarr;</button>
+                    </div>
+                </article>
+
+                <!-- =========================================================
+                     STEP 7: AUTOMATED AGENT VERIFICATION LOOPS & WIDGET TESTS
+                     ========================================================= -->
+                <article class="codelab-step" id="step-7" data-duration="5">
+                    <div class="step-header">
+                        <div class="step-eyebrow">
+                            <span data-en="Step 7 of 8 | Deterministic Quality Gates" data-fr="Étape 7 sur 8 | Portes de Qualité Déterministes">Step 7 of 8 | Deterministic Quality Gates</span>
+                        </div>
+                        <h1 class="step-title"
+                            data-en="Automated Agent Verification Loops &amp; Deterministic Widget Tests"
+                            data-fr="Boucles de Vérification Agent Automatisées &amp; Tests de Widgets Déterministes">Automated Agent Verification Loops &amp; Deterministic Widget Tests</h1>
+                    </div>
+
+                    <div class="lang-en">
+                        <p>
+                            The defining difference between Vibe-Coding and Agentic Engineering is a <strong>closed-loop verification gate</strong>. When an agent writes a widget test using the stable <code>Key</code> contracts mandated in <code>AGENTS.md</code>, it can prove in under 2 seconds that the UI renders nominal states, handles socket failures gracefully, and recovers when the user taps Retry.
+                        </p>
+
+                        <h3>1. Create the Deterministic Widget Test (<code>test/telemetry_widget_test.dart</code>)</h3>
+                        <p>
+                            Save the following test file in <code>test/telemetry_widget_test.dart</code>:
+                        </p>
+                    </div>
+
+                    <div class="lang-fr">
+                        <p>
+                            La différence fondamentale entre le Vibe-Coding et l'Agentic Engineering réside dans une <strong>boucle de vérification fermée</strong>. Lorsqu'un agent écrit un test de widget en s'appuyant sur les contrats de clés <code>Key</code> imposés par <code>AGENTS.md</code>, il peut prouver en moins de 2 secondes que l'interface affiche l'état nominal, gère proprement les erreurs de socket et rétablit l'état lorsque l'utilisateur appuie sur Réessayer.
+                        </p>
+
+                        <h3>1. Créer le Test de Widget Déterministe (<code>test/telemetry_widget_test.dart</code>)</h3>
+                        <p>
+                            Enregistrez le fichier de test suivant dans <code>test/telemetry_widget_test.dart</code> :
+                        </p>
+                    </div>
+
+                    <div class="code-window">
+                        <div class="code-window-header">
+                            <div class="code-window-meta">
+                                <div class="window-dots">
+                                    <span class="window-dot red"></span>
+                                    <span class="window-dot yellow"></span>
+                                    <span class="window-dot green"></span>
+                                </div>
+                                <span class="code-filename">test/telemetry_widget_test.dart | Full State Transition Widget Test</span>
+                                <span class="code-lang-badge">DART</span>
+                            </div>
+                            <button class="copy-code-btn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                Copy
+                            </button>
+                        </div>
+                        <pre><code>// test/telemetry_widget_test.dart
+import 'package:flutter/foundation.dart';
+import 'package:flutter_test/flutter_test.dart';
+import 'package:agentic_telemetry_demo/application/telemetry_cubit.dart';
+import 'package:agentic_telemetry_demo/main.dart';
+
+void main() {
+  testWidgets(
+    'renders nominal telemetry metrics and recovers from simulated failure',
+    (WidgetTester tester) async {
+      final repository = InMemoryTelemetryRepository(
+        latency: const Duration(milliseconds: 10),
+      );
+
+      await tester.pumpWidget(AgenticTelemetryApp(repository: repository));
+
+      // Initially loading while async repository resolves
+      expect(
+        find.byKey(const Key('telemetry_loading_indicator')),
+        findsOneWidget,
+      );
+
+      await tester.pumpAndSettle();
+
+      // Verify nominal loaded state
+      expect(find.text('Node: edge-node-kampala-01'), findsOneWidget);
+      expect(find.byKey(const Key('health_status_badge')), findsOneWidget);
+      expect(find.text('NOMINAL'), findsOneWidget);
+      expect(find.text('42 ms'), findsOneWidget);
+      expect(find.text('118.4 MB'), findsOneWidget);
+
+      // Trigger simulated failure via the app bar action button
+      await tester.tap(find.byKey(const Key('toggle_failure_btn')));
+      await tester.pumpAndSettle();
+
+      expect(find.text('Error [ERR_NODE_TIMEOUT]'), findsOneWidget);
+      expect(
+        find.text('Telemetry node unreachable over local socket.'),
+        findsOneWidget,
+      );
+
+      // Recover by tapping Retry Connection
+      await tester.tap(find.byKey(const Key('retry_telemetry_btn')));
+      await tester.pumpAndSettle();
+
+      expect(find.text('NOMINAL'), findsOneWidget);
+    },
+  );
+}</code></pre>
+                    </div>
+
+                    <div class="lang-en">
+                        <h3>2. Cross-Platform Pre-Commit Verification Gate</h3>
+                        <p>
+                            Run this three-stage verification gate in your terminal (or wire it into <code>.git/hooks/pre-commit</code>) so neither a human nor an AI agent can commit unformatted, warning-ridden, or failing Flutter code:
+                        </p>
+                    </div>
+
+                    <div class="lang-fr">
+                        <h3>2. Porte de Vérification Pré-Commit Multiplateforme</h3>
+                        <p>
+                            Exécutez cette porte de vérification en trois étapes dans votre terminal (ou intégrez-la dans <code>.git/hooks/pre-commit</code>) afin que ni un humain ni un agent IA ne puisse commiter du code Flutter mal formaté, contenant des avertissements ou cassant les tests :
+                        </p>
+                    </div>
+
+                    <div class="code-window">
+                        <div class="code-window-header">
+                            <div class="code-window-meta">
+                                <div class="window-dots">
+                                    <span class="window-dot red"></span>
+                                    <span class="window-dot yellow"></span>
+                                    <span class="window-dot green"></span>
+                                </div>
+                                <span class="code-filename">Terminal | Cross-Platform Verification Gate (Bash &amp; PowerShell)</span>
+                                <span class="code-lang-badge">SH / PS1</span>
+                            </div>
+                            <button class="copy-code-btn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                Copy
+                            </button>
+                        </div>
+                        <pre><code># macOS / Linux / Git Bash
+dart format --output=none --set-exit-if-changed lib test &amp;&amp; \
+flutter analyze --fatal-infos &amp;&amp; \
+flutter test --reporter expanded
+
+# Windows PowerShell
+dart format --output=none --set-exit-if-changed lib test; if ($LASTEXITCODE -eq 0) { flutter analyze --fatal-infos }; if ($LASTEXITCODE -eq 0) { flutter test --reporter expanded }</code></pre>
+                    </div>
+
+                    <div class="step-pagination">
+                        <button class="nav-step-btn" data-step-target="5"
+                            data-en="&larr; Previous"
+                            data-fr="&larr; Précédent">&larr; Previous</button>
+                        <button class="nav-step-btn primary" data-step-target="7"
+                            data-en="Next: Checklist, Takeaways &amp; Resources &rarr;"
+                            data-fr="Suivant : Checklist, Points Clés &amp; Ressources &rarr;">Next: Checklist, Takeaways &amp; Resources &rarr;</button>
+                    </div>
+                </article>
+
+                <!-- =========================================================
+                     STEP 8: CHECKLIST, KEY TAKEAWAYS & OFFICIAL RESOURCES
+                     ========================================================= -->
+                <article class="codelab-step" id="step-8" data-duration="4">
+                    <div class="step-header">
+                        <div class="step-eyebrow">
+                            <span data-en="Step 8 of 8 | Verification, Takeaways &amp; Official Resources" data-fr="Étape 8 sur 8 | Vérification, Points Clés &amp; Ressources Officielles">Step 8 of 8 | Verification, Takeaways &amp; Official Resources</span>
+                        </div>
+                        <h1 class="step-title"
+                            data-en="Verification Checklist, Key Takeaways &amp; Official Resources"
+                            data-fr="Checklist de Vérification, Points Clés &amp; Ressources Officielles">Verification Checklist, Key Takeaways &amp; Official Resources</h1>
+                    </div>
+
+                    <div class="lang-en">
+                        <h3>1. End-to-End Verification Checklist</h3>
+                        <p>
+                            Before wrapping up, confirm that your project passes every check below:
+                        </p>
+                        <ul>
+                            <li><strong>MCP Server Active:</strong> <code>.gemini/settings.json</code> (or your IDE MCP config) registers <code>dart mcp-server --force-roots-fallback</code>.</li>
+                            <li><strong>Zero Domain Leakage:</strong> <code>lib/domain/telemetry_snapshot.dart</code> has zero <code>package:flutter/</code> imports.</li>
+                            <li><strong>Zero Static Analysis Warnings:</strong> <code>flutter analyze --fatal-infos</code> outputs <code>No issues found!</code>.</li>
+                            <li><strong>100% Green Widget Tests:</strong> <code>flutter test</code> passes the nominal load, simulated failure, and retry recovery assertions.</li>
+                        </ul>
+
+                        <h3>2. Key Engineering Takeaways: The 4 Primitives of Agentic Coding</h3>
+                        <div class="table-responsive">
+                            <table class="codelab-table">
+                                <thead>
+                                    <tr>
+                                        <th>Agentic Primitive</th>
+                                        <th>File / Command</th>
+                                        <th>When It Loads</th>
+                                        <th>Primary Engineering Responsibility</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>1. Constitution</strong></td>
+                                        <td><code>AGENTS.md</code></td>
+                                        <td>Every session turn</td>
+                                        <td>Global invariants, layer dependency rules, design tokens, and definition of done.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>2. Procedural Skill</strong></td>
+                                        <td><code>.agents/skills/*/SKILL.md</code></td>
+                                        <td>On-demand when matched</td>
+                                        <td>Step-by-step scaffolding, testing, or migration playbooks without bloating context.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>3. Live Tooling (MCP)</strong></td>
+                                        <td><code>dart mcp-server</code> &amp; <code>genkit_mcp</code></td>
+                                        <td>Invoked via tool calls</td>
+                                        <td>Compiler diagnostics, pub search, DTD Widget Inspector, Hot Reload, and custom audits.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>4. Verification Gate</strong></td>
+                                        <td><code>flutter analyze</code> + <code>flutter test</code></td>
+                                        <td>Before task completion</td>
+                                        <td>Deterministic proof that generated code compiles cleanly and satisfies behavioral contracts.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h3>3. Official Documentation &amp; Further Resources</h3>
+                        <ul>
+                            <li><strong>Official Dart &amp; Flutter MCP Server Guide:</strong> <a href="https://docs.flutter.dev/ai/mcp-server" target="_blank" rel="noopener noreferrer" class="codelab-url-link">https://docs.flutter.dev/ai/mcp-server</a></li>
+                            <li><strong>Dart MCP Packages (<code>dart_mcp</code>):</strong> <a href="https://pub.dev/packages/dart_mcp" target="_blank" rel="noopener noreferrer" class="codelab-url-link">https://pub.dev/packages/dart_mcp</a></li>
+                            <li><strong>Genkit Dart MCP Integration (<code>genkit_mcp</code>):</strong> <a href="https://pub.dev/packages/genkit_mcp" target="_blank" rel="noopener noreferrer" class="codelab-url-link">https://pub.dev/packages/genkit_mcp</a></li>
+                            <li><strong>AGENTS.md Open Standard:</strong> <a href="https://agents.md" target="_blank" rel="noopener noreferrer" class="codelab-url-link">https://agents.md</a></li>
+                            <li><strong>Related Codelab (On-Device AI with Flutter &amp; Gemma):</strong> <a href="https://codelabs.glosings0n.dev/flutter-gemma-droidcon-ug-2026" class="codelab-url-link">https://codelabs.glosings0n.dev/flutter-gemma-droidcon-ug-2026</a></li>
+                        </ul>
+
+                        <div class="callout callout-info">
+                            <svg class="callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="9" cy="7" r="4"></circle>
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                            </svg>
+                            <div class="callout-body">
+                                <div class="callout-title">About the Author</div>
+                                <p>
+                                    Authored by <strong>Georges Byona</strong> (<a href="https://glosings0n.dev" target="_blank" rel="noopener">@glosings0n</a>), Software Engineer, Edge-AI Researcher, Founder @ <span class="losingtek-font"><span class="brand-bold">Losing</span>Tek</span> &amp; Founder of <a href="https://flutterfirecamp.dev" target="_blank" rel="noopener" class="ffsc-brand"><span class="brand-bold">FlutterFire Summer</span> <span class="brand-regular">Camp</span></a>.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="lang-fr">
+                        <h3>1. Checklist de Vérification Finale</h3>
+                        <p>
+                            Avant de conclure, vérifiez que votre projet valide chacun des points suivants :
+                        </p>
+                        <ul>
+                            <li><strong>Serveur MCP Actif :</strong> <code>.gemini/settings.json</code> (ou la configuration MCP de votre IDE) enregistre <code>dart mcp-server --force-roots-fallback</code>.</li>
+                            <li><strong>Zéro Fuite dans le Domaine :</strong> <code>lib/domain/telemetry_snapshot.dart</code> ne contient aucun import <code>package:flutter/</code>.</li>
+                            <li><strong>Zéro Avertissement d'Analyse Statique :</strong> <code>flutter analyze --fatal-infos</code> affiche <code>No issues found!</code>.</li>
+                            <li><strong>100 % des Tests de Widgets au Vert :</strong> <code>flutter test</code> valide l'état nominal, la panne simulée et la reprise après clic sur Retry.</li>
+                        </ul>
+
+                        <h3>2. Points Clés à Retenir : Les 4 Primitives de l'Agentic Coding</h3>
+                        <div class="table-responsive">
+                            <table class="codelab-table">
+                                <thead>
+                                    <tr>
+                                        <th>Primitive Agentique</th>
+                                        <th>Fichier / Commande</th>
+                                        <th>Moment de Chargement</th>
+                                        <th>Responsabilité d'Ingénierie Principale</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>1. Constitution</strong></td>
+                                        <td><code>AGENTS.md</code></td>
+                                        <td>À chaque tour de session</td>
+                                        <td>Invariants globaux, règles de dépendances entre couches, jetons UI et critères de validation.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>2. Skill Procédural</strong></td>
+                                        <td><code>.agents/skills/*/SKILL.md</code></td>
+                                        <td>À la demande selon la tâche</td>
+                                        <td>Guides étape par étape de création de feature ou de test sans saturer la fenêtre de contexte.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>3. Outillage Live (MCP)</strong></td>
+                                        <td><code>dart mcp-server</code> &amp; <code>genkit_mcp</code></td>
+                                        <td>Invoqué par appel d'outil</td>
+                                        <td>Diagnostics du compilateur, recherche pub, Widget Inspector DTD, Hot Reload et audits métier.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>4. Porte de Vérification</strong></td>
+                                        <td><code>flutter analyze</code> + <code>flutter test</code></td>
+                                        <td>Avant de clore la tâche</td>
+                                        <td>Preuve déterministe que le code généré compile proprement et respecte les contrats.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h3>3. Ressources Officielles &amp; Pour Aller Plus Loin</h3>
+                        <ul>
+                            <li><strong>Guide Officiel Dart &amp; Flutter MCP Server :</strong> <a href="https://docs.flutter.dev/ai/mcp-server" target="_blank" rel="noopener noreferrer" class="codelab-url-link">https://docs.flutter.dev/ai/mcp-server</a></li>
+                            <li><strong>Paquet Dart MCP (<code>dart_mcp</code>) :</strong> <a href="https://pub.dev/packages/dart_mcp" target="_blank" rel="noopener noreferrer" class="codelab-url-link">https://pub.dev/packages/dart_mcp</a></li>
+                            <li><strong>Intégration MCP Genkit Dart (<code>genkit_mcp</code>) :</strong> <a href="https://pub.dev/packages/genkit_mcp" target="_blank" rel="noopener noreferrer" class="codelab-url-link">https://pub.dev/packages/genkit_mcp</a></li>
+                            <li><strong>Standard Ouvert AGENTS.md :</strong> <a href="https://agents.md" target="_blank" rel="noopener noreferrer" class="codelab-url-link">https://agents.md</a></li>
+                            <li><strong>Codelab Associé (On-Device AI with Flutter &amp; Gemma) :</strong> <a href="https://codelabs.glosings0n.dev/flutter-gemma-droidcon-ug-2026" class="codelab-url-link">https://codelabs.glosings0n.dev/flutter-gemma-droidcon-ug-2026</a></li>
+                        </ul>
+
+                        <div class="callout callout-info">
+                            <svg class="callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="9" cy="7" r="4"></circle>
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                            </svg>
+                            <div class="callout-body">
+                                <div class="callout-title">À propos de l'Auteur</div>
+                                <p>
+                                    Conçu par <strong>Georges Byona</strong> (<a href="https://glosings0n.dev" target="_blank" rel="noopener">@glosings0n</a>), Software Engineer, Edge-AI Researcher, Fondateur @ <span class="losingtek-font"><span class="brand-bold">Losing</span>Tek</span> &amp; Fondateur du <a href="https://flutterfirecamp.dev" target="_blank" rel="noopener" class="ffsc-brand"><span class="brand-bold">FlutterFire Summer</span> <span class="brand-regular">Camp</span></a>.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="step-pagination">
+                        <button class="nav-step-btn" data-step-target="6"
+                            data-en="&larr; Previous"
+                            data-fr="&larr; Précédent">&larr; Previous</button>
+                        <a href="/codelabs/hub.html" class="nav-step-btn primary"
+                            data-en="Back to All Codelabs &rarr;"
+                            data-fr="Retour à tous les Codelabs &rarr;">
+                            Back to All Codelabs &rarr;
+                        </a>
+                    </div>
+                </article>
+
+            </div>
+        </main>
+    </div>
+
+    <script src="/codelabs/js/codelabs.js"></script>
+</body>
+
+</html>

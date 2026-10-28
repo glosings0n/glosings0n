@@ -1,0 +1,1940 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Full-Stack Agentic Dart: Building End-to-End Typed AI Agents with Genkit Dart &amp; Shelf | glosings0n Codelabs</title>
+    <meta name="description"
+        content="Hands-on Full-Stack Agentic Dart Codelab by Georges Byona (@glosings0n), Founder @ LosingTek &amp; Founder of FlutterFire Summer Camp. Build end-to-end typed AI agents in 100% pure Dart using Genkit Dart, Schemantic, Genkit Shelf, Human-in-the-Loop toolApproval middleware, and Flutter streaming clients.">
+    <meta name="keywords"
+        content="Full-Stack Agentic Dart, Genkit Dart, genkit, genkit_google_genai, genkit_shelf, genkit_middleware, schemantic, schemantic_builder, Dart AI Agents, Flutter AI Client, defineRemoteAction, defineFlow, defineTool, toolApproval, Human in the Loop AI, Dart Shelf Server, Gemini 2.5 Flash, Georges Byona, Georges Losingson, Byona Georges, glosings0n, @glosings0n, Losingson, Losings0n, @losingson, g-losingson, LosingTek, Losing Tek, FlutterFire Summer Camp, FlutterFire Camp">
+    <meta name="author" content="Georges Byona">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <link rel="canonical" href="https://codelabs.glosings0n.dev/genkit-dart-agentic-workflows">
+
+    <!-- OpenGraph -->
+    <meta property="og:title" content="Full-Stack Agentic Dart: Building End-to-End Typed AI Agents with Genkit Dart &amp; Shelf | glosings0n Codelabs">
+    <meta property="og:description"
+        content="Architect end-to-end typed AI agent workflows in 100% pure Dart using Genkit Dart, Schemantic runtime JSON schemas, Shelf HTTP servers, toolApproval guardrails, and Flutter streaming clients. By Georges Byona (@glosings0n).">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://codelabs.glosings0n.dev/genkit-dart-agentic-workflows">
+    <meta property="og:image" content="https://glosings0n.dev/assets/hero.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Full-Stack Agentic Dart with Genkit Dart &amp; Shelf | Georges Byona (@glosings0n)">
+    <meta property="og:site_name" content="glosings0n Codelabs">
+    <meta property="article:published_time" content="2026-10-28">
+    <meta property="article:modified_time" content="2026-10-28">
+    <meta property="article:author" content="https://glosings0n.dev">
+    <meta property="article:section" content="AI &amp; Dart Engineering">
+    <meta property="article:tag" content="Dart">
+    <meta property="article:tag" content="Flutter">
+    <meta property="article:tag" content="Genkit Dart">
+    <meta property="article:tag" content="Schemantic">
+    <meta property="article:tag" content="Agentic Workflows">
+    <meta property="article:tag" content="Google Gemini">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@glosings0n">
+    <meta name="twitter:creator" content="@glosings0n">
+    <meta name="twitter:title" content="Full-Stack Agentic Dart: Typed AI Agents with Genkit Dart &amp; Shelf | glosings0n Codelabs">
+    <meta name="twitter:description"
+        content="Build end-to-end typed AI agents in 100% pure Dart with Genkit Dart, Schemantic, Genkit Shelf, Human-in-the-Loop middleware, and Flutter streaming clients. By Georges Byona (@glosings0n).">
+    <meta name="twitter:image" content="https://glosings0n.dev/assets/hero.png">
+
+    <!-- Schema.org JSON-LD for Google Search & AI Engines -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Person",
+          "@id": "https://glosings0n.dev/#person",
+          "name": "Georges Byona",
+          "additionalName": "Georges Losingson",
+          "alternateName": [
+            "glosings0n",
+            "@glosings0n",
+            "Glosingson",
+            "Georges Byona",
+            "Georges Losingson",
+            "Losingson",
+            "Byona Georges",
+            "Losings0n",
+            "@losingson",
+            "g-losingson",
+            "LosingTek"
+          ],
+          "url": "https://glosings0n.dev",
+          "image": "https://glosings0n.dev/assets/hero.png",
+          "jobTitle": "Software Engineer & Edge-AI Researcher",
+          "sameAs": [
+            "https://github.com/glosings0n",
+            "https://linkedin.com/in/glosings0n",
+            "https://x.com/glosings0n",
+            "https://medium.com/@glosings0n",
+            "https://youtube.com/@FlutterFireCamp"
+          ],
+          "founder": [
+            {
+              "@type": "Organization",
+              "@id": "https://glosings0n.dev/#losingtek",
+              "name": "LosingTek",
+              "url": "https://losingtek.com"
+            },
+            {
+              "@type": "EducationalOrganization",
+              "@id": "https://glosings0n.dev/#flutterfirecamp",
+              "name": "FlutterFire Summer Camp",
+              "alternateName": "FlutterFire Camp",
+              "url": "https://flutterfirecamp.dev"
+            }
+          ]
+        },
+        {
+          "@type": ["TechArticle", "LearningResource"],
+          "@id": "https://codelabs.glosings0n.dev/genkit-dart-agentic-workflows#codelab",
+          "headline": "Full-Stack Agentic Dart: Building End-to-End Typed AI Agents with Genkit Dart & Shelf",
+          "name": "Full-Stack Agentic Dart: Building End-to-End Typed AI Agents with Genkit Dart & Shelf",
+          "description": "Hands-on engineering codelab by Georges Byona (@glosings0n). Learn how to build full-stack, strongly typed AI agent workflows in 100% pure Dart using Genkit Dart, Schemantic schemas, server-side tool calling, Human-in-the-Loop toolApproval middleware, Shelf HTTP servers, and Flutter streaming clients.",
+          "url": "https://codelabs.glosings0n.dev/genkit-dart-agentic-workflows",
+          "image": "https://glosings0n.dev/assets/hero.png",
+          "datePublished": "2026-10-28",
+          "dateModified": "2026-10-28",
+          "inLanguage": ["en", "fr"],
+          "proficiencyLevel": "Intermediate",
+          "educationalLevel": "Intermediate",
+          "learningResourceType": "Codelab",
+          "timeRequired": "PT45M",
+          "author": {
+            "@id": "https://glosings0n.dev/#person"
+          },
+          "publisher": {
+            "@id": "https://glosings0n.dev/#losingtek"
+          },
+          "isPartOf": {
+            "@id": "https://codelabs.glosings0n.dev/#website"
+          },
+          "about": [
+            "Dart",
+            "Flutter",
+            "Genkit Dart",
+            "Schemantic",
+            "Google Gemini",
+            "AI Agents",
+            "Tool Calling",
+            "Human-in-the-Loop Middleware",
+            "Dart Shelf Server"
+          ],
+          "keywords": "Genkit Dart, Full-Stack Agentic Dart, schemantic, genkit_shelf, genkit_middleware, genkit_google_genai, defineFlow, defineTool, defineRemoteAction, toolApproval, Flutter AI, Georges Byona, glosings0n, LosingTek, FlutterFire Summer Camp"
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "glosings0n Portfolio",
+              "item": "https://glosings0n.dev"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "glosings0n Codelabs",
+              "item": "https://codelabs.glosings0n.dev"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "Full-Stack Agentic Dart: Genkit Dart & Shelf",
+              "item": "https://codelabs.glosings0n.dev/genkit-dart-agentic-workflows"
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="192x192" href="/assets/favicon.png">
+    <link rel="icon" type="image/svg+xml" href="/assets/logo.svg">
+
+    <!-- Codelabs Stylesheet -->
+    <link rel="stylesheet" href="/codelabs/css/codelabs.css">
+</head>
+
+<body class="codelab-page">
+
+    <!-- Sticky Codelab Header -->
+    <header class="codelab-topbar">
+        <div class="topbar-inner">
+            <div class="topbar-left">
+                <button class="sidebar-toggle-btn" id="sidebar-toggle-btn" aria-label="Toggle Steps Drawer" aria-expanded="false">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
+                <a href="/" id="codelab-home-link" class="brand-link">
+                    <img src="/assets/logo.svg" alt="LosingTek Logo" class="brand-logo">
+                    <span class="brand-text">glosings0n</span>
+                </a>
+                <a href="/" id="codelab-sub-link" class="brand-subtext" style="text-decoration: none;">/ codelabs</a>
+                <span class="topbar-divider">/</span>
+                <span class="codelab-header-title"
+                    data-en="Full-Stack Agentic Dart: Genkit Dart &amp; Shelf"
+                    data-fr="Full-Stack Agentic Dart : Genkit Dart &amp; Shelf">Full-Stack Agentic Dart: Genkit Dart &amp; Shelf</span>
+            </div>
+
+            <div class="topbar-right">
+                <div class="time-pill" title="Time remaining">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polyline points="12 6 12 12 16 14"></polyline>
+                    </svg>
+                    <span id="time-remaining-label">45 min left</span>
+                </div>
+
+                <div class="lang-switch" role="group" aria-label="Language switcher">
+                    <button class="lang-btn active" id="lang-btn-en" data-lang="en" aria-pressed="true">EN</button>
+                    <button class="lang-btn" id="lang-btn-fr" data-lang="fr" aria-pressed="false">FR</button>
+                </div>
+
+                <button class="action-btn icon-only" id="theme-toggle-btn" aria-label="Light mode" title="Light mode">
+                    <span id="theme-toggle-icon"></span>
+                </button>
+
+                <a href="" id="codelab-github-btn" class="action-btn icon-only codelab-github-btn" hidden style="display: none;"
+                    aria-label="Open the GitHub repo" title="Open the GitHub repo">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path
+                            d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                        </path>
+                    </svg>
+                </a>
+            </div>
+        </div>
+        <div class="codelab-progress-track">
+            <div class="codelab-progress-fill" id="codelab-progress-fill"></div>
+        </div>
+    </header>
+
+    <div class="codelab-layout">
+        <!-- Left Sidebar Step Navigation -->
+        <aside class="codelab-sidebar" id="codelab-sidebar">
+            <ul class="step-nav-list">
+                <li class="step-nav-item active" data-step="0">
+                    <span class="step-num">1</span>
+                    <span class="step-nav-title"
+                        data-en="Context, Goals &amp; Prerequisites"
+                        data-fr="Contexte, Objectifs &amp; Prérequis">Context, Goals &amp; Prerequisites</span>
+                    <span class="step-nav-time">5m</span>
+                </li>
+                <li class="step-nav-item" data-step="1">
+                    <span class="step-num">2</span>
+                    <span class="step-nav-title"
+                        data-en="Typed Contracts with Schemantic"
+                        data-fr="Contrats Typés avec Schemantic">Typed Contracts with Schemantic</span>
+                    <span class="step-nav-time">5m</span>
+                </li>
+                <li class="step-nav-item" data-step="2">
+                    <span class="step-num">3</span>
+                    <span class="step-nav-title"
+                        data-en="Genkit Server &amp; Structured Flows"
+                        data-fr="Serveur Genkit &amp; Flows Structurés">Genkit Server &amp; Structured Flows</span>
+                    <span class="step-nav-time">6m</span>
+                </li>
+                <li class="step-nav-item" data-step="3">
+                    <span class="step-num">4</span>
+                    <span class="step-nav-title"
+                        data-en="Server Tools &amp; Security Invariants"
+                        data-fr="Outils Serveur &amp; Invariants Sécurité">Server Tools &amp; Security Invariants</span>
+                    <span class="step-nav-time">6m</span>
+                </li>
+                <li class="step-nav-item" data-step="4">
+                    <span class="step-num">5</span>
+                    <span class="step-nav-title"
+                        data-en="Guardrails &amp; toolApproval HITL"
+                        data-fr="Garde-fous &amp; toolApproval HITL">Guardrails &amp; toolApproval HITL</span>
+                    <span class="step-nav-time">6m</span>
+                </li>
+                <li class="step-nav-item" data-step="5">
+                    <span class="step-num">6</span>
+                    <span class="step-nav-title"
+                        data-en="Streaming Flows &amp; Genkit Shelf"
+                        data-fr="Flows Streaming &amp; Genkit Shelf">Streaming Flows &amp; Genkit Shelf</span>
+                    <span class="step-nav-time">6m</span>
+                </li>
+                <li class="step-nav-item" data-step="6">
+                    <span class="step-num">7</span>
+                    <span class="step-nav-title"
+                        data-en="Flutter Remote Action Client"
+                        data-fr="Client Flutter Remote Action">Flutter Remote Action Client</span>
+                    <span class="step-nav-time">6m</span>
+                </li>
+                <li class="step-nav-item" data-step="7">
+                    <span class="step-num">8</span>
+                    <span class="step-nav-title"
+                        data-en="Dev UI Tracing &amp; Verification"
+                        data-fr="Traçage Dev UI &amp; Vérification">Dev UI Tracing &amp; Verification</span>
+                    <span class="step-nav-time">5m</span>
+                </li>
+            </ul>
+
+            <div class="sidebar-footer">
+                <div><strong data-en="Author:" data-fr="Auteur :">Author:</strong> Georges Byona (<span class="font-mono">@glosings0n</span>)</div>
+                <div><strong data-en="Track:" data-fr="Parcours :">Track:</strong> Google Developer Community | AI &amp; Dart Engineering</div>
+                <div class="sidebar-copyright">&copy; 2026 <span class="font-mono">glosings0n</span></div>
+            </div>
+        </aside>
+
+        <!-- Main Step Viewport -->
+        <main class="codelab-main">
+            <div class="codelab-content-wrapper">
+
+                <!-- =========================================================
+                     STEP 1: CONTEXT, GOALS & PREREQUISITES
+                     ========================================================= -->
+                <article class="codelab-step active" id="step-1" data-duration="5">
+                    <div class="step-header">
+                        <div class="step-eyebrow">
+                            <span data-en="Step 1 of 8 | Context, Architecture &amp; Prerequisites"
+                                data-fr="Étape 1 sur 8 | Contexte, Architecture &amp; Prérequis">Step 1 of 8 | Context, Architecture &amp; Prerequisites</span>
+                            <span class="codelab-last-updated">Last updated: <time datetime="2026-10-28">October 28, 2026</time></span>
+                        </div>
+                        <h1 class="step-title"
+                            data-en="Full-Stack Agentic Dart: Building End-to-End Typed AI Agents with Genkit Dart &amp; Shelf"
+                            data-fr="Full-Stack Agentic Dart : Construire des Agents IA Typés de Bout en Bout avec Genkit Dart &amp; Shelf">Full-Stack Agentic Dart: Building End-to-End Typed AI Agents with Genkit Dart &amp; Shelf</h1>
+                    </div>
+
+                    <!-- 1. Context & The Why -->
+                    <div class="lang-en">
+                        <h3>1. Context &amp; The "Why": Why Client-Embedded Cloud LLM Calls Fail in Production</h3>
+                        <p>
+                            When mobile teams prototype their first cloud-powered AI feature in Flutter, the most common shortcut is calling the Gemini REST SDK directly from the mobile binary. While convenient for a hackathon, shipping direct cloud LLM calls inside a production APK or IPA creates three critical engineering failures:
+                        </p>
+                        <ol>
+                            <li><strong>Credential Extraction &amp; Billing Abuse:</strong> Any API key compiled into a mobile binary or passed via <code>--dart-define</code> can be extracted via static decompilation (`strings`, `jadx`) or TLS proxy inspection (`mitmproxy`), exposing your cloud billing quota to unlimited abuse.</li>
+                            <li><strong>Prompt Tampering &amp; Bypassed Business Rules:</strong> If the mobile app constructs the system prompt or executes tool callbacks locally, a modified client can spoof tool outputs, bypass regional order quotas, or inject unauthorized discounts.</li>
+                            <li><strong>Schema Drift Between Backend &amp; Mobile:</strong> Historically, moving AI orchestration to the backend forced Flutter teams to maintain a Python or Node.js microservice, duplicating JSON serialization logic and breaking compile-time type safety across the wire.</li>
+                        </ol>
+                        <p>
+                            <strong>Genkit Dart</strong> eliminates this trade-off. You write your AI flows, server-side tools, human-in-the-loop guardrails, and HTTP endpoints in <strong>100% pure Dart</strong> on the server, and share the exact same <code>schemantic</code> data contracts with your Flutter client.
+                        </p>
+                    </div>
+
+                    <div class="lang-fr">
+                        <h3>1. Contexte &amp; Pourquoi : L'échec des appels LLM Cloud embarqués côté client</h3>
+                        <p>
+                            Lorsqu'une équipe mobile prototype sa première fonctionnalité IA Cloud dans Flutter, le raccourci le plus fréquent consiste à appeler l'API Gemini directement depuis le binaire mobile. Bien que pratique pour une démonstration rapide, embarquer des appels LLM Cloud directement dans un APK ou IPA de production entraîne trois failles majeures :
+                        </p>
+                        <ol>
+                            <li><strong>Extraction de clés API &amp; Abus de facturation :</strong> Toute clé API compilée dans un binaire mobile ou injectée via <code>--dart-define</code> peut être extraite par décompilation statique (`strings`, `jadx`) ou interception réseau (`mitmproxy`), exposant votre quota Cloud à des abus illimités.</li>
+                            <li><strong>Altération des Prompts &amp; Contournement des règles métier :</strong> Si l'application mobile construit le prompt système ou exécute les outils localement, un client modifié peut falsifier les réponses d'outils, contourner les quotas régionaux ou s'attribuer des remises non autorisées.</li>
+                            <li><strong>Divergence de schémas entre Backend et Mobile :</strong> Historiquement, déporter l'orchestration IA côté serveur obligeait les équipes Flutter à maintenir un microservice Python ou Node.js, dupliquant la sérialisation JSON et brisant le typage fort de bout en bout.</li>
+                        </ol>
+                        <p>
+                            <strong>Genkit Dart</strong> résout définitivement ce dilemme. Vous développez vos flows IA, vos outils serveur, vos garde-fous avec validation humaine et vos endpoints HTTP en <strong>100% pur Dart</strong> côté serveur, tout en partageant exactement les mêmes contrats <code>schemantic</code> avec votre client Flutter.
+                        </p>
+                    </div>
+
+                    <div class="callout callout-info">
+                        <svg class="callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="12" y1="16" x2="12" y2="12"></line>
+                            <circle cx="12" cy="8" r="1.25" fill="currentColor" stroke="none"></circle>
+                        </svg>
+                        <div class="callout-body">
+                            <div class="lang-en">
+                                <div class="callout-title">One Language, Shared Schemas, Zero Drift</div>
+                                <p>
+                                    With <code>schemantic</code> + <code>genkit</code> + <code>genkit_shelf</code> on the backend and <code>package:genkit/client.dart</code> in Flutter, a single <code>@Schema()</code> definition validates LLM structured outputs on the server and deserializes streaming responses on the phone.
+                                </p>
+                            </div>
+                            <div class="lang-fr">
+                                <div class="callout-title">Un seul langage, des schémas partagés, zéro divergence</div>
+                                <p>
+                                    Avec <code>schemantic</code> + <code>genkit</code> + <code>genkit_shelf</code> côté serveur et <code>package:genkit/client.dart</code> dans Flutter, une seule définition <code>@Schema()</code> valide la sortie structurée du LLM sur le serveur et désérialise les flux en temps réel sur le téléphone.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 2. Learning Goals & What You Will Build -->
+                    <div class="lang-en">
+                        <h3>2. Learning Goals &amp; What You Will Build</h3>
+                        <p>
+                            In this 45-minute engineering codelab, you will build a complete B2B supply-chain compliance &amp; order audit workspace (<code>agentic_commerce_workspace</code>) organized as a pure Dart &amp; Flutter monorepo:
+                        </p>
+                        <ul>
+                            <li><strong>Shared Typed Contracts (<code>packages/shared_contracts</code>):</strong> Define compile-time and runtime JSON schemas using <code>schemantic</code> (<code>$OrderAuditInput</code>, <code>$OrderAuditResult</code>, <code>$InventoryLookupInput</code>, <code>$PartnerDiscountInput</code>) with field boundary constraints.</li>
+                            <li><strong>Genkit Dart Server &amp; Structured Output Flows (<code>packages/agent_server</code>):</strong> Configure <code>Genkit(plugins: [googleAI()])</code> with <code>gemini-2.5-flash</code> and enforce strict JSON schema conformance via <code>outputSchema</code>.</li>
+                            <li><strong>Authoritative Server-Side Tools:</strong> Register <code>verifyInventoryAndQuota</code> and <code>applyPartnerDiscount</code> via <code>ai.defineTool</code> so prices, stock levels, and regional quotas are resolved strictly on the server.</li>
+                            <li><strong>Human-in-the-Loop Guardrails (<code>genkit_middleware</code>):</strong> Intercept sensitive state-mutating tool calls with <code>ToolApprovalPlugin()</code>, handle <code>FinishReason.interrupted</code>, and resume generation safely via <code>interruptRestart</code>.</li>
+                            <li><strong>Real-Time Streaming &amp; Shelf HTTP Server (<code>genkit_shelf</code>):</strong> Stream live audit progress chunks via <code>context.sendChunk()</code> while returning a final strongly typed <code>OrderAuditResult</code>, mounted onto a custom <code>shelf_router</code> pipeline.</li>
+                            <li><strong>Flutter Streaming Client (<code>apps/flutter_client</code>):</strong> Consume both unary and streaming remote flows using <code>defineRemoteAction</code> from <code>package:genkit/client.dart</code>.</li>
+                        </ul>
+                    </div>
+
+                    <div class="lang-fr">
+                        <h3>2. Objectifs &amp; Ce que vous allez construire</h3>
+                        <p>
+                            Au cours de ce codelab technique de 45 minutes, vous allez construire un système complet d'audit et de conformité de commandes B2B (<code>agentic_commerce_workspace</code>) structuré en monorepo Dart &amp; Flutter :
+                        </p>
+                        <ul>
+                            <li><strong>Contrats Typés Partagés (<code>packages/shared_contracts</code>) :</strong> Définir des schémas JSON validés à la compilation et à l'exécution avec <code>schemantic</code> (<code>$OrderAuditInput</code>, <code>$OrderAuditResult</code>, <code>$InventoryLookupInput</code>, <code>$PartnerDiscountInput</code>).</li>
+                            <li><strong>Serveur Genkit Dart &amp; Flows à Sortie Structurée (<code>packages/agent_server</code>) :</strong> Initialiser <code>Genkit(plugins: [googleAI()])</code> avec <code>gemini-2.5-flash</code> et imposer un schéma de sortie strict via <code>outputSchema</code>.</li>
+                            <li><strong>Outils Serveur Autoritatifs :</strong> Enregistrer <code>verifyInventoryAndQuota</code> et <code>applyPartnerDiscount</code> avec <code>ai.defineTool</code> afin que les prix, les stocks et les quotas régionaux soient vérifiés exclusivement côté serveur.</li>
+                            <li><strong>Garde-fous Human-in-the-Loop (<code>genkit_middleware</code>) :</strong> Intercepter les appels d'outils sensibles avec <code>ToolApprovalPlugin()</code>, gérer l'état <code>FinishReason.interrupted</code> et reprendre l'exécution après approbation via <code>interruptRestart</code>.</li>
+                            <li><strong>Streaming Temps Réel &amp; Serveur HTTP Shelf (<code>genkit_shelf</code>) :</strong> Diffuser la narration d'audit en direct via <code>context.sendChunk()</code> tout en retournant un objet final typé <code>OrderAuditResult</code> exposé sur <code>shelf_router</code>.</li>
+                            <li><strong>Client Flutter Streaming (<code>apps/flutter_client</code>) :</strong> Consommer les flows distants en mode unitaire et streaming avec <code>defineRemoteAction</code> de <code>package:genkit/client.dart</code>.</li>
+                        </ul>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="codelab-table">
+                            <thead>
+                                <tr>
+                                    <th data-en="Architectural Layer" data-fr="Couche Architecturale">Architectural Layer</th>
+                                    <th data-en="Client-Direct LLM Anti-Pattern" data-fr="Anti-Pattern LLM Direct Client">Client-Direct LLM Anti-Pattern</th>
+                                    <th data-en="Full-Stack Genkit Dart + Shelf" data-fr="Full-Stack Genkit Dart + Shelf">Full-Stack Genkit Dart + Shelf</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong data-en="API Key Custody" data-fr="Conservation Clé API">API Key Custody</strong></td>
+                                    <td data-en="Exposed inside APK/IPA binary" data-fr="Exposée dans le binaire APK/IPA">Exposed inside APK/IPA binary</td>
+                                    <td><strong data-en="100% isolated in server environment" data-fr="100% isolée dans l'environnement serveur">100% isolated in server environment</strong></td>
+                                </tr>
+                                <tr>
+                                    <td><strong data-en="Contract Type Safety" data-fr="Typage des Contrats">Contract Type Safety</strong></td>
+                                    <td data-en="Unverified raw JSON maps" data-fr="Maps JSON brutes non vérifiées">Unverified raw JSON maps</td>
+                                    <td><strong data-en="Shared Schemantic classes (Server + Flutter)" data-fr="Classes Schemantic partagées (Serveur + Flutter)">Shared Schemantic classes (Server + Flutter)</strong></td>
+                                </tr>
+                                <tr>
+                                    <td><strong data-en="Tool Execution Trust" data-fr="Confiance d'Exécution Outils">Tool Execution Trust</strong></td>
+                                    <td data-en="Untrusted client-side callbacks" data-fr="Callbacks côté client non fiables">Untrusted client-side callbacks</td>
+                                    <td><strong data-en="Authoritative server tools + HITL middleware" data-fr="Outils serveur autoritatifs + middleware HITL">Authoritative server tools + HITL middleware</strong></td>
+                                </tr>
+                                <tr>
+                                    <td><strong data-en="Observability &amp; Tracing" data-fr="Observabilité &amp; Traçage">Observability &amp; Tracing</strong></td>
+                                    <td data-en="Blind console logs on user devices" data-fr="Logs console aveugles sur les appareils">Blind console logs on user devices</td>
+                                    <td><strong data-en="Full step-by-step spans in Genkit Dev UI" data-fr="Traces complètes étape par étape dans Genkit Dev UI">Full step-by-step spans in Genkit Dev UI</strong></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- 3. Prerequisites & System Requirements -->
+                    <div class="lang-en">
+                        <h3>3. Prerequisites &amp; System Requirements</h3>
+                        <p>
+                            Ensure your workstation meets the following requirements before starting Step 2:
+                        </p>
+                        <ul>
+                            <li><strong>Dart SDK:</strong> <code>&gt;=3.12.0</code> (or Flutter SDK <code>&gt;=3.29.0</code> bundling modern Dart).</li>
+                            <li><strong>Genkit CLI:</strong> Installed globally to launch the local reflection &amp; trace inspector UI on port <code>4000</code>.</li>
+                            <li><strong>Google AI Gemini API Key:</strong> Exported as the <code>GEMINI_API_KEY</code> environment variable on your server machine (never hardcoded in source files).</li>
+                        </ul>
+                        <p>Run the pre-flight verification commands below in your terminal:</p>
+                    </div>
+
+                    <div class="lang-fr">
+                        <h3>3. Prérequis &amp; Configuration Système</h3>
+                        <p>
+                            Vérifiez que votre poste de travail respecte les prérequis suivants avant de passer à l'étape 2 :
+                        </p>
+                        <ul>
+                            <li><strong>SDK Dart :</strong> <code>&gt;=3.12.0</code> (ou SDK Flutter <code>&gt;=3.29.0</code> incluant Dart moderne).</li>
+                            <li><strong>Genkit CLI :</strong> Installé globalement pour lancer l'interface locale d'inspection des traces sur le port <code>4000</code>.</li>
+                            <li><strong>Clé API Google AI Gemini :</strong> Définie dans la variable d'environnement <code>GEMINI_API_KEY</code> côté serveur (jamais écrite en dur dans le code source).</li>
+                        </ul>
+                        <p>Exécutez les commandes de vérification pré-vol ci-dessous dans votre terminal :</p>
+                    </div>
+
+                    <div class="code-window">
+                        <div class="code-window-header">
+                            <div class="code-window-meta">
+                                <div class="window-dots">
+                                    <span class="window-dot red"></span>
+                                    <span class="window-dot yellow"></span>
+                                    <span class="window-dot green"></span>
+                                </div>
+                                <span class="code-filename">Terminal | Pre-Flight Verification (macOS / Linux / Git Bash &amp; Windows PowerShell)</span>
+                                <span class="code-lang-badge">SHELL</span>
+                            </div>
+                            <button class="copy-code-btn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                Copy
+                            </button>
+                        </div>
+                        <pre><code># 1. Verify Dart and Flutter SDK versions
+dart --version
+flutter --version
+
+# 2. Install the Genkit CLI globally (choose cURL or npm)
+curl -sL cli.genkit.dev | bash
+# OR via npm:
+npm install -g genkit-cli
+
+# 3. Verify Genkit CLI installation
+genkit --version</code></pre>
+                    </div>
+
+                    <div class="step-pagination">
+                        <button class="nav-step-btn" disabled data-en="&larr; Previous" data-fr="&larr; Précédent">&larr; Previous</button>
+                        <button class="nav-step-btn primary" data-step-target="1"
+                            data-en="Next: Typed Contracts with Schemantic &rarr;"
+                            data-fr="Suivant : Contrats Typés avec Schemantic &rarr;">Next: Typed Contracts with Schemantic &rarr;</button>
+                    </div>
+                </article>
+
+                <!-- =========================================================
+                     STEP 2: WORKSPACE SETUP & SHARED TYPED CONTRACTS
+                     ========================================================= -->
+                <article class="codelab-step" id="step-2" data-duration="5">
+                    <div class="step-header">
+                        <div class="step-eyebrow"
+                            data-en="Step 2 of 8 | Monorepo Architecture &amp; Schemantic"
+                            data-fr="Étape 2 sur 8 | Architecture Monorepo &amp; Schemantic">Step 2 of 8 | Monorepo Architecture &amp; Schemantic</div>
+                        <h2 class="step-title"
+                            data-en="Workspace Setup &amp; Shared Typed Contracts with Schemantic"
+                            data-fr="Configuration du Workspace &amp; Contrats Typés Partagés avec Schemantic">Workspace Setup &amp; Shared Typed Contracts with Schemantic</h2>
+                    </div>
+
+                    <div class="lang-en">
+                        <p>
+                            We will organize our project as a clean 3-package workspace (<code>agentic_commerce_workspace</code>) so that our Shelf backend and our Flutter application import the exact same schema definitions:
+                        </p>
+                        <ul>
+                            <li><code>packages/shared_contracts</code>: Pure Dart package containing our <code>@Schema()</code> definitions and generated <code>.g.dart</code> runtime JSON Schemas.</li>
+                            <li><code>packages/agent_server</code>: Dart backend powered by <code>genkit</code>, <code>genkit_google_genai</code>, <code>genkit_middleware</code>, and <code>genkit_shelf</code>.</li>
+                            <li><code>apps/flutter_client</code>: Cross-platform Flutter app consuming our server flows via <code>package:genkit/client.dart</code>.</li>
+                        </ul>
+                        <h3>1. Create the Monorepo Directory Structure</h3>
+                        <p>
+                            Run the commands below for your operating system to scaffold the workspace directories:
+                        </p>
+                    </div>
+
+                    <div class="lang-fr">
+                        <p>
+                            Nous allons organiser notre projet sous forme d'un workspace propre à 3 paquets (<code>agentic_commerce_workspace</code>) afin que notre backend Shelf et notre application Flutter importent exactement les mêmes définitions de schémas :
+                        </p>
+                        <ul>
+                            <li><code>packages/shared_contracts</code> : Paquet pur Dart contenant nos définitions <code>@Schema()</code> et les schémas JSON <code>.g.dart</code> générés.</li>
+                            <li><code>packages/agent_server</code> : Backend Dart propulsé par <code>genkit</code>, <code>genkit_google_genai</code>, <code>genkit_middleware</code> et <code>genkit_shelf</code>.</li>
+                            <li><code>apps/flutter_client</code> : Application Flutter multiplateforme consommant nos flows serveur via <code>package:genkit/client.dart</code>.</li>
+                        </ul>
+                        <h3>1. Créer l'arborescence du Monorepo</h3>
+                        <p>
+                            Exécutez les commandes ci-dessous selon votre système d'exploitation pour initialiser les dossiers du workspace :
+                        </p>
+                    </div>
+
+                    <div class="code-window">
+                        <div class="code-window-header">
+                            <div class="code-window-meta">
+                                <div class="window-dots">
+                                    <span class="window-dot red"></span>
+                                    <span class="window-dot yellow"></span>
+                                    <span class="window-dot green"></span>
+                                </div>
+                                <span class="code-filename">Terminal | Create Workspace Folders (macOS / Linux / Git Bash &amp; PowerShell)</span>
+                                <span class="code-lang-badge">SHELL</span>
+                            </div>
+                            <button class="copy-code-btn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                Copy
+                            </button>
+                        </div>
+                        <pre><code># macOS / Linux / Git Bash
+mkdir -p agentic_commerce_workspace/packages/shared_contracts/lib
+mkdir -p agentic_commerce_workspace/packages/agent_server/lib/flows
+mkdir -p agentic_commerce_workspace/packages/agent_server/lib/tools
+mkdir -p agentic_commerce_workspace/packages/agent_server/bin
+cd agentic_commerce_workspace
+
+# Windows PowerShell
+New-Item -ItemType Directory -Force -Path "agentic_commerce_workspace\packages\shared_contracts\lib"
+New-Item -ItemType Directory -Force -Path "agentic_commerce_workspace\packages\agent_server\lib\flows"
+New-Item -ItemType Directory -Force -Path "agentic_commerce_workspace\packages\agent_server\lib\tools"
+New-Item -ItemType Directory -Force -Path "agentic_commerce_workspace\packages\agent_server\bin"
+Set-Location agentic_commerce_workspace</code></pre>
+                    </div>
+
+                    <div class="lang-en">
+                        <h3>2. Complete File: <code>packages/shared_contracts/pubspec.yaml</code></h3>
+                        <p>
+                            The <code>schemantic</code> library binds strongly typed Dart classes to runtime JSON Schemas. In <code>dev_dependencies</code>, we include <code>schemantic_builder</code> and <code>build_runner</code> to generate the concrete implementation classes and static <code>$schema</code> descriptors:
+                        </p>
+                    </div>
+
+                    <div class="lang-fr">
+                        <h3>2. Fichier complet : <code>packages/shared_contracts/pubspec.yaml</code></h3>
+                        <p>
+                            La bibliothèque <code>schemantic</code> relie des classes Dart fortement typées à des schémas JSON d'exécution. Dans <code>dev_dependencies</code>, nous incluons <code>schemantic_builder</code> et <code>build_runner</code> pour générer les classes concrètes ainsi que les descripteurs statiques <code>$schema</code> :
+                        </p>
+                    </div>
+
+                    <div class="code-window">
+                        <div class="code-window-header">
+                            <div class="code-window-meta">
+                                <div class="window-dots">
+                                    <span class="window-dot red"></span>
+                                    <span class="window-dot yellow"></span>
+                                    <span class="window-dot green"></span>
+                                </div>
+                                <span class="code-filename">packages/shared_contracts/pubspec.yaml</span>
+                                <span class="code-lang-badge">YAML</span>
+                            </div>
+                            <button class="copy-code-btn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                Copy
+                            </button>
+                        </div>
+                        <pre><code>name: shared_contracts
+description: Shared Schemantic data contracts for Genkit server and Flutter client.
+version: 1.0.0
+publish_to: 'none'
+
+environment:
+  sdk: ^3.12.0
+
+dependencies:
+  schemantic: ^1.0.0
+
+dev_dependencies:
+  build_runner: ^2.16.2
+  lints: ^6.1.0
+  schemantic_builder: ^1.0.0</code></pre>
+                    </div>
+
+                    <div class="lang-en">
+                        <h3>3. Complete File: <code>packages/shared_contracts/lib/agent_contracts.dart</code></h3>
+                        <p>
+                            In <code>schemantic</code>, you annotate abstract schema blueprints with <code>@Schema()</code> and prefix the abstract class name with <code>$</code> (for example, <code>$OrderAuditInput</code>). Field annotations like <code>@IntegerField</code> and <code>@StringField</code> embed validation boundaries (`minimum`, `maximum`, `enumValues`, `description`) directly into the JSON Schema sent to Gemini:
+                        </p>
+                    </div>
+
+                    <div class="lang-fr">
+                        <h3>3. Fichier complet : <code>packages/shared_contracts/lib/agent_contracts.dart</code></h3>
+                        <p>
+                            Avec <code>schemantic</code>, vous annotez vos classes abstraites avec <code>@Schema()</code> en préfixant leur nom par <code>$</code> (par exemple <code>$OrderAuditInput</code>). Les annotations de champs telles que <code>@IntegerField</code> et <code>@StringField</code> intègrent directement les contraintes de validation (`minimum`, `maximum`, `enumValues`, `description`) dans le schéma JSON transmis à Gemini :
+                        </p>
+                    </div>
+
+                    <div class="code-window">
+                        <div class="code-window-header">
+                            <div class="code-window-meta">
+                                <div class="window-dots">
+                                    <span class="window-dot red"></span>
+                                    <span class="window-dot yellow"></span>
+                                    <span class="window-dot green"></span>
+                                </div>
+                                <span class="code-filename">packages/shared_contracts/lib/agent_contracts.dart</span>
+                                <span class="code-lang-badge">DART</span>
+                            </div>
+                            <button class="copy-code-btn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                Copy
+                            </button>
+                        </div>
+                        <pre><code>import 'package:schemantic/schemantic.dart';
+
+part 'agent_contracts.g.dart';
+
+@Schema()
+abstract class $OrderAuditInput {
+  String get orderId;
+  String get sku;
+
+  @IntegerField(
+    minimum: 1,
+    description: 'Requested unit count for the wholesale order',
+  )
+  int get quantity;
+
+  @StringField(
+    minLength: 2,
+    enumValues: ['EAST_AFRICA', 'CENTRAL_AFRICA', 'WEST_AFRICA'],
+    description: 'Target fulfillment corridor',
+  )
+  String get region;
+
+  String? get partnerCode;
+}
+
+@Schema()
+abstract class $OrderAuditResult {
+  String get orderId;
+  bool get approved;
+
+  @StringField(
+    enumValues: ['APPROVED', 'HOLD_QUOTA_EXCEEDED', 'REJECTED_OUT_OF_STOCK'],
+  )
+  String get status;
+
+  @IntegerField(
+    minimum: 0,
+    description: 'Verified units allocated from regional warehouse',
+  )
+  int get allocatedQuantity;
+
+  double get finalTotalUsd;
+  String get reasoningSummary;
+}
+
+@Schema()
+abstract class $InventoryLookupInput {
+  String get sku;
+  String get region;
+
+  @IntegerField(minimum: 1)
+  int get requestedUnits;
+}
+
+@Schema()
+abstract class $PartnerDiscountInput {
+  String get orderId;
+  String get partnerCode;
+
+  @IntegerField(
+    minimum: 1,
+    maximum: 50,
+    description: 'Requested partner discount percentage (1 to 50)',
+  )
+  int get requestedDiscountPct;
+}</code></pre>
+                    </div>
+
+                    <div class="lang-en">
+                        <h3>4. Generate the Concrete Classes &amp; Runtime Schemas</h3>
+                        <p>
+                            Run <code>build_runner</code> inside <code>packages/shared_contracts</code> to generate <code>agent_contracts.g.dart</code>. This produces concrete classes (<code>OrderAuditInput</code>, <code>OrderAuditResult</code>, <code>InventoryLookupInput</code>, <code>PartnerDiscountInput</code>) with <code>.fromJson()</code>, <code>.toJson()</code>, and static <code>.$schema</code> getters:
+                        </p>
+                    </div>
+
+                    <div class="lang-fr">
+                        <h3>4. Générer les classes concrètes &amp; les schémas d'exécution</h3>
+                        <p>
+                            Exécutez <code>build_runner</code> dans <code>packages/shared_contracts</code> pour générer <code>agent_contracts.g.dart</code>. Cela produit les classes concrètes (<code>OrderAuditInput</code>, <code>OrderAuditResult</code>, <code>InventoryLookupInput</code>, <code>PartnerDiscountInput</code>) dotées de <code>.fromJson()</code>, <code>.toJson()</code> et du descripteur statique <code>.$schema</code> :
+                        </p>
+                    </div>
+
+                    <div class="code-window">
+                        <div class="code-window-header">
+                            <div class="code-window-meta">
+                                <div class="window-dots">
+                                    <span class="window-dot red"></span>
+                                    <span class="window-dot yellow"></span>
+                                    <span class="window-dot green"></span>
+                                </div>
+                                <span class="code-filename">Terminal | Generate Schemantic .g.dart Files</span>
+                                <span class="code-lang-badge">BASH</span>
+                            </div>
+                            <button class="copy-code-btn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                Copy
+                            </button>
+                        </div>
+                        <pre><code>cd packages/shared_contracts
+dart pub get
+dart run build_runner build
+dart analyze
+cd ../..</code></pre>
+                    </div>
+
+                    <div class="step-pagination">
+                        <button class="nav-step-btn" data-step-target="0" data-en="&larr; Previous" data-fr="&larr; Précédent">&larr; Previous</button>
+                        <button class="nav-step-btn primary" data-step-target="2"
+                            data-en="Next: Genkit Server &amp; Structured Flows &rarr;"
+                            data-fr="Suivant : Serveur Genkit &amp; Flows Structurés &rarr;">Next: Genkit Server &amp; Structured Flows &rarr;</button>
+                    </div>
+                </article>
+
+                <!-- =========================================================
+                     STEP 3: INITIALIZING THE GENKIT DART SERVER & STRUCTURED FLOWS
+                     ========================================================= -->
+                <article class="codelab-step" id="step-3" data-duration="6">
+                    <div class="step-header">
+                        <div class="step-eyebrow"
+                            data-en="Step 3 of 8 | Genkit Core &amp; Constrained Generation"
+                            data-fr="Étape 3 sur 8 | Genkit Core &amp; Génération Contrainte">Step 3 of 8 | Genkit Core &amp; Constrained Generation</div>
+                        <h2 class="step-title"
+                            data-en="Initializing the Genkit Dart Server &amp; Structured Output Flows"
+                            data-fr="Initialisation du Serveur Genkit Dart &amp; Flows à Sortie Structurée">Initializing the Genkit Dart Server &amp; Structured Output Flows</h2>
+                    </div>
+
+                    <div class="lang-en">
+                        <p>
+                            Instead of writing fragile regular expressions to strip Markdown fences from LLM responses, Genkit Dart's <code>ai.defineFlow</code> and <code>ai.generate</code> accept an <code>outputSchema</code> parameter backed by <code>schemantic</code>. Genkit passes the JSON Schema directly to Gemini's constrained decoding engine and parses the output into a strongly typed Dart instance via <code>response.output</code>.
+                        </p>
+                        <h3>1. Complete File: <code>packages/agent_server/pubspec.yaml</code></h3>
+                        <p>
+                            Create <code>packages/agent_server/pubspec.yaml</code> referencing our local <code>shared_contracts</code> package alongside <code>genkit</code>, <code>genkit_google_genai</code>, <code>genkit_middleware</code>, and <code>genkit_shelf</code>:
+                        </p>
+                    </div>
+
+                    <div class="lang-fr">
+                        <p>
+                            Au lieu d'écrire des expressions régulières fragiles pour nettoyer les blocs Markdown des réponses d'un LLM, <code>ai.defineFlow</code> et <code>ai.generate</code> de Genkit Dart acceptent un paramètre <code>outputSchema</code> propulsé par <code>schemantic</code>. Genkit transmet le schéma JSON directement au moteur de décodage contraint de Gemini et convertit la réponse en une instance Dart fortement typée accessible via <code>response.output</code>.
+                        </p>
+                        <h3>1. Fichier complet : <code>packages/agent_server/pubspec.yaml</code></h3>
+                        <p>
+                            Créez le fichier <code>packages/agent_server/pubspec.yaml</code> référençant notre paquet local <code>shared_contracts</code> ainsi que <code>genkit</code>, <code>genkit_google_genai</code>, <code>genkit_middleware</code> et <code>genkit_shelf</code> :
+                        </p>
+                    </div>
+
+                    <div class="code-window">
+                        <div class="code-window-header">
+                            <div class="code-window-meta">
+                                <div class="window-dots">
+                                    <span class="window-dot red"></span>
+                                    <span class="window-dot yellow"></span>
+                                    <span class="window-dot green"></span>
+                                </div>
+                                <span class="code-filename">packages/agent_server/pubspec.yaml</span>
+                                <span class="code-lang-badge">YAML</span>
+                            </div>
+                            <button class="copy-code-btn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                Copy
+                            </button>
+                        </div>
+                        <pre><code>name: agent_server
+description: Genkit Dart + Shelf Agentic Backend Server.
+version: 1.0.0
+publish_to: 'none'
+
+environment:
+  sdk: ^3.12.0
+
+dependencies:
+  genkit: ^1.0.1
+  genkit_google_genai: ^1.0.1
+  genkit_middleware: ^1.0.1
+  genkit_shelf: ^1.0.1
+  schemantic: ^1.0.0
+  shared_contracts:
+    path: ../shared_contracts
+  shelf: ^1.4.2
+  shelf_router: ^1.1.4
+
+dev_dependencies:
+  lints: ^6.1.0</code></pre>
+                    </div>
+
+                    <div class="lang-en">
+                        <h3>2. Complete File: <code>packages/agent_server/lib/flows/audit_flow.dart</code></h3>
+                        <p>
+                            Create <code>packages/agent_server/lib/flows/audit_flow.dart</code>. Notice how both the flow boundary (<code>defineFlow</code>) and the model invocation (<code>ai.generate</code>) use <code>OrderAuditInput.$schema</code> and <code>OrderAuditResult.$schema</code>:
+                        </p>
+                    </div>
+
+                    <div class="lang-fr">
+                        <h3>2. Fichier complet : <code>packages/agent_server/lib/flows/audit_flow.dart</code></h3>
+                        <p>
+                            Créez <code>packages/agent_server/lib/flows/audit_flow.dart</code>. Remarquez comment la déclaration du flow (<code>defineFlow</code>) et l'appel au modèle (<code>ai.generate</code>) utilisent tous deux <code>OrderAuditInput.$schema</code> et <code>OrderAuditResult.$schema</code> :
+                        </p>
+                    </div>
+
+                    <div class="code-window">
+                        <div class="code-window-header">
+                            <div class="code-window-meta">
+                                <div class="window-dots">
+                                    <span class="window-dot red"></span>
+                                    <span class="window-dot yellow"></span>
+                                    <span class="window-dot green"></span>
+                                </div>
+                                <span class="code-filename">packages/agent_server/lib/flows/audit_flow.dart</span>
+                                <span class="code-lang-badge">DART</span>
+                            </div>
+                            <button class="copy-code-btn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                Copy
+                            </button>
+                        </div>
+                        <pre><code>import 'package:genkit/genkit.dart';
+import 'package:genkit_google_genai/genkit_google_genai.dart';
+import 'package:shared_contracts/agent_contracts.dart';
+
+/// Defines a strictly typed order audit flow returning [OrderAuditResult].
+Flow&lt;OrderAuditInput, OrderAuditResult, void, void&gt; defineAuditOrderFlow(
+  Genkit ai,
+) {
+  return ai.defineFlow(
+    name: 'auditOrder',
+    inputSchema: OrderAuditInput.$schema,
+    outputSchema: OrderAuditResult.$schema,
+    fn: (OrderAuditInput input, _) async {
+      final response = await ai.generate(
+        model: googleAI.gemini('gemini-2.5-flash'),
+        prompt: '''
+You are a principal wholesale order compliance auditor.
+Audit the following order request using the authoritative server tool `verifyInventoryAndQuota`:
+- Order ID: ${input.orderId}
+- SKU: ${input.sku}
+- Requested Quantity: ${input.quantity}
+- Target Corridor: ${input.region}
+- Partner Code: ${input.partnerCode ?? 'NONE'}
+
+Rules:
+1. Always call `verifyInventoryAndQuota` first to obtain the authoritative stock, quota, and unit price.
+2. If the SKU is out of stock (availableUnits &lt; requestedUnits), set approved=false, status='REJECTED_OUT_OF_STOCK', allocatedQuantity=0, finalTotalUsd=0.
+3. If requested quantity exceeds maxOrderQuota, set approved=false, status='HOLD_QUOTA_EXCEEDED', allocatedQuantity=maxOrderQuota, and compute finalTotalUsd for the capped allocation.
+4. Otherwise set approved=true, status='APPROVED', allocatedQuantity=quantity, and compute finalTotalUsd = quantity * unitPriceUsd.
+''',
+        toolNames: ['verifyInventoryAndQuota'],
+        outputSchema: OrderAuditResult.$schema,
+      );
+
+      final structuredOutput = response.output;
+      if (structuredOutput == null) {
+        throw StateError(
+          'Model failed to produce a valid OrderAuditResult schema payload.',
+        );
+      }
+      return structuredOutput;
+    },
+  );
+}</code></pre>
+                    </div>
+
+                    <div class="callout callout-success">
+                        <svg class="callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                        <div class="callout-body">
+                            <div class="lang-en">
+                                <div class="callout-title">Why Wrap Logic in <code>ai.defineFlow</code>?</div>
+                                <p>
+                                    Every Genkit Flow automatically registers with the local reflection server for interactive testing in the Genkit Developer UI, emits OpenTelemetry trace spans, validates incoming JSON against <code>inputSchema</code>, and exposes a clean handler for <code>genkit_shelf</code>.
+                                </p>
+                            </div>
+                            <div class="lang-fr">
+                                <div class="callout-title">Pourquoi encapsuler la logique dans <code>ai.defineFlow</code> ?</div>
+                                <p>
+                                    Chaque Flow Genkit s'enregistre automatiquement auprès du serveur de réflexion local pour être testé dans Genkit Developer UI, émet des traces télémétriques, valide le JSON entrant via <code>inputSchema</code> et s'expose directement sur HTTP via <code>genkit_shelf</code>.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="step-pagination">
+                        <button class="nav-step-btn" data-step-target="1" data-en="&larr; Previous" data-fr="&larr; Précédent">&larr; Previous</button>
+                        <button class="nav-step-btn primary" data-step-target="3"
+                            data-en="Next: Server Tools &amp; Security Invariants &rarr;"
+                            data-fr="Suivant : Outils Serveur &amp; Invariants Sécurité &rarr;">Next: Server Tools &amp; Security Invariants &rarr;</button>
+                    </div>
+                </article>
+
+                <!-- =========================================================
+                     STEP 4: SERVER-SIDE TOOL CALLING & SECURITY INVARIANTS
+                     ========================================================= -->
+                <article class="codelab-step" id="step-4" data-duration="6">
+                    <div class="step-header">
+                        <div class="step-eyebrow"
+                            data-en="Step 4 of 8 | Authoritative Tool Calling"
+                            data-fr="Étape 4 sur 8 | Appel d'Outils Autoritatifs">Step 4 of 8 | Authoritative Tool Calling</div>
+                        <h2 class="step-title"
+                            data-en="Server-Side Tool Calling &amp; Strict Security Invariants"
+                            data-fr="Appel d'Outils Côté Serveur &amp; Invariants de Sécurité Stricts">Server-Side Tool Calling &amp; Strict Security Invariants</h2>
+                    </div>
+
+                    <div class="lang-en">
+                        <p>
+                            When designing production AI agents for commerce, fintech, or logistics, you must enforce one non-negotiable architectural rule:
+                        </p>
+                    </div>
+
+                    <div class="lang-fr">
+                        <p>
+                            Lors de la conception d'agents IA de production pour le commerce, la fintech ou la logistique, vous devez appliquer une règle architecturale absolue :
+                        </p>
+                    </div>
+
+                    <div class="callout callout-warning">
+                        <svg class="callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+                            <line x1="12" y1="9" x2="12" y2="13"></line>
+                            <circle cx="12" cy="17" r="1.25" fill="currentColor" stroke="none"></circle>
+                        </svg>
+                        <div class="callout-body">
+                            <div class="lang-en">
+                                <div class="callout-title">The Server-Side Security Invariant</div>
+                                <p>
+                                    <strong>Never trust the client for prices, quotas, or verification statuses.</strong> Notice that <code>OrderAuditInput</code> only accepts <code>orderId</code>, <code>sku</code>, <code>quantity</code>, and <code>region</code>. The mobile client cannot pass a unit price or override a regional quota limit; our server-side Genkit tool resolves those figures directly from the authoritative server ledger before returning context to the model via <code>ToolResult.response(...)</code>.
+                                </p>
+                            </div>
+                            <div class="lang-fr">
+                                <div class="callout-title">L'Invariant de Sécurité Côté Serveur</div>
+                                <p>
+                                    <strong>Ne faites jamais confiance au client pour les prix, les quotas ou les statuts de vérification.</strong> Remarquez que <code>OrderAuditInput</code> n'accepte que <code>orderId</code>, <code>sku</code>, <code>quantity</code> et <code>region</code>. Le client mobile ne peut ni imposer un prix unitaire ni contourner un quota régional ; notre outil Genkit côté serveur interroge directement le registre serveur autoritatif avant de renvoyer le résultat au modèle via <code>ToolResult.response(...)</code>.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="lang-en">
+                        <h3>Complete File: <code>packages/agent_server/lib/tools/inventory_tools.dart</code></h3>
+                        <p>
+                            In Genkit Dart, tools are registered with <code>ai.defineTool</code> and return a <code>ToolResult</code> (such as <code>ToolResult.response(...)</code> for normal execution or <code>ToolResult.interrupt(...)</code> to pause generation). Copy this complete file into <code>packages/agent_server/lib/tools/inventory_tools.dart</code>:
+                        </p>
+                    </div>
+
+                    <div class="lang-fr">
+                        <h3>Fichier complet : <code>packages/agent_server/lib/tools/inventory_tools.dart</code></h3>
+                        <p>
+                            Dans Genkit Dart, les outils sont déclarés via <code>ai.defineTool</code> et retournent un <code>ToolResult</code> (tel que <code>ToolResult.response(...)</code> pour une réponse normale ou <code>ToolResult.interrupt(...)</code> pour interrompre la boucle de génération). Copiez ce fichier complet dans <code>packages/agent_server/lib/tools/inventory_tools.dart</code> :
+                        </p>
+                    </div>
+
+                    <div class="code-window">
+                        <div class="code-window-header">
+                            <div class="code-window-meta">
+                                <div class="window-dots">
+                                    <span class="window-dot red"></span>
+                                    <span class="window-dot yellow"></span>
+                                    <span class="window-dot green"></span>
+                                </div>
+                                <span class="code-filename">packages/agent_server/lib/tools/inventory_tools.dart</span>
+                                <span class="code-lang-badge">DART</span>
+                            </div>
+                            <button class="copy-code-btn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                Copy
+                            </button>
+                        </div>
+                        <pre><code>import 'package:genkit/genkit.dart';
+import 'package:shared_contracts/agent_contracts.dart';
+
+/// Authoritative server-side catalog and regional quota ledger.
+/// The mobile client never sends prices or quota limits; the server resolves them.
+const Map&lt;String, Map&lt;String, Object&gt;&gt; _serverInventoryCatalog = {
+  'SOLAR-INV-3KW': {
+    'unitPriceUsd': 420.0,
+    'stockByRegion': {
+      'EAST_AFRICA': 45,
+      'CENTRAL_AFRICA': 18,
+      'WEST_AFRICA': 30,
+    },
+    'maxOrderQuota': 20,
+  },
+  'LFP-BATT-5KWH': {
+    'unitPriceUsd': 680.0,
+    'stockByRegion': {
+      'EAST_AFRICA': 12,
+      'CENTRAL_AFRICA': 6,
+      'WEST_AFRICA': 15,
+    },
+    'maxOrderQuota': 10,
+  },
+};
+
+/// Registers authoritative inventory and partner discount tools on [ai].
+void registerInventoryTools(Genkit ai) {
+  ai.defineTool(
+    name: 'verifyInventoryAndQuota',
+    description:
+        'Checks authoritative regional warehouse stock, unit price in USD, '
+        'and maximum per-order quota for a given SKU and region.',
+    inputSchema: InventoryLookupInput.$schema,
+    fn: (InventoryLookupInput input, _) async {
+      final skuRecord = _serverInventoryCatalog[input.sku.toUpperCase()];
+      if (skuRecord == null) {
+        return ToolResult.response({
+          'found': false,
+          'sku': input.sku,
+          'error': 'SKU not found in authoritative catalog.',
+        });
+      }
+
+      final stockMap = skuRecord['stockByRegion']! as Map&lt;String, int&gt;;
+      final availableUnits = stockMap[input.region] ?? 0;
+      final maxQuota = skuRecord['maxOrderQuota']! as int;
+      final unitPriceUsd = skuRecord['unitPriceUsd']! as double;
+
+      return ToolResult.response({
+        'found': true,
+        'sku': input.sku.toUpperCase(),
+        'region': input.region,
+        'availableUnits': availableUnits,
+        'maxOrderQuota': maxQuota,
+        'unitPriceUsd': unitPriceUsd,
+        'withinQuota': input.requestedUnits &lt;= maxQuota,
+        'sufficientStock': input.requestedUnits &lt;= availableUnits,
+      });
+    },
+  );
+
+  ai.defineTool(
+    name: 'applyPartnerDiscount',
+    description:
+        'Applies a privileged partner discount percentage to an order. '
+        'Sensitive state-mutating tool protected by human-in-the-loop approval.',
+    inputSchema: PartnerDiscountInput.$schema,
+    fn: (PartnerDiscountInput input, _) async {
+      final cappedPct = input.requestedDiscountPct.clamp(1, 25);
+      return ToolResult.response(
+        'Partner discount of $cappedPct% authorized for order '
+        '${input.orderId} under partner code ${input.partnerCode}.',
+      );
+    },
+  );
+}</code></pre>
+                    </div>
+
+                    <div class="step-pagination">
+                        <button class="nav-step-btn" data-step-target="2" data-en="&larr; Previous" data-fr="&larr; Précédent">&larr; Previous</button>
+                        <button class="nav-step-btn primary" data-step-target="4"
+                            data-en="Next: Guardrails &amp; toolApproval HITL &rarr;"
+                            data-fr="Suivant : Garde-fous &amp; toolApproval HITL &rarr;">Next: Guardrails &amp; toolApproval HITL &rarr;</button>
+                    </div>
+                </article>
+
+                <!-- =========================================================
+                     STEP 5: AGENT GUARDRAILS & HUMAN-IN-THE-LOOP MIDDLEWARE
+                     ========================================================= -->
+                <article class="codelab-step" id="step-5" data-duration="6">
+                    <div class="step-header">
+                        <div class="step-eyebrow"
+                            data-en="Step 5 of 8 | Genkit Middleware &amp; Interrupts"
+                            data-fr="Étape 5 sur 8 | Middleware Genkit &amp; Interruptions">Step 5 of 8 | Genkit Middleware &amp; Interruptions</div>
+                        <h2 class="step-title"
+                            data-en="Agent Guardrails &amp; Human-in-the-Loop toolApproval Middleware"
+                            data-fr="Garde-fous d'Agent &amp; Middleware Human-in-the-Loop toolApproval">Agent Guardrails &amp; Human-in-the-Loop toolApproval Middleware</h2>
+                    </div>
+
+                    <div class="lang-en">
+                        <p>
+                            Autonomous agents frequently mix <strong>read-only tools</strong> (like <code>verifyInventoryAndQuota</code>) with <strong>high-stakes state-mutating tools</strong> (like <code>applyPartnerDiscount</code>, issuing refunds, or modifying files). The official <code>genkit_middleware</code> package provides three composable plugins that you register on your <code>Genkit</code> instance:
+                        </p>
+                        <ul>
+                            <li><code>FilesystemPlugin()</code> + <code>filesystem(rootDirectory: '...')</code>: Sandboxes file reading, writing, and search-and-replace strictly inside an allowed workspace directory.</li>
+                            <li><code>SkillsPlugin()</code> + <code>skills(skillPaths: ['...'])</code>: Dynamically loads specialized <code>SKILL.md</code> domain instructions on demand.</li>
+                            <li><code>ToolApprovalPlugin()</code> + <code>toolApproval(approved: [...])</code>: Intercepts any tool call NOT listed in <code>approved</code>, halts the LLM generation loop before the tool body runs, and returns <code>FinishReason.interrupted</code>.</li>
+                        </ul>
+                        <h3>Complete File: <code>packages/agent_server/lib/flows/guarded_action_flow.dart</code></h3>
+                        <p>
+                            When <code>response.finishReason == FinishReason.interrupted</code>, you inspect <code>response.interrupts.first</code>, request supervisor confirmation, and resume the conversation by passing <code>messages: response.messages</code> and setting <code>'tool-approved': true</code> inside <code>interruptRestart</code>:
+                        </p>
+                    </div>
+
+                    <div class="lang-fr">
+                        <p>
+                            Les agents autonomes combinent souvent des <strong>outils en lecture seule</strong> (comme <code>verifyInventoryAndQuota</code>) avec des <strong>outils critiques modifiant l'état</strong> (comme <code>applyPartnerDiscount</code>, le déclenchement d'un remboursement ou l'écriture de fichiers). Le paquet officiel <code>genkit_middleware</code> fournit trois plugins composables à enregistrer dans votre instance <code>Genkit</code> :
+                        </p>
+                        <ul>
+                            <li><code>FilesystemPlugin()</code> + <code>filesystem(rootDirectory: '...')</code> : Restreint la lecture, l'écriture et la recherche de fichiers à un répertoire racine sécurisé (sandbox).</li>
+                            <li><code>SkillsPlugin()</code> + <code>skills(skillPaths: ['...'])</code> : Injecte dynamiquement des instructions métier spécialisées depuis des fichiers <code>SKILL.md</code>.</li>
+                            <li><code>ToolApprovalPlugin()</code> + <code>toolApproval(approved: [...])</code> : Intercepte tout appel d'outil non listé dans <code>approved</code>, met en pause la boucle du modèle avant l'exécution de l'outil et retourne <code>FinishReason.interrupted</code>.</li>
+                        </ul>
+                        <h3>Fichier complet : <code>packages/agent_server/lib/flows/guarded_action_flow.dart</code></h3>
+                        <p>
+                            Lorsque <code>response.finishReason == FinishReason.interrupted</code>, vous inspectez <code>response.interrupts.first</code>, sollicitez la validation d'un superviseur, puis reprenez la génération en passant <code>messages: response.messages</code> et <code>'tool-approved': true</code> dans <code>interruptRestart</code> :
+                        </p>
+                    </div>
+
+                    <div class="code-window">
+                        <div class="code-window-header">
+                            <div class="code-window-meta">
+                                <div class="window-dots">
+                                    <span class="window-dot red"></span>
+                                    <span class="window-dot yellow"></span>
+                                    <span class="window-dot green"></span>
+                                </div>
+                                <span class="code-filename">packages/agent_server/lib/flows/guarded_action_flow.dart</span>
+                                <span class="code-lang-badge">DART</span>
+                            </div>
+                            <button class="copy-code-btn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                Copy
+                            </button>
+                        </div>
+                        <pre><code>import 'package:genkit/genkit.dart';
+import 'package:genkit_google_genai/genkit_google_genai.dart';
+import 'package:genkit_middleware/genkit_middleware.dart';
+import 'package:schemantic/schemantic.dart';
+import 'package:shared_contracts/agent_contracts.dart';
+
+/// Defines a flow guarded by `toolApproval` middleware.
+/// Read-only `verifyInventoryAndQuota` runs automatically, while
+/// `applyPartnerDiscount` triggers `FinishReason.interrupted` for supervisor review.
+Flow&lt;OrderAuditInput, String, void, void&gt; defineGuardedDiscountFlow(
+  Genkit ai, {
+  required Future&lt;bool&gt; Function(ToolRequestPart interrupt) onSupervisorReview,
+}) {
+  return ai.defineFlow(
+    name: 'guardedDiscountAudit',
+    inputSchema: OrderAuditInput.$schema,
+    outputSchema: SchemanticType.string(),
+    fn: (OrderAuditInput input, _) async {
+      final response = await ai.generate(
+        model: googleAI.gemini('gemini-2.5-flash'),
+        prompt: '''
+Verify inventory for Order ${input.orderId} (SKU: ${input.sku}, qty: ${input.quantity}, region: ${input.region}).
+If partnerCode (${input.partnerCode ?? 'NONE'}) is present, call `applyPartnerDiscount` with a 15% partner discount.
+''',
+        toolNames: ['verifyInventoryAndQuota', 'applyPartnerDiscount'],
+        use: [
+          // Read-only lookup is pre-approved; state-mutating discount requires approval
+          toolApproval(approved: ['verifyInventoryAndQuota']),
+        ],
+      );
+
+      if (response.finishReason == FinishReason.interrupted) {
+        final interrupt = response.interrupts.first;
+        final isApproved = await onSupervisorReview(interrupt);
+
+        if (!isApproved) {
+          return 'Order ${input.orderId}: Partner discount tool call '
+              '(${interrupt.toolRequest.name}) rejected by supervisor.';
+        }
+
+        final resumedResponse = await ai.generate(
+          model: googleAI.gemini('gemini-2.5-flash'),
+          messages: response.messages,
+          toolChoice: ToolChoice.none,
+          interruptRestart: [
+            ToolRequestPart(
+              toolRequest: interrupt.toolRequest,
+              metadata: {
+                ...?interrupt.metadata,
+                'tool-approved': true,
+              },
+            ),
+          ],
+        );
+
+        return resumedResponse.text;
+      }
+
+      return response.text;
+    },
+  );
+}</code></pre>
+                    </div>
+
+                    <div class="step-pagination">
+                        <button class="nav-step-btn" data-step-target="3" data-en="&larr; Previous" data-fr="&larr; Précédent">&larr; Previous</button>
+                        <button class="nav-step-btn primary" data-step-target="5"
+                            data-en="Next: Streaming Flows &amp; Genkit Shelf &rarr;"
+                            data-fr="Suivant : Flows Streaming &amp; Genkit Shelf &rarr;">Next: Streaming Flows &amp; Genkit Shelf &rarr;</button>
+                    </div>
+                </article>
+
+                <!-- =========================================================
+                     STEP 6: STREAMING FLOWS & HTTP SERVER WITH GENKIT_SHELF
+                     ========================================================= -->
+                <article class="codelab-step" id="step-6" data-duration="6">
+                    <div class="step-header">
+                        <div class="step-eyebrow"
+                            data-en="Step 6 of 8 | Real-Time SSE Streaming &amp; Shelf"
+                            data-fr="Étape 6 sur 8 | Streaming SSE Temps Réel &amp; Shelf">Step 6 of 8 | Real-Time SSE Streaming &amp; Shelf</div>
+                        <h2 class="step-title"
+                            data-en="Streaming Flows &amp; HTTP Server with genkit_shelf"
+                            data-fr="Flows en Streaming &amp; Serveur HTTP avec genkit_shelf">Streaming Flows &amp; HTTP Server with genkit_shelf</h2>
+                    </div>
+
+                    <div class="lang-en">
+                        <p>
+                            A great mobile UX gives users immediate visual feedback while an agent executes multi-step tool calls, and still delivers a strongly typed result at the end. Genkit Dart flows support dual-channel execution:
+                        </p>
+                        <ul>
+                            <li><code>streamSchema: SchemanticType.string()</code>: Defines the type of incremental chunks pushed to the client in real time via <code>context.sendChunk(chunk.text)</code>.</li>
+                            <li><code>outputSchema: OrderAuditResult.$schema</code>: Defines the final strongly typed return value resolved when the flow finishes.</li>
+                        </ul>
+                        <p>
+                            To expose flows over HTTP, <code>genkit_shelf</code> provides two patterns:
+                        </p>
+                        <ol>
+                            <li><strong>Custom Shelf Router (<code>shelfHandler(flow)</code>):</strong> Mount flows onto specific routes alongside your existing authentication middleware, health checks, or REST endpoints.</li>
+                            <li><strong>Standalone Server (<code>startFlowServer</code>):</strong> Boot a dedicated HTTP flow server in one function call.</li>
+                        </ol>
+                        <h3>Complete File: <code>packages/agent_server/bin/server.dart</code></h3>
+                        <p>
+                            Copy this complete, runnable server entrypoint into <code>packages/agent_server/bin/server.dart</code>:
+                        </p>
+                    </div>
+
+                    <div class="lang-fr">
+                        <p>
+                            Une expérience mobile fluide offre à l'utilisateur un retour visuel immédiat pendant que l'agent exécute ses appels d'outils, tout en livrant un résultat fortement typé à la fin. Les flows Genkit Dart prennent en charge ce double canal nativement :
+                        </p>
+                        <ul>
+                            <li><code>streamSchema: SchemanticType.string()</code> : Définit le type des fragments envoyés en temps réel au client via <code>context.sendChunk(chunk.text)</code>.</li>
+                            <li><code>outputSchema: OrderAuditResult.$schema</code> : Définit la valeur finale fortement typée retournée à la clôture du flow.</li>
+                        </ul>
+                        <p>
+                            Pour exposer vos flows sur HTTP, <code>genkit_shelf</code> propose deux approches :
+                        </p>
+                        <ol>
+                            <li><strong>Routeur Shelf personnalisé (<code>shelfHandler(flow)</code>) :</strong> Montez vos flows sur des routes dédiées aux côtés de vos middlewares d'authentification ou de vos sondes de santé (health checks).</li>
+                            <li><strong>Serveur autonome (<code>startFlowServer</code>) :</strong> Démarrez un serveur HTTP dédié aux flows en un seul appel de fonction.</li>
+                        </ol>
+                        <h3>Fichier complet : <code>packages/agent_server/bin/server.dart</code></h3>
+                        <p>
+                            Copiez ce point d'entrée serveur complet dans <code>packages/agent_server/bin/server.dart</code> :
+                        </p>
+                    </div>
+
+                    <div class="code-window">
+                        <div class="code-window-header">
+                            <div class="code-window-meta">
+                                <div class="window-dots">
+                                    <span class="window-dot red"></span>
+                                    <span class="window-dot yellow"></span>
+                                    <span class="window-dot green"></span>
+                                </div>
+                                <span class="code-filename">packages/agent_server/bin/server.dart</span>
+                                <span class="code-lang-badge">DART</span>
+                            </div>
+                            <button class="copy-code-btn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                Copy
+                            </button>
+                        </div>
+                        <pre><code>import 'dart:io';
+import 'package:genkit/genkit.dart';
+import 'package:genkit_google_genai/genkit_google_genai.dart';
+import 'package:genkit_middleware/genkit_middleware.dart';
+import 'package:genkit_shelf/genkit_shelf.dart';
+import 'package:schemantic/schemantic.dart';
+import 'package:shared_contracts/agent_contracts.dart';
+import 'package:shelf/shelf.dart';
+import 'package:shelf/shelf_io.dart' as io;
+import 'package:shelf_router/shelf_router.dart';
+
+import 'package:agent_server/flows/audit_flow.dart';
+import 'package:agent_server/flows/guarded_action_flow.dart';
+import 'package:agent_server/tools/inventory_tools.dart';
+
+Future&lt;void&gt; main() async {
+  final apiKey = Platform.environment['GEMINI_API_KEY'];
+  if (apiKey == null || apiKey.isEmpty) {
+    stderr.writeln('ERROR: GEMINI_API_KEY environment variable is not set.');
+    exit(1);
+  }
+
+  // 1. Initialize Genkit with Google AI and Middleware plugins
+  final ai = Genkit(
+    plugins: [
+      googleAI(),
+      FilesystemPlugin(),
+      SkillsPlugin(),
+      ToolApprovalPlugin(),
+    ],
+  );
+
+  // 2. Register authoritative server-side tools
+  registerInventoryTools(ai);
+
+  // 3. Register typed and guarded flows
+  final auditOrderFlow = defineAuditOrderFlow(ai);
+  final guardedDiscountFlow = defineGuardedDiscountFlow(
+    ai,
+    onSupervisorReview: (interrupt) async {
+      stdout.writeln(
+        '[HITL Supervisor] Intercepted tool: ${interrupt.toolRequest.name} '
+        'with input: ${interrupt.toolRequest.input}',
+      );
+      return true;
+    },
+  );
+
+  // 4. Define a real-time streaming flow with chunked narration + final typed output
+  final streamOrderAuditFlow = ai.defineFlow(
+    name: 'streamOrderAudit',
+    inputSchema: OrderAuditInput.$schema,
+    outputSchema: OrderAuditResult.$schema,
+    streamSchema: SchemanticType.string(),
+    fn: (OrderAuditInput input, context) async {
+      final stream = ai.generateStream(
+        model: googleAI.gemini('gemini-2.5-flash'),
+        prompt: '''
+Stream a concise, real-time compliance log while auditing Order ${input.orderId}
+(SKU: ${input.sku}, quantity: ${input.quantity}, corridor: ${input.region}).
+Call `verifyInventoryAndQuota` to inspect stock and quota constraints.
+''',
+        toolNames: ['verifyInventoryAndQuota'],
+      );
+
+      await for (final chunk in stream) {
+        if (chunk.text.isNotEmpty) {
+          context.sendChunk(chunk.text);
+        }
+      }
+
+      return auditOrderFlow(input);
+    },
+  );
+
+  // 5. Mount Genkit flows onto a custom Shelf Router alongside health probes
+  // (Alternatively, call `await startFlowServer(flows: [...], port: 3400);`)
+  final router = Router()
+    ..get('/healthz', (Request req) =&gt; Response.ok('{"status":"ok"}'))
+    ..post('/auditOrder', shelfHandler(auditOrderFlow))
+    ..post('/streamOrderAudit', shelfHandler(streamOrderAuditFlow))
+    ..post('/guardedDiscountAudit', shelfHandler(guardedDiscountFlow));
+
+  final handler = const Pipeline()
+      .addMiddleware(logRequests())
+      .addHandler(router.call);
+
+  final port = int.parse(Platform.environment['PORT'] ?? '3400');
+  final server = await io.serve(handler, InternetAddress.anyIPv4, port);
+  stdout.writeln(
+    'Genkit Shelf Agent Server listening on http://${server.address.host}:${server.port}',
+  );
+}</code></pre>
+                    </div>
+
+                    <div class="step-pagination">
+                        <button class="nav-step-btn" data-step-target="4" data-en="&larr; Previous" data-fr="&larr; Précédent">&larr; Previous</button>
+                        <button class="nav-step-btn primary" data-step-target="6"
+                            data-en="Next: Flutter Remote Action Client &rarr;"
+                            data-fr="Suivant : Client Flutter Remote Action &rarr;">Next: Flutter Remote Action Client &rarr;</button>
+                    </div>
+                </article>
+
+                <!-- =========================================================
+                     STEP 7: CONSUMING REMOTE TYPED & STREAMING FLOWS IN FLUTTER
+                     ========================================================= -->
+                <article class="codelab-step" id="step-7" data-duration="6">
+                    <div class="step-header">
+                        <div class="step-eyebrow"
+                            data-en="Step 7 of 8 | Flutter Client Integration"
+                            data-fr="Étape 7 sur 8 | Intégration Client Flutter">Step 7 of 8 | Flutter Client Integration</div>
+                        <h2 class="step-title"
+                            data-en="Consuming Remote Typed &amp; Streaming Flows in Flutter"
+                            data-fr="Consommation des Flows Typés &amp; Streaming dans Flutter">Consuming Remote Typed &amp; Streaming Flows in Flutter</h2>
+                    </div>
+
+                    <div class="lang-en">
+                        <p>
+                            On the Flutter side, you do NOT import server plugins or bundle API keys. Instead, you import lightweight client utilities from <code>package:genkit/client.dart</code> and your shared <code>package:shared_contracts/agent_contracts.dart</code>.
+                        </p>
+                        <p>
+                            With <code>defineRemoteAction</code>, calling a remote Genkit flow over HTTP feels identical to calling a local Dart function:
+                        </p>
+                        <ul>
+                            <li><strong>Unary Invocation:</strong> <code>final result = await auditOrderAction(input: request);</code></li>
+                            <li><strong>Streaming Invocation:</strong> <code>final stream = streamOrderAuditAction.stream(input: request);</code> iterates over real-time <code>String</code> chunks as they arrive, and <code>await stream.onResult</code> resolves the final typed <code>OrderAuditResult</code>!</li>
+                        </ul>
+                        <h3>1. Complete File: <code>apps/flutter_client/pubspec.yaml</code></h3>
+                        <p>
+                            Create the Flutter client package configuration in <code>apps/flutter_client/pubspec.yaml</code>:
+                        </p>
+                    </div>
+
+                    <div class="lang-fr">
+                        <p>
+                            Côté Flutter, vous n'importez AUCUN plugin serveur et n'embarquez aucune clé API. Vous importez uniquement le client léger <code>package:genkit/client.dart</code> ainsi que votre paquet partagé <code>package:shared_contracts/agent_contracts.dart</code>.
+                        </p>
+                        <p>
+                            Grâce à <code>defineRemoteAction</code>, l'appel d'un flow Genkit distant sur HTTP s'écrit exactement comme un appel de fonction Dart locale :
+                        </p>
+                        <ul>
+                            <li><strong>Appel Unitaire :</strong> <code>final result = await auditOrderAction(input: request);</code></li>
+                            <li><strong>Appel Streaming :</strong> <code>final stream = streamOrderAuditAction.stream(input: request);</code> écoute les fragments <code>String</code> en temps réel, puis <code>await stream.onResult</code> récupère l'objet final typé <code>OrderAuditResult</code> !</li>
+                        </ul>
+                        <h3>1. Fichier complet : <code>apps/flutter_client/pubspec.yaml</code></h3>
+                        <p>
+                            Créez le fichier de configuration Flutter dans <code>apps/flutter_client/pubspec.yaml</code> :
+                        </p>
+                    </div>
+
+                    <div class="code-window">
+                        <div class="code-window-header">
+                            <div class="code-window-meta">
+                                <div class="window-dots">
+                                    <span class="window-dot red"></span>
+                                    <span class="window-dot yellow"></span>
+                                    <span class="window-dot green"></span>
+                                </div>
+                                <span class="code-filename">apps/flutter_client/pubspec.yaml</span>
+                                <span class="code-lang-badge">YAML</span>
+                            </div>
+                            <button class="copy-code-btn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                Copy
+                            </button>
+                        </div>
+                        <pre><code>name: flutter_client
+description: Flutter streaming client for Genkit Dart Shelf server.
+version: 1.0.0
+publish_to: 'none'
+
+environment:
+  sdk: ^3.12.0
+
+dependencies:
+  flutter:
+    sdk: flutter
+  genkit: ^1.0.1
+  schemantic: ^1.0.0
+  shared_contracts:
+    path: ../../packages/shared_contracts
+
+dev_dependencies:
+  flutter_lints: ^5.0.0
+  flutter_test:
+    sdk: flutter</code></pre>
+                    </div>
+
+                    <div class="lang-en">
+                        <h3>2. Complete File: <code>apps/flutter_client/lib/main.dart</code></h3>
+                        <p>
+                            Copy this complete, self-contained Material 3 Flutter client into <code>apps/flutter_client/lib/main.dart</code>. Note that on an Android emulator, localhost on the host machine is reachable at <code>10.0.2.2:3400</code> (or use <code>adb reverse tcp:3400 tcp:3400</code> to use <code>localhost:3400</code> directly on physical USB devices):
+                        </p>
+                    </div>
+
+                    <div class="lang-fr">
+                        <h3>2. Fichier complet : <code>apps/flutter_client/lib/main.dart</code></h3>
+                        <p>
+                            Copiez ce client Flutter Material 3 complet et autonome dans <code>apps/flutter_client/lib/main.dart</code>. Notez que sur un émulateur Android, le localhost de la machine hôte est accessible via <code>10.0.2.2:3400</code> (ou exécutez <code>adb reverse tcp:3400 tcp:3400</code> pour utiliser <code>localhost:3400</code> directement sur un téléphone physique en USB) :
+                        </p>
+                    </div>
+
+                    <div class="code-window">
+                        <div class="code-window-header">
+                            <div class="code-window-meta">
+                                <div class="window-dots">
+                                    <span class="window-dot red"></span>
+                                    <span class="window-dot yellow"></span>
+                                    <span class="window-dot green"></span>
+                                </div>
+                                <span class="code-filename">apps/flutter_client/lib/main.dart</span>
+                                <span class="code-lang-badge">DART / FLUTTER</span>
+                            </div>
+                            <button class="copy-code-btn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                Copy
+                            </button>
+                        </div>
+                        <pre><code>import 'package:flutter/material.dart';
+import 'package:genkit/client.dart';
+import 'package:schemantic/schemantic.dart';
+import 'package:shared_contracts/agent_contracts.dart';
+
+void main() {
+  runApp(const AgenticAuditApp());
+}
+
+class AgenticAuditApp extends StatelessWidget {
+  const AgenticAuditApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Genkit Dart Agentic Auditor',
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        colorSchemeSeed: const Color(0xFF0284C7),
+        useMaterial3: true,
+      ),
+      home: const OrderAuditScreen(),
+    );
+  }
+}
+
+class OrderAuditScreen extends StatefulWidget {
+  const OrderAuditScreen({super.key});
+
+  @override
+  State&lt;OrderAuditScreen&gt; createState() =&gt; _OrderAuditScreenState();
+}
+
+class _OrderAuditScreenState extends State&lt;OrderAuditScreen&gt; {
+  static const String _serverBaseUrl = String.fromEnvironment(
+    'GENKIT_SERVER_URL',
+    defaultValue: 'http://localhost:3400',
+  );
+
+  late final _streamOrderAuditAction = defineRemoteAction(
+    url: '$_serverBaseUrl/streamOrderAudit',
+    inputSchema: OrderAuditInput.$schema,
+    outputSchema: OrderAuditResult.$schema,
+    streamSchema: SchemanticType.string(),
+  );
+
+  String _selectedSku = 'SOLAR-INV-3KW';
+  String _selectedRegion = 'EAST_AFRICA';
+  int _quantity = 12;
+  bool _isStreaming = false;
+  String _liveNarration = '';
+  OrderAuditResult? _finalResult;
+  String? _errorMessage;
+
+  Future&lt;void&gt; _runStreamingAudit() async {
+    setState(() {
+      _isStreaming = true;
+      _liveNarration = '';
+      _finalResult = null;
+      _errorMessage = null;
+    });
+
+    final requestInput = OrderAuditInput(
+      orderId: 'ORD-${DateTime.now().millisecondsSinceEpoch % 100000}',
+      sku: _selectedSku,
+      quantity: _quantity,
+      region: _selectedRegion,
+      partnerCode: 'SOLAR-PARTNER-UG',
+    );
+
+    try {
+      final stream = _streamOrderAuditAction.stream(input: requestInput);
+
+      await for (final chunk in stream) {
+        if (!mounted) return;
+        setState(() {
+          _liveNarration += chunk;
+        });
+      }
+
+      final typedResult = await stream.onResult;
+      if (!mounted) return;
+      setState(() {
+        _finalResult = typedResult;
+      });
+    } catch (e) {
+      if (!mounted) return;
+      setState(() {
+        _errorMessage = e.toString();
+      });
+    } finally {
+      if (mounted) {
+        setState(() {
+          _isStreaming = false;
+        });
+      }
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final result = _finalResult;
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Genkit Dart | Full-Stack Order Auditor'),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Row(
+              children: [
+                Expanded(
+                  child: DropdownButtonFormField&lt;String&gt;(
+                    initialValue: _selectedSku,
+                    decoration: const InputDecoration(labelText: 'Catalog SKU'),
+                    items: const [
+                      DropdownMenuItem(
+                        value: 'SOLAR-INV-3KW',
+                        child: Text('SOLAR-INV-3KW (3kW Inverter)'),
+                      ),
+                      DropdownMenuItem(
+                        value: 'LFP-BATT-5KWH',
+                        child: Text('LFP-BATT-5KWH (5kWh Battery)'),
+                      ),
+                    ],
+                    onChanged: _isStreaming
+                        ? null
+                        : (v) =&gt; setState(() =&gt; _selectedSku = v!),
+                  ),
+                ),
+                const SizedBox(width: 12),
+                Expanded(
+                  child: DropdownButtonFormField&lt;String&gt;(
+                    initialValue: _selectedRegion,
+                    decoration: const InputDecoration(labelText: 'Corridor'),
+                    items: const [
+                      DropdownMenuItem(
+                        value: 'EAST_AFRICA',
+                        child: Text('EAST_AFRICA'),
+                      ),
+                      DropdownMenuItem(
+                        value: 'CENTRAL_AFRICA',
+                        child: Text('CENTRAL_AFRICA'),
+                      ),
+                      DropdownMenuItem(
+                        value: 'WEST_AFRICA',
+                        child: Text('WEST_AFRICA'),
+                      ),
+                    ],
+                    onChanged: _isStreaming
+                        ? null
+                        : (v) =&gt; setState(() =&gt; _selectedRegion = v!),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 12),
+            Row(
+              children: [
+                Expanded(
+                  child: Slider(
+                    value: _quantity.toDouble(),
+                    min: 1,
+                    max: 30,
+                    divisions: 29,
+                    label: '$_quantity units',
+                    onChanged: _isStreaming
+                        ? null
+                        : (v) =&gt; setState(() =&gt; _quantity = v.round()),
+                  ),
+                ),
+                Text(
+                  'Qty: $_quantity',
+                  style: const TextStyle(fontWeight: FontWeight.w700),
+                ),
+              ],
+            ),
+            const SizedBox(height: 8),
+            FilledButton(
+              onPressed: _isStreaming ? null : _runStreamingAudit,
+              child: Text(
+                _isStreaming
+                    ? 'Streaming Server Audit...'
+                    : 'Run Typed Genkit Audit Flow',
+              ),
+            ),
+            const SizedBox(height: 16),
+            if (_errorMessage != null)
+              Container(
+                padding: const EdgeInsets.all(12),
+                decoration: BoxDecoration(
+                  color: const Color(0xFFFEE2E2),
+                  border: Border.all(color: const Color(0xFFDC2626)),
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                child: Text(
+                  _errorMessage!,
+                  style: const TextStyle(color: Color(0xFF991B1B)),
+                ),
+              ),
+            Expanded(
+              child: SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    if (_liveNarration.isNotEmpty) ...[
+                      const Text(
+                        'Live Stream Chunks (streamSchema: String):',
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      const SizedBox(height: 6),
+                      SelectableText(_liveNarration),
+                      const Divider(height: 28),
+                    ],
+                    if (result != null)
+                      Container(
+                        padding: const EdgeInsets.all(14),
+                        decoration: BoxDecoration(
+                          color: const Color(0xFFE0F2FE),
+                          border: Border.all(color: const Color(0xFF0284C7)),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Typed OrderAuditResult (${result.status})',
+                              style: const TextStyle(
+                                fontWeight: FontWeight.w700,
+                                fontSize: 16,
+                              ),
+                            ),
+                            const SizedBox(height: 6),
+                            Text('Order ID: ${result.orderId}'),
+                            Text('Approved: ${result.approved}'),
+                            Text('Allocated Units: ${result.allocatedQuantity}'),
+                            Text(
+                              'Authoritative Total: \$${result.finalTotalUsd.toStringAsFixed(2)} USD',
+                            ),
+                            const SizedBox(height: 6),
+                            Text(result.reasoningSummary),
+                          ],
+                        ),
+                      ),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}</code></pre>
+                    </div>
+
+                    <div class="step-pagination">
+                        <button class="nav-step-btn" data-step-target="5" data-en="&larr; Previous" data-fr="&larr; Précédent">&larr; Previous</button>
+                        <button class="nav-step-btn primary" data-step-target="7"
+                            data-en="Next: Dev UI Tracing &amp; Verification &rarr;"
+                            data-fr="Suivant : Traçage Dev UI &amp; Vérification &rarr;">Next: Dev UI Tracing &amp; Verification &rarr;</button>
+                    </div>
+                </article>
+
+                <!-- =========================================================
+                     STEP 8: GENKIT DEVELOPER UI TRACING, VERIFICATION & TAKEAWAYS
+                     ========================================================= -->
+                <article class="codelab-step" id="step-8" data-duration="5">
+                    <div class="step-header">
+                        <div class="step-eyebrow"
+                            data-en="Step 8 of 8 | Observability, Verification &amp; Resources"
+                            data-fr="Étape 8 sur 8 | Observabilité, Vérification &amp; Ressources">Step 8 of 8 | Observability, Verification &amp; Resources</div>
+                        <h2 class="step-title"
+                            data-en="Genkit Developer UI Tracing, Verification Checklist &amp; Official Resources"
+                            data-fr="Traçage Genkit Developer UI, Checklist de Vérification &amp; Ressources Officielles">Genkit Developer UI Tracing, Verification Checklist &amp; Official Resources</h2>
+                    </div>
+
+                    <div class="lang-en">
+                        <h3>1. End-to-End Verification Checklist &amp; Genkit Developer UI</h3>
+                        <p>
+                            When you launch your Dart server through <code>genkit start</code>, the Genkit CLI sets <code>GENKIT_ENV=dev</code>, connects to the reflection server built into <code>Genkit()</code>, and serves the interactive <strong>Genkit Developer UI</strong> at <code>http://localhost:4000</code>. From there, you can trigger <code>auditOrder</code>, <code>streamOrderAudit</code>, and <code>guardedDiscountAudit</code> with sample JSON payloads and inspect every prompt, tool call, and latency span.
+                        </p>
+                        <p>
+                            Run the verification sequence below in your terminal to confirm zero static analysis warnings and launch the server:
+                        </p>
+                    </div>
+
+                    <div class="lang-fr">
+                        <h3>1. Checklist de vérification finale &amp; Genkit Developer UI</h3>
+                        <p>
+                            Lorsque vous démarrez votre serveur Dart via <code>genkit start</code>, le CLI Genkit active <code>GENKIT_ENV=dev</code>, se connecte au serveur de réflexion intégré à <code>Genkit()</code> et démarre l'interface interactive <strong>Genkit Developer UI</strong> sur <code>http://localhost:4000</code>. Vous pouvez y tester <code>auditOrder</code>, <code>streamOrderAudit</code> et <code>guardedDiscountAudit</code> et inspecter chaque prompt, appel d'outil et temps de latence.
+                        </p>
+                        <p>
+                            Exécutez la séquence de vérification ci-dessous dans votre terminal pour valider l'analyse statique et lancer le serveur :
+                        </p>
+                    </div>
+
+                    <div class="code-window">
+                        <div class="code-window-header">
+                            <div class="code-window-meta">
+                                <div class="window-dots">
+                                    <span class="window-dot red"></span>
+                                    <span class="window-dot yellow"></span>
+                                    <span class="window-dot green"></span>
+                                </div>
+                                <span class="code-filename">Terminal | Static Analysis &amp; Launch with Genkit Developer UI</span>
+                                <span class="code-lang-badge">SHELL</span>
+                            </div>
+                            <button class="copy-code-btn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                Copy
+                            </button>
+                        </div>
+                        <pre><code># 1. Verify shared contracts package
+cd packages/shared_contracts
+dart analyze
+
+# 2. Verify Genkit Shelf server package
+cd ../agent_server
+dart pub get
+dart analyze
+
+# 3. Export your Gemini API key (macOS / Linux / Git Bash)
+export GEMINI_API_KEY="YOUR_GEMINI_API_KEY"
+# Or in Windows PowerShell:
+# $env:GEMINI_API_KEY="YOUR_GEMINI_API_KEY"
+
+# 4. Start the Dart server attached to the Genkit Developer UI (http://localhost:4000)
+genkit start -- dart run bin/server.dart
+
+# 5. In a second terminal, verify and run the Flutter client
+cd ../../apps/flutter_client
+flutter pub get
+flutter analyze
+flutter run</code></pre>
+                    </div>
+
+                    <div class="lang-en">
+                        <h3>2. Key Engineering Takeaways</h3>
+                        <ol>
+                            <li><strong>Single-Language Full-Stack Velocity:</strong> Sharing a pure Dart <code>schemantic</code> package across your Shelf server and Flutter client eliminates manual DTO synchronization and runtime casting errors.</li>
+                            <li><strong>Authoritative Server-Side Tools:</strong> Keep API keys, pricing catalogs, and quota ledgers exclusively inside server-side <code>ai.defineTool</code> handlers returning <code>ToolResult.response(...)</code>.</li>
+                            <li><strong>Deterministic Guardrails with <code>toolApproval</code>:</strong> Never let an LLM execute state-mutating tools unchecked; use <code>ToolApprovalPlugin()</code> to trigger <code>FinishReason.interrupted</code> and require explicit supervisor sign-off before resuming with <code>interruptRestart</code>.</li>
+                            <li><strong>Dual-Channel Streaming UX:</strong> Combine <code>streamSchema</code> + <code>context.sendChunk()</code> for sub-second streaming progress with <code>outputSchema</code> + <code>stream.onResult</code> for a guaranteed structured final payload.</li>
+                        </ol>
+                    </div>
+
+                    <div class="lang-fr">
+                        <h3>2. Points clés à retenir</h3>
+                        <ol>
+                            <li><strong>Vélocité Full-Stack en un seul langage :</strong> Partager un paquet pur Dart <code>schemantic</code> entre votre serveur Shelf et votre client Flutter élimine toute désynchronisation de DTO et les erreurs de typage à l'exécution.</li>
+                            <li><strong>Outils Serveur Autoritatifs :</strong> Conservez les clés API, les catalogues de prix et les quotas exclusivement dans des gestionnaires <code>ai.defineTool</code> côté serveur retournant <code>ToolResult.response(...)</code>.</li>
+                            <li><strong>Garde-fous déterministes avec <code>toolApproval</code> :</strong> Ne laissez jamais un LLM exécuter des outils modifiant l'état sans contrôle ; utilisez <code>ToolApprovalPlugin()</code> pour déclencher <code>FinishReason.interrupted</code> et exiger une validation explicite avant reprise via <code>interruptRestart</code>.</li>
+                            <li><strong>Expérience Streaming à double canal :</strong> Combinez <code>streamSchema</code> + <code>context.sendChunk()</code> pour l'affichage en direct et <code>outputSchema</code> + <code>stream.onResult</code> pour garantir un résultat final structuré.</li>
+                        </ol>
+                    </div>
+
+                    <div class="lang-en">
+                        <h3>3. Official Documentation &amp; Further Resources</h3>
+                        <ul>
+                            <li><a href="https://pub.dev/packages/genkit" target="_blank" rel="noopener"><code>package:genkit</code> on pub.dev</a>: Core Genkit Dart SDK (`Genkit`, `defineFlow`, `defineTool`, `package:genkit/client.dart`).</li>
+                            <li><a href="https://pub.dev/packages/schemantic" target="_blank" rel="noopener"><code>package:schemantic</code> on pub.dev</a>: Compile-time and runtime JSON Schema generation (`@Schema()`, `schemantic_builder`).</li>
+                            <li><a href="https://pub.dev/packages/genkit_google_genai" target="_blank" rel="noopener"><code>package:genkit_google_genai</code> on pub.dev</a>: Official Google AI Gemini plugin for Genkit Dart.</li>
+                            <li><a href="https://pub.dev/packages/genkit_shelf" target="_blank" rel="noopener"><code>package:genkit_shelf</code> on pub.dev</a>: Shelf HTTP server integration (`shelfHandler`, `startFlowServer`).</li>
+                            <li><a href="https://pub.dev/packages/genkit_middleware" target="_blank" rel="noopener"><code>package:genkit_middleware</code> on pub.dev</a>: `ToolApprovalPlugin`, `FilesystemPlugin`, and `SkillsPlugin` guardrails.</li>
+                            <li><a href="https://github.com/genkit-ai/genkit-dart" target="_blank" rel="noopener">Official <code>genkit-ai/genkit-dart</code> GitHub Repository</a>: Upstream source code and samples.</li>
+                        </ul>
+                    </div>
+
+                    <div class="lang-fr">
+                        <h3>3. Ressources officielles &amp; Pour aller plus loin</h3>
+                        <ul>
+                            <li><a href="https://pub.dev/packages/genkit" target="_blank" rel="noopener"><code>package:genkit</code> sur pub.dev</a> : SDK principal Genkit Dart (`Genkit`, `defineFlow`, `defineTool`, `package:genkit/client.dart`).</li>
+                            <li><a href="https://pub.dev/packages/schemantic" target="_blank" rel="noopener"><code>package:schemantic</code> sur pub.dev</a> : Génération de schémas JSON (`@Schema()`, `schemantic_builder`).</li>
+                            <li><a href="https://pub.dev/packages/genkit_google_genai" target="_blank" rel="noopener"><code>package:genkit_google_genai</code> sur pub.dev</a> : Plugin officiel Google AI Gemini pour Genkit Dart.</li>
+                            <li><a href="https://pub.dev/packages/genkit_shelf" target="_blank" rel="noopener"><code>package:genkit_shelf</code> sur pub.dev</a> : Intégration serveur HTTP Shelf (`shelfHandler`, `startFlowServer`).</li>
+                            <li><a href="https://pub.dev/packages/genkit_middleware" target="_blank" rel="noopener"><code>package:genkit_middleware</code> sur pub.dev</a> : Plugins `ToolApprovalPlugin`, `FilesystemPlugin` et `SkillsPlugin`.</li>
+                            <li><a href="https://github.com/genkit-ai/genkit-dart" target="_blank" rel="noopener">Dépôt GitHub officiel <code>genkit-ai/genkit-dart</code></a> : Code source amont et exemples officiels.</li>
+                        </ul>
+                    </div>
+
+                    <div class="callout callout-info">
+                        <svg class="callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="9" cy="7" r="4"></circle>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                        </svg>
+                        <div class="callout-body">
+                            <div class="lang-en">
+                                <div class="callout-title">Built for the Dart &amp; Flutter Engineering Community</div>
+                                <p>
+                                    Authored by <strong>Georges Byona</strong> (<a href="https://glosings0n.dev" target="_blank" rel="noopener">@glosings0n</a>), Founder @ <span class="losingtek-font"><span class="brand-bold">Losing</span>Tek</span> &amp; Founder of the <a href="https://flutterfirecamp.dev" target="_blank" rel="noopener" class="ffsc-brand"><span class="brand-bold">FlutterFire Summer</span> <span class="brand-regular">Camp</span></a>.
+                                </p>
+                            </div>
+                            <div class="lang-fr">
+                                <div class="callout-title">Conçu pour la communauté d'ingénierie Dart &amp; Flutter</div>
+                                <p>
+                                    Rédigé par <strong>Georges Byona</strong> (<a href="https://glosings0n.dev" target="_blank" rel="noopener">@glosings0n</a>), Fondateur @ <span class="losingtek-font"><span class="brand-bold">Losing</span>Tek</span> &amp; Fondateur du <a href="https://flutterfirecamp.dev" target="_blank" rel="noopener" class="ffsc-brand"><span class="brand-bold">FlutterFire Summer</span> <span class="brand-regular">Camp</span></a>.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="step-pagination">
+                        <button class="nav-step-btn" data-step-target="6" data-en="&larr; Previous" data-fr="&larr; Précédent">&larr; Previous</button>
+                        <a href="/" class="nav-step-btn primary"
+                            data-en="Back to Codelabs Hub &rarr;"
+                            data-fr="Retour au Hub Codelabs &rarr;">Back to Codelabs Hub &rarr;</a>
+                    </div>
+                </article>
+
+            </div>
+        </main>
+    </div>
+
+    <script src="/codelabs/js/codelabs.js"></script>
+</body>
+
+</html>

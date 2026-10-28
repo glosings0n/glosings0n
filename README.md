@@ -1,4 +1,4 @@
-# Georges Byona — @glosings0n
+# Georges Byona | @glosings0n
 
 <p align="center">
   <img src="https://img.shields.io/badge/Software_Engineer-00B0FF?style=for-the-badge&logo=codeforces&logoColor=white" alt="Software Engineer" />
@@ -8,18 +8,18 @@
 
 ---
 
-### 🚀 About Me
+### About Me
 
-I am **Georges Byona** (aka **glosings0n**), a passionate software engineer, tech solution creator, and community builder. As the founder of **LosingTek**, I help build modern, high-performance, and robust software architectures.
+I am **Georges Byona** (aka **glosings0n**), a software engineer, edge-AI researcher, and community builder. As the founder of **LosingTek** and founder of **FlutterFire Summer Camp**, I architect modern, high-performance, and robust software systems.
 
-* 💻 Specializing in mobile and web ecosystems, focused on high performance and clean architecture.
-* 🎓 **GDG on Campus UCB Leader**: Empowering and mentoring 500+ student developers in mobile development, cloud computing, and AI.
-* 🏕️ **FlutterFire Camp Organizer**: Coordinating bootcamps to share development best practices with thousands of participants.
-* 🎤 **Tech Speaker**: Presenting on mobile development, Firebase, and AI technologies at major events like **Build with AI**, **Google I/O Extended**, and **DevFest**.
+* Specializing in mobile and web ecosystems, focused on high performance and clean architecture.
+* **GDG on Campus UCB Leader**: Mentoring 500+ student developers in mobile development, cloud computing, and AI.
+* **FlutterFire Summer Camp Organizer**: Coordinating bootcamps to share development best practices with thousands of participants across Africa.
+* **Tech Speaker**: Presenting on mobile development, Firebase, and AI technologies at major events like **Build with AI**, **Google I/O Extended**, and **DevFest**.
 
 ---
 
-### 🛠️ Tech Stack
+### Tech Stack
 
 <p align="left">
   <!-- Mobile & Web -->
@@ -59,7 +59,7 @@ I am **Georges Byona** (aka **glosings0n**), a passionate software engineer, tec
 
 ---
 
-### 📊 GitHub Stats
+### GitHub Stats
 
 <p align="center">
   <img src="https://github-readme-stats.vercel.app/api?username=glosings0n&show_icons=true&theme=tokyonight&count_private=true" alt="glosings0n's GitHub Stats" />
@@ -69,7 +69,7 @@ I am **Georges Byona** (aka **glosings0n**), a passionate software engineer, tec
 
 ---
 
-### 📩 Let's Connect
+### Let's Connect
 
 <p align="left">
   <a href="mailto:glosings0n.dev@gmail.com">
@@ -92,5 +92,5 @@ I am **Georges Byona** (aka **glosings0n**), a passionate software engineer, tec
 ---
 
 <p align="center">
-  Powered with 💻 and ☕ by <a href="https://losingtek.com">LosingTek</a>
+  Maintained by <a href="https://losingtek.com">LosingTek</a>
 </p>
