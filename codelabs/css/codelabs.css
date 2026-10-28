@@ -508,6 +508,13 @@ a:hover {
     overflow-wrap: anywhere;
 }
 
+.sidebar-copyright {
+    font-size: 0.68rem;
+    color: var(--text-muted);
+    opacity: 0.8;
+    margin-top: 2px;
+}
+
 /* 5. Main Content Area (min-width: 0 prevents flex child overflow!) */
 .codelab-main {
     flex: 1;
