@@ -31,7 +31,7 @@
     --border-subtle: #182036;
 
     --color-cyan: #00B0FF;
-    --color-cyan-glow: rgba(0, 176, 255, 0.14);
+    --color-cyan-tint: rgba(0, 176, 255, 0.12);
     --color-blue: #02569B;
     --color-blue-light: #40c4ff;
     --color-green: #10b981;
@@ -63,7 +63,7 @@
     --border-subtle: #e2e8f0;
 
     --color-cyan: #0284c7;
-    --color-cyan-glow: rgba(2, 132, 199, 0.1);
+    --color-cyan-tint: rgba(2, 132, 199, 0.1);
     --color-blue: #02569B;
     --color-blue-light: #0369a1;
     --color-green: #059669;
@@ -387,7 +387,7 @@ a:hover {
 .codelab-progress-fill {
     height: 100%;
     width: 11%;
-    background: linear-gradient(90deg, var(--color-blue), var(--color-cyan));
+    background-color: var(--color-cyan);
     transition: width 0.3s ease;
 }
 
@@ -447,7 +447,7 @@ a:hover {
 }
 
 .step-nav-item.active {
-    background-color: var(--color-cyan-glow);
+    background-color: var(--color-cyan-tint);
     border-color: var(--color-cyan);
     color: var(--text-primary);
     font-weight: 600;
@@ -480,7 +480,6 @@ a:hover {
     background-color: var(--color-cyan);
     color: var(--text-on-accent);
     border-color: var(--color-cyan);
-    box-shadow: 0 0 0 3px var(--color-cyan-glow);
 }
 
 .step-nav-title {
@@ -809,7 +808,7 @@ body.mode-all-steps .codelab-step {
 
 .callout.callout-info {
     border-color: rgba(0, 176, 255, 0.28);
-    background-color: var(--color-cyan-glow);
+    background-color: var(--color-cyan-tint);
 }
 .callout.callout-info .callout-icon { color: var(--color-cyan); }
 

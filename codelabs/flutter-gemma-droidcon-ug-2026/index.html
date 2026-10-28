@@ -11,7 +11,7 @@
     <link rel="canonical" href="https://codelabs.glosings0n.dev/flutter-gemma-droidcon-ug-2026">
 
     <!-- OpenGraph -->
-    <meta property="og:title" content="On-Device AI with Flutter & Gemma — droidCon Uganda 2026 Codelab">
+    <meta property="og:title" content="On-Device AI with Flutter & Gemma | droidCon Uganda 2026 Codelab">
     <meta property="og:description"
         content="Run Google's Gemma models 100% offline on mid-tier Android phones using Flutter, LiteRT-LM, and SQLite FTS5 RAG, and distill an SLM under 150 MB.">
     <meta property="og:type" content="article">
@@ -132,7 +132,7 @@
 
             <div class="sidebar-footer">
                 <div><strong>Speaker:</strong> Georges Byona (<span class="font-mono">@glosings0n</span>)</div>
-                <div><strong>Event:</strong> droidCon Uganda 2026 • Kampala</div>
+                <div><strong>Event:</strong> droidCon Uganda 2026 | Kampala</div>
                 <div><strong>ID:</strong> <span class="font-mono">flutter-gemma-droidcon-ug-2026</span></div>
             </div>
         </aside>
@@ -146,7 +146,7 @@
                      ========================================================= -->
                 <article class="codelab-step active" id="step-1" data-duration="4">
                     <div class="step-header">
-                        <div class="step-eyebrow">Step 1 of 9 • Context &amp; Motivation</div>
+                        <div class="step-eyebrow">Step 1 of 9 | Context &amp; Motivation</div>
                         <h1 class="step-title">Overview: Why Offline-First Edge AI Matters in Africa</h1>
                     </div>
 
@@ -171,8 +171,8 @@
                     <h3>Three Questions of Context</h3>
                     <ol>
                         <li><strong>The Connectivity Reality:</strong> How often do your users lose signal when traveling outside Kampala to Gulu, Mbarara, Entebbe, or across the border into rural Kivu?</li>
-                        <li><strong>The Unit Economics Trap:</strong> Can an African startup sustainably pay Cloud LLM API bills in <strong>USD</strong> while users pay in <strong>UGX</strong> or <strong>CDF</strong>—or cannot afford daily mobile data bundles at all?</li>
-                        <li><strong>The Hardware Boundary:</strong> What happens when you load an unoptimized LLM onto a $120 Android phone with <strong>3GB–6GB RAM</strong>? (Spoiler: Android's Low Memory Killer terminates your process immediately).</li>
+                        <li><strong>The Unit Economics Trap:</strong> Can an African startup sustainably pay Cloud LLM API bills in <strong>USD</strong> while users pay in <strong>UGX</strong> or <strong>CDF</strong>; or cannot afford daily mobile data bundles at all?</li>
+                        <li><strong>The Hardware Boundary:</strong> What happens when you load an unoptimized LLM onto a $120 Android phone with <strong>3GB to 6GB RAM</strong>? (Spoiler: Android's Low Memory Killer terminates your process immediately).</li>
                     </ol>
 
                     <h3>Cloud AI vs. On-Device Edge AI in East Africa</h3>
@@ -193,12 +193,12 @@
                                 </tr>
                                 <tr>
                                     <td><strong>Time-to-First-Token (TTFT)</strong></td>
-                                    <td>2,000ms – 8,000ms on unstable 3G/Edge</td>
-                                    <td><strong>180ms – 600ms on local CPU/GPU</strong></td>
+                                    <td>2,000ms to 8,000ms on unstable 3G/Edge</td>
+                                    <td><strong>180ms to 600ms on local CPU/GPU</strong></td>
                                 </tr>
                                 <tr>
                                     <td><strong>Image Scan Data Cost</strong></td>
-                                    <td>2MB – 5MB upload per leaf photo</td>
+                                    <td>2MB to 5MB upload per leaf photo</td>
                                     <td><strong>0 MB network data consumed</strong></td>
                                 </tr>
                                 <tr>
@@ -236,7 +236,7 @@
                      ========================================================= -->
                 <article class="codelab-step" id="step-2" data-duration="5">
                     <div class="step-header">
-                        <div class="step-eyebrow">Step 2 of 9 • System Design</div>
+                        <div class="step-eyebrow">Step 2 of 9 | System Design</div>
                         <h2 class="step-title">Offline-First Architecture &amp; <code>flutter_gemma</code> Setup</h2>
                     </div>
 
@@ -296,7 +296,7 @@
                                     <span class="window-dot yellow"></span>
                                     <span class="window-dot green"></span>
                                 </div>
-                                <span class="code-filename">Terminal — Create Project &amp; Folders</span>
+                                <span class="code-filename">Terminal | Create Project &amp; Folders</span>
                                 <span class="code-lang-badge">BASH</span>
                             </div>
                             <button class="copy-code-btn">
@@ -444,7 +444,7 @@ dependencies:
                      ========================================================= -->
                 <article class="codelab-step" id="step-3" data-duration="6">
                     <div class="step-header">
-                        <div class="step-eyebrow">Step 3 of 9 • Memory &amp; Distribution</div>
+                        <div class="step-eyebrow">Step 3 of 9 | Memory &amp; Distribution</div>
                         <h2 class="step-title">Model Quantization (INT4 vs. INT8) &amp; Atomic Asset Delivery</h2>
                     </div>
 
@@ -480,7 +480,7 @@ dependencies:
                         <div class="callout-body">
                             <div class="callout-title">Production Pitfall: Never Put Multi-Hundred-MB Models in Flutter <code>assets/</code></div>
                             <p>
-                                Bundling a 1.3GB model inside <code>pubspec.yaml</code> assets violates Google Play's 150MB base APK/AAB limit and forces Flutter to copy/decompress the asset on first boot—causing instant <code>OutOfMemoryError</code> crashes on budget phones.
+                                Bundling a 1.3GB model inside <code>pubspec.yaml</code> assets violates Google Play's 150MB base APK/AAB limit and forces Flutter to copy/decompress the asset on first boot: causing instant <code>OutOfMemoryError</code> crashes on budget phones.
                             </p>
                         </div>
                     </div>
@@ -598,7 +598,7 @@ Future&lt;void&gt; initializeGemma(Function(double) onProgress) async {
                      ========================================================= -->
                 <article class="codelab-step" id="step-4" data-duration="5">
                     <div class="step-header">
-                        <div class="step-eyebrow">Step 4 of 9 • Native Concurrency</div>
+                        <div class="step-eyebrow">Step 4 of 9 | Native Concurrency</div>
                         <h2 class="step-title">Preventing Native FFI Crashes &amp; Hot-Reload Deadlocks</h2>
                     </div>
 
@@ -611,7 +611,7 @@ Future&lt;void&gt; initializeGemma(Function(double) onProgress) async {
                         <div class="callout-body">
                             <div class="callout-title">What Failed in Production #1: Concurrent Native Sessions &amp; Orphaned Isolates</div>
                             <p>
-                                MediaPipe / LiteRT-LM allocates a single native C++ execution graph in memory. During field testing, if a user started a leaf scan and switched to the Chat tab before the scan finished—or if a developer triggered a Flutter <strong>Hot Reload</strong> while a stream was open—the native FFI channel deadlocked permanently or threw <code>PlatformException(channel-error)</code>.
+                                MediaPipe / LiteRT-LM allocates a single native C++ execution graph in memory. During field testing, if a user started a leaf scan and switched to the Chat tab before the scan finished; or if a developer triggered a Flutter <strong>Hot Reload</strong> while a stream was open: the native FFI channel deadlocked permanently or threw <code>PlatformException(channel-error)</code>.
                             </p>
                         </div>
                     </div>
@@ -759,7 +759,7 @@ class GemmaEngineManager {
                      ========================================================= -->
                 <article class="codelab-step" id="step-5" data-duration="6">
                     <div class="step-header">
-                        <div class="step-eyebrow">Step 5 of 9 • Multimodal Vision</div>
+                        <div class="step-eyebrow">Step 5 of 9 | Multimodal Vision</div>
                         <h2 class="step-title">512px Image Optimization &amp; Prompt-Level Early-Exit Guardrails</h2>
                     </div>
 
@@ -772,7 +772,7 @@ class GemmaEngineManager {
                         <div class="callout-body">
                             <div class="callout-title">What Failed in Production #2 &amp; #3: 12MP Camera OOMs &amp; CPU Thermal Throttling</div>
                             <p>
-                                <strong>1. Vision OOMs:</strong> Passing a raw 4000×3000 (12MP) camera image into <code>Message.withImage()</code> allocates a 48MB RGBA buffer plus huge vision encoder tensors—crashing 4GB RAM phones.<br>
+                                <strong>1. Vision OOMs:</strong> Passing a raw 4000x3000 (12MP) camera image into <code>Message.withImage()</code> allocates a 48MB RGBA buffer plus huge vision encoder tensors: crashing 4GB RAM phones.<br>
                                 <strong>2. Wasted Compute on Non-Leaves:</strong> When a farmer accidentally photographed their shoe, face, or tool, Gemma generated 800+ tokens of hallucinated plant advice, heating up the CPU and draining battery.
                             </p>
                         </div>
@@ -928,7 +928,7 @@ User instruction: $prompt
                      ========================================================= -->
                 <article class="codelab-step" id="step-6" data-duration="6">
                     <div class="step-header">
-                        <div class="step-eyebrow">Step 6 of 9 • Grounded Local Retrieval</div>
+                        <div class="step-eyebrow">Step 6 of 9 | Grounded Local Retrieval</div>
                         <h2 class="step-title">Zero-RAM-Overhead Local RAG with SQLite FTS5 &amp; BM25</h2>
                     </div>
 
@@ -1078,7 +1078,7 @@ Future&lt;List&lt;Map&lt;String, dynamic&gt;&gt;&gt; searchFAOKnowledge(String q
                      ========================================================= -->
                 <article class="codelab-step" id="step-7" data-duration="5">
                     <div class="step-header">
-                        <div class="step-eyebrow">Step 7 of 9 • Conversational UX &amp; Agents</div>
+                        <div class="step-eyebrow">Step 7 of 9 | Conversational UX &amp; Agents</div>
                         <h2 class="step-title">60 FPS Token Streaming, KV-Cache Sliding Window &amp; Offline Function Calling</h2>
                     </div>
 
@@ -1279,16 +1279,16 @@ if (lowercaseText.contains("rain") || lowercaseText.contains("wet") ||
                      ========================================================= -->
                 <article class="codelab-step" id="step-8" data-duration="6">
                     <div class="step-header">
-                        <div class="step-eyebrow">Step 8 of 9 • Model Compression &amp; Distillation</div>
+                        <div class="step-eyebrow">Step 8 of 9 | Model Compression &amp; Distillation</div>
                         <h2 class="step-title">The Finale: Distilling Gemma into a Custom SLM Under 150 MB</h2>
                     </div>
 
                     <p>
-                        While an INT4 2B model (~1.2GB) runs well on 4GB–8GB phones, two barriers remain for rural mass adoption across Africa:
+                        While an INT4 2B model (~1.2GB) runs well on 4GB to 8GB phones, two barriers remain for rural mass adoption across Africa:
                     </p>
                     <ul>
                         <li><strong>The 1.2GB Initial Download:</strong> Even a one-time 1.2GB download is expensive on prepaid mobile data bundles.</li>
-                        <li><strong>2GB–3GB Android Go Devices:</strong> Entry-level phones without NPUs take 5–10 seconds for CPU inference on a 2B model.</li>
+                        <li><strong>2GB to 3GB Android Go Devices:</strong> Entry-level phones without NPUs take 5 to 10 seconds for CPU inference on a 2B model.</li>
                     </ul>
 
                     <div class="callout callout-info">
@@ -1306,14 +1306,14 @@ if (lowercaseText.contains("rain") || lowercaseText.contains("wet") ||
                     <h3>How the Math Works: Getting from 1.35 GB to 134 MB</h3>
                     <ol>
                         <li>
-                            <strong>Teacher &rarr; Student Knowledge Distillation:</strong> A crop-diagnosis assistant does not need to know how to write C++ shaders or summarize European tax law. We use <code>gemma-2-2b-it</code> (or <code>gemma-2-9b-it</code>) as the <strong>Teacher</strong> to transfer its domain reasoning on East African agronomy (FAO/IITA + Swahili/Luganda/English/French) into a compact <strong>240M–270M parameter Student SLM</strong>.
+                            <strong>Teacher &rarr; Student Knowledge Distillation:</strong> A crop-diagnosis assistant does not need to know how to write C++ shaders or summarize European tax law. We use <code>gemma-2-2b-it</code> (or <code>gemma-2-9b-it</code>) as the <strong>Teacher</strong> to transfer its domain reasoning on East African agronomy (FAO/IITA + Swahili/Luganda/English/French) into a compact <strong>240M to 270M parameter Student SLM</strong>.
                         </li>
                         <li>
                             <strong>Vocabulary Pruning (256k &rarr; 32k Tokens):</strong> Gemma's 256,000-token embedding matrix alone occupies ~260 MB even in INT4! Pruning unused scripts and keeping the top <strong>32,000 domain + East African tokens</strong> shrinks the embedding table by <strong>87.5%</strong> (down to ~16 MB).
                         </li>
                         <li>
                             <strong>INT4 Block-32 Quantization (<code>dynamic_int4_block32</code>):</strong>
-                            <code>240M parameters × 0.5 bytes/weight (120 MB) + 14 MB SentencePiece Tokenizer &amp; Flatbuffer metadata = 134 MB (&lt; 150 MB!)</code>.
+                            <code>240M parameters * 0.5 bytes/weight (120 MB) + 14 MB SentencePiece Tokenizer &amp; Flatbuffer metadata = 134 MB (&lt; 150 MB!)</code>.
                         </li>
                     </ol>
 
@@ -1468,7 +1468,7 @@ print(f"Success! Final SLM Bundle Size: {size_mb:.1f} MB (&lt; 150 MB target)")
 # Output: Success! Final SLM Bundle Size: 134.2 MB (&lt; 150 MB target)</code></pre>
                     </div>
 
-                    <h3>Part C: Benchmark — Base E2B vs. Distilled 134 MB SLM on 3GB–4GB Android</h3>
+                    <h3>Part C: Benchmark | Base E2B vs. Distilled 134 MB SLM on 3GB to 4GB Android</h3>
                     <div class="table-responsive">
                         <table class="codelab-table">
                             <thead>
@@ -1519,13 +1519,13 @@ print(f"Success! Final SLM Bundle Size: {size_mb:.1f} MB (&lt; 150 MB target)")
                      ========================================================= -->
                 <article class="codelab-step" id="step-9" data-duration="2">
                     <div class="step-header">
-                        <div class="step-eyebrow">Step 9 of 9 • Minimal Runnable App &amp; Wrap-Up</div>
+                        <div class="step-eyebrow">Step 9 of 9 | Minimal Runnable App &amp; Wrap-Up</div>
                         <h2 class="step-title">Run the Minimal App &amp; Key Engineering Takeaways</h2>
                     </div>
 
                     <h3>1. Minimal <code>lib/main.dart</code> to Test Your Codelab App</h3>
                     <p>
-                        If you created the files in Steps 2–7, paste this minimal, self-contained <code>lib/main.dart</code> to get a complete working UI (Model Downloader + Offline Leaf Scanner + Streaming RAG Chat) without needing the full repository's custom themes:
+                        If you created the files in Steps 2 to 7, paste this minimal, self-contained <code>lib/main.dart</code> to get a complete working UI (Model Downloader + Offline Leaf Scanner + Streaming RAG Chat) without needing the full repository's custom themes:
                     </p>
 
                     <div class="code-window">
@@ -1704,7 +1704,7 @@ class _MinimalGemmeaScreenState extends State&lt;MinimalGemmeaScreen&gt; {
                                     <span class="window-dot yellow"></span>
                                     <span class="window-dot green"></span>
                                 </div>
-                                <span class="code-filename">Terminal — Clone &amp; Run Gemmea in Release Mode</span>
+                                <span class="code-filename">Terminal | Clone &amp; Run Gemmea in Release Mode</span>
                                 <span class="code-lang-badge">BASH</span>
                             </div>
                             <button class="copy-code-btn">
