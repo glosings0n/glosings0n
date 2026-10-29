@@ -48,6 +48,10 @@
       "destination": "/codelabs/hybrid-ai-firebase-litert-flutter"
     },
     {
+      "source": "/apps-script-workspace-automation",
+      "destination": "/codelabs/apps-script-workspace-automation"
+    },
+    {
       "source": "/:slug([^/.]+)",
       "has": [
         {

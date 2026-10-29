@@ -1,0 +1,2421 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Automation with Google Apps Script Workshop | GDG - Google Workspace Training | glosings0n Codelabs</title>
+    <meta name="description"
+        content="Hands-on Google Apps Script Automation Codelab by Georges Byona (@glosings0n), Founder @ LosingTek &amp; Founder of FlutterFire Summer Camp. Conceived for Day 5 of the Google Workspace training delivered to GDG Afrique Francophone, GDG Pointe-Noire, and GDG on Campus CUEA. Automate Gmail, Sheets, Forms, Docs, Slides, Drive, Contacts, and Calendar.">
+    <meta name="keywords"
+        content="Google Apps Script, Apps Script Automation, Google Workspace Training, GDG, GDG Afrique Francophone, GDG Pointe-Noire, GDG on Campus CUEA, SpreadsheetApp, GmailApp, DriveApp, SlidesApp, DocumentApp, FormApp, ContactsApp, CalendarApp, HtmlService, Web App Apps Script, Google Workspace Automation, Georges Byona, Georges Losingson, Byona Georges, glosings0n, @glosings0n, Losingson, Losings0n, @losingson, g-losingson, LosingTek, Losing Tek, FlutterFire Summer Camp, FlutterFire Camp">
+    <meta name="author" content="Georges Byona">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <link rel="canonical" href="https://codelabs.glosings0n.dev/apps-script-workspace-automation">
+
+    <!-- OpenGraph -->
+    <meta property="og:title" content="Automation with Google Apps Script Workshop | GDG - Google Workspace Training | glosings0n Codelabs">
+    <meta property="og:description"
+        content="Master Google Apps Script by connecting Gmail, Sheets, Forms, Docs, Slides, Drive, Calendar, and Web Apps into an automated operating system. Day 5 masterclass by Georges Byona (@glosings0n).">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://codelabs.glosings0n.dev/apps-script-workspace-automation">
+    <meta property="og:image" content="https://glosings0n.dev/assets/hero.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Automation with Google Apps Script Workshop | Georges Byona (@glosings0n)">
+    <meta property="og:site_name" content="glosings0n Codelabs">
+    <meta property="article:published_time" content="2026-10-29">
+    <meta property="article:modified_time" content="2026-10-29">
+    <meta property="article:author" content="https://glosings0n.dev">
+    <meta property="article:section" content="Cloud &amp; Workspace Engineering">
+    <meta property="article:tag" content="Google Apps Script">
+    <meta property="article:tag" content="Google Workspace">
+    <meta property="article:tag" content="Automation">
+    <meta property="article:tag" content="JavaScript">
+    <meta property="article:tag" content="GDG">
+    <meta property="article:tag" content="Productivity">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@glosings0n">
+    <meta name="twitter:creator" content="@glosings0n">
+    <meta name="twitter:title" content="Automation with Google Apps Script Workshop | glosings0n Codelabs">
+    <meta name="twitter:description"
+        content="Automate Google Workspace with Google Apps Script: Forms, Gmail, Sheets, Slides e-Certificates, Meet, Docs, and Web Apps. By Georges Byona (@glosings0n).">
+    <meta name="twitter:image" content="https://glosings0n.dev/assets/hero.png">
+
+    <!-- Schema.org JSON-LD for Google Search & AI Engines -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Person",
+          "@id": "https://glosings0n.dev/#person",
+          "name": "Georges Byona",
+          "additionalName": "Georges Losingson",
+          "alternateName": [
+            "glosings0n",
+            "@glosings0n",
+            "Glosingson",
+            "Georges Byona",
+            "Georges Losingson",
+            "Losingson",
+            "Byona Georges",
+            "Losings0n",
+            "@losingson",
+            "g-losingson",
+            "LosingTek"
+          ],
+          "url": "https://glosings0n.dev",
+          "image": "https://glosings0n.dev/assets/hero.png",
+          "jobTitle": "Software Engineer & Edge-AI Researcher",
+          "sameAs": [
+            "https://github.com/glosings0n",
+            "https://linkedin.com/in/glosings0n",
+            "https://x.com/glosings0n",
+            "https://medium.com/@glosings0n",
+            "https://youtube.com/@FlutterFireCamp"
+          ],
+          "founder": [
+            {
+              "@type": "Organization",
+              "@id": "https://glosings0n.dev/#losingtek",
+              "name": "LosingTek",
+              "url": "https://losingtek.com"
+            },
+            {
+              "@type": "EducationalOrganization",
+              "@id": "https://glosings0n.dev/#flutterfirecamp",
+              "name": "FlutterFire Summer Camp",
+              "alternateName": "FlutterFire Camp",
+              "url": "https://flutterfirecamp.dev"
+            }
+          ]
+        },
+        {
+          "@type": ["TechArticle", "LearningResource"],
+          "@id": "https://codelabs.glosings0n.dev/apps-script-workspace-automation#codelab",
+          "headline": "Automation with Google Apps Script Workshop | GDG - Google Workspace Training",
+          "name": "Automation with Google Apps Script Workshop | GDG - Google Workspace Training",
+          "description": "Comprehensive engineering workshop for Day 5 of the Google Workspace training by Georges Byona (@glosings0n). Master automation across Gmail, Google Sheets, Forms, Docs, Slides, Drive, Google Contacts, Google Calendar, and interactive Web Apps with Google Apps Script.",
+          "url": "https://codelabs.glosings0n.dev/apps-script-workspace-automation",
+          "image": "https://glosings0n.dev/assets/hero.png",
+          "datePublished": "2026-10-29",
+          "dateModified": "2026-10-29",
+          "inLanguage": ["en", "fr"],
+          "proficiencyLevel": "Beginner to Intermediate",
+          "educationalLevel": "Intermediate",
+          "learningResourceType": "Codelab",
+          "timeRequired": "PT60M",
+          "author": {
+            "@id": "https://glosings0n.dev/#person"
+          },
+          "publisher": {
+            "@id": "https://glosings0n.dev/#losingtek"
+          },
+          "isPartOf": {
+            "@id": "https://codelabs.glosings0n.dev/#website"
+          },
+          "about": [
+            "Google Apps Script",
+            "Google Workspace",
+            "JavaScript",
+            "Cloud Automation",
+            "SpreadsheetApp",
+            "GmailApp",
+            "DriveApp",
+            "SlidesApp",
+            "DocumentApp",
+            "FormApp",
+            "CalendarApp",
+            "HtmlService"
+          ],
+          "keywords": "Google Apps Script, Apps Script Automation, Google Workspace Training, GDG, SpreadsheetApp, GmailApp, DriveApp, SlidesApp, DocumentApp, FormApp, ContactsApp, CalendarApp, HtmlService, Georges Byona, glosings0n, LosingTek, FlutterFire Summer Camp"
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "glosings0n Portfolio",
+              "item": "https://glosings0n.dev"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "glosings0n Codelabs",
+              "item": "https://codelabs.glosings0n.dev"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "Automation with Google Apps Script Workshop",
+              "item": "https://codelabs.glosings0n.dev/apps-script-workspace-automation"
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="192x192" href="/assets/favicon.png">
+    <link rel="icon" type="image/svg+xml" href="/assets/logo.svg">
+
+    <!-- Codelabs Stylesheet -->
+    <link rel="stylesheet" href="/codelabs/css/codelabs.css">
+</head>
+
+<body class="codelab-page">
+
+    <!-- Sticky Codelab Header -->
+    <header class="codelab-topbar">
+        <div class="topbar-inner">
+            <div class="topbar-left">
+                <button class="sidebar-toggle-btn" id="sidebar-toggle-btn" aria-label="Toggle Steps Drawer" aria-expanded="false">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
+                <a href="/" id="codelab-home-link" class="brand-link">
+                    <img src="/assets/logo.svg" alt="LosingTek Logo" class="brand-logo">
+                    <span class="brand-text">glosings0n</span>
+                </a>
+                <a href="/" id="codelab-sub-link" class="brand-subtext" style="text-decoration: none;">/ codelabs</a>
+                <span class="topbar-divider">/</span>
+                <span class="codelab-header-title"
+                    data-en="Automation with Google Apps Script Workshop"
+                    data-fr="Workshop Automatisation avec Google Apps Script">Automation with Google Apps Script Workshop</span>
+            </div>
+
+            <div class="topbar-right">
+                <div class="time-pill" title="Time remaining">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polyline points="12 6 12 12 16 14"></polyline>
+                    </svg>
+                    <span id="time-remaining-label">60 min left</span>
+                </div>
+
+                <div class="lang-switch" role="group" aria-label="Language switcher">
+                    <button class="lang-btn active" id="lang-btn-en" data-lang="en" aria-pressed="true">EN</button>
+                    <button class="lang-btn" id="lang-btn-fr" data-lang="fr" aria-pressed="false">FR</button>
+                </div>
+
+                <button class="action-btn icon-only" id="theme-toggle-btn" aria-label="Light mode" title="Light mode">
+                    <span id="theme-toggle-icon"></span>
+                </button>
+
+                <a href="" id="codelab-github-btn" class="action-btn icon-only codelab-github-btn" hidden style="display: none;"
+                    aria-label="Open the GitHub repo" title="Open the GitHub repo">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path
+                            d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                        </path>
+                    </svg>
+                </a>
+            </div>
+        </div>
+        <div class="codelab-progress-track">
+            <div class="codelab-progress-fill" id="codelab-progress-fill"></div>
+        </div>
+    </header>
+
+    <div class="codelab-layout">
+        <!-- Left Sidebar Step Navigation -->
+        <aside class="codelab-sidebar" id="codelab-sidebar">
+            <ul class="step-nav-list">
+                <li class="step-nav-item active" data-step="0">
+                    <span class="step-num">1</span>
+                    <span class="step-nav-title"
+                        data-en="Context, 5-Day Program &amp; Sandbox Setup"
+                        data-fr="Contexte, Programme 5 Jours &amp; Sandbox">Context, 5-Day Program &amp; Sandbox Setup</span>
+                    <span class="step-nav-time">6m</span>
+                </li>
+                <li class="step-nav-item" data-step="1">
+                    <span class="step-num">2</span>
+                    <span class="step-nav-title"
+                        data-en="Practice 1: Forms to Gmail Notification"
+                        data-fr="Pratique 1 : De Forms à Notification Gmail">Practice 1: Forms to Gmail Notification</span>
+                    <span class="step-nav-time">6m</span>
+                </li>
+                <li class="step-nav-item" data-step="2">
+                    <span class="step-num">3</span>
+                    <span class="step-nav-title"
+                        data-en="Practice 2: Google Contacts Ingestion"
+                        data-fr="Pratique 2 : Ingestion Google Contacts">Practice 2: Google Contacts Ingestion</span>
+                    <span class="step-nav-time">6m</span>
+                </li>
+                <li class="step-nav-item" data-step="3">
+                    <span class="step-num">4</span>
+                    <span class="step-nav-title"
+                        data-en="Practice 3: Sheets Attendance Audit &amp; Report"
+                        data-fr="Pratique 3 : Audit d'Assiduité &amp; Rapport">Practice 3: Sheets Attendance Audit &amp; Report</span>
+                    <span class="step-nav-time">6m</span>
+                </li>
+                <li class="step-nav-item" data-step="4">
+                    <span class="step-num">5</span>
+                    <span class="step-nav-title"
+                        data-en="Practice 4: Vector E-Certificates with Slides"
+                        data-fr="Pratique 4 : E-Certificats avec Slides &amp; PDF">Practice 4: Vector E-Certificates with Slides</span>
+                    <span class="step-nav-time">7m</span>
+                </li>
+                <li class="step-nav-item" data-step="5">
+                    <span class="step-num">6</span>
+                    <span class="step-nav-title"
+                        data-en="Practice 5: Calendar &amp; Google Meet Scheduling"
+                        data-fr="Pratique 5 : Planification Calendar &amp; Meet">Practice 5: Calendar &amp; Google Meet Scheduling</span>
+                    <span class="step-nav-time">6m</span>
+                </li>
+                <li class="step-nav-item" data-step="6">
+                    <span class="step-num">7</span>
+                    <span class="step-nav-title"
+                        data-en="Practice 6: Structured Docs &amp; Permissions"
+                        data-fr="Pratique 6 : Docs Structurés &amp; Droits Drive">Practice 6: Structured Docs &amp; Permissions</span>
+                    <span class="step-nav-time">6m</span>
+                </li>
+                <li class="step-nav-item" data-step="7">
+                    <span class="step-num">8</span>
+                    <span class="step-nav-title"
+                        data-en="Practice 7: Interactive Web App Dashboard"
+                        data-fr="Pratique 7 : Dashboard Web App Interactif">Practice 7: Interactive Web App Dashboard</span>
+                    <span class="step-nav-time">7m</span>
+                </li>
+                <li class="step-nav-item" data-step="8">
+                    <span class="step-num">9</span>
+                    <span class="step-nav-title"
+                        data-en="Practice 8: Time Triggers &amp; Webhooks"
+                        data-fr="Pratique 8 : Déclencheurs Horaires &amp; Webhooks">Practice 8: Time Triggers &amp; Webhooks</span>
+                    <span class="step-nav-time">5m</span>
+                </li>
+                <li class="step-nav-item" data-step="9">
+                    <span class="step-num">10</span>
+                    <span class="step-nav-title"
+                        data-en="Production Quotas, Scopes &amp; Best Practices"
+                        data-fr="Quotas, Scopes &amp; Bonnes Pratiques">Production Quotas, Scopes &amp; Best Practices</span>
+                    <span class="step-nav-time">5m</span>
+                </li>
+            </ul>
+
+            <div class="sidebar-footer">
+                <div><strong data-en="Author:" data-fr="Auteur :">Author:</strong> Georges Byona (<span class="font-mono">@glosings0n</span>)</div>
+                <div><strong data-en="Track:" data-fr="Parcours :">Track:</strong> GDG - Google Workspace Training</div>
+                <div class="sidebar-copyright">&copy; 2026 <span class="font-mono">glosings0n</span></div>
+            </div>
+        </aside>
+
+        <!-- Main Step Viewport -->
+        <main class="codelab-main">
+            <div class="codelab-content-wrapper">
+
+                <!-- =========================================================
+                     STEP 1: CONTEXT, 5-DAY PROGRAM & 1-CLICK SANDBOX SETUP
+                     ========================================================= -->
+                <article class="codelab-step active" id="step-1" data-duration="6">
+                    <div class="step-header">
+                        <div class="step-eyebrow">
+                            <span data-en="Step 1 of 10 | Context, 5-Day Curriculum &amp; Sandbox Setup"
+                                data-fr="Étape 1 sur 10 | Contexte, Programme 5 Jours &amp; Initialisation">Step 1 of 10 | Context, 5-Day Curriculum &amp; Sandbox Setup</span>
+                            <span class="codelab-last-updated">Last updated: <time datetime="2026-10-29">October 29, 2026</time></span>
+                        </div>
+                        <h1 class="step-title"
+                            data-en="Automation with Google Apps Script Workshop | GDG - Google Workspace Training"
+                            data-fr="Workshop Automatisation avec Google Apps Script | GDG - Formation Google Workspace">Automation with Google Apps Script Workshop | GDG - Google Workspace Training</h1>
+                    </div>
+
+                    <!-- 1. Context & The Why -->
+                    <div class="lang-en">
+                        <h3>1. Context &amp; The "Why": Transforming Isolated Tools into an Automated Workspace Operating System</h3>
+                        <p>
+                            Almost everyone in the digital economy owns a Google or Gmail account, yet very few individuals or organizations ever experience the true, interconnected depth of Google Workspace. Most professionals treat Gmail, Google Sheets, Google Docs, Google Forms, and Google Drive as isolated web applications, manually copying and pasting customer data between browser tabs, retyping attendance lists, or paying for fragile third-party automation tools that break when data formats change.
+                        </p>
+                        <p>
+                            To bridge this gap and empower developer communities with actionable digital sovereignty, <strong>Georges Byona</strong> (<span class="font-mono">@glosings0n</span>) developed and delivered a comprehensive 5-day intensive masterclass across multiple leading tech hubs, including <strong>GDG Afrique Francophone</strong>, the <strong>GDG Community of Pointe-Noire (Congo-Brazzaville)</strong>, and <strong>GDG on Campus CUEA (Catholic University of Eastern Africa, Nairobi, Kenya)</strong>.
+                        </p>
+                        <p>
+                            Here is the complete 5-day curriculum structure delivered throughout these community programs:
+                        </p>
+                        <ul>
+                            <li><strong>Day I: Introduction &amp; Google Workspace Fundamentals:</strong> Mastering Gmail communication rules, Calendar scheduling, Google Meet collaboration, and Google Contacts directory hygiene.</li>
+                            <li><strong>Day II: Collaboration and Personal Organization:</strong> Real-time co-authoring in Google Docs, structured task capture in Keep Notes, and multimedia organization in Google Photos.</li>
+                            <li><strong>Day III: Information Gathering and Data Processing:</strong> Designing responsive Google Forms, capturing structured responses, and building analytical formulas, pivot tables, and filters in Google Sheets.</li>
+                            <li><strong>Day IV: Smart Storage and Impactful Presentations:</strong> Cloud storage governance in Google Drive, vector visual storytelling with Google Slides, internal knowledge portals with Google Sites, Drawings, and Video.</li>
+                            <li><strong>Day V: Introduction to Automation with Google Apps Script:</strong> Interconnecting all Workspace applications with serverless JavaScript to eliminate repetitive operational chores.</li>
+                            <li><strong>Bonus Track: The GDE (Google Developer Expert) Program &amp; AI within Google Workspace:</strong> Exploring professional ecosystem pathways and integrating Gemini AI assistance across Google Workspace tools.</li>
+                        </ul>
+                        <p>
+                            <strong>This hands-on codelab represents the complete interactive engineering curriculum for Day V.</strong> You will write serverless, event-driven JavaScript directly inside the Google Cloud infrastructure, turning Google Workspace into an automated corporate operating system without hosting or managing external servers.
+                        </p>
+                    </div>
+
+                    <div class="lang-fr">
+                        <h3>1. Contexte &amp; Pourquoi : Transformer des outils isolés en un système opérationnel automatisé</h3>
+                        <p>
+                            Presque tout le monde dans l'économie numérique dispose d'un compte Google ou d'une adresse Gmail, mais rares sont les utilisateurs ou les organisations qui tirent réellement parti de toute la puissance interconnectée de Google Workspace. La grande majorité des professionnels utilise Gmail, Google Sheets, Google Docs, Google Forms et Google Drive comme de simples applications web isolées, copiant-collant manuellement des coordonnées d'étudiants entre plusieurs onglets de navigateur, recalculant des listes d'émargement à la main, ou souscrivant à des services tiers d'automatisation fragiles et coûteux.
+                        </p>
+                        <p>
+                            Pour combler ce fossé et doter les communautés de développeurs d'une véritable souveraineté numérique et opérationnelle, <strong>Georges Byona</strong> (<span class="font-mono">@glosings0n</span>) a conçu et dispensé un cycle intensif de formation de 5 jours auprès de plusieurs communautés technologiques d'envergure, notamment au sein de <strong>GDG Afrique Francophone</strong>, de la communauté <strong>GDG Pointe-Noire (Congo-Brazzaville)</strong>, et du <strong>GDG on Campus CUEA (Catholic University of Eastern Africa à Nairobi, Kenya)</strong>.
+                        </p>
+                        <p>
+                            Voici le programme pédagogique complet en 5 jours dispensé lors de ces formations communautaires :
+                        </p>
+                        <ul>
+                            <li><strong>Day I : Introduction &amp; Fondamentaux de Google Workspace :</strong> Maîtrise des flux de communication Gmail, gestion d'agenda avec Google Calendar, collaboration vidéo Meet et gestion du carnet d'adresses Google Contacts.</li>
+                            <li><strong>Day II : Collaboration &amp; Organisation Personnelle :</strong> Co-édition en temps réel dans Google Docs, prise de notes structurées dans Google Keep et organisation multimédia avec Google Photos.</li>
+                            <li><strong>Day III : Collecte d'Informations &amp; Traitement de Données :</strong> Conception de formulaires dynamiques avec Google Forms, recueil structuré et calculs analytiques, tableaux croisés et filtres avancés dans Google Sheets.</li>
+                            <li><strong>Day IV : Stockage Intelligent &amp; Présentations Impactantes :</strong> Gouvernance et partage documentaire dans Google Drive, présentations vectorielles avec Google Slides, portails web d'équipe avec Google Sites, Drawings et Vidéos.</li>
+                            <li><strong>Day V : Introduction à l'Automatisation avec Google Apps Script :</strong> Interconnexion programmatique de toutes les applications de la suite via du JavaScript serverless natif pour supprimer les tâches répétitives.</li>
+                            <li><strong>Parcours Bonus : Le programme GDE (Google Developer Expert) &amp; l'IA dans Google Workspace :</strong> Présentation des opportunités de l'écosystème d'expertise Google et intégration des fonctionnalités d'IA Gemini à travers les ateliers pratiques.</li>
+                        </ul>
+                        <p>
+                            <strong>Ce codelab interactif constitue l'intégralité du contenu pratique du Jour V.</strong> Vous allez concevoir du code JavaScript serverless exécuté directement sur l'infrastructure Google, transformant Google Workspace en un véritable système d'exploitation d'entreprise sans avoir à louer ou administrer le moindre serveur externe.
+                        </p>
+                    </div>
+
+                    <div class="callout callout-info">
+                        <svg class="callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="12" y1="16" x2="12" y2="12"></line>
+                            <circle cx="12" cy="8" r="1.25" fill="currentColor" stroke="none"></circle>
+                        </svg>
+                        <div class="callout-body">
+                            <div class="lang-en">
+                                <div class="callout-title">The Power of Built-In Cloud Infrastructure</div>
+                                <p>
+                                    Google Apps Script runs on modern Google V8 JavaScript runtime engines. It provides zero-configuration access to your Gmail, Drive, Sheets, Docs, Slides, Forms, and Calendar data via secure, built-in global objects (<code>SpreadsheetApp</code>, <code>GmailApp</code>, <code>DriveApp</code>, etc.) governed by OAuth2 scopes.
+                                </p>
+                            </div>
+                            <div class="lang-fr">
+                                <div class="callout-title">La puissance d'une infrastructure Cloud native</div>
+                                <p>
+                                    Google Apps Script s'exécute sur le moteur JavaScript moderne Google V8. Il offre un accès sans aucune configuration complexe à vos données Gmail, Drive, Sheets, Docs, Slides, Forms et Calendar via des classes globales intégrées (<code>SpreadsheetApp</code>, <code>GmailApp</code>, <code>DriveApp</code>, etc.) sécurisées par des jetons OAuth2.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 2. Learning Goals & What You Will Build -->
+                    <div class="lang-en">
+                        <h3>2. Learning Goals &amp; What You Will Build</h3>
+                        <p>
+                            Over the course of this 60-minute engineering workshop, you will build 8 interconnected, production-grade automation workflows:
+                        </p>
+                        <ul>
+                            <li><strong>Practice 1 (Forms &amp; Gmail):</strong> Trigger an instant, personalized, responsive HTML confirmation receipt whenever a student completes a workshop registration or evaluation form.</li>
+                            <li><strong>Practice 2 (Google Contacts &amp; People):</strong> Programmatically ingest and update new student profiles into a designated Google Contacts label group (<code>GDG Workspace Training 2026</code>) with contact deduplication.</li>
+                            <li><strong>Practice 3 (Sheets &amp; Gmail):</strong> Perform an automated attendance audit across 5 training days, calculate percentage metrics, flag at-risk students, and dispatch an analytical HTML digest to course instructors.</li>
+                            <li><strong>Practice 4 (Slides, Drive &amp; Gmail):</strong> Build an automated vector certificate factory using a Google Slides template, replace dynamic tokens (<code>{{NAME}}</code>, <code>{{TRACK}}</code>, <code>{{DATE}}</code>, <code>{{CERT_ID}}</code>), export to PDF, save to Drive, and email students their verified diploma.</li>
+                            <li><strong>Practice 5 (Calendar &amp; Meet):</strong> Automatically schedule 1-on-1 office hours for students requiring exam remediation, sending Calendar invites with auto-generated Google Meet video conference links.</li>
+                            <li><strong>Practice 6 (Docs &amp; Drive):</strong> Programmatically compile an executive Workshop Retrospective &amp; Evaluation Google Doc with custom table styling, export a PDF copy, and configure granular Drive sharing permissions.</li>
+                            <li><strong>Practice 7 (Web App Dashboard):</strong> Build and deploy a real-time web portal powered by <code>HtmlService</code>, allowing participants and instructors to search attendance and certificate status without accessing the raw spreadsheet.</li>
+                            <li><strong>Practice 8 (Time Triggers &amp; Webhooks):</strong> Configure scheduled daily chronometers and push real-time summaries to external community webhooks (Slack / Discord) and Google Sites portals.</li>
+                        </ul>
+                    </div>
+
+                    <div class="lang-fr">
+                        <h3>2. Objectifs Pédagogiques &amp; Ce que vous allez construire</h3>
+                        <p>
+                            Au cours de ce workshop d'ingénierie de 60 minutes, vous allez implémenter 8 flux d'automatisation interconnectés de niveau production :
+                        </p>
+                        <ul>
+                            <li><strong>Pratique 1 (Forms &amp; Gmail) :</strong> Déclencher l'envoi instantané d'un accusé de réception HTML personnalisé dès qu'un étudiant valide un formulaire d'inscription ou d'évaluation.</li>
+                            <li><strong>Pratique 2 (Google Contacts &amp; Répertoire) :</strong> Ingestion et synchronisation automatique des nouveaux inscrits dans un groupe de contacts dédié (<code>GDG Workspace Training 2026</code>) avec déduplication.</li>
+                            <li><strong>Pratique 3 (Sheets &amp; Gmail) :</strong> Audit d'assiduité automatisé sur les 5 jours de formation, calcul des taux de présence, détection des étudiants en difficulté et envoi d'un rapport de synthèse HTML aux formateurs.</li>
+                            <li><strong>Pratique 4 (Slides, Drive &amp; Gmail) :</strong> Usine d'e-certificats vectoriels basée sur un modèle Google Slides avec substitution de balises (<code>{{NAME}}</code>, <code>{{TRACK}}</code>, <code>{{DATE}}</code>, <code>{{CERT_ID}}</code>), conversion PDF, archivage Drive et expédition par email.</li>
+                            <li><strong>Pratique 5 (Calendar &amp; Meet) :</strong> Planification automatique de sessions de mentorat individuel pour les étudiants nécessitant un rattrapage, avec invitations Calendar et liens Google Meet générés à la volée.</li>
+                            <li><strong>Pratique 6 (Docs &amp; Drive) :</strong> Génération programmatique d'un rapport officiel d'évaluation dans Google Docs avec mise en page avancée, export PDF et gestion fine des autorisations Drive.</li>
+                            <li><strong>Pratique 7 (Web App Dashboard) :</strong> Déploiement d'un tableau de bord interactif autonome via <code>HtmlService</code> pour consulter les statistiques et certificats en temps réel sans exposer le Google Sheet source.</li>
+                            <li><strong>Pratique 8 (Triggers Horaires &amp; Webhooks) :</strong> Configuration de déclencheurs temporels nocturnes automatiques et synchronisation avec des webhooks externes (Slack / Discord) ou Google Sites.</li>
+                        </ul>
+                    </div>
+
+                    <!-- 3. Prerequisites & System Requirements -->
+                    <div class="lang-en">
+                        <h3>3. Prerequisites &amp; System Requirements</h3>
+                        <p>
+                            Ensure you have the following prerequisites ready before proceeding to the code:
+                        </p>
+                        <ul>
+                            <li><strong>Google Account:</strong> A standard personal Google account (<code>@gmail.com</code>) or a managed Google Workspace account (school, university, or corporate domain).</li>
+                            <li><strong>Modern Web Browser:</strong> Google Chrome, Mozilla Firefox, Microsoft Edge, or Safari with JavaScript enabled.</li>
+                            <li><strong>Apps Script Access:</strong> Open <a href="https://script.google.com" target="_blank" rel="noopener noreferrer" class="codelab-url-link">script.google.com</a> in your browser to verify that your account can create standalone or container-bound scripts.</li>
+                            <li><strong>JavaScript Basics:</strong> Understanding variables (<code>const</code>, <code>let</code>), arrow functions, template literals (<code>`Hello ${name}`</code>), arrays, and objects.</li>
+                        </ul>
+                    </div>
+
+                    <div class="lang-fr">
+                        <h3>3. Prérequis &amp; Configuration Système</h3>
+                        <p>
+                            Assurez-vous de disposer des éléments suivants avant de démarrer :
+                        </p>
+                        <ul>
+                            <li><strong>Compte Google :</strong> Un compte personnel standard (<code>@gmail.com</code>) ou un compte professionnel géré Google Workspace (domaine étudiant, universitaire ou entreprise).</li>
+                            <li><strong>Navigateur Web Récent :</strong> Google Chrome, Mozilla Firefox, Microsoft Edge ou Safari.</li>
+                            <li><strong>Accès à Google Apps Script :</strong> Rendez-vous sur <a href="https://script.google.com" target="_blank" rel="noopener noreferrer" class="codelab-url-link">script.google.com</a> pour vérifier que votre compte autorise la création de projets script.</li>
+                            <li><strong>Bases de JavaScript :</strong> Notions élémentaires sur les variables (<code>const</code>, <code>let</code>), les boucles, les objets, les tableaux et les template strings.</li>
+                        </ul>
+                    </div>
+
+                    <!-- 4. 1-Click Sandbox Setup Script -->
+                    <div class="lang-en">
+                        <h3>4. 1-Click Sandbox Setup Script: Instant Project Provisioning</h3>
+                        <p>
+                            To prevent wasting 30 minutes manually creating folders, spreadsheet columns, sample students, and presentation templates, run the self-contained initialization script below.
+                        </p>
+                        <p>
+                            <strong>How to execute this setup:</strong>
+                        </p>
+                        <ol>
+                            <li>Navigate to <a href="https://script.google.com/home/start" target="_blank" rel="noopener noreferrer" class="codelab-url-link">script.google.com/home/start</a> and click <strong>New project</strong>.</li>
+                            <li>Rename the project in the top bar to <code>GDG_Workspace_Automation_Master</code>.</li>
+                            <li>Delete any placeholder code in <code>Code.gs</code>, paste the code below, and click the <strong>Run</strong> button (select function <code>setupWorkshopEnvironment</code>).</li>
+                        </ol>
+                    </div>
+
+                    <div class="lang-fr">
+                        <h3>4. Initialisation Sandbox en 1 Clic : Provisionnement Instantané</h3>
+                        <p>
+                            Pour éviter de perdre une demi-heure à créer manuellement des dossiers Drive, des colonnes de tableur, des faux profils d'étudiants et des modèles de diapositives, exécutez le script d'initialisation autonome ci-dessous.
+                        </p>
+                        <p>
+                            <strong>Procédure de lancement :</strong>
+                        </p>
+                        <ol>
+                            <li>Rendez-vous sur <a href="https://script.google.com/home/start" target="_blank" rel="noopener noreferrer" class="codelab-url-link">script.google.com/home/start</a> et cliquez sur <strong>Nouveau projet</strong>.</li>
+                            <li>Renommez le projet dans la barre supérieure : <code>GDG_Workspace_Automation_Master</code>.</li>
+                            <li>Effacez le code existant dans <code>Code.gs</code>, collez le script ci-dessous, puis cliquez sur <strong>Exécuter</strong> (fonction <code>setupWorkshopEnvironment</code>).</li>
+                        </ol>
+                    </div>
+
+                    <div class="code-window">
+                        <div class="code-header">
+                            <span class="code-filename">Code.gs (Setup Workshop Sandbox)</span>
+                            <button class="copy-btn" data-copied="Copied!">Copy</button>
+                        </div>
+                        <pre><code>/**
+ * Google Apps Script Workshop Automation
+ * 1-Click Environment Setup Script
+ * Track: GDG - Google Workspace Training (Day V)
+ * Author: Georges Byona (@glosings0n)
+ */
+
+function setupWorkshopEnvironment() {
+  console.log('Initiating 1-Click Sandbox Provisioning...');
+
+  // 1. Create a dedicated Google Drive folder for the workshop
+  const folderName = 'GDG_Workspace_Workshop_2026';
+  const existingFolders = DriveApp.getFoldersByName(folderName);
+  let workshopFolder;
+
+  if (existingFolders.hasNext()) {
+    workshopFolder = existingFolders.next();
+    console.log(`Using existing workshop folder: ${workshopFolder.getName()} (ID: ${workshopFolder.getId()})`);
+  } else {
+    workshopFolder = DriveApp.createFolder(folderName);
+    console.log(`Created new workshop folder: ${folderName} (ID: ${workshopFolder.getId()})`);
+  }
+
+  // 2. Create the Master Attendance & Grades Google Sheet
+  const spreadsheetName = 'Students_Attendance_2026';
+  const newSpreadsheet = SpreadsheetApp.create(spreadsheetName);
+  const sheetFile = DriveApp.getFileById(newSpreadsheet.getId());
+  
+  // Move file into the dedicated workshop folder
+  workshopFolder.addFile(sheetFile);
+  DriveApp.getRootFolder().removeFile(sheetFile);
+
+  const sheet = newSpreadsheet.getActiveSheet();
+  sheet.setName('Attendance_Master');
+
+  // Define headers
+  const headers = [
+    [
+      'Student ID',
+      'Full Name',
+      'Email',
+      'Track',
+      'Day 1',
+      'Day 2',
+      'Day 3',
+      'Day 4',
+      'Day 5',
+      'Attendance Rate',
+      'Exam Score',
+      'Certificate Status',
+      'Certificate URL'
+    ]
+  ];
+
+  sheet.getRange(1, 1, 1, headers[0].length).setValues(headers);
+
+  // Apply solid header styling
+  const headerRange = sheet.getRange(1, 1, 1, headers[0].length);
+  headerRange.setBackground('#02569B');
+  headerRange.setFontColor('#FFFFFF');
+  headerRange.setFontWeight('bold');
+  headerRange.setHorizontalAlignment('center');
+  sheet.setFrozenRows(1);
+
+  // 3. Populate 8 realistic sample student records
+  const sampleStudents = [
+    ['STU-001', 'Amina Mwangi', 'amina.mwangi@example.com', 'Cloud & Workspace', 'P', 'P', 'P', 'P', 'P', '', 94, 'PENDING', ''],
+    ['STU-002', 'Jean-Luc Bakala', 'jeanluc.bakala@example.com', 'Cloud & Workspace', 'P', 'P', 'P', 'P', 'P', '', 88, 'PENDING', ''],
+    ['STU-003', 'Koffi Mensah', 'koffi.mensah@example.com', 'Automation & AI', 'P', 'P', 'A', 'P', 'P', '', 82, 'PENDING', ''],
+    ['STU-004', 'Sarah Ochieng', 'sarah.ochieng@example.com', 'Automation & AI', 'P', 'A', 'P', 'P', 'A', '', 65, 'PENDING', ''],
+    ['STU-005', 'Christian Mabiala', 'christian.mabiala@example.com', 'Cloud & Workspace', 'P', 'P', 'P', 'P', 'P', '', 96, 'PENDING', ''],
+    ['STU-006', 'Fatou Diallo', 'fatou.diallo@example.com', 'Cloud & Workspace', 'A', 'A', 'P', 'P', 'P', '', 60, 'PENDING', ''],
+    ['STU-007', 'David Mutua', 'david.mutua@example.com', 'Automation & AI', 'P', 'P', 'P', 'P', 'P', '', 91, 'PENDING', ''],
+    ['STU-008', 'Grace Ndege', 'grace.ndege@example.com', 'Automation & AI', 'P', 'P', 'P', 'A', 'P', '', 85, 'PENDING', '']
+  ];
+
+  sheet.getRange(2, 1, sampleStudents.length, headers[0].length).setValues(sampleStudents);
+  sheet.autoResizeColumns(1, headers[0].length);
+
+  // 4. Create the Vector Certificate Google Slides Template
+  const templateName = 'Certificate_Template_2026';
+  const presentation = SlidesApp.create(templateName);
+  const presentationFile = DriveApp.getFileById(presentation.getId());
+  
+  workshopFolder.addFile(presentationFile);
+  DriveApp.getRootFolder().removeFile(presentationFile);
+
+  const slide = presentation.getSlides()[0];
+  
+  // Clean default blank layout
+  slide.getShapes().forEach(shape => shape.remove());
+
+  // Add Certificate Title Box
+  const titleBox = slide.insertTextBox('CERTIFICATE OF ACHIEVEMENT', 50, 40, 620, 60);
+  const titleText = titleBox.getText();
+  titleText.getTextStyle().setFontSize(28).setFontFamily('Arial').setBold(true).setForegroundColor('#02569B');
+  titleBox.getText().getParagraphStyle().setParagraphAlignment(SlidesApp.ParagraphAlignment.CENTER);
+
+  // Add Body Text with dynamic replacement tokens
+  const bodyBox = slide.insertTextBox(
+    'This is proudly presented to\n\n' +
+    '{{NAME}}\n\n' +
+    'for successfully completing the 5-day intensive curriculum in {{TRACK}}.\n' +
+    'Issued on {{DATE}} | Verification ID: {{CERT_ID}}',
+    50, 130, 620, 200
+  );
+  
+  const bodyText = bodyBox.getText();
+  bodyText.getTextStyle().setFontSize(16).setFontFamily('Arial');
+  bodyBox.getText().getParagraphStyle().setParagraphAlignment(SlidesApp.ParagraphAlignment.CENTER);
+
+  presentation.saveAndClose();
+
+  // 5. Store generated IDs in ScriptProperties for seamless access across practices
+  const scriptProperties = PropertiesService.getScriptProperties();
+  scriptProperties.setProperties({
+    WORKSHOP_FOLDER_ID: workshopFolder.getId(),
+    SPREADSHEET_ID: newSpreadsheet.getId(),
+    SLIDES_TEMPLATE_ID: presentation.getId(),
+    ADMIN_EMAIL: Session.getActiveUser().getEmail()
+  });
+
+  console.log('=== SANDBOX PROVISIONING SUCCESSFUL ===');
+  console.log(`Workshop Folder ID: ${workshopFolder.getId()}`);
+  console.log(`Spreadsheet ID:     ${newSpreadsheet.getId()}`);
+  console.log(`Slides Template ID: ${presentation.getId()}`);
+  console.log(`Admin Active Email: ${Session.getActiveUser().getEmail()}`);
+  console.log('All parameters saved in ScriptProperties.');
+}</code></pre>
+                    </div>
+
+                    <!-- 5. OAuth Permission Approval Walkthrough -->
+                    <div class="lang-en">
+                        <h3>5. OAuth2 Permission Approval Walkthrough</h3>
+                        <p>
+                            When running the script for the very first time, Google Apps Script prompts you to authorize access to your Google Drive, Sheets, and Slides. This is a critical security mechanism. Follow these exact steps:
+                        </p>
+                        <ol>
+                            <li>Click the <strong>Review permissions</strong> button on the modal dialog.</li>
+                            <li>Choose the Google Account you are currently working with.</li>
+                            <li>A security screen displays: <em>Google hasn't verified this app</em>. <strong>This is completely normal</strong> because you are authoring a custom, private developer script that has not undergone third-party public marketplace verification.</li>
+                            <li>Click <strong>Advanced</strong> (bottom-left link).</li>
+                            <li>Click <strong>Go to GDG_Workspace_Automation_Master (unsafe)</strong>.</li>
+                            <li>Review the requested scopes (View and manage your spreadsheets, presentations, and Drive files) and click <strong>Allow</strong>.</li>
+                        </ol>
+                        <p>
+                            Once authorized, the script executes, creating the folder, the populated sheet, and the slide template in less than 5 seconds.
+                        </p>
+                    </div>
+
+                    <div class="lang-fr">
+                        <h3>5. Procédure d'Autorisation des Droits d'Accès OAuth2</h3>
+                        <p>
+                            Lors de la toute première exécution, Google Apps Script affiche une invite modale demandant d'autoriser l'accès à vos fichiers Google Drive, Sheets et Slides. Il s'agit d'un mécanisme de protection standard. Suivez précisément ces étapes :
+                        </p>
+                        <ol>
+                            <li>Cliquez sur le bouton <strong>Vérifier les autorisations</strong> dans la fenêtre modale.</li>
+                            <li>Sélectionnez votre compte Google actif.</li>
+                            <li>Un écran d'avertissement apparaît : <em>Google n'a pas validé cette application</em>. <strong>C'est un comportement parfaitement attendu</strong> car vous exécutez votre propre script développeur privé, non soumis à une validation publique commerciale.</li>
+                            <li>Cliquez sur le lien <strong>Paramètres avancés</strong> situé en bas à gauche.</li>
+                            <li>Cliquez sur <strong>Accéder à GDG_Workspace_Automation_Master (non sécurisé)</strong>.</li>
+                            <li>Passez en revue les autorisations demandées (gestion de vos feuilles de calcul, diapositives et Drive), puis cliquez sur <strong>Autoriser</strong>.</li>
+                        </ol>
+                        <p>
+                            Une fois les autorisations validées, le script s'exécute et déploie le dossier, la feuille pré-remplie et le modèle de certificat en moins de 5 secondes.
+                        </p>
+                    </div>
+
+                    <div class="step-pagination">
+                        <span></span>
+                        <button class="nav-step-btn primary" data-step-target="1"
+                            data-en="Proceed to Practice 1 &rarr;"
+                            data-fr="Passer à la Pratique 1 &rarr;">Proceed to Practice 1 &rarr;</button>
+                    </div>
+                </article>
+
+                <!-- =========================================================
+                     STEP 2: PRACTICE 1 | FORMS TO GMAIL NOTIFICATION
+                     ========================================================= -->
+                <article class="codelab-step" id="step-2" data-duration="6">
+                    <div class="step-header">
+                        <div class="step-eyebrow">
+                            <span data-en="Step 2 of 10 | Practice 1: Forms to Gmail Notification"
+                                data-fr="Étape 2 sur 10 | Pratique 1 : De Forms à Notification Gmail">Step 2 of 10 | Practice 1: Forms to Gmail Notification</span>
+                            <span class="codelab-last-updated">Last updated: <time datetime="2026-10-29">October 29, 2026</time></span>
+                        </div>
+                        <h1 class="step-title"
+                            data-en="Practice 1: Automated Responsive Confirmation Receipt on Form Submit"
+                            data-fr="Pratique 1 : Accusé de Réception Automatique et Responsive sur Formulaire">Practice 1: Automated Responsive Confirmation Receipt on Form Submit</h1>
+                    </div>
+
+                    <div class="lang-en">
+                        <h3>1. The Operational Challenge: Manual Participant Confirmation</h3>
+                        <p>
+                            During community bootcamps or university workshops, organizers collect hundreds of sign-ups or project submissions via Google Forms. Without automation, participants are left wondering whether their submission succeeded. Waiting hours for a manual confirmation email damages engagement.
+                        </p>
+                        <p>
+                            In this practice, you will write an event-driven trigger function that intercepts form submissions, parses the response fields, and instantly dispatches a customized, brand-styled HTML email via <code>GmailApp.sendEmail()</code> with a bulletproof plain-text fallback.
+                        </p>
+                    </div>
+
+                    <div class="lang-fr">
+                        <h3>1. Le Défi Opérationnel : Confirmation Manuelle des Participants</h3>
+                        <p>
+                            Lors des bootcamps communautaires ou des sessions universitaires, les organisateurs collectent des centaines d'inscriptions ou de livrables via Google Forms. En l'absence d'automatisation, les participants doutent de la bonne réception de leur soumission. Attendre des heures un email manuel pénalise l'engagement.
+                        </p>
+                        <p>
+                            Dans cette pratique, vous allez créer une fonction déclenchée par événement qui intercepte chaque soumission de formulaire, analyse les champs saisis et envoie instantanément un email HTML responsive via <code>GmailApp.sendEmail()</code>, assorti d'une version texte de secours.
+                        </p>
+                    </div>
+
+                    <div class="code-window">
+                        <div class="code-header">
+                            <span class="code-filename">Practice1_FormNotification.gs</span>
+                            <button class="copy-btn" data-copied="Copied!">Copy</button>
+                        </div>
+                        <pre><code>/**
+ * Practice 1: Automated Form Submission Email Receipt
+ * Service: FormApp + GmailApp + SpreadsheetApp
+ */
+
+function handleWorkshopFormSubmission(e) {
+  try {
+    let studentName = 'Participant';
+    let studentEmail = '';
+    let selectedTrack = 'Google Workspace & Cloud Automation';
+
+    // Handle execution both via Installable Event Trigger and Direct Testing
+    if (e && e.namedValues) {
+      // Triggered by Google Sheets form response link
+      studentName = e.namedValues['Full Name'] ? e.namedValues['Full Name'][0] : 'Participant';
+      studentEmail = e.namedValues['Email'] ? e.namedValues['Email'][0] : '';
+      selectedTrack = e.namedValues['Track'] ? e.namedValues['Track'][0] : selectedTrack;
+    } else {
+      // Fallback for manual editor testing
+      console.log('No event object detected. Using test participant parameters...');
+      const props = PropertiesService.getScriptProperties();
+      studentEmail = props.getProperty('ADMIN_EMAIL') || Session.getActiveUser().getEmail();
+      studentName = 'Test Student (Editor Run)';
+    }
+
+    if (!studentEmail || !studentEmail.includes('@')) {
+      console.warn(`Invalid or empty recipient email: "${studentEmail}". Aborting dispatch.`);
+      return;
+    }
+
+    const emailSubject = `Confirmation: Registration Received | GDG Workspace Training 2026`;
+    
+    // Clean, responsive inline-styled HTML template (no external CSS dependencies)
+    const htmlBody = `
+      <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; border: 1px solid #cbd5e1; border-radius: 8px; overflow: hidden; background-color: #ffffff;">
+        <div style="background-color: #02569B; color: #ffffff; padding: 24px; text-align: center;">
+          <h2 style="margin: 0; font-size: 22px;">GDG - Google Workspace Training</h2>
+          <p style="margin: 8px 0 0 0; font-size: 14px; opacity: 0.9;">Registration Confirmation &amp; Day V Roadmap</p>
+        </div>
+        <div style="padding: 24px; color: #1e293b; line-height: 1.6;">
+          <p style="font-size: 16px; margin-top: 0;">Hello <strong>${studentName}</strong>,</p>
+          <p>We are delighted to confirm that your workshop submission has been securely recorded in our system.</p>
+          
+          <div style="background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; padding: 16px; margin: 20px 0;">
+            <p style="margin: 0 0 8px 0; font-size: 14px; font-weight: bold; color: #02569B;">Session Summary:</p>
+            <ul style="margin: 0; padding-left: 20px; font-size: 14px; color: #334155;">
+              <li><strong>Registered Track:</strong> ${selectedTrack}</li>
+              <li><strong>Format:</strong> 5-Day Intensive Community Workshop</li>
+              <li><strong>Automated Module:</strong> Day V - Google Apps Script Deep Dive</li>
+            </ul>
+          </div>
+
+          <p style="font-size: 14px; color: #64748b;">
+            Please ensure you have active access to <a href="https://script.google.com" style="color: #0284c7; text-decoration: none;">script.google.com</a> before our live hands-on session.
+          </p>
+          <hr style="border: none; border-top: 1px solid #e2e8f0; margin: 24px 0;" />
+          <p style="font-size: 12px; color: #94a3b8; margin-bottom: 0; text-align: center;">
+            Organized with GDG Afrique Francophone, GDG Pointe-Noire &amp; GDG on Campus CUEA.<br>
+            Powered by LosingTek &amp; FlutterFire Summer Camp.
+          </p>
+        </div>
+      </div>
+    `;
+
+    const plainTextFallback = `Hello ${studentName},\n\nYour registration for GDG - Google Workspace Training has been confirmed!\nTrack: ${selectedTrack}\n\nSee you at the Day V Google Apps Script automation session!`;
+
+    // Send email with zero third-party dependencies
+    GmailApp.sendEmail(studentEmail, emailSubject, plainTextFallback, {
+      htmlBody: htmlBody,
+      name: 'GDG Workspace Automation Lead'
+    });
+
+    console.log(`Confirmation email successfully dispatched to: ${studentEmail}`);
+  } catch (err) {
+    console.error(`Failed to execute handleWorkshopFormSubmission: ${err.message}`);
+  }
+}</code></pre>
+                    </div>
+
+                    <div class="lang-en">
+                        <h3>2. Attaching the Installable Trigger</h3>
+                        <p>
+                            While you can test <code>handleWorkshopFormSubmission</code> directly in the Apps Script editor, in production you must connect it to real form submissions:
+                        </p>
+                        <ol>
+                            <li>In the left-hand navigation of Apps Script, click the alarm-clock icon: <strong>Triggers</strong>.</li>
+                            <li>Click <strong>+ Add Trigger</strong> in the bottom-right corner.</li>
+                            <li>Under <em>Choose which function to run</em>, select <code>handleWorkshopFormSubmission</code>.</li>
+                            <li>Under <em>Select event source</em>, choose <strong>From spreadsheet</strong> (or From form).</li>
+                            <li>Under <em>Select event type</em>, select <strong>On form submit</strong>.</li>
+                            <li>Click <strong>Save</strong> and authorize any newly requested Gmail send permissions.</li>
+                        </ol>
+                    </div>
+
+                    <div class="lang-fr">
+                        <h3>2. Configuration du Déclencheur Installable (Trigger)</h3>
+                        <p>
+                            Même si vous pouvez exécuter <code>handleWorkshopFormSubmission</code> directement dans l'éditeur pour tester l'envoi, en production vous devez lier la fonction aux soumissions réelles :
+                        </p>
+                        <ol>
+                            <li>Dans le menu latéral gauche de l'éditeur Apps Script, cliquez sur l'icône de réveil : <strong>Déclencheurs</strong>.</li>
+                            <li>Cliquez sur le bouton <strong>+ Ajouter un déclencheur</strong> en bas à droite.</li>
+                            <li>Sous <em>Sélectionnez la fonction à exécuter</em>, choisissez <code>handleWorkshopFormSubmission</code>.</li>
+                            <li>Sous <em>Sélectionnez la source de l'événement</em>, choisissez <strong>Depuis la feuille de calcul</strong> (ou Depuis le formulaire).</li>
+                            <li>Sous <em>Sélectionnez le type d'événement</em>, optez pour <strong>Lors de l'envoi du formulaire</strong>.</li>
+                            <li>Cliquez sur <strong>Enregistrer</strong> et validez les accès d'envoi Gmail requis.</li>
+                        </ol>
+                    </div>
+
+                    <div class="step-pagination">
+                        <button class="nav-step-btn" data-step-target="0"
+                            data-en="&larr; Previous"
+                            data-fr="&larr; Précédent">&larr; Previous</button>
+                        <button class="nav-step-btn primary" data-step-target="2"
+                            data-en="Proceed to Practice 2 &rarr;"
+                            data-fr="Passer à la Pratique 2 &rarr;">Proceed to Practice 2 &rarr;</button>
+                    </div>
+                </article>
+
+                <!-- =========================================================
+                     STEP 3: PRACTICE 2 | GOOGLE CONTACTS INGESTION
+                     ========================================================= -->
+                <article class="codelab-step" id="step-3" data-duration="6">
+                    <div class="step-header">
+                        <div class="step-eyebrow">
+                            <span data-en="Step 3 of 10 | Practice 2: Google Contacts Ingestion"
+                                data-fr="Étape 3 sur 10 | Pratique 2 : Ingestion dans Google Contacts">Step 3 of 10 | Practice 2: Google Contacts Ingestion</span>
+                            <span class="codelab-last-updated">Last updated: <time datetime="2026-10-29">October 29, 2026</time></span>
+                        </div>
+                        <h1 class="step-title"
+                            data-en="Practice 2: Automatic Directory Ingestion into Google Contacts"
+                            data-fr="Pratique 2 : Ingestion Automatisée du Répertoire dans Google Contacts">Practice 2: Automatic Directory Ingestion into Google Contacts</h1>
+                    </div>
+
+                    <div class="lang-en">
+                        <h3>1. The Operational Challenge: Synchronizing Contact Directories</h3>
+                        <p>
+                            Organizing community cohorts requires keeping your personal and team contact books updated. When instructors need to send calendar invitations, share drive files, or broadcast announcements, typing emails manually or managing static CSV export files quickly leads to typos and omitted participants.
+                        </p>
+                        <p>
+                            Using <code>ContactsApp</code>, you will automate the synchronization between the students listed in the Google Sheet and a curated, labeled Google Contacts group (<code>GDG Workspace Training 2026</code>) with deduplication guards.
+                        </p>
+                    </div>
+
+                    <div class="lang-fr">
+                        <h3>1. Le Défi Opérationnel : Synchronisation du Carnet d'Adresses</h3>
+                        <p>
+                            La gestion des cohortes d'étudiants nécessite un répertoire d'adresses constamment synchronisé. Lorsque les formateurs doivent inviter les participants, partager des dossiers Drive ou diffuser des annonces, saisir manuellement les courriels ou jongler avec des fichiers CSV exportés génère inévitablement des oublis et des erreurs de saisie.
+                        </p>
+                        <p>
+                            À l'aide de <code>ContactsApp</code>, vous allez automatiser la synchronisation des étudiants de la feuille de calcul vers un groupe de contacts étiqueté (<code>GDG Workspace Training 2026</code>) avec contrôle anti-doublon.
+                        </p>
+                    </div>
+
+                    <div class="code-window">
+                        <div class="code-header">
+                            <span class="code-filename">Practice2_ContactsSync.gs</span>
+                            <button class="copy-btn" data-copied="Copied!">Copy</button>
+                        </div>
+                        <pre><code>/**
+ * Practice 2: Batch Student Ingestion into Google Contacts
+ * Service: ContactsApp + SpreadsheetApp
+ */
+
+function syncStudentsToGoogleContacts() {
+  try {
+    const props = PropertiesService.getScriptProperties();
+    const spreadsheetId = props.getProperty('SPREADSHEET_ID');
+
+    if (!spreadsheetId) {
+      throw new Error('SPREADSHEET_ID not found in ScriptProperties. Run setupWorkshopEnvironment first.');
+    }
+
+    const spreadsheet = SpreadsheetApp.openById(spreadsheetId);
+    const sheet = spreadsheet.getSheetByName('Attendance_Master');
+    const data = sheet.getDataRange().getValues();
+
+    if (data.length <= 1) {
+      console.log('No student rows found in Attendance_Master.');
+      return;
+    }
+
+    // 1. Locate or create the targeted Contact Group
+    const groupName = 'GDG Workspace Training 2026';
+    let contactGroup = ContactsApp.getContactGroup(groupName);
+
+    if (!contactGroup) {
+      contactGroup = ContactsApp.createContactGroup(groupName);
+      console.log(`Created new Contact Group: "${groupName}"`);
+    } else {
+      console.log(`Using existing Contact Group: "${groupName}"`);
+    }
+
+    let createdCount = 0;
+    let existingCount = 0;
+
+    // 2. Iterate student records (skip header at index 0)
+    for (let i = 1; i < data.length; i++) {
+      const row = data[i];
+      const studentId = row[0];
+      const fullName = row[1];
+      const email = row[2];
+      const track = row[3];
+
+      if (!email || !email.includes('@')) {
+        continue;
+      }
+
+      // Check for existing contact to prevent duplicate entries
+      const existingContacts = ContactsApp.getContactsByEmailAddress(email);
+
+      let contact;
+      if (existingContacts.length > 0) {
+        contact = existingContacts[0];
+        existingCount++;
+      } else {
+        // Parse First Name and Last Name
+        const nameParts = fullName.trim().split(' ');
+        const firstName = nameParts[0] || 'Student';
+        const lastName = nameParts.slice(1).join(' ') || '';
+
+        contact = ContactsApp.createContact(firstName, lastName, email);
+        createdCount++;
+      }
+
+      // 3. Add custom note and attach to the group
+      contact.setNotes(`Participant ID: ${studentId} | Track: ${track} | GDG Workspace Training 2026`);
+      
+      const currentGroups = contact.getContactGroups();
+      const alreadyInGroup = currentGroups.some(g => g.getName() === groupName);
+
+      if (!alreadyInGroup) {
+        contact.addToGroup(contactGroup);
+      }
+    }
+
+    console.log('=== CONTACT SYNCHRONIZATION COMPLETE ===');
+    console.log(`Newly Created Contacts: ${createdCount}`);
+    console.log(`Existing Contacts Synced: ${existingCount}`);
+    console.log(`Total Group Members:     ${contactGroup.getContacts().length}`);
+  } catch (err) {
+    console.error(`Error in syncStudentsToGoogleContacts: ${err.message}`);
+  }
+}</code></pre>
+                    </div>
+
+                    <div class="callout callout-info">
+                        <svg class="callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="12" y1="16" x2="12" y2="12"></line>
+                            <circle cx="12" cy="8" r="1.25" fill="currentColor" stroke="none"></circle>
+                        </svg>
+                        <div class="callout-body">
+                            <div class="lang-en">
+                                <div class="callout-title">People API vs ContactsApp</div>
+                                <p>
+                                    <code>ContactsApp</code> is the built-in, zero-configuration service. For large enterprise environments requiring custom field schemas or photo uploads, you can also enable the Advanced Google Service <strong>People API</strong> in Apps Script under <em>Services &gt; Google People API</em>.
+                                </p>
+                            </div>
+                            <div class="lang-fr">
+                                <div class="callout-title">People API vs ContactsApp</div>
+                                <p>
+                                    <code>ContactsApp</code> est le service natif prêt à l'emploi. Pour les déploiements d'entreprise complexes nécessitant des schémas de champs personnalisés ou des photos de profil, vous pouvez activer le service avancé <strong>People API</strong> dans Apps Script via <em>Services &gt; Google People API</em>.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="step-pagination">
+                        <button class="nav-step-btn" data-step-target="1"
+                            data-en="&larr; Previous"
+                            data-fr="&larr; Précédent">&larr; Previous</button>
+                        <button class="nav-step-btn primary" data-step-target="3"
+                            data-en="Proceed to Practice 3 &rarr;"
+                            data-fr="Passer à la Pratique 3 &rarr;">Proceed to Practice 3 &rarr;</button>
+                    </div>
+                </article>
+
+                <!-- =========================================================
+                     STEP 4: PRACTICE 3 | ATTENDANCE AUDIT & TEACHER REPORT
+                     ========================================================= -->
+                <article class="codelab-step" id="step-4" data-duration="6">
+                    <div class="step-header">
+                        <div class="step-eyebrow">
+                            <span data-en="Step 4 of 10 | Practice 3: Attendance Audit &amp; Report"
+                                data-fr="Étape 4 sur 10 | Pratique 3 : Audit d'Assiduité &amp; Rapport">Step 4 of 10 | Practice 3: Attendance Audit &amp; Report</span>
+                            <span class="codelab-last-updated">Last updated: <time datetime="2026-10-29">October 29, 2026</time></span>
+                        </div>
+                        <h1 class="step-title"
+                            data-en="Practice 3: Student Attendance Audit &amp; Automated Teacher Digest"
+                            data-fr="Pratique 3 : Audit d'Assiduité des Élèves et Rapport Enseignant Automatisé">Practice 3: Student Attendance Audit &amp; Automated Teacher Digest</h1>
+                    </div>
+
+                    <div class="lang-en">
+                        <h3>1. The Operational Challenge: Identifying At-Risk Students Before Graduation</h3>
+                        <p>
+                            In academic bootcamps, attendance directly correlates with student success. However, instructors rarely have time to compute attendance percentages row by row after every session. Often, at-risk students are only discovered on graduation day when it is too late to offer remedial guidance.
+                        </p>
+                        <p>
+                            In this practice, you will write a batch calculation routine that processes attendance data (Days 1 to 5), writes computed percentages back to the sheet in a single atomic call, and formats an analytical email summary for the teaching team with status-tagged KPIs.
+                        </p>
+                    </div>
+
+                    <div class="lang-fr">
+                        <h3>1. Le Défi Opérationnel : Détecter le Décrochage Avant la Fin du Parcours</h3>
+                        <p>
+                            Dans un bootcamp intensif, l'assiduité conditionne directement la réussite. Pourtant, les formateurs ont rarement le temps de recalculer manuellement le taux de présence ligne par ligne après chaque session. Trop souvent, les décrochages ne sont constatés que le dernier jour, rendant tout soutien impossible.
+                        </p>
+                        <p>
+                            Dans cette pratique, vous allez créer un algorithme de traitement par lot qui calcule l'assiduité des jours 1 à 5, met à jour la feuille en un seul appel atomique et expédie un tableau de bord analytique aux enseignants avec des indicateurs de statut visuels.
+                        </p>
+                    </div>
+
+                    <div class="code-window">
+                        <div class="code-header">
+                            <span class="code-filename">Practice3_AttendanceAudit.gs</span>
+                            <button class="copy-btn" data-copied="Copied!">Copy</button>
+                        </div>
+                        <pre><code>/**
+ * Practice 3: Student Attendance Audit & Teacher Digest Report
+ * Service: SpreadsheetApp + GmailApp
+ */
+
+function auditStudentAttendanceAndNotify() {
+  try {
+    const props = PropertiesService.getScriptProperties();
+    const spreadsheetId = props.getProperty('SPREADSHEET_ID');
+    const adminEmail = props.getProperty('ADMIN_EMAIL') || Session.getActiveUser().getEmail();
+
+    if (!spreadsheetId) {
+      throw new Error('SPREADSHEET_ID missing from ScriptProperties.');
+    }
+
+    const spreadsheet = SpreadsheetApp.openById(spreadsheetId);
+    const sheet = spreadsheet.getSheetByName('Attendance_Master');
+    const dataRange = sheet.getDataRange();
+    const values = dataRange.getValues();
+
+    if (values.length <= 1) {
+      console.log('No data to audit.');
+      return;
+    }
+
+    const attendanceRateUpdates = [];
+    let totalStudents = values.length - 1;
+    let perfectAttendanceCount = 0;
+    let atRiskCount = 0;
+    let eligibleCount = 0;
+    let cumulativeRate = 0;
+
+    let tableRowsHtml = '';
+
+    // Loop through students (indices: Day 1 = col 4, Day 5 = col 8, Rate = col 9)
+    for (let i = 1; i < values.length; i++) {
+      const row = values[i];
+      const studentId = row[0];
+      const fullName = row[1];
+      const email = row[2];
+      const track = row[3];
+
+      let daysPresent = 0;
+      for (let dayCol = 4; dayCol <= 8; dayCol++) {
+        if (row[dayCol] === 'P') {
+          daysPresent++;
+        }
+      }
+
+      const ratePercentage = Math.round((daysPresent / 5) * 100);
+      cumulativeRate += ratePercentage;
+      attendanceRateUpdates.push([`${ratePercentage}%`]);
+
+      let statusBadge = '';
+      if (ratePercentage >= 80) {
+        eligibleCount++;
+        if (ratePercentage === 100) perfectAttendanceCount++;
+        statusBadge = '<span style="background-color: #dcfce7; color: #15803d; padding: 4px 8px; border-radius: 4px; font-weight: bold; font-size: 12px;">Eligible</span>';
+      } else if (ratePercentage >= 75) {
+        statusBadge = '<span style="background-color: #fef9c3; color: #a16207; padding: 4px 8px; border-radius: 4px; font-weight: bold; font-size: 12px;">Borderline</span>';
+      } else {
+        atRiskCount++;
+        statusBadge = '<span style="background-color: #fee2e2; color: #b91c1c; padding: 4px 8px; border-radius: 4px; font-weight: bold; font-size: 12px;">At Risk</span>';
+      }
+
+      tableRowsHtml += `
+        <tr style="border-bottom: 1px solid #e2e8f0; font-size: 13px;">
+          <td style="padding: 10px; font-family: monospace;">${studentId}</td>
+          <td style="padding: 10px; font-weight: 500;">${fullName}</td>
+          <td style="padding: 10px; color: #64748b;">${track}</td>
+          <td style="padding: 10px; text-align: center; font-weight: bold;">${ratePercentage}%</td>
+          <td style="padding: 10px; text-align: center;">${statusBadge}</td>
+        </tr>
+      `;
+    }
+
+    // Single atomic batch write for all attendance rates (Column J, Row 2 onwards)
+    sheet.getRange(2, 10, attendanceRateUpdates.length, 1).setValues(attendanceRateUpdates);
+    console.log(`Updated attendance rate for ${attendanceRateUpdates.length} students in sheet.`);
+
+    const averageCohortRate = Math.round(cumulativeRate / totalStudents);
+
+    // Build Executive HTML Email Digest for Instructors
+    const emailSubject = `Attendance Audit Digest: ${averageCohortRate}% Cohort Avg | GDG Workspace Training`;
+    const htmlReport = `
+      <div style="font-family: Arial, sans-serif; max-width: 650px; margin: 0 auto; border: 1px solid #cbd5e1; border-radius: 8px; overflow: hidden; background-color: #ffffff;">
+        <div style="background-color: #02569B; color: #ffffff; padding: 20px;">
+          <h2 style="margin: 0; font-size: 20px;">Student Attendance &amp; Progression Audit</h2>
+          <p style="margin: 6px 0 0 0; font-size: 13px; opacity: 0.9;">GDG - Google Workspace Training (Day V Audit)</p>
+        </div>
+        
+        <div style="padding: 20px; color: #1e293b;">
+          <!-- Metric KPI Grid -->
+          <div style="display: table; width: 100%; margin-bottom: 20px;">
+            <div style="display: table-cell; width: 25%; text-align: center; padding: 12px; background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px;">
+              <div style="font-size: 22px; font-weight: bold; color: #02569B;">${totalStudents}</div>
+              <div style="font-size: 11px; color: #64748b; text-transform: uppercase;">Total Cohort</div>
+            </div>
+            <div style="display: table-cell; width: 25%; text-align: center; padding: 12px; background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px;">
+              <div style="font-size: 22px; font-weight: bold; color: #0284c7;">${averageCohortRate}%</div>
+              <div style="font-size: 11px; color: #64748b; text-transform: uppercase;">Average Rate</div>
+            </div>
+            <div style="display: table-cell; width: 25%; text-align: center; padding: 12px; background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px;">
+              <div style="font-size: 22px; font-weight: bold; color: #15803d;">${eligibleCount}</div>
+              <div style="font-size: 11px; color: #64748b; text-transform: uppercase;">Certificate Ready</div>
+            </div>
+            <div style="display: table-cell; width: 25%; text-align: center; padding: 12px; background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px;">
+              <div style="font-size: 22px; font-weight: bold; color: #b91c1c;">${atRiskCount}</div>
+              <div style="font-size: 11px; color: #64748b; text-transform: uppercase;">At Risk (<75%)</div>
+            </div>
+          </div>
+
+          <!-- Roster Table -->
+          <table style="width: 100%; border-collapse: collapse; margin-top: 10px;">
+            <thead>
+              <tr style="background-color: #f1f5f9; text-align: left; font-size: 12px; color: #475569;">
+                <th style="padding: 10px;">ID</th>
+                <th style="padding: 10px;">Student Name</th>
+                <th style="padding: 10px;">Track</th>
+                <th style="padding: 10px; text-align: center;">Rate</th>
+                <th style="padding: 10px; text-align: center;">Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${tableRowsHtml}
+            </tbody>
+          </table>
+
+          <div style="margin-top: 24px; padding: 12px; background-color: #eff6ff; border: 1px solid #bfdbfe; border-radius: 6px; font-size: 13px; color: #1e40af;">
+            <strong>Action Required:</strong> Students marked <em>At Risk</em> will receive an automated invitation to 1-on-1 office hours via Google Meet in Practice 5.
+          </div>
+        </div>
+      </div>
+    `;
+
+    GmailApp.sendEmail(adminEmail, emailSubject, `Cohort Attendance Audit Completed: ${averageCohortRate}% Average.`, {
+      htmlBody: htmlReport,
+      name: 'GDG Attendance Auditor'
+    });
+
+    console.log(`Audit digest successfully sent to instructor at: ${adminEmail}`);
+  } catch (err) {
+    console.error(`Error in auditStudentAttendanceAndNotify: ${err.message}`);
+  }
+}</code></pre>
+                    </div>
+
+                    <div class="step-pagination">
+                        <button class="nav-step-btn" data-step-target="2"
+                            data-en="&larr; Previous"
+                            data-fr="&larr; Précédent">&larr; Previous</button>
+                        <button class="nav-step-btn primary" data-step-target="4"
+                            data-en="Proceed to Practice 4 &rarr;"
+                            data-fr="Passer à la Pratique 4 &rarr;">Proceed to Practice 4 &rarr;</button>
+                    </div>
+                </article>
+
+                <!-- =========================================================
+                     STEP 5: PRACTICE 4 | VECTOR E-CERTIFICATES WITH SLIDES & PDF
+                     ========================================================= -->
+                <article class="codelab-step" id="step-5" data-duration="7">
+                    <div class="step-header">
+                        <div class="step-eyebrow">
+                            <span data-en="Step 5 of 10 | Practice 4: Vector E-Certificates with Slides"
+                                data-fr="Étape 5 sur 10 | Pratique 4 : E-Certificats avec Slides &amp; PDF">Step 5 of 10 | Practice 4: Vector E-Certificates with Slides</span>
+                            <span class="codelab-last-updated">Last updated: <time datetime="2026-10-29">October 29, 2026</time></span>
+                        </div>
+                        <h1 class="step-title"
+                            data-en="Practice 4: Automated Vector E-Certificate Factory with Google Slides &amp; PDF"
+                            data-fr="Pratique 4 : Usine d'E-Certificats Vectoriels avec Google Slides et PDF">Practice 4: Automated Vector E-Certificate Factory with Google Slides &amp; PDF</h1>
+                    </div>
+
+                    <div class="lang-en">
+                        <h3>1. The Operational Challenge: Certificate Generation at Scale</h3>
+                        <p>
+                            Generating certificates manually for 100 participants in graphic design software takes hours of tedious export and renaming. Additionally, static image formats (JPEG/PNG) look blurry when printed and cannot be programmatically searched or verified.
+                        </p>
+                        <p>
+                            In this practice, you will use Google Slides as a vector document layout engine. Your script will iterate over eligible students in the Google Sheet (attendance rate &gt;= 80%), make a temporary copy of the template presentation in Google Drive, replace dynamic tokens (<code>{{NAME}}</code>, <code>{{TRACK}}</code>, <code>{{DATE}}</code>, <code>{{CERT_ID}}</code>), export a crisp vector PDF, archive it in a dedicated Drive folder, and email it directly to the participant.
+                        </p>
+                    </div>
+
+                    <div class="lang-fr">
+                        <h3>1. Le Défi Opérationnel : Génération Industrielle d'Attestations</h3>
+                        <p>
+                            Concevoir manuellement des attestations pour 100 participants dans un logiciel graphique requiert des heures de manipulation répétitive et de renommage. De plus, les formats images matriciels (PNG/JPEG) se pixellisent à l'impression et ne permettent aucune vérification documentaire fiable.
+                        </p>
+                        <p>
+                            Dans cette pratique, vous allez exploiter Google Slides comme un moteur de mise en page vectoriel. Votre script parcourra les élèves éligibles de la feuille de calcul (assiduité &gt;= 80%), dupliquera le gabarit dans Google Drive, remplacera les balises dynamiques (<code>{{NAME}}</code>, <code>{{TRACK}}</code>, <code>{{DATE}}</code>, <code>{{CERT_ID}}</code>), exportera un PDF haute définition, l'archivera dans Drive et l'enverra par courriel au lauréat.
+                        </p>
+                    </div>
+
+                    <div class="code-window">
+                        <div class="code-header">
+                            <span class="code-filename">Practice4_CertificateFactory.gs</span>
+                            <button class="copy-btn" data-copied="Copied!">Copy</button>
+                        </div>
+                        <pre><code>/**
+ * Practice 4: Vector E-Certificate Factory & PDF Dispatch
+ * Service: SlidesApp + DriveApp + GmailApp + SpreadsheetApp
+ */
+
+function generateAndDeliverECertificates() {
+  try {
+    const props = PropertiesService.getScriptProperties();
+    const spreadsheetId = props.getProperty('SPREADSHEET_ID');
+    const templateId = props.getProperty('SLIDES_TEMPLATE_ID');
+    const workshopFolderId = props.getProperty('WORKSHOP_FOLDER_ID');
+
+    if (!spreadsheetId || !templateId || !workshopFolderId) {
+      throw new Error('Required IDs missing from ScriptProperties. Run setupWorkshopEnvironment first.');
+    }
+
+    const workshopFolder = DriveApp.getFolderById(workshopFolderId);
+    
+    // Locate or create a dedicated sub-folder for issued PDF certificates
+    const certFolderName = 'Issued_Certificates_PDF';
+    const subFolders = workshopFolder.getFoldersByName(certFolderName);
+    let certsFolder;
+    if (subFolders.hasNext()) {
+      certsFolder = subFolders.next();
+    } else {
+      certsFolder = workshopFolder.createFolder(certFolderName);
+      certsFolder.setSharing(DriveApp.Access.ANYONE_WITH_LINK, DriveApp.Permission.VIEW);
+    }
+
+    const spreadsheet = SpreadsheetApp.openById(spreadsheetId);
+    const sheet = spreadsheet.getSheetByName('Attendance_Master');
+    const data = sheet.getDataRange().getValues();
+
+    const templateFile = DriveApp.getFileById(templateId);
+    const todayFormatted = Utilities.formatDate(new Date(), Session.getScriptTimeZone(), 'MMMM dd, yyyy');
+
+    let issuedCount = 0;
+
+    // Scan students (columns: Rate = 9, Status = 11, URL = 12)
+    for (let i = 1; i < data.length; i++) {
+      const row = data[i];
+      const studentId = row[0];
+      const fullName = row[1];
+      const email = row[2];
+      const track = row[3];
+      const rateString = String(row[9]).replace('%', '');
+      const rateNumber = parseInt(rateString, 10) || 0;
+      const certificateStatus = row[11];
+
+      // Criteria: Attendance >= 80% and not yet issued
+      if (rateNumber >= 80 && certificateStatus !== 'ISSUED') {
+        console.log(`Generating certificate for eligible student: ${fullName} (${studentId})...`);
+
+        // Generate unique cryptographic-style verification ID
+        const uniqueVerificationId = `GW-2026-${Utilities.getUuid().substring(0, 8).toUpperCase()}`;
+
+        // 1. Duplicate Slide template to avoid concurrency conflicts
+        const tempPresentationName = `Temp_Cert_${studentId}`;
+        const tempPresentationFile = templateFile.makeCopy(tempPresentationName, certsFolder);
+        const tempPresentation = SlidesApp.openById(tempPresentationFile.getId());
+        const targetSlide = tempPresentation.getSlides()[0];
+
+        // 2. Perform vector text substitutions
+        targetSlide.replaceAllText('{{NAME}}', fullName);
+        targetSlide.replaceAllText('{{TRACK}}', track);
+        targetSlide.replaceAllText('{{DATE}}', todayFormatted);
+        targetSlide.replaceAllText('{{CERT_ID}}', uniqueVerificationId);
+
+        tempPresentation.saveAndClose();
+
+        // 3. Export presentation slide to PDF blob
+        const pdfBlob = tempPresentationFile.getAs(MimeType.PDF);
+        pdfBlob.setName(`Certificate_${studentId}_${fullName.replace(/\s+/g, '_')}.pdf`);
+
+        // 4. Save PDF to certificates folder
+        const finalPdfFile = certsFolder.createFile(pdfBlob);
+        finalPdfFile.setSharing(DriveApp.Access.ANYONE_WITH_LINK, DriveApp.Permission.VIEW);
+        const pdfUrl = finalPdfFile.getUrl();
+
+        // 5. Clean up temporary slide presentation
+        tempPresentationFile.setTrashed(true);
+
+        // 6. Update Google Sheet records
+        sheet.getRange(i + 1, 12).setValue('ISSUED');
+        sheet.getRange(i + 1, 13).setValue(pdfUrl);
+
+        // 7. Dispatch congratulations email with attached PDF
+        const emailSubject = `Congratulations ${fullName}: Your GDG Workspace Certificate is Ready!`;
+        const emailBody = `
+          <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; border: 1px solid #cbd5e1; border-radius: 8px; padding: 24px; color: #1e293b;">
+            <h2 style="color: #02569B; margin-top: 0;">Certificate of Achievement Ready!</h2>
+            <p>Dear <strong>${fullName}</strong>,</p>
+            <p>
+              Congratulations on successfully completing the intensive 5-day curriculum of <strong>GDG - Google Workspace Training</strong> with an outstanding attendance rate of <strong>${rateNumber}%</strong>.
+            </p>
+            <p>
+              Your verified certificate is attached to this email in PDF format.<br>
+              <strong>Verification ID:</strong> <code style="background-color: #f1f5f9; padding: 2px 6px; border-radius: 4px;">${uniqueVerificationId}</code>
+            </p>
+            <p>
+              You can also view or download your certificate directly on Google Drive:
+              <br>
+              <a href="${pdfUrl}" style="display: inline-block; margin-top: 12px; background-color: #00B0FF; color: #070a13; padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: bold;">View Certificate on Drive</a>
+            </p>
+            <hr style="border: none; border-top: 1px solid #e2e8f0; margin: 24px 0;" />
+            <p style="font-size: 12px; color: #64748b;">
+              GDG Afrique Francophone | GDG Pointe-Noire | GDG on Campus CUEA.<br>
+              Powered by LosingTek &amp; FlutterFire Summer Camp.
+            </p>
+          </div>
+        `;
+
+        GmailApp.sendEmail(email, emailSubject, `Congratulations ${fullName}! Your certificate is attached.`, {
+          htmlBody: emailBody,
+          attachments: [pdfBlob],
+          name: 'GDG Certification Office'
+        });
+
+        issuedCount++;
+      }
+    }
+
+    console.log(`=== CERTIFICATE RUN COMPLETED ===`);
+    console.log(`Total Certificates Issued & Delivered: ${issuedCount}`);
+  } catch (err) {
+    console.error(`Error in generateAndDeliverECertificates: ${err.message}`);
+  }
+}</code></pre>
+                    </div>
+
+                    <div class="step-pagination">
+                        <button class="nav-step-btn" data-step-target="3"
+                            data-en="&larr; Previous"
+                            data-fr="&larr; Précédent">&larr; Previous</button>
+                        <button class="nav-step-btn primary" data-step-target="5"
+                            data-en="Proceed to Practice 5 &rarr;"
+                            data-fr="Passer à la Pratique 5 &rarr;">Proceed to Practice 5 &rarr;</button>
+                    </div>
+                </article>
+
+                <!-- =========================================================
+                     STEP 6: PRACTICE 5 | CALENDAR & MEET SCHEDULING
+                     ========================================================= -->
+                <article class="codelab-step" id="step-6" data-duration="6">
+                    <div class="step-header">
+                        <div class="step-eyebrow">
+                            <span data-en="Step 6 of 10 | Practice 5: Calendar &amp; Google Meet Scheduling"
+                                data-fr="Étape 6 sur 10 | Pratique 5 : Planification Calendar &amp; Meet">Step 6 of 10 | Practice 5: Calendar &amp; Google Meet Scheduling</span>
+                            <span class="codelab-last-updated">Last updated: <time datetime="2026-10-29">October 29, 2026</time></span>
+                        </div>
+                        <h1 class="step-title"
+                            data-en="Practice 5: Automated Mentoring Sessions with Google Meet Video Links"
+                            data-fr="Pratique 5 : Planification Automatique de Mentorat avec Liens Vidéo Meet">Practice 5: Automated Mentoring Sessions with Google Meet Video Links</h1>
+                    </div>
+
+                    <div class="lang-en">
+                        <h3>1. The Operational Challenge: Scheduling Office Hours</h3>
+                        <p>
+                            When an attendance audit reveals students at risk (&lt; 75% attendance or failing scores), organizers must rapidly arrange 1-on-1 office hours. Scheduling separate meeting slots, copying and pasting calendar descriptions, and manually generating Google Meet links across multiple students is a recipe for calendar conflicts.
+                        </p>
+                        <p>
+                            In this practice, you will write a routine that queries at-risk students, schedules consecutive 30-minute office hour slots starting tomorrow afternoon, and injects Google Meet video links into each calendar event using <code>CalendarApp</code>.
+                        </p>
+                    </div>
+
+                    <div class="lang-fr">
+                        <h3>1. Le Défi Opérationnel : Organisation des Séances de Mentorat</h3>
+                        <p>
+                            Lorsqu'un audit révèle des élèves en difficulté d'assiduité (&lt; 75% ou notes insuffisantes), l'équipe pédagogique doit organiser des séances de soutien individualisées. Créer des créneaux dans l'agenda un par un, rédiger les ordres du jour et générer des liens Google Meet à la main prend un temps précieux et provoque des erreurs de calendrier.
+                        </p>
+                        <p>
+                            Dans cette pratique, vous allez concevoir un script qui identifie les étudiants nécessitant un rattrapage, réserve automatiquement des créneaux de 30 minutes consécutifs dès le lendemain après-midi et associe un lien de visioconférence Google Meet via <code>CalendarApp</code>.
+                        </p>
+                    </div>
+
+                    <div class="code-window">
+                        <div class="code-header">
+                            <span class="code-filename">Practice5_CalendarMeet.gs</span>
+                            <button class="copy-btn" data-copied="Copied!">Copy</button>
+                        </div>
+                        <pre><code>/**
+ * Practice 5: Schedule Mentoring Office Hours with Auto Google Meet Links
+ * Service: CalendarApp + SpreadsheetApp
+ */
+
+function scheduleMentoringSessionsWithMeet() {
+  try {
+    const props = PropertiesService.getScriptProperties();
+    const spreadsheetId = props.getProperty('SPREADSHEET_ID');
+
+    if (!spreadsheetId) {
+      throw new Error('SPREADSHEET_ID missing from ScriptProperties.');
+    }
+
+    const spreadsheet = SpreadsheetApp.openById(spreadsheetId);
+    const sheet = spreadsheet.getSheetByName('Attendance_Master');
+    const data = sheet.getDataRange().getValues();
+
+    const calendar = CalendarApp.getDefaultCalendar();
+
+    // Start scheduling for tomorrow at 14:00 (2:00 PM)
+    const baseDate = new Date();
+    baseDate.setDate(baseDate.getDate() + 1);
+    baseDate.setHours(14, 0, 0, 0);
+
+    let slotOffsetMinutes = 0;
+    let scheduledCount = 0;
+
+    for (let i = 1; i < data.length; i++) {
+      const row = data[i];
+      const studentId = row[0];
+      const fullName = row[1];
+      const email = row[2];
+      const track = row[3];
+      const rateString = String(row[9]).replace('%', '');
+      const rateNumber = parseInt(rateString, 10) || 0;
+      const examScore = parseInt(row[10], 10) || 0;
+
+      // Identify students who require 1-on-1 office hours (attendance < 75% or exam < 70)
+      if (rateNumber < 75 || examScore < 70) {
+        const slotStart = new Date(baseDate.getTime() + slotOffsetMinutes * 60000);
+        const slotEnd = new Date(slotStart.getTime() + 30 * 60000); // 30-minute block
+
+        const eventTitle = `Office Hours: 1-on-1 Mentoring | ${fullName} (${studentId})`;
+        const eventDescription = `
+Hello ${fullName},
+
+You have been scheduled for a personalized 1-on-1 review session for the GDG - Google Workspace Training (${track}).
+We will review your missed sessions and finalize your Day V Google Apps Script project.
+
+Format: 30 minutes via Google Meet
+Instructor: Georges Byona (@glosings0n)
+Community: GDG Afrique Francophone / GDG Pointe-Noire / GDG CUEA
+        `.trim();
+
+        // Create the event with guest invitation
+        const event = calendar.createEvent(eventTitle, slotStart, slotEnd, {
+          guests: email,
+          description: eventDescription,
+          sendInvites: true
+        });
+
+        // Set color tag to Highlight (Cyan/Blue in Calendar)
+        event.setColor(CalendarApp.EventColor.CYAN);
+
+        console.log(`Scheduled office hours for ${fullName} (${email}) at ${slotStart.toLocaleTimeString()}`);
+
+        slotOffsetMinutes += 40; // 30 min session + 10 min break
+        scheduledCount++;
+      }
+    }
+
+    console.log(`=== CALENDAR SCHEDULING COMPLETE ===`);
+    console.log(`Total Remedial Office Hour Sessions Booked: ${scheduledCount}`);
+  } catch (err) {
+    console.error(`Error in scheduleMentoringSessionsWithMeet: ${err.message}`);
+  }
+}</code></pre>
+                    </div>
+
+                    <div class="callout callout-info">
+                        <svg class="callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="12" y1="16" x2="12" y2="12"></line>
+                            <circle cx="12" cy="8" r="1.25" fill="currentColor" stroke="none"></circle>
+                        </svg>
+                        <div class="callout-body">
+                            <div class="lang-en">
+                                <div class="callout-title">Google Meet Integration Details</div>
+                                <p>
+                                    When creating events via <code>createEvent()</code> with external guests on Google Workspace accounts, Google Meet conference links are attached automatically by default. On personal accounts, you can enable the <strong>Advanced Google Calendar API</strong> to specify exact <code>conferenceDataVersion: 1</code> objects.
+                                </p>
+                            </div>
+                            <div class="lang-fr">
+                                <div class="callout-title">Détails d'Intégration Google Meet</div>
+                                <p>
+                                    Sur les domaines Google Workspace professionnels, l'ajout d'invités externes déclenche automatiquement l'association d'un lien Google Meet. Sur les comptes personnels, vous pouvez activer l'API avancée <strong>Google Calendar API</strong> pour injecter explicitement la structure <code>conferenceDataVersion: 1</code>.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="step-pagination">
+                        <button class="nav-step-btn" data-step-target="4"
+                            data-en="&larr; Previous"
+                            data-fr="&larr; Précédent">&larr; Previous</button>
+                        <button class="nav-step-btn primary" data-step-target="6"
+                            data-en="Proceed to Practice 6 &rarr;"
+                            data-fr="Passer à la Pratique 6 &rarr;">Proceed to Practice 6 &rarr;</button>
+                    </div>
+                </article>
+
+                <!-- =========================================================
+                     STEP 7: PRACTICE 6 | STRUCTURED DOCS & PERMISSIONS
+                     ========================================================= -->
+                <article class="codelab-step" id="step-7" data-duration="6">
+                    <div class="step-header">
+                        <div class="step-eyebrow">
+                            <span data-en="Step 7 of 10 | Practice 6: Structured Docs &amp; Permissions"
+                                data-fr="Étape 7 sur 10 | Pratique 6 : Docs Structurés &amp; Droits Drive">Step 7 of 10 | Practice 6: Structured Docs &amp; Permissions</span>
+                            <span class="codelab-last-updated">Last updated: <time datetime="2026-10-29">October 29, 2026</time></span>
+                        </div>
+                        <h1 class="step-title"
+                            data-en="Practice 6: Automated Workshop Evaluation Doc &amp; Drive Governance"
+                            data-fr="Pratique 6 : Rapport d'Évaluation dans Google Docs et Gouvernance Drive">Practice 6: Automated Workshop Evaluation Doc &amp; Drive Governance</h1>
+                    </div>
+
+                    <div class="lang-en">
+                        <h3>1. The Operational Challenge: Generating Formal Retrospectives</h3>
+                        <p>
+                            Following any major community bootcamp, organizers must submit an official retrospective document to GDG leads, universities, and sponsors. Manually formatting tables, headers, footers, and export PDFs in Google Docs after a tiring 5-day event is painful and frequently delayed.
+                        </p>
+                        <p>
+                            In this practice, you will use <code>DocumentApp</code> and <code>DriveApp</code> to assemble a beautifully formatted Google Doc containing cohort statistics, structured tables, header text, and page numbering, convert it to PDF, and configure strict sharing permissions.
+                        </p>
+                    </div>
+
+                    <div class="lang-fr">
+                        <h3>1. Le Défi Opérationnel : Rédaction des Procès-Verbaux et Bilans</h3>
+                        <p>
+                            À l'issue d'un bootcamp, l'équipe organisatrice doit remettre un rapport officiel aux responsables GDG régionaux, aux universités partenaires et aux sponsors. Mettre en forme manuellement des tableaux, des en-têtes et des exports PDF après 5 jours d'ateliers intenses est fastidieux et souvent reporté.
+                        </p>
+                        <p>
+                            Dans cette pratique, vous allez utiliser <code>DocumentApp</code> et <code>DriveApp</code> pour assembler un document Google Docs élégamment structuré avec en-têtes, tableaux de KPIs, pagination automatique, export PDF instantané et gestion stricte des autorisations de partage.
+                        </p>
+                    </div>
+
+                    <div class="code-window">
+                        <div class="code-header">
+                            <span class="code-filename">Practice6_DocsReport.gs</span>
+                            <button class="copy-btn" data-copied="Copied!">Copy</button>
+                        </div>
+                        <pre><code>/**
+ * Practice 6: Programmatic Workshop Evaluation Doc & Drive Sharing
+ * Service: DocumentApp + DriveApp + SpreadsheetApp
+ */
+
+function generateWorkshopEvaluationDoc() {
+  try {
+    const props = PropertiesService.getScriptProperties();
+    const spreadsheetId = props.getProperty('SPREADSHEET_ID');
+    const workshopFolderId = props.getProperty('WORKSHOP_FOLDER_ID');
+
+    if (!spreadsheetId || !workshopFolderId) {
+      throw new Error('Required IDs missing from ScriptProperties.');
+    }
+
+    const workshopFolder = DriveApp.getFolderById(workshopFolderId);
+    const spreadsheet = SpreadsheetApp.openById(spreadsheetId);
+    const sheet = spreadsheet.getSheetByName('Attendance_Master');
+    const data = sheet.getDataRange().getValues();
+
+    const docTitle = `GDG_Workspace_Training_2026_Final_Report`;
+    const doc = DocumentApp.create(docTitle);
+    const docFile = DriveApp.getFileById(doc.getId());
+
+    // Relocate file into dedicated workshop folder
+    workshopFolder.addFile(docFile);
+    DriveApp.getRootFolder().removeFile(docFile);
+
+    const body = doc.getBody();
+
+    // 1. Configure Page Header and Footer
+    const header = doc.addHeader();
+    const headerP = header.appendParagraph('GDG - Google Workspace Training 2026 | Official Retrospective');
+    headerP.setAlignment(DocumentApp.HorizontalAlignment.RIGHT);
+    headerP.setFontSize(9).setForegroundColor('#64748b');
+
+    const footer = doc.addFooter();
+    const footerP = footer.appendParagraph('Page ');
+    footerP.appendPageNumber();
+    footerP.appendParagraphText(' | Author: Georges Byona (@glosings0n)');
+    footerP.setAlignment(DocumentApp.HorizontalAlignment.CENTER);
+    footerP.setFontSize(9).setForegroundColor('#94a3b8');
+
+    // 2. Add Main Document Titles
+    const titleP = body.appendParagraph('Executive Summary & Evaluation Report');
+    titleP.setHeading(DocumentApp.ParagraphHeading.HEADING1);
+    titleP.getAttributes()[DocumentApp.Attribute.FONT_FAMILY] = 'Arial';
+    titleP.setFontSize(22).setBold(true).setForegroundColor('#02569B');
+
+    const subtitleP = body.appendParagraph('Cohort Performance, Attendance Metrics & Certification Outcomes');
+    subtitleP.setHeading(DocumentApp.ParagraphHeading.SUBTITLE);
+    subtitleP.setFontSize(13).setForegroundColor('#475569');
+
+    body.appendHorizontalRule();
+
+    // 3. Add Context Paragraph
+    body.appendParagraph(
+      'This document summarizes the outcomes of the 5-Day Google Workspace Training curriculum ' +
+      'delivered across GDG Afrique Francophone, GDG Pointe-Noire (Congo-Brazzaville), and GDG on Campus CUEA (Nairobi, Kenya). ' +
+      'All attendance records and certifications were processed automatically via Google Apps Script.'
+    ).setFontSize(11).setLineSpacing(1.3);
+
+    // 4. Calculate Aggregate Metrics
+    let total = data.length - 1;
+    let certified = 0;
+    let cumulativeScore = 0;
+
+    for (let i = 1; i < data.length; i++) {
+      if (data[i][11] === 'ISSUED') certified++;
+      cumulativeScore += (parseInt(data[i][10], 10) || 0);
+    }
+
+    const avgScore = Math.round(cumulativeScore / total);
+    const certPercentage = Math.round((certified / total) * 100);
+
+    // 5. Insert Formatted KPI Table
+    body.appendParagraph('Key Performance Indicators').setHeading(DocumentApp.ParagraphHeading.HEADING2).setFontSize(15).setForegroundColor('#02569B');
+
+    const tableData = [
+      ['Evaluation Metric', 'Recorded Value', 'Benchmark Target', 'Compliance Status'],
+      ['Total Enrolled Participants', String(total), '>= 8 per session', 'OPTIMAL'],
+      ['Average Examination Score', `${avgScore}/100`, '>= 75/100', avgScore >= 75 ? 'SURPASSED' : 'REQUIRES ATTENTION'],
+      ['Graduation & E-Certificate Rate', `${certPercentage}% (${certified}/${total})`, '>= 70%', certPercentage >= 70 ? 'ACHIEVED' : 'INCOMPLETE'],
+      ['Automated Infrastructure', 'Google Apps Script (V8)', 'Zero-Server Stack', 'VERIFIED']
+    ];
+
+    const table = body.appendTable(tableData);
+    
+    // Style Table Header Row
+    const headerRow = table.getRow(0);
+    for (let c = 0; c < 4; c++) {
+      headerRow.getCell(c).setBackgroundColor('#02569B');
+      headerRow.getCell(c).getChild(0).asParagraph().setFontColor('#FFFFFF').setBold(true);
+    }
+
+    // 6. Export PDF Archival Copy
+    doc.saveAndClose();
+    const pdfBlob = docFile.getAs(MimeType.PDF);
+    pdfBlob.setName(`${docTitle}.pdf`);
+    const pdfFile = workshopFolder.createFile(pdfBlob);
+
+    // 7. Configure Granular Sharing Governance
+    docFile.setSharing(DriveApp.Access.ANYONE_WITH_LINK, DriveApp.Permission.VIEW);
+    pdfFile.setSharing(DriveApp.Access.ANYONE_WITH_LINK, DriveApp.Permission.VIEW);
+
+    console.log('=== EVALUATION DOC GENERATION COMPLETE ===');
+    console.log(`Google Doc Editable URL: ${docFile.getUrl()}`);
+    console.log(`Archived PDF Report URL: ${pdfFile.getUrl()}`);
+  } catch (err) {
+    console.error(`Error in generateWorkshopEvaluationDoc: ${err.message}`);
+  }
+}</code></pre>
+                    </div>
+
+                    <div class="step-pagination">
+                        <button class="nav-step-btn" data-step-target="5"
+                            data-en="&larr; Previous"
+                            data-fr="&larr; Précédent">&larr; Previous</button>
+                        <button class="nav-step-btn primary" data-step-target="7"
+                            data-en="Proceed to Practice 7 &rarr;"
+                            data-fr="Passer à la Pratique 7 &rarr;">Proceed to Practice 7 &rarr;</button>
+                    </div>
+                </article>
+
+                <!-- =========================================================
+                     STEP 8: PRACTICE 7 | INTERACTIVE WEB APP DASHBOARD
+                     ========================================================= -->
+                <article class="codelab-step" id="step-8" data-duration="7">
+                    <div class="step-header">
+                        <div class="step-eyebrow">
+                            <span data-en="Step 8 of 10 | Practice 7: Interactive Web App Dashboard"
+                                data-fr="Étape 8 sur 10 | Pratique 7 : Dashboard Web App Interactif">Step 8 of 10 | Practice 7: Interactive Web App Dashboard</span>
+                            <span class="codelab-last-updated">Last updated: <time datetime="2026-10-29">October 29, 2026</time></span>
+                        </div>
+                        <h1 class="step-title"
+                            data-en="Practice 7: Deploying an Interactive Web App Dashboard on Google Sheets"
+                            data-fr="Pratique 7 : Déploiement d'un Dashboard Web App Interactif sur Google Sheets">Practice 7: Deploying an Interactive Web App Dashboard on Google Sheets</h1>
+                    </div>
+
+                    <div class="lang-en">
+                        <h3>1. The Operational Challenge: Sharing Data Without Exposing the Raw Spreadsheet</h3>
+                        <p>
+                            Often, students, managers, or community members want to check their attendance records or download their certificates. However, sharing a Google Sheet directly introduces major security and usability problems: users can accidentally edit formulas, overwrite peer data, or see other participants' private contact information.
+                        </p>
+                        <p>
+                            With Google Apps Script's <strong>HtmlService</strong>, you can deploy a full-featured, secure web application directly on Google Cloud. The backend script queries Google Sheets, while the frontend provides an interactive search interface via <code>google.script.run</code>.
+                        </p>
+                    </div>
+
+                    <div class="lang-fr">
+                        <h3>1. Le Défi Opérationnel : Diffuser l'Information sans Exposer le Tableur Brut</h3>
+                        <p>
+                            Souvent, les étudiants ou les coordinateurs souhaitent consulter l'état de leur assiduité ou récupérer leur certificat. Cependant, partager directement le Google Sheet pose des risques de sécurité majeurs : suppression accidentelle de formules, altération des données d'autres élèves ou divulgation d'informations personnelles.
+                        </p>
+                        <p>
+                            Grâce au service <strong>HtmlService</strong> de Google Apps Script, vous pouvez déployer une véritable application web sécurisée hébergée gratuitement sur Google Cloud. Le script serveur interroge la feuille de calcul, tandis que le front-end offre une interface de recherche interactive via <code>google.script.run</code>.
+                        </p>
+                    </div>
+
+                    <div class="code-window">
+                        <div class="code-header">
+                            <span class="code-filename">WebApp_Server.gs (Backend doGet and RPC API)</span>
+                            <button class="copy-btn" data-copied="Copied!">Copy</button>
+                        </div>
+                        <pre><code>/**
+ * Practice 7: Web App Server Backend
+ * Service: HtmlService + SpreadsheetApp
+ */
+
+// Entry point when visiting the Web App URL in a web browser
+function doGet(e) {
+  const htmlOutput = HtmlService.createTemplateFromFile('Index')
+    .evaluate()
+    .setTitle('GDG Workspace Training | Student Portal')
+    .addMetaTag('viewport', 'width=device-width, initial-scale=1.0')
+    .setXFrameOptionsMode(HtmlService.XFrameOptionsMode.ALLOWALL);
+  
+  return htmlOutput;
+}
+
+// Remote Procedure Call (RPC) callable from frontend JavaScript
+function getDashboardData() {
+  try {
+    const props = PropertiesService.getScriptProperties();
+    const spreadsheetId = props.getProperty('SPREADSHEET_ID');
+
+    if (!spreadsheetId) {
+      return { error: 'Spreadsheet ID not initialized in ScriptProperties.' };
+    }
+
+    const spreadsheet = SpreadsheetApp.openById(spreadsheetId);
+    const sheet = spreadsheet.getSheetByName('Attendance_Master');
+    const values = sheet.getDataRange().getValues();
+
+    const students = [];
+    let eligibleCount = 0;
+    let totalScore = 0;
+
+    for (let i = 1; i < values.length; i++) {
+      const row = values[i];
+      const rateNum = parseInt(String(row[9]).replace('%', ''), 10) || 0;
+      const score = parseInt(row[10], 10) || 0;
+      const status = row[11];
+      const certUrl = row[12];
+
+      if (rateNum >= 80) eligibleCount++;
+      totalScore += score;
+
+      students.push({
+        id: row[0],
+        name: row[1],
+        email: row[2],
+        track: row[3],
+        rate: rateNum,
+        score: score,
+        status: status,
+        certUrl: certUrl
+      });
+    }
+
+    return {
+      success: true,
+      totalStudents: students.length,
+      eligibleStudents: eligibleCount,
+      averageScore: students.length ? Math.round(totalScore / students.length) : 0,
+      students: students
+    };
+  } catch (err) {
+    return { error: err.message };
+  }
+}</code></pre>
+                    </div>
+
+                    <div class="lang-en">
+                        <p>
+                            Next, create the frontend HTML file in the Apps Script project editor by clicking <strong>+ &gt; HTML</strong> and naming it <code>Index</code> (resulting in <code>Index.html</code>):
+                        </p>
+                    </div>
+
+                    <div class="lang-fr">
+                        <p>
+                            Créez ensuite le fichier HTML frontal dans l'éditeur Apps Script en cliquant sur <strong>+ &gt; HTML</strong> et nommez-le <code>Index</code> (ce qui génère <code>Index.html</code>) :
+                        </p>
+                    </div>
+
+                    <div class="code-window">
+                        <div class="code-header">
+                            <span class="code-filename">Index.html (Frontend Single Page Application)</span>
+                            <button class="copy-btn" data-copied="Copied!">Copy</button>
+                        </div>
+                        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;base target="_top"&gt;
+  &lt;style&gt;
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      margin: 0;
+      padding: 24px;
+      background-color: #070a13;
+      color: #f8fafc;
+    }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .header {
+      border-bottom: 1px solid #202b46;
+      padding-bottom: 16px;
+      margin-bottom: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    h1 { margin: 0; font-size: 22px; color: #00B0FF; }
+    .subtitle { margin: 4px 0 0 0; color: #94a3b8; font-size: 14px; }
+    
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    .card {
+      background: #0f1424;
+      border: 1px solid #202b46;
+      border-radius: 8px;
+      padding: 16px;
+      text-align: center;
+    }
+    .card-num { font-size: 28px; font-weight: bold; color: #00B0FF; font-family: monospace; }
+    .card-label { font-size: 12px; color: #94a3b8; text-transform: uppercase; margin-top: 4px; }
+    
+    .search-box {
+      width: 100%;
+      padding: 12px 16px;
+      background: #0f1424;
+      border: 1px solid #202b46;
+      border-radius: 6px;
+      color: #ffffff;
+      font-size: 14px;
+      box-sizing: border-box;
+      margin-bottom: 20px;
+    }
+    
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #0f1424;
+      border: 1px solid #202b46;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    th {
+      background: #171d32;
+      color: #94a3b8;
+      font-size: 12px;
+      text-align: left;
+      padding: 12px;
+    }
+    td {
+      padding: 12px;
+      border-top: 1px solid #202b46;
+      font-size: 13px;
+    }
+    .badge {
+      display: inline-block;
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: bold;
+    }
+    .badge-issued { background: rgba(34, 197, 94, 0.2); color: #4ade80; border: 1px solid #22c55e; }
+    .badge-pending { background: rgba(234, 179, 8, 0.2); color: #facc15; border: 1px solid #eab308; }
+    .btn-cert {
+      color: #00B0FF;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .loading { text-align: center; padding: 40px; color: #94a3b8; }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;div class="container"&gt;
+    &lt;div class="header"&gt;
+      &lt;div&gt;
+        &lt;h1&gt;GDG Workspace Training Portal&lt;/h1&gt;
+        &lt;p class="subtitle"&gt;Real-time Student Dashboard &amp; Certificate Verification&lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class="stats-grid"&gt;
+      &lt;div class="card"&gt;
+        &lt;div class="card-num" id="stat-total"&gt;--&lt;/div&gt;
+        &lt;div class="card-label"&gt;Total Students&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class="card"&gt;
+        &lt;div class="card-num" id="stat-eligible"&gt;--&lt;/div&gt;
+        &lt;div class="card-label"&gt;Certificate Eligible&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class="card"&gt;
+        &lt;div class="card-num" id="stat-score"&gt;--&lt;/div&gt;
+        &lt;div class="card-label"&gt;Average Exam Score&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;input type="text" id="search-input" class="search-box" placeholder="Search by name, student ID, or track..." oninput="filterTable()"&gt;
+
+    &lt;div id="table-container"&gt;
+      &lt;div class="loading" id="loading-msg"&gt;Connecting to Google Sheets backend...&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;script&gt;
+    let allStudents = [];
+
+    // Call server-side function upon page load
+    google.script.run
+      .withSuccessHandler(renderDashboard)
+      .withFailureHandler(handleError)
+      .getDashboardData();
+
+    function renderDashboard(res) {
+      if (res.error) {
+        document.getElementById('table-container').innerHTML = '&lt;div style="color: #ef4444;"&gt;Error: ' + res.error + '&lt;/div&gt;';
+        return;
+      }
+
+      document.getElementById('stat-total').innerText = res.totalStudents;
+      document.getElementById('stat-eligible').innerText = res.eligibleStudents;
+      document.getElementById('stat-score').innerText = res.averageScore + '/100';
+
+      allStudents = res.students;
+      displayStudentList(allStudents);
+    }
+
+    function displayStudentList(students) {
+      if (students.length === 0) {
+        document.getElementById('table-container').innerHTML = '&lt;div class="loading"&gt;No matching records found.&lt;/div&gt;';
+        return;
+      }
+
+      let html = '&lt;table&gt;&lt;thead&gt;&lt;tr&gt;' +
+        '&lt;th&gt;ID&lt;/th&gt;&lt;th&gt;Name&lt;/th&gt;&lt;th&gt;Track&lt;/th&gt;&lt;th&gt;Attendance&lt;/th&gt;&lt;th&gt;Exam&lt;/th&gt;&lt;th&gt;Status&lt;/th&gt;&lt;th&gt;Certificate&lt;/th&gt;' +
+        '&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;';
+
+      students.forEach(s => {
+        const badgeClass = s.status === 'ISSUED' ? 'badge-issued' : 'badge-pending';
+        const certAction = s.certUrl ? '&lt;a class="btn-cert" href="' + s.certUrl + '" target="_blank"&gt;View PDF &rarr;&lt;/a&gt;' : '&lt;span style="color:#64748b;"&gt;In Progress&lt;/span&gt;';
+        
+        html += '&lt;tr&gt;' +
+          '&lt;td style="font-family: monospace;"&gt;' + s.id + '&lt;/td&gt;' +
+          '&lt;td style="font-weight: 500;"&gt;' + s.name + '&lt;/td&gt;' +
+          '&lt;td style="color: #94a3b8;"&gt;' + s.track + '&lt;/td&gt;' +
+          '&lt;td style="text-align: center;"&gt;' + s.rate + '%&lt;/td&gt;' +
+          '&lt;td style="text-align: center;"&gt;' + s.score + '&lt;/td&gt;' +
+          '&lt;td&gt;&lt;span class="badge ' + badgeClass + '"&gt;' + s.status + '&lt;/span&gt;&lt;/td&gt;' +
+          '&lt;td&gt;' + certAction + '&lt;/td&gt;' +
+          '&lt;/tr&gt;';
+      });
+
+      html += '&lt;/tbody&gt;&lt;/table&gt;';
+      document.getElementById('table-container').innerHTML = html;
+    }
+
+    function filterTable() {
+      const q = document.getElementById('search-input').value.toLowerCase();
+      const filtered = allStudents.filter(s => 
+        s.name.toLowerCase().includes(q) || 
+        s.id.toLowerCase().includes(q) || 
+        s.track.toLowerCase().includes(q)
+      );
+      displayStudentList(filtered);
+    }
+
+    function handleError(err) {
+      document.getElementById('table-container').innerHTML = '&lt;div style="color: #ef4444;"&gt;RPC Failure: ' + err.message + '&lt;/div&gt;';
+    }
+  &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                    </div>
+
+                    <div class="lang-en">
+                        <h3>2. Deploying the Web App</h3>
+                        <p>
+                            To publish your Web App to a live, secure URL:
+                        </p>
+                        <ol>
+                            <li>In the top-right corner of the Apps Script editor, click <strong>Deploy &gt; New deployment</strong>.</li>
+                            <li>Click the gear icon next to <em>Select type</em> and choose <strong>Web app</strong>.</li>
+                            <li>Set <em>Execute as</em>: <strong>Me</strong> (your Google account).</li>
+                            <li>Set <em>Who has access</em>: <strong>Anyone</strong> (or Anyone within your organization).</li>
+                            <li>Click <strong>Deploy</strong>, authorize if prompted, and copy your public Web App URL.</li>
+                        </ol>
+                    </div>
+
+                    <div class="lang-fr">
+                        <h3>2. Déploiement de l'Application Web</h3>
+                        <p>
+                            Pour publier votre application web sur une URL publique sécurisée :
+                        </p>
+                        <ol>
+                            <li>Dans le coin supérieur droit de l'éditeur Apps Script, cliquez sur <strong>Déployer &gt; Nouveau déploiement</strong>.</li>
+                            <li>Cliquez sur la roue crantée à côté de <em>Sélectionner le type</em> et choisissez <strong>Application Web</strong>.</li>
+                            <li>Définissez <em>Exécuter en tant que</em> : <strong>Moi</strong> (votre compte).</li>
+                            <li>Définissez <em>Qui a accès</em> : <strong>Tout le monde</strong> (ou Tous les membres de votre organisation).</li>
+                            <li>Cliquez sur <strong>Déployer</strong>, validez les autorisations et copiez l'URL finale de votre Web App.</li>
+                        </ol>
+                    </div>
+
+                    <div class="step-pagination">
+                        <button class="nav-step-btn" data-step-target="6"
+                            data-en="&larr; Previous"
+                            data-fr="&larr; Précédent">&larr; Previous</button>
+                        <button class="nav-step-btn primary" data-step-target="8"
+                            data-en="Proceed to Practice 8 &rarr;"
+                            data-fr="Passer à la Pratique 8 &rarr;">Proceed to Practice 8 &rarr;</button>
+                    </div>
+                </article>
+
+                <!-- =========================================================
+                     STEP 9: PRACTICE 8 | TIME TRIGGERS & WEBHOOKS
+                     ========================================================= -->
+                <article class="codelab-step" id="step-9" data-duration="5">
+                    <div class="step-header">
+                        <div class="step-eyebrow">
+                            <span data-en="Step 9 of 10 | Practice 8: Time Triggers &amp; Webhooks"
+                                data-fr="Étape 9 sur 10 | Pratique 8 : Déclencheurs Horaires &amp; Webhooks">Step 9 of 10 | Practice 8: Time Triggers &amp; Webhooks</span>
+                            <span class="codelab-last-updated">Last updated: <time datetime="2026-10-29">October 29, 2026</time></span>
+                        </div>
+                        <h1 class="step-title"
+                            data-en="Practice 8: Time-Driven Cron Triggers, Webhooks &amp; Google Sites Integration"
+                            data-fr="Pratique 8 : Déclencheurs Horaires Automatiques, Webhooks et Intégration Google Sites">Practice 8: Time-Driven Cron Triggers, Webhooks &amp; Google Sites Integration</h1>
+                    </div>
+
+                    <div class="lang-en">
+                        <h3>1. The Operational Challenge: Scheduled Execution &amp; External Ecosystems</h3>
+                        <p>
+                            True enterprise automation requires systems to run on schedule without human intervention (e.g., executing nightly data audits or sending progress reports at 18:00 every evening). Furthermore, modern engineering teams coordinate across external platforms like Slack, Discord, and internal portals such as Google Sites.
+                        </p>
+                        <p>
+                            In this practice, you will programmatically configure a time-driven trigger using <code>ScriptApp.newTrigger()</code>, serialize your cohort attendance metrics, and dispatch an outbound HTTP POST webhook via <code>UrlFetchApp</code>.
+                        </p>
+                    </div>
+
+                    <div class="lang-fr">
+                        <h3>1. Le Défi Opérationnel : Exécution Programmée et Écosystèmes Externes</h3>
+                        <p>
+                            Une automatisation d'entreprise aboutie doit s'exécuter de façon autonome selon un calendrier précis (par exemple, auditer les présences chaque soir à 18h00 sans action humaine). De plus, les communautés modernes communiquent sur des canaux collaboratifs comme Slack ou Discord et publient leurs résultats sur des intranets comme Google Sites.
+                        </p>
+                        <p>
+                            Dans cette pratique, vous allez configurer un déclencheur temporel automatisé avec <code>ScriptApp.newTrigger()</code>, sérialiser vos métriques d'assiduité et expédier une requête HTTP POST externe via <code>UrlFetchApp</code>.
+                        </p>
+                    </div>
+
+                    <div class="code-window">
+                        <div class="code-header">
+                            <span class="code-filename">Practice8_CronAndWebhooks.gs</span>
+                            <button class="copy-btn" data-copied="Copied!">Copy</button>
+                        </div>
+                        <pre><code>/**
+ * Practice 8: Programmatic Time Triggers & Outbound Webhook Integration
+ * Service: ScriptApp + UrlFetchApp
+ */
+
+// 1. Programmatically install a nightly time-driven trigger
+function installDailyAuditTrigger() {
+  const functionName = 'auditStudentAttendanceAndNotify';
+  
+  // Clean up any existing trigger for the same function to avoid duplicate runs
+  const currentTriggers = ScriptApp.getProjectTriggers();
+  currentTriggers.forEach(trigger => {
+    if (trigger.getHandlerFunction() === functionName) {
+      ScriptApp.deleteTrigger(trigger);
+      console.log(`Deleted pre-existing trigger for: ${functionName}`);
+    }
+  });
+
+  // Schedule to execute daily at 18:00 (6:00 PM)
+  ScriptApp.newTrigger(functionName)
+    .timeBased()
+    .everyDays(1)
+    .atHour(18)
+    .create();
+
+  console.log(`=== AUTOMATIC TRIGGER INSTALLED ===`);
+  console.log(`Function "${functionName}" will now run automatically every day at 18:00.`);
+}
+
+// 2. Dispatch cohort summary to an external Slack / Discord Webhook
+function broadcastCohortSummaryWebhook(webhookUrl) {
+  try {
+    const props = PropertiesService.getScriptProperties();
+    const spreadsheetId = props.getProperty('SPREADSHEET_ID');
+
+    if (!spreadsheetId) {
+      throw new Error('SPREADSHEET_ID not found in ScriptProperties.');
+    }
+
+    const spreadsheet = SpreadsheetApp.openById(spreadsheetId);
+    const sheet = spreadsheet.getSheetByName('Attendance_Master');
+    const data = sheet.getDataRange().getValues();
+
+    let total = data.length - 1;
+    let certified = 0;
+    let atRisk = 0;
+
+    for (let i = 1; i < data.length; i++) {
+      const rateNum = parseInt(String(data[i][9]).replace('%', ''), 10) || 0;
+      if (rateNum >= 80) certified++;
+      if (rateNum < 75) atRisk++;
+    }
+
+    const payload = {
+      text: `*GDG Workspace Training Cohort Update*\n` +
+            `• *Total Students:* ${total}\n` +
+            `• *Certificate Eligible:* ${certified}\n` +
+            `• *At Risk (<75%):* ${atRisk}\n` +
+            `• *Automated via:* Google Apps Script V8 (Day V Workshop)`
+    };
+
+    const options = {
+      method: 'post',
+      contentType: 'application/json',
+      payload: JSON.stringify(payload),
+      muteHttpExceptions: true
+    };
+
+    // If no webhook URL is passed, log payload to execution log
+    if (!webhookUrl || !webhookUrl.startsWith('http')) {
+      console.log('No external webhook URL provided. Payload preview:');
+      console.log(JSON.stringify(payload, null, 2));
+      return;
+    }
+
+    const response = UrlFetchApp.fetch(webhookUrl, options);
+    console.log(`Webhook successfully posted. Response Code: ${response.getResponseCode()}`);
+  } catch (err) {
+    console.error(`Error in broadcastCohortSummaryWebhook: ${err.message}`);
+  }
+}</code></pre>
+                    </div>
+
+                    <div class="lang-en">
+                        <h3>2. Embedding on Google Sites</h3>
+                        <p>
+                            To display your live Web App dashboard within a community Google Site:
+                        </p>
+                        <ol>
+                            <li>Open your Google Site at <a href="https://sites.google.com" target="_blank" rel="noopener noreferrer" class="codelab-url-link">sites.google.com</a> in edit mode.</li>
+                            <li>In the right-hand panel, select <strong>Insert &gt; Embed</strong>.</li>
+                            <li>Choose <strong>By URL</strong> and paste your published Apps Script Web App URL from Step 8.</li>
+                            <li>Resize the embedded window to full width, and click <strong>Publish</strong>. Participants can now search their certificates directly from your portal.</li>
+                        </ol>
+                    </div>
+
+                    <div class="lang-fr">
+                        <h3>2. Intégration sur Google Sites</h3>
+                        <p>
+                            Pour afficher le tableau de bord en direct sur un portail Google Sites :
+                        </p>
+                        <ol>
+                            <li>Ouvrez votre site sur <a href="https://sites.google.com" target="_blank" rel="noopener noreferrer" class="codelab-url-link">sites.google.com</a> en mode édition.</li>
+                            <li>Dans le volet de droite, cliquez sur <strong>Insérer &gt; Intégrer</strong>.</li>
+                            <li>Sélectionnez <strong>Via une URL</strong> et collez l'URL de votre Web App déployée à l'étape 8.</li>
+                            <li>Ajustez la largeur du bloc pour occuper toute la page et cliquez sur <strong>Publier</strong>. Les participants peuvent désormais consulter leurs attestations directement sur votre site communautaire.</li>
+                        </ol>
+                    </div>
+
+                    <div class="step-pagination">
+                        <button class="nav-step-btn" data-step-target="7"
+                            data-en="&larr; Previous"
+                            data-fr="&larr; Précédent">&larr; Previous</button>
+                        <button class="nav-step-btn primary" data-step-target="9"
+                            data-en="Proceed to Final Step &rarr;"
+                            data-fr="Passer à l'Étape Finale &rarr;">Proceed to Final Step &rarr;</button>
+                    </div>
+                </article>
+
+                <!-- =========================================================
+                     STEP 10: PRODUCTION QUOTAS, SCOPES & BEST PRACTICES
+                     ========================================================= -->
+                <article class="codelab-step" id="step-10" data-duration="5">
+                    <div class="step-header">
+                        <div class="step-eyebrow">
+                            <span data-en="Step 10 of 10 | Production Quotas, Scopes &amp; Best Practices"
+                                data-fr="Étape 10 sur 10 | Quotas, Scopes &amp; Bonnes Pratiques">Step 10 of 10 | Production Quotas, Scopes &amp; Best Practices</span>
+                            <span class="codelab-last-updated">Last updated: <time datetime="2026-10-29">October 29, 2026</time></span>
+                        </div>
+                        <h1 class="step-title"
+                            data-en="Production Quotas, Security Scopes &amp; Best Practices"
+                            data-fr="Quotas de Production, Scopes de Sécurité &amp; Bonnes Pratiques">Production Quotas, Security Scopes &amp; Best Practices</h1>
+                    </div>
+
+                    <!-- 1. Production Invariants & Best Practices -->
+                    <div class="lang-en">
+                        <h3>1. Production Invariants &amp; Architectural Best Practices</h3>
+                        <p>
+                            Deploying reliable automations at scale requires adhering to core engineering constraints inherent to the Google Cloud Apps Script infrastructure:
+                        </p>
+                        <ol>
+                            <li><strong>Atomic Batch Operations:</strong> Never invoke <code>getValue()</code> or <code>setValue()</code> inside a loop. Reading or writing cell-by-cell introduces significant network latency across the wire. Always use <code>getValues()</code> to read a 2D array into memory and <code>setValues()</code> to flush changes in a single atomic network trip (100x to 1000x faster).</li>
+                            <li><strong>ScriptProperties for Environment Isolation:</strong> Never hardcode Folder IDs, Sheet IDs, or template keys directly in your business logic. Store configuration keys in <code>PropertiesService.getScriptProperties()</code> to keep code portable across testing and production sandboxes.</li>
+                            <li><strong>Defensive Exception Boundaries:</strong> Always wrap external service calls (<code>UrlFetchApp</code>, <code>GmailApp</code>, <code>DriveApp</code>) in <code>try { ... } catch (err) { console.error(...) }</code> blocks. When interacting with external APIs, implement exponential backoff retry algorithms to handle transient network hiccups.</li>
+                            <li><strong>Explicit Least-Privilege OAuth Scopes:</strong> In <code>appsscript.json</code>, explicitly declare only the permissions your application requires rather than accepting wide root access.</li>
+                        </ol>
+                    </div>
+
+                    <div class="lang-fr">
+                        <h3>1. Invariants de Production &amp; Bonnes Pratiques Architecturales</h3>
+                        <p>
+                            Le déploiement d'automatisations fiables à grande échelle exige le respect rigoureux des contraintes d'ingénierie de l'infrastructure Google Apps Script :
+                        </p>
+                        <ol>
+                            <li><strong>Opérations par Lots Atomiques :</strong> N'invoquez jamais <code>getValue()</code> ou <code>setValue()</code> à l'intérieur d'une boucle. Lire ou écrire cellule par cellule multiplie les allers-retours réseau. Utilisez systématiquement <code>getValues()</code> pour charger la matrice en mémoire et <code>setValues()</code> pour enregistrer les modifications en un seul appel (gain de 100x à 1000x).</li>
+                            <li><strong>ScriptProperties pour l'Isolation des Environnements :</strong> Ne codez jamais en dur les identifiants de dossiers, de feuilles ou de gabarits. Stockez ces variables dans <code>PropertiesService.getScriptProperties()</code> pour garantir la portabilité entre vos espaces de test et de production.</li>
+                            <li><strong>Gestion Défensive des Erreurs :</strong> Encadrez systématiquement les appels aux services externes (<code>UrlFetchApp</code>, <code>GmailApp</code>, <code>DriveApp</code>) dans des blocs <code>try { ... } catch (err) { console.error(...) }</code>. Pour les APIs distantes, prévoyez un mécanisme de réessai avec backoff exponentiel.</li>
+                            <li><strong>Principe du Moindre Privilège pour les Scopes OAuth :</strong> Déclarez explicitement dans le manifeste <code>appsscript.json</code> uniquement les périmètres d'accès indispensables.</li>
+                        </ol>
+                    </div>
+
+                    <div class="code-window">
+                        <div class="code-header">
+                            <span class="code-filename">appsscript.json (Explicit Least-Privilege OAuth Scopes)</span>
+                            <button class="copy-btn" data-copied="Copied!">Copy</button>
+                        </div>
+                        <pre><code>{
+  "timeZone": "Africa/Nairobi",
+  "dependencies": {},
+  "exceptionLogging": "STACKDRIVER",
+  "runtimeVersion": "V8",
+  "oauthScopes": [
+    "https://www.googleapis.com/auth/spreadsheets",
+    "https://www.googleapis.com/auth/drive",
+    "https://www.googleapis.com/auth/presentations",
+    "https://www.googleapis.com/auth/gmail.send",
+    "https://www.googleapis.com/auth/contacts",
+    "https://www.googleapis.com/auth/calendar",
+    "https://www.googleapis.com/auth/documents",
+    "https://www.googleapis.com/auth/script.external_request"
+  ]
+}</code></pre>
+                    </div>
+
+                    <!-- 2. Quotas & Limitations Table -->
+                    <div class="lang-en">
+                        <h3>2. Google Workspace vs Consumer Account Quotas Reference</h3>
+                        <p>
+                            Keep these daily quotas in mind when planning large-scale cohort automations:
+                        </p>
+                    </div>
+
+                    <div class="lang-fr">
+                        <h3>2. Tableau de Référence des Quotas Google Workspace vs Comptes Grand Public</h3>
+                        <p>
+                            Gardez ces limites quotidiennes à l'esprit lors du dimensionnement de vos automatisations de cohortes :
+                        </p>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="codelab-table">
+                            <thead>
+                                <tr>
+                                    <th data-en="Feature / Service Quota" data-fr="Fonctionnalité / Quota Service">Feature / Service Quota</th>
+                                    <th data-en="Consumer (@gmail.com)" data-fr="Compte Personnel (@gmail.com)">Consumer (@gmail.com)</th>
+                                    <th data-en="Google Workspace (Business / Edu)" data-fr="Google Workspace (Business / Edu)">Google Workspace (Business / Edu)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong data-en="Email Recipients per Day" data-fr="Destinataires d'Emails / Jour">Email Recipients per Day</strong></td>
+                                    <td>100 recipients / day</td>
+                                    <td><strong>1,500 recipients / day</strong></td>
+                                </tr>
+                                <tr>
+                                    <td><strong data-en="Script Execution Maximum Time" data-fr="Temps Max d'Exécution par Script">Script Execution Maximum Time</strong></td>
+                                    <td>6 minutes / execution</td>
+                                    <td>6 minutes / execution</td>
+                                </tr>
+                                <tr>
+                                    <td><strong data-en="Simultaneous Triggers per User" data-fr="Déclencheurs Simultanés / Utilisateur">Simultaneous Triggers per User</strong></td>
+                                    <td>20 triggers / user / script</td>
+                                    <td>20 triggers / user / script</td>
+                                </tr>
+                                <tr>
+                                    <td><strong data-en="UrlFetch External Calls" data-fr="Appels Externes UrlFetch">UrlFetch External Calls</strong></td>
+                                    <td>20,000 calls / day</td>
+                                    <td><strong>100,000 calls / day</strong></td>
+                                </tr>
+                                <tr>
+                                    <td><strong data-en="Drive File Creation Rate" data-fr="Création de Fichiers Drive">Drive File Creation Rate</strong></td>
+                                    <td>Standard daily limits</td>
+                                    <td>High-throughput cloud storage</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- 3. Final Verification Checklist -->
+                    <div class="lang-en">
+                        <h3>3. Final End-to-End Verification Checklist</h3>
+                        <p>
+                            Before considering your workshop project complete, verify that every item below is operational:
+                        </p>
+                        <ul>
+                            <li><strong>1-Click Provisioning:</strong> <code>setupWorkshopEnvironment()</code> ran without errors, generating the Drive folder, the 8 student records in Sheets, and the Slide template.</li>
+                            <li><strong>Form Receipt:</strong> Form submission trigger correctly intercepts entries and sends an HTML confirmation receipt.</li>
+                            <li><strong>Google Contacts:</strong> <code>syncStudentsToGoogleContacts()</code> created or updated participants under the <code>GDG Workspace Training 2026</code> group.</li>
+                            <li><strong>Attendance Audit:</strong> <code>auditStudentAttendanceAndNotify()</code> computed percentages in Column J and emailed the instructor's summary digest.</li>
+                            <li><strong>Certificate Factory:</strong> Eligible students (&gt;= 80%) received their vector PDF certificate with a unique verification code.</li>
+                            <li><strong>Calendar &amp; Meet:</strong> At-risk students have a 1-on-1 review meeting booked on Google Calendar with a Meet link attached.</li>
+                            <li><strong>Evaluation Document:</strong> <code>generateWorkshopEvaluationDoc()</code> generated the formal retrospective Google Doc and PDF backup with view permissions.</li>
+                            <li><strong>Web App Dashboard:</strong> The deployed Web App loads successfully, provides instant search, and allows students to inspect their status.</li>
+                        </ul>
+                    </div>
+
+                    <div class="lang-fr">
+                        <h3>3. Checklist de Vérification Finale</h3>
+                        <p>
+                            Avant de clore votre workshop, validez que chacun des points suivants est pleinement opérationnel :
+                        </p>
+                        <ul>
+                            <li><strong>Provisionnement en 1 Clic :</strong> <code>setupWorkshopEnvironment()</code> s'est exécuté sans erreur, créant le dossier Drive, les 8 étudiants dans le Sheet et le gabarit Slides.</li>
+                            <li><strong>Accusé de Réception Formulaire :</strong> Le déclencheur de soumission intercepte les réponses et expédie l'email HTML de confirmation.</li>
+                            <li><strong>Google Contacts :</strong> <code>syncStudentsToGoogleContacts()</code> a créé ou enrichi les fiches sous le groupe <code>GDG Workspace Training 2026</code>.</li>
+                            <li><strong>Audit d'Assiduité :</strong> <code>auditStudentAttendanceAndNotify()</code> a calculé les pourcentages en Colonne J et expédié le bilan aux formateurs.</li>
+                            <li><strong>Usine d'E-Certificats :</strong> Les élèves éligibles (&gt;= 80%) ont reçu leur certificat PDF vectoriel avec identifiant unique.</li>
+                            <li><strong>Calendar &amp; Meet :</strong> Les élèves en difficulté disposent d'un créneau individuel planifié sur Google Calendar avec lien Meet.</li>
+                            <li><strong>Document de Bilan :</strong> <code>generateWorkshopEvaluationDoc()</code> a généré le rapport officiel Google Docs et sa copie PDF avec droits de lecture.</li>
+                            <li><strong>Web App Dashboard :</strong> L'application web déployée s'affiche correctement, filtre instantanément les résultats et affiche les attestations.</li>
+                        </ul>
+                    </div>
+
+                    <!-- 4. Official Resources -->
+                    <div class="lang-en">
+                        <h3>4. Official Documentation &amp; Further Resources</h3>
+                        <ul>
+                            <li><strong>Google Apps Script Official Guides:</strong> <a href="https://developers.google.com/apps-script" target="_blank" rel="noopener noreferrer" class="codelab-url-link">https://developers.google.com/apps-script</a></li>
+                            <li><strong>Apps Script Quotas &amp; Execution Limits:</strong> <a href="https://developers.google.com/apps-script/guides/services/quotas" target="_blank" rel="noopener noreferrer" class="codelab-url-link">https://developers.google.com/apps-script/guides/services/quotas</a></li>
+                            <li><strong>Google Workspace Developer Hub:</strong> <a href="https://developers.google.com/workspace" target="_blank" rel="noopener noreferrer" class="codelab-url-link">https://developers.google.com/workspace</a></li>
+                            <li><strong>Related Codelab (Full-Stack Agentic Dart):</strong> <a href="https://codelabs.glosings0n.dev/genkit-dart-agentic-workflows" class="codelab-url-link">https://codelabs.glosings0n.dev/genkit-dart-agentic-workflows</a></li>
+                            <li><strong>Related Codelab (On-Device AI with Flutter &amp; Gemma):</strong> <a href="https://codelabs.glosings0n.dev/flutter-gemma-droidcon-ug-2026" class="codelab-url-link">https://codelabs.glosings0n.dev/flutter-gemma-droidcon-ug-2026</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="lang-fr">
+                        <h3>4. Ressources Officielles &amp; Pour Aller Plus Loin</h3>
+                        <ul>
+                            <li><strong>Guides Officiels Google Apps Script :</strong> <a href="https://developers.google.com/apps-script" target="_blank" rel="noopener noreferrer" class="codelab-url-link">https://developers.google.com/apps-script</a></li>
+                            <li><strong>Quotas &amp; Limites d'Exécution Apps Script :</strong> <a href="https://developers.google.com/apps-script/guides/services/quotas" target="_blank" rel="noopener noreferrer" class="codelab-url-link">https://developers.google.com/apps-script/guides/services/quotas</a></li>
+                            <li><strong>Portail Développeur Google Workspace :</strong> <a href="https://developers.google.com/workspace" target="_blank" rel="noopener noreferrer" class="codelab-url-link">https://developers.google.com/workspace</a></li>
+                            <li><strong>Codelab Recommandé (Full-Stack Agentic Dart) :</strong> <a href="https://codelabs.glosings0n.dev/genkit-dart-agentic-workflows" class="codelab-url-link">https://codelabs.glosings0n.dev/genkit-dart-agentic-workflows</a></li>
+                            <li><strong>Codelab Recommandé (On-Device AI avec Flutter &amp; Gemma) :</strong> <a href="https://codelabs.glosings0n.dev/flutter-gemma-droidcon-ug-2026" class="codelab-url-link">https://codelabs.glosings0n.dev/flutter-gemma-droidcon-ug-2026</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- About Author Callout -->
+                    <div class="callout callout-info">
+                        <svg class="callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="9" cy="7" r="4"></circle>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                        </svg>
+                        <div class="callout-body">
+                            <div class="lang-en">
+                                <div class="callout-title">Built for the Global Google Developer Community</div>
+                                <p>
+                                    Authored by <strong>Georges Byona</strong> (<a href="https://glosings0n.dev" target="_blank" rel="noopener">@glosings0n</a>), Software Engineer, Edge-AI Researcher, Founder @ <span class="losingtek-font"><span class="brand-bold">Losing</span>Tek</span> &amp; Founder of the <a href="https://flutterfirecamp.dev" target="_blank" rel="noopener" class="ffsc-brand"><span class="brand-bold">FlutterFire Summer</span> <span class="brand-regular">Camp</span></a>.
+                                </p>
+                            </div>
+                            <div class="lang-fr">
+                                <div class="callout-title">Conçu pour la communauté mondiale des développeurs Google</div>
+                                <p>
+                                    Rédigé par <strong>Georges Byona</strong> (<a href="https://glosings0n.dev" target="_blank" rel="noopener">@glosings0n</a>), Software Engineer, Edge-AI Researcher, Fondateur @ <span class="losingtek-font"><span class="brand-bold">Losing</span>Tek</span> &amp; Fondateur du <a href="https://flutterfirecamp.dev" target="_blank" rel="noopener" class="ffsc-brand"><span class="brand-bold">FlutterFire Summer</span> <span class="brand-regular">Camp</span></a>.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="step-pagination">
+                        <button class="nav-step-btn" data-step-target="8"
+                            data-en="&larr; Previous"
+                            data-fr="&larr; Précédent">&larr; Previous</button>
+                        <a href="/codelabs/hub.html" class="nav-step-btn primary"
+                            data-en="Back to All Codelabs &rarr;"
+                            data-fr="Retour à tous les Codelabs &rarr;">Back to All Codelabs &rarr;</a>
+                    </div>
+                </article>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- Codelabs Runtime Script -->
+    <script src="/codelabs/js/codelabs.js"></script>
+</body>
+
+</html>
