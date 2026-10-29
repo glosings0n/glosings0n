@@ -492,11 +492,22 @@
                     </div>
 
                     <div class="code-window">
-                        <div class="code-header">
-                            <span class="code-filename">Code.gs (Setup Workshop Sandbox)</span>
-                            <button class="copy-btn" data-copied="Copied!">Copy</button>
-                        </div>
-                        <pre><code>/**
+    <div class="code-window-header">
+        <div class="code-window-meta">
+            <div class="window-dots">
+                <span class="window-dot red"></span>
+                <span class="window-dot yellow"></span>
+                <span class="window-dot green"></span>
+            </div>
+            <span class="code-filename">Code.gs (Setup Workshop Sandbox)</span>
+            <span class="code-lang-badge">JAVASCRIPT</span>
+        </div>
+        <button class="copy-code-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+            Copy
+        </button>
+    </div>
+    <pre><code>/**
  * Google Apps Script Workshop Automation
  * 1-Click Environment Setup Script
  * Track: GDG - Google Workspace Training (Day V)
@@ -586,12 +597,12 @@ function setupWorkshopEnvironment() {
   const slide = presentation.getSlides()[0];
   
   // Clean default blank layout
-  slide.getShapes().forEach(shape => shape.remove());
+  slide.getShapes().forEach(shape =&gt; shape.remove());
 
   // Add Certificate Title Box
   const titleBox = slide.insertTextBox('CERTIFICATE OF ACHIEVEMENT', 50, 40, 620, 60);
   const titleText = titleBox.getText();
-  titleText.getTextStyle().setFontSize(28).setFontFamily('Arial').setBold(true).setForegroundColor('#02569B');
+  titleText.getTextStyle().setFontSize(28).setFontFamily('Figtree').setBold(true).setForegroundColor('#02569B');
   titleBox.getText().getParagraphStyle().setParagraphAlignment(SlidesApp.ParagraphAlignment.CENTER);
 
   // Add Body Text with dynamic replacement tokens
@@ -604,7 +615,7 @@ function setupWorkshopEnvironment() {
   );
   
   const bodyText = bodyBox.getText();
-  bodyText.getTextStyle().setFontSize(16).setFontFamily('Arial');
+  bodyText.getTextStyle().setFontSize(16).setFontFamily('Figtree');
   bodyBox.getText().getParagraphStyle().setParagraphAlignment(SlidesApp.ParagraphAlignment.CENTER);
 
   presentation.saveAndClose();
@@ -625,7 +636,7 @@ function setupWorkshopEnvironment() {
   console.log(`Admin Active Email: ${Session.getActiveUser().getEmail()}`);
   console.log('All parameters saved in ScriptProperties.');
 }</code></pre>
-                    </div>
+</div>
 
                     <!-- 5. OAuth Permission Approval Walkthrough -->
                     <div class="lang-en">
@@ -708,11 +719,22 @@ function setupWorkshopEnvironment() {
                     </div>
 
                     <div class="code-window">
-                        <div class="code-header">
-                            <span class="code-filename">Practice1_FormNotification.gs</span>
-                            <button class="copy-btn" data-copied="Copied!">Copy</button>
-                        </div>
-                        <pre><code>/**
+    <div class="code-window-header">
+        <div class="code-window-meta">
+            <div class="window-dots">
+                <span class="window-dot red"></span>
+                <span class="window-dot yellow"></span>
+                <span class="window-dot green"></span>
+            </div>
+            <span class="code-filename">Practice1_FormNotification.gs</span>
+            <span class="code-lang-badge">JAVASCRIPT</span>
+        </div>
+        <button class="copy-code-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+            Copy
+        </button>
+    </div>
+    <pre><code>/**
  * Practice 1: Automated Form Submission Email Receipt
  * Service: FormApp + GmailApp + SpreadsheetApp
  */
@@ -746,34 +768,34 @@ function handleWorkshopFormSubmission(e) {
     
     // Clean, responsive inline-styled HTML template (no external CSS dependencies)
     const htmlBody = `
-      <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; border: 1px solid #cbd5e1; border-radius: 8px; overflow: hidden; background-color: #ffffff;">
-        <div style="background-color: #02569B; color: #ffffff; padding: 24px; text-align: center;">
-          <h2 style="margin: 0; font-size: 22px;">GDG - Google Workspace Training</h2>
-          <p style="margin: 8px 0 0 0; font-size: 14px; opacity: 0.9;">Registration Confirmation &amp; Day V Roadmap</p>
-        </div>
-        <div style="padding: 24px; color: #1e293b; line-height: 1.6;">
-          <p style="font-size: 16px; margin-top: 0;">Hello <strong>${studentName}</strong>,</p>
-          <p>We are delighted to confirm that your workshop submission has been securely recorded in our system.</p>
+      &lt;div style="font-family: 'Figtree', Arial, sans-serif; max-width: 600px; margin: 0 auto; border: 1px solid #cbd5e1; border-radius: 8px; overflow: hidden; background-color: #ffffff;"&gt;
+        &lt;div style="background-color: #02569B; color: #ffffff; padding: 24px; text-align: center;"&gt;
+          &lt;h2 style="margin: 0; font-size: 22px;"&gt;GDG - Google Workspace Training&lt;/h2&gt;
+          &lt;p style="margin: 8px 0 0 0; font-size: 14px; opacity: 0.9;"&gt;Registration Confirmation &amp; Day V Roadmap&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div style="padding: 24px; color: #1e293b; line-height: 1.6;"&gt;
+          &lt;p style="font-size: 16px; margin-top: 0;"&gt;Hello &lt;strong&gt;${studentName}&lt;/strong&gt;,&lt;/p&gt;
+          &lt;p&gt;We are delighted to confirm that your workshop submission has been securely recorded in our system.&lt;/p&gt;
           
-          <div style="background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; padding: 16px; margin: 20px 0;">
-            <p style="margin: 0 0 8px 0; font-size: 14px; font-weight: bold; color: #02569B;">Session Summary:</p>
-            <ul style="margin: 0; padding-left: 20px; font-size: 14px; color: #334155;">
-              <li><strong>Registered Track:</strong> ${selectedTrack}</li>
-              <li><strong>Format:</strong> 5-Day Intensive Community Workshop</li>
-              <li><strong>Automated Module:</strong> Day V - Google Apps Script Deep Dive</li>
-            </ul>
-          </div>
+          &lt;div style="background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; padding: 16px; margin: 20px 0;"&gt;
+            &lt;p style="margin: 0 0 8px 0; font-size: 14px; font-weight: bold; color: #02569B;"&gt;Session Summary:&lt;/p&gt;
+            &lt;ul style="margin: 0; padding-left: 20px; font-size: 14px; color: #334155;"&gt;
+              &lt;li&gt;&lt;strong&gt;Registered Track:&lt;/strong&gt; ${selectedTrack}&lt;/li&gt;
+              &lt;li&gt;&lt;strong&gt;Format:&lt;/strong&gt; 5-Day Intensive Community Workshop&lt;/li&gt;
+              &lt;li&gt;&lt;strong&gt;Automated Module:&lt;/strong&gt; Day V - Google Apps Script Deep Dive&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/div&gt;
 
-          <p style="font-size: 14px; color: #64748b;">
-            Please ensure you have active access to <a href="https://script.google.com" style="color: #0284c7; text-decoration: none;">script.google.com</a> before our live hands-on session.
-          </p>
-          <hr style="border: none; border-top: 1px solid #e2e8f0; margin: 24px 0;" />
-          <p style="font-size: 12px; color: #94a3b8; margin-bottom: 0; text-align: center;">
-            Organized with GDG Afrique Francophone, GDG Pointe-Noire &amp; GDG on Campus CUEA.<br>
+          &lt;p style="font-size: 14px; color: #64748b;"&gt;
+            Please ensure you have active access to &lt;a href="https://script.google.com" style="color: #0284c7; text-decoration: none;"&gt;script.google.com&lt;/a&gt; before our live hands-on session.
+          &lt;/p&gt;
+          &lt;hr style="border: none; border-top: 1px solid #e2e8f0; margin: 24px 0;" /&gt;
+          &lt;p style="font-size: 12px; color: #94a3b8; margin-bottom: 0; text-align: center;"&gt;
+            Organized with GDG Afrique Francophone, GDG Pointe-Noire &amp; GDG on Campus CUEA.&lt;br&gt;
             Powered by LosingTek &amp; FlutterFire Summer Camp.
-          </p>
-        </div>
-      </div>
+          &lt;/p&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
     `;
 
     const plainTextFallback = `Hello ${studentName},\n\nYour registration for GDG - Google Workspace Training has been confirmed!\nTrack: ${selectedTrack}\n\nSee you at the Day V Google Apps Script automation session!`;
@@ -789,7 +811,7 @@ function handleWorkshopFormSubmission(e) {
     console.error(`Failed to execute handleWorkshopFormSubmission: ${err.message}`);
   }
 }</code></pre>
-                    </div>
+</div>
 
                     <div class="lang-en">
                         <h3>2. Attaching the Installable Trigger</h3>
@@ -867,11 +889,22 @@ function handleWorkshopFormSubmission(e) {
                     </div>
 
                     <div class="code-window">
-                        <div class="code-header">
-                            <span class="code-filename">Practice2_ContactsSync.gs</span>
-                            <button class="copy-btn" data-copied="Copied!">Copy</button>
-                        </div>
-                        <pre><code>/**
+    <div class="code-window-header">
+        <div class="code-window-meta">
+            <div class="window-dots">
+                <span class="window-dot red"></span>
+                <span class="window-dot yellow"></span>
+                <span class="window-dot green"></span>
+            </div>
+            <span class="code-filename">Practice2_ContactsSync.gs</span>
+            <span class="code-lang-badge">JAVASCRIPT</span>
+        </div>
+        <button class="copy-code-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+            Copy
+        </button>
+    </div>
+    <pre><code>/**
  * Practice 2: Batch Student Ingestion into Google Contacts
  * Service: ContactsApp + SpreadsheetApp
  */
@@ -889,7 +922,7 @@ function syncStudentsToGoogleContacts() {
     const sheet = spreadsheet.getSheetByName('Attendance_Master');
     const data = sheet.getDataRange().getValues();
 
-    if (data.length <= 1) {
+    if (data.length &lt;= 1) {
       console.log('No student rows found in Attendance_Master.');
       return;
     }
@@ -909,7 +942,7 @@ function syncStudentsToGoogleContacts() {
     let existingCount = 0;
 
     // 2. Iterate student records (skip header at index 0)
-    for (let i = 1; i < data.length; i++) {
+    for (let i = 1; i &lt; data.length; i++) {
       const row = data[i];
       const studentId = row[0];
       const fullName = row[1];
@@ -924,7 +957,7 @@ function syncStudentsToGoogleContacts() {
       const existingContacts = ContactsApp.getContactsByEmailAddress(email);
 
       let contact;
-      if (existingContacts.length > 0) {
+      if (existingContacts.length &gt; 0) {
         contact = existingContacts[0];
         existingCount++;
       } else {
@@ -941,7 +974,7 @@ function syncStudentsToGoogleContacts() {
       contact.setNotes(`Participant ID: ${studentId} | Track: ${track} | GDG Workspace Training 2026`);
       
       const currentGroups = contact.getContactGroups();
-      const alreadyInGroup = currentGroups.some(g => g.getName() === groupName);
+      const alreadyInGroup = currentGroups.some(g =&gt; g.getName() === groupName);
 
       if (!alreadyInGroup) {
         contact.addToGroup(contactGroup);
@@ -956,7 +989,7 @@ function syncStudentsToGoogleContacts() {
     console.error(`Error in syncStudentsToGoogleContacts: ${err.message}`);
   }
 }</code></pre>
-                    </div>
+</div>
 
                     <div class="callout callout-info">
                         <svg class="callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -1026,11 +1059,22 @@ function syncStudentsToGoogleContacts() {
                     </div>
 
                     <div class="code-window">
-                        <div class="code-header">
-                            <span class="code-filename">Practice3_AttendanceAudit.gs</span>
-                            <button class="copy-btn" data-copied="Copied!">Copy</button>
-                        </div>
-                        <pre><code>/**
+    <div class="code-window-header">
+        <div class="code-window-meta">
+            <div class="window-dots">
+                <span class="window-dot red"></span>
+                <span class="window-dot yellow"></span>
+                <span class="window-dot green"></span>
+            </div>
+            <span class="code-filename">Practice3_AttendanceAudit.gs</span>
+            <span class="code-lang-badge">JAVASCRIPT</span>
+        </div>
+        <button class="copy-code-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+            Copy
+        </button>
+    </div>
+    <pre><code>/**
  * Practice 3: Student Attendance Audit & Teacher Digest Report
  * Service: SpreadsheetApp + GmailApp
  */
@@ -1050,7 +1094,7 @@ function auditStudentAttendanceAndNotify() {
     const dataRange = sheet.getDataRange();
     const values = dataRange.getValues();
 
-    if (values.length <= 1) {
+    if (values.length &lt;= 1) {
       console.log('No data to audit.');
       return;
     }
@@ -1065,7 +1109,7 @@ function auditStudentAttendanceAndNotify() {
     let tableRowsHtml = '';
 
     // Loop through students (indices: Day 1 = col 4, Day 5 = col 8, Rate = col 9)
-    for (let i = 1; i < values.length; i++) {
+    for (let i = 1; i &lt; values.length; i++) {
       const row = values[i];
       const studentId = row[0];
       const fullName = row[1];
@@ -1073,7 +1117,7 @@ function auditStudentAttendanceAndNotify() {
       const track = row[3];
 
       let daysPresent = 0;
-      for (let dayCol = 4; dayCol <= 8; dayCol++) {
+      for (let dayCol = 4; dayCol &lt;= 8; dayCol++) {
         if (row[dayCol] === 'P') {
           daysPresent++;
         }
@@ -1084,25 +1128,25 @@ function auditStudentAttendanceAndNotify() {
       attendanceRateUpdates.push([`${ratePercentage}%`]);
 
       let statusBadge = '';
-      if (ratePercentage >= 80) {
+      if (ratePercentage &gt;= 80) {
         eligibleCount++;
         if (ratePercentage === 100) perfectAttendanceCount++;
-        statusBadge = '<span style="background-color: #dcfce7; color: #15803d; padding: 4px 8px; border-radius: 4px; font-weight: bold; font-size: 12px;">Eligible</span>';
-      } else if (ratePercentage >= 75) {
-        statusBadge = '<span style="background-color: #fef9c3; color: #a16207; padding: 4px 8px; border-radius: 4px; font-weight: bold; font-size: 12px;">Borderline</span>';
+        statusBadge = '&lt;span style="background-color: #dcfce7; color: #15803d; padding: 4px 8px; border-radius: 4px; font-weight: bold; font-size: 12px;"&gt;Eligible&lt;/span&gt;';
+      } else if (ratePercentage &gt;= 75) {
+        statusBadge = '&lt;span style="background-color: #fef9c3; color: #a16207; padding: 4px 8px; border-radius: 4px; font-weight: bold; font-size: 12px;"&gt;Borderline&lt;/span&gt;';
       } else {
         atRiskCount++;
-        statusBadge = '<span style="background-color: #fee2e2; color: #b91c1c; padding: 4px 8px; border-radius: 4px; font-weight: bold; font-size: 12px;">At Risk</span>';
+        statusBadge = '&lt;span style="background-color: #fee2e2; color: #b91c1c; padding: 4px 8px; border-radius: 4px; font-weight: bold; font-size: 12px;"&gt;At Risk&lt;/span&gt;';
       }
 
       tableRowsHtml += `
-        <tr style="border-bottom: 1px solid #e2e8f0; font-size: 13px;">
-          <td style="padding: 10px; font-family: monospace;">${studentId}</td>
-          <td style="padding: 10px; font-weight: 500;">${fullName}</td>
-          <td style="padding: 10px; color: #64748b;">${track}</td>
-          <td style="padding: 10px; text-align: center; font-weight: bold;">${ratePercentage}%</td>
-          <td style="padding: 10px; text-align: center;">${statusBadge}</td>
-        </tr>
+        &lt;tr style="border-bottom: 1px solid #e2e8f0; font-size: 13px;"&gt;
+          &lt;td style="padding: 10px; font-family: monospace;"&gt;${studentId}&lt;/td&gt;
+          &lt;td style="padding: 10px; font-weight: 500;"&gt;${fullName}&lt;/td&gt;
+          &lt;td style="padding: 10px; color: #64748b;"&gt;${track}&lt;/td&gt;
+          &lt;td style="padding: 10px; text-align: center; font-weight: bold;"&gt;${ratePercentage}%&lt;/td&gt;
+          &lt;td style="padding: 10px; text-align: center;"&gt;${statusBadge}&lt;/td&gt;
+        &lt;/tr&gt;
       `;
     }
 
@@ -1115,54 +1159,54 @@ function auditStudentAttendanceAndNotify() {
     // Build Executive HTML Email Digest for Instructors
     const emailSubject = `Attendance Audit Digest: ${averageCohortRate}% Cohort Avg | GDG Workspace Training`;
     const htmlReport = `
-      <div style="font-family: Arial, sans-serif; max-width: 650px; margin: 0 auto; border: 1px solid #cbd5e1; border-radius: 8px; overflow: hidden; background-color: #ffffff;">
-        <div style="background-color: #02569B; color: #ffffff; padding: 20px;">
-          <h2 style="margin: 0; font-size: 20px;">Student Attendance &amp; Progression Audit</h2>
-          <p style="margin: 6px 0 0 0; font-size: 13px; opacity: 0.9;">GDG - Google Workspace Training (Day V Audit)</p>
-        </div>
+      &lt;div style="font-family: 'Figtree', Arial, sans-serif; max-width: 650px; margin: 0 auto; border: 1px solid #cbd5e1; border-radius: 8px; overflow: hidden; background-color: #ffffff;"&gt;
+        &lt;div style="background-color: #02569B; color: #ffffff; padding: 20px;"&gt;
+          &lt;h2 style="margin: 0; font-size: 20px;"&gt;Student Attendance &amp; Progression Audit&lt;/h2&gt;
+          &lt;p style="margin: 6px 0 0 0; font-size: 13px; opacity: 0.9;"&gt;GDG - Google Workspace Training (Day V Audit)&lt;/p&gt;
+        &lt;/div&gt;
         
-        <div style="padding: 20px; color: #1e293b;">
-          <!-- Metric KPI Grid -->
-          <div style="display: table; width: 100%; margin-bottom: 20px;">
-            <div style="display: table-cell; width: 25%; text-align: center; padding: 12px; background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px;">
-              <div style="font-size: 22px; font-weight: bold; color: #02569B;">${totalStudents}</div>
-              <div style="font-size: 11px; color: #64748b; text-transform: uppercase;">Total Cohort</div>
-            </div>
-            <div style="display: table-cell; width: 25%; text-align: center; padding: 12px; background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px;">
-              <div style="font-size: 22px; font-weight: bold; color: #0284c7;">${averageCohortRate}%</div>
-              <div style="font-size: 11px; color: #64748b; text-transform: uppercase;">Average Rate</div>
-            </div>
-            <div style="display: table-cell; width: 25%; text-align: center; padding: 12px; background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px;">
-              <div style="font-size: 22px; font-weight: bold; color: #15803d;">${eligibleCount}</div>
-              <div style="font-size: 11px; color: #64748b; text-transform: uppercase;">Certificate Ready</div>
-            </div>
-            <div style="display: table-cell; width: 25%; text-align: center; padding: 12px; background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px;">
-              <div style="font-size: 22px; font-weight: bold; color: #b91c1c;">${atRiskCount}</div>
-              <div style="font-size: 11px; color: #64748b; text-transform: uppercase;">At Risk (<75%)</div>
-            </div>
-          </div>
+        &lt;div style="padding: 20px; color: #1e293b;"&gt;
+          &lt;!-- Metric KPI Grid --&gt;
+          &lt;div style="display: table; width: 100%; margin-bottom: 20px;"&gt;
+            &lt;div style="display: table-cell; width: 25%; text-align: center; padding: 12px; background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px;"&gt;
+              &lt;div style="font-size: 22px; font-weight: bold; color: #02569B;"&gt;${totalStudents}&lt;/div&gt;
+              &lt;div style="font-size: 11px; color: #64748b; text-transform: uppercase;"&gt;Total Cohort&lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div style="display: table-cell; width: 25%; text-align: center; padding: 12px; background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px;"&gt;
+              &lt;div style="font-size: 22px; font-weight: bold; color: #0284c7;"&gt;${averageCohortRate}%&lt;/div&gt;
+              &lt;div style="font-size: 11px; color: #64748b; text-transform: uppercase;"&gt;Average Rate&lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div style="display: table-cell; width: 25%; text-align: center; padding: 12px; background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px;"&gt;
+              &lt;div style="font-size: 22px; font-weight: bold; color: #15803d;"&gt;${eligibleCount}&lt;/div&gt;
+              &lt;div style="font-size: 11px; color: #64748b; text-transform: uppercase;"&gt;Certificate Ready&lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div style="display: table-cell; width: 25%; text-align: center; padding: 12px; background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px;"&gt;
+              &lt;div style="font-size: 22px; font-weight: bold; color: #b91c1c;"&gt;${atRiskCount}&lt;/div&gt;
+              &lt;div style="font-size: 11px; color: #64748b; text-transform: uppercase;"&gt;At Risk (&lt;75%)&lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
 
-          <!-- Roster Table -->
-          <table style="width: 100%; border-collapse: collapse; margin-top: 10px;">
-            <thead>
-              <tr style="background-color: #f1f5f9; text-align: left; font-size: 12px; color: #475569;">
-                <th style="padding: 10px;">ID</th>
-                <th style="padding: 10px;">Student Name</th>
-                <th style="padding: 10px;">Track</th>
-                <th style="padding: 10px; text-align: center;">Rate</th>
-                <th style="padding: 10px; text-align: center;">Status</th>
-              </tr>
-            </thead>
-            <tbody>
+          &lt;!-- Roster Table --&gt;
+          &lt;table style="width: 100%; border-collapse: collapse; margin-top: 10px;"&gt;
+            &lt;thead&gt;
+              &lt;tr style="background-color: #f1f5f9; text-align: left; font-size: 12px; color: #475569;"&gt;
+                &lt;th style="padding: 10px;"&gt;ID&lt;/th&gt;
+                &lt;th style="padding: 10px;"&gt;Student Name&lt;/th&gt;
+                &lt;th style="padding: 10px;"&gt;Track&lt;/th&gt;
+                &lt;th style="padding: 10px; text-align: center;"&gt;Rate&lt;/th&gt;
+                &lt;th style="padding: 10px; text-align: center;"&gt;Status&lt;/th&gt;
+              &lt;/tr&gt;
+            &lt;/thead&gt;
+            &lt;tbody&gt;
               ${tableRowsHtml}
-            </tbody>
-          </table>
+            &lt;/tbody&gt;
+          &lt;/table&gt;
 
-          <div style="margin-top: 24px; padding: 12px; background-color: #eff6ff; border: 1px solid #bfdbfe; border-radius: 6px; font-size: 13px; color: #1e40af;">
-            <strong>Action Required:</strong> Students marked <em>At Risk</em> will receive an automated invitation to 1-on-1 office hours via Google Meet in Practice 5.
-          </div>
-        </div>
-      </div>
+          &lt;div style="margin-top: 24px; padding: 12px; background-color: #eff6ff; border: 1px solid #bfdbfe; border-radius: 6px; font-size: 13px; color: #1e40af;"&gt;
+            &lt;strong&gt;Action Required:&lt;/strong&gt; Students marked &lt;em&gt;At Risk&lt;/em&gt; will receive an automated invitation to 1-on-1 office hours via Google Meet in Practice 5.
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
     `;
 
     GmailApp.sendEmail(adminEmail, emailSubject, `Cohort Attendance Audit Completed: ${averageCohortRate}% Average.`, {
@@ -1175,7 +1219,7 @@ function auditStudentAttendanceAndNotify() {
     console.error(`Error in auditStudentAttendanceAndNotify: ${err.message}`);
   }
 }</code></pre>
-                    </div>
+</div>
 
                     <div class="step-pagination">
                         <button class="nav-step-btn" data-step-target="2"
@@ -1223,11 +1267,22 @@ function auditStudentAttendanceAndNotify() {
                     </div>
 
                     <div class="code-window">
-                        <div class="code-header">
-                            <span class="code-filename">Practice4_CertificateFactory.gs</span>
-                            <button class="copy-btn" data-copied="Copied!">Copy</button>
-                        </div>
-                        <pre><code>/**
+    <div class="code-window-header">
+        <div class="code-window-meta">
+            <div class="window-dots">
+                <span class="window-dot red"></span>
+                <span class="window-dot yellow"></span>
+                <span class="window-dot green"></span>
+            </div>
+            <span class="code-filename">Practice4_CertificateFactory.gs</span>
+            <span class="code-lang-badge">JAVASCRIPT</span>
+        </div>
+        <button class="copy-code-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+            Copy
+        </button>
+    </div>
+    <pre><code>/**
  * Practice 4: Vector E-Certificate Factory & PDF Dispatch
  * Service: SlidesApp + DriveApp + GmailApp + SpreadsheetApp
  */
@@ -1266,7 +1321,7 @@ function generateAndDeliverECertificates() {
     let issuedCount = 0;
 
     // Scan students (columns: Rate = 9, Status = 11, URL = 12)
-    for (let i = 1; i < data.length; i++) {
+    for (let i = 1; i &lt; data.length; i++) {
       const row = data[i];
       const studentId = row[0];
       const fullName = row[1];
@@ -1276,8 +1331,8 @@ function generateAndDeliverECertificates() {
       const rateNumber = parseInt(rateString, 10) || 0;
       const certificateStatus = row[11];
 
-      // Criteria: Attendance >= 80% and not yet issued
-      if (rateNumber >= 80 && certificateStatus !== 'ISSUED') {
+      // Criteria: Attendance &gt;= 80% and not yet issued
+      if (rateNumber &gt;= 80 && certificateStatus !== 'ISSUED') {
         console.log(`Generating certificate for eligible student: ${fullName} (${studentId})...`);
 
         // Generate unique cryptographic-style verification ID
@@ -1316,27 +1371,27 @@ function generateAndDeliverECertificates() {
         // 7. Dispatch congratulations email with attached PDF
         const emailSubject = `Congratulations ${fullName}: Your GDG Workspace Certificate is Ready!`;
         const emailBody = `
-          <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; border: 1px solid #cbd5e1; border-radius: 8px; padding: 24px; color: #1e293b;">
-            <h2 style="color: #02569B; margin-top: 0;">Certificate of Achievement Ready!</h2>
-            <p>Dear <strong>${fullName}</strong>,</p>
-            <p>
-              Congratulations on successfully completing the intensive 5-day curriculum of <strong>GDG - Google Workspace Training</strong> with an outstanding attendance rate of <strong>${rateNumber}%</strong>.
-            </p>
-            <p>
-              Your verified certificate is attached to this email in PDF format.<br>
-              <strong>Verification ID:</strong> <code style="background-color: #f1f5f9; padding: 2px 6px; border-radius: 4px;">${uniqueVerificationId}</code>
-            </p>
-            <p>
+          &lt;div style="font-family: 'Figtree', Arial, sans-serif; max-width: 600px; margin: 0 auto; border: 1px solid #cbd5e1; border-radius: 8px; padding: 24px; color: #1e293b;"&gt;
+            &lt;h2 style="color: #02569B; margin-top: 0;"&gt;Certificate of Achievement Ready!&lt;/h2&gt;
+            &lt;p&gt;Dear &lt;strong&gt;${fullName}&lt;/strong&gt;,&lt;/p&gt;
+            &lt;p&gt;
+              Congratulations on successfully completing the intensive 5-day curriculum of &lt;strong&gt;GDG - Google Workspace Training&lt;/strong&gt; with an outstanding attendance rate of &lt;strong&gt;${rateNumber}%&lt;/strong&gt;.
+            &lt;/p&gt;
+            &lt;p&gt;
+              Your verified certificate is attached to this email in PDF format.&lt;br&gt;
+              &lt;strong&gt;Verification ID:&lt;/strong&gt; &lt;code style="background-color: #f1f5f9; padding: 2px 6px; border-radius: 4px;"&gt;${uniqueVerificationId}&lt;/code&gt;
+            &lt;/p&gt;
+            &lt;p&gt;
               You can also view or download your certificate directly on Google Drive:
-              <br>
-              <a href="${pdfUrl}" style="display: inline-block; margin-top: 12px; background-color: #00B0FF; color: #070a13; padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: bold;">View Certificate on Drive</a>
-            </p>
-            <hr style="border: none; border-top: 1px solid #e2e8f0; margin: 24px 0;" />
-            <p style="font-size: 12px; color: #64748b;">
-              GDG Afrique Francophone | GDG Pointe-Noire | GDG on Campus CUEA.<br>
+              &lt;br&gt;
+              &lt;a href="${pdfUrl}" style="display: inline-block; margin-top: 12px; background-color: #00B0FF; color: #070a13; padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: bold;"&gt;View Certificate on Drive&lt;/a&gt;
+            &lt;/p&gt;
+            &lt;hr style="border: none; border-top: 1px solid #e2e8f0; margin: 24px 0;" /&gt;
+            &lt;p style="font-size: 12px; color: #64748b;"&gt;
+              GDG Afrique Francophone | GDG Pointe-Noire | GDG on Campus CUEA.&lt;br&gt;
               Powered by LosingTek &amp; FlutterFire Summer Camp.
-            </p>
-          </div>
+            &lt;/p&gt;
+          &lt;/div&gt;
         `;
 
         GmailApp.sendEmail(email, emailSubject, `Congratulations ${fullName}! Your certificate is attached.`, {
@@ -1355,7 +1410,7 @@ function generateAndDeliverECertificates() {
     console.error(`Error in generateAndDeliverECertificates: ${err.message}`);
   }
 }</code></pre>
-                    </div>
+</div>
 
                     <div class="step-pagination">
                         <button class="nav-step-btn" data-step-target="3"
@@ -1403,11 +1458,22 @@ function generateAndDeliverECertificates() {
                     </div>
 
                     <div class="code-window">
-                        <div class="code-header">
-                            <span class="code-filename">Practice5_CalendarMeet.gs</span>
-                            <button class="copy-btn" data-copied="Copied!">Copy</button>
-                        </div>
-                        <pre><code>/**
+    <div class="code-window-header">
+        <div class="code-window-meta">
+            <div class="window-dots">
+                <span class="window-dot red"></span>
+                <span class="window-dot yellow"></span>
+                <span class="window-dot green"></span>
+            </div>
+            <span class="code-filename">Practice5_CalendarMeet.gs</span>
+            <span class="code-lang-badge">JAVASCRIPT</span>
+        </div>
+        <button class="copy-code-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+            Copy
+        </button>
+    </div>
+    <pre><code>/**
  * Practice 5: Schedule Mentoring Office Hours with Auto Google Meet Links
  * Service: CalendarApp + SpreadsheetApp
  */
@@ -1435,7 +1501,7 @@ function scheduleMentoringSessionsWithMeet() {
     let slotOffsetMinutes = 0;
     let scheduledCount = 0;
 
-    for (let i = 1; i < data.length; i++) {
+    for (let i = 1; i &lt; data.length; i++) {
       const row = data[i];
       const studentId = row[0];
       const fullName = row[1];
@@ -1445,8 +1511,8 @@ function scheduleMentoringSessionsWithMeet() {
       const rateNumber = parseInt(rateString, 10) || 0;
       const examScore = parseInt(row[10], 10) || 0;
 
-      // Identify students who require 1-on-1 office hours (attendance < 75% or exam < 70)
-      if (rateNumber < 75 || examScore < 70) {
+      // Identify students who require 1-on-1 office hours (attendance &lt; 75% or exam &lt; 70)
+      if (rateNumber &lt; 75 || examScore &lt; 70) {
         const slotStart = new Date(baseDate.getTime() + slotOffsetMinutes * 60000);
         const slotEnd = new Date(slotStart.getTime() + 30 * 60000); // 30-minute block
 
@@ -1485,7 +1551,7 @@ Community: GDG Afrique Francophone / GDG Pointe-Noire / GDG CUEA
     console.error(`Error in scheduleMentoringSessionsWithMeet: ${err.message}`);
   }
 }</code></pre>
-                    </div>
+</div>
 
                     <div class="callout callout-info">
                         <svg class="callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -1555,11 +1621,22 @@ Community: GDG Afrique Francophone / GDG Pointe-Noire / GDG CUEA
                     </div>
 
                     <div class="code-window">
-                        <div class="code-header">
-                            <span class="code-filename">Practice6_DocsReport.gs</span>
-                            <button class="copy-btn" data-copied="Copied!">Copy</button>
-                        </div>
-                        <pre><code>/**
+    <div class="code-window-header">
+        <div class="code-window-meta">
+            <div class="window-dots">
+                <span class="window-dot red"></span>
+                <span class="window-dot yellow"></span>
+                <span class="window-dot green"></span>
+            </div>
+            <span class="code-filename">Practice6_DocsReport.gs</span>
+            <span class="code-lang-badge">JAVASCRIPT</span>
+        </div>
+        <button class="copy-code-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+            Copy
+        </button>
+    </div>
+    <pre><code>/**
  * Practice 6: Programmatic Workshop Evaluation Doc & Drive Sharing
  * Service: DocumentApp + DriveApp + SpreadsheetApp
  */
@@ -1605,7 +1682,7 @@ function generateWorkshopEvaluationDoc() {
     // 2. Add Main Document Titles
     const titleP = body.appendParagraph('Executive Summary & Evaluation Report');
     titleP.setHeading(DocumentApp.ParagraphHeading.HEADING1);
-    titleP.getAttributes()[DocumentApp.Attribute.FONT_FAMILY] = 'Arial';
+    titleP.getAttributes()[DocumentApp.Attribute.FONT_FAMILY] = 'Figtree';
     titleP.setFontSize(22).setBold(true).setForegroundColor('#02569B');
 
     const subtitleP = body.appendParagraph('Cohort Performance, Attendance Metrics & Certification Outcomes');
@@ -1626,7 +1703,7 @@ function generateWorkshopEvaluationDoc() {
     let certified = 0;
     let cumulativeScore = 0;
 
-    for (let i = 1; i < data.length; i++) {
+    for (let i = 1; i &lt; data.length; i++) {
       if (data[i][11] === 'ISSUED') certified++;
       cumulativeScore += (parseInt(data[i][10], 10) || 0);
     }
@@ -1639,9 +1716,9 @@ function generateWorkshopEvaluationDoc() {
 
     const tableData = [
       ['Evaluation Metric', 'Recorded Value', 'Benchmark Target', 'Compliance Status'],
-      ['Total Enrolled Participants', String(total), '>= 8 per session', 'OPTIMAL'],
-      ['Average Examination Score', `${avgScore}/100`, '>= 75/100', avgScore >= 75 ? 'SURPASSED' : 'REQUIRES ATTENTION'],
-      ['Graduation & E-Certificate Rate', `${certPercentage}% (${certified}/${total})`, '>= 70%', certPercentage >= 70 ? 'ACHIEVED' : 'INCOMPLETE'],
+      ['Total Enrolled Participants', String(total), '&gt;= 8 per session', 'OPTIMAL'],
+      ['Average Examination Score', `${avgScore}/100`, '&gt;= 75/100', avgScore &gt;= 75 ? 'SURPASSED' : 'REQUIRES ATTENTION'],
+      ['Graduation & E-Certificate Rate', `${certPercentage}% (${certified}/${total})`, '&gt;= 70%', certPercentage &gt;= 70 ? 'ACHIEVED' : 'INCOMPLETE'],
       ['Automated Infrastructure', 'Google Apps Script (V8)', 'Zero-Server Stack', 'VERIFIED']
     ];
 
@@ -1649,7 +1726,7 @@ function generateWorkshopEvaluationDoc() {
     
     // Style Table Header Row
     const headerRow = table.getRow(0);
-    for (let c = 0; c < 4; c++) {
+    for (let c = 0; c &lt; 4; c++) {
       headerRow.getCell(c).setBackgroundColor('#02569B');
       headerRow.getCell(c).getChild(0).asParagraph().setFontColor('#FFFFFF').setBold(true);
     }
@@ -1671,7 +1748,7 @@ function generateWorkshopEvaluationDoc() {
     console.error(`Error in generateWorkshopEvaluationDoc: ${err.message}`);
   }
 }</code></pre>
-                    </div>
+</div>
 
                     <div class="step-pagination">
                         <button class="nav-step-btn" data-step-target="5"
@@ -1719,11 +1796,22 @@ function generateWorkshopEvaluationDoc() {
                     </div>
 
                     <div class="code-window">
-                        <div class="code-header">
-                            <span class="code-filename">WebApp_Server.gs (Backend doGet and RPC API)</span>
-                            <button class="copy-btn" data-copied="Copied!">Copy</button>
-                        </div>
-                        <pre><code>/**
+    <div class="code-window-header">
+        <div class="code-window-meta">
+            <div class="window-dots">
+                <span class="window-dot red"></span>
+                <span class="window-dot yellow"></span>
+                <span class="window-dot green"></span>
+            </div>
+            <span class="code-filename">WebApp_Server.gs (Backend doGet and RPC API)</span>
+            <span class="code-lang-badge">JAVASCRIPT</span>
+        </div>
+        <button class="copy-code-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+            Copy
+        </button>
+    </div>
+    <pre><code>/**
  * Practice 7: Web App Server Backend
  * Service: HtmlService + SpreadsheetApp
  */
@@ -1757,14 +1845,14 @@ function getDashboardData() {
     let eligibleCount = 0;
     let totalScore = 0;
 
-    for (let i = 1; i < values.length; i++) {
+    for (let i = 1; i &lt; values.length; i++) {
       const row = values[i];
       const rateNum = parseInt(String(row[9]).replace('%', ''), 10) || 0;
       const score = parseInt(row[10], 10) || 0;
       const status = row[11];
       const certUrl = row[12];
 
-      if (rateNum >= 80) eligibleCount++;
+      if (rateNum &gt;= 80) eligibleCount++;
       totalScore += score;
 
       students.push({
@@ -1790,7 +1878,7 @@ function getDashboardData() {
     return { error: err.message };
   }
 }</code></pre>
-                    </div>
+</div>
 
                     <div class="lang-en">
                         <p>
@@ -1805,17 +1893,32 @@ function getDashboardData() {
                     </div>
 
                     <div class="code-window">
-                        <div class="code-header">
-                            <span class="code-filename">Index.html (Frontend Single Page Application)</span>
-                            <button class="copy-btn" data-copied="Copied!">Copy</button>
-                        </div>
-                        <pre><code>&lt;!DOCTYPE html&gt;
+    <div class="code-window-header">
+        <div class="code-window-meta">
+            <div class="window-dots">
+                <span class="window-dot red"></span>
+                <span class="window-dot yellow"></span>
+                <span class="window-dot green"></span>
+            </div>
+            <span class="code-filename">Index.html (Frontend Single Page Application)</span>
+            <span class="code-lang-badge">HTML</span>
+        </div>
+        <button class="copy-code-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+            Copy
+        </button>
+    </div>
+    <pre><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
   &lt;base target="_top"&gt;
+  &lt;!-- Google Fonts: Figtree &amp; JetBrains Mono --&gt;
+  &lt;link rel="preconnect" href="https://fonts.googleapis.com"&gt;
+  &lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin&gt;
+  &lt;link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&amp;family=JetBrains+Mono:wght@400;600&amp;display=swap" rel="stylesheet"&gt;
   &lt;style&gt;
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-family: 'Figtree', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       margin: 0;
       padding: 24px;
       background-color: #070a13;
@@ -1965,7 +2068,7 @@ function getDashboardData() {
         '&lt;th&gt;ID&lt;/th&gt;&lt;th&gt;Name&lt;/th&gt;&lt;th&gt;Track&lt;/th&gt;&lt;th&gt;Attendance&lt;/th&gt;&lt;th&gt;Exam&lt;/th&gt;&lt;th&gt;Status&lt;/th&gt;&lt;th&gt;Certificate&lt;/th&gt;' +
         '&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;';
 
-      students.forEach(s => {
+      students.forEach(s =&gt; {
         const badgeClass = s.status === 'ISSUED' ? 'badge-issued' : 'badge-pending';
         const certAction = s.certUrl ? '&lt;a class="btn-cert" href="' + s.certUrl + '" target="_blank"&gt;View PDF &rarr;&lt;/a&gt;' : '&lt;span style="color:#64748b;"&gt;In Progress&lt;/span&gt;';
         
@@ -1986,7 +2089,7 @@ function getDashboardData() {
 
     function filterTable() {
       const q = document.getElementById('search-input').value.toLowerCase();
-      const filtered = allStudents.filter(s => 
+      const filtered = allStudents.filter(s =&gt; 
         s.name.toLowerCase().includes(q) || 
         s.id.toLowerCase().includes(q) || 
         s.track.toLowerCase().includes(q)
@@ -2000,7 +2103,7 @@ function getDashboardData() {
   &lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;</code></pre>
-                    </div>
+</div>
 
                     <div class="lang-en">
                         <h3>2. Deploying the Web App</h3>
@@ -2076,11 +2179,22 @@ function getDashboardData() {
                     </div>
 
                     <div class="code-window">
-                        <div class="code-header">
-                            <span class="code-filename">Practice8_CronAndWebhooks.gs</span>
-                            <button class="copy-btn" data-copied="Copied!">Copy</button>
-                        </div>
-                        <pre><code>/**
+    <div class="code-window-header">
+        <div class="code-window-meta">
+            <div class="window-dots">
+                <span class="window-dot red"></span>
+                <span class="window-dot yellow"></span>
+                <span class="window-dot green"></span>
+            </div>
+            <span class="code-filename">Practice8_CronAndWebhooks.gs</span>
+            <span class="code-lang-badge">JAVASCRIPT</span>
+        </div>
+        <button class="copy-code-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+            Copy
+        </button>
+    </div>
+    <pre><code>/**
  * Practice 8: Programmatic Time Triggers & Outbound Webhook Integration
  * Service: ScriptApp + UrlFetchApp
  */
@@ -2091,7 +2205,7 @@ function installDailyAuditTrigger() {
   
   // Clean up any existing trigger for the same function to avoid duplicate runs
   const currentTriggers = ScriptApp.getProjectTriggers();
-  currentTriggers.forEach(trigger => {
+  currentTriggers.forEach(trigger =&gt; {
     if (trigger.getHandlerFunction() === functionName) {
       ScriptApp.deleteTrigger(trigger);
       console.log(`Deleted pre-existing trigger for: ${functionName}`);
@@ -2127,17 +2241,17 @@ function broadcastCohortSummaryWebhook(webhookUrl) {
     let certified = 0;
     let atRisk = 0;
 
-    for (let i = 1; i < data.length; i++) {
+    for (let i = 1; i &lt; data.length; i++) {
       const rateNum = parseInt(String(data[i][9]).replace('%', ''), 10) || 0;
-      if (rateNum >= 80) certified++;
-      if (rateNum < 75) atRisk++;
+      if (rateNum &gt;= 80) certified++;
+      if (rateNum &lt; 75) atRisk++;
     }
 
     const payload = {
       text: `*GDG Workspace Training Cohort Update*\n` +
             `• *Total Students:* ${total}\n` +
             `• *Certificate Eligible:* ${certified}\n` +
-            `• *At Risk (<75%):* ${atRisk}\n` +
+            `• *At Risk (&lt;75%):* ${atRisk}\n` +
             `• *Automated via:* Google Apps Script V8 (Day V Workshop)`
     };
 
@@ -2161,7 +2275,7 @@ function broadcastCohortSummaryWebhook(webhookUrl) {
     console.error(`Error in broadcastCohortSummaryWebhook: ${err.message}`);
   }
 }</code></pre>
-                    </div>
+</div>
 
                     <div class="lang-en">
                         <h3>2. Embedding on Google Sites</h3>
@@ -2242,11 +2356,22 @@ function broadcastCohortSummaryWebhook(webhookUrl) {
                     </div>
 
                     <div class="code-window">
-                        <div class="code-header">
-                            <span class="code-filename">appsscript.json (Explicit Least-Privilege OAuth Scopes)</span>
-                            <button class="copy-btn" data-copied="Copied!">Copy</button>
-                        </div>
-                        <pre><code>{
+    <div class="code-window-header">
+        <div class="code-window-meta">
+            <div class="window-dots">
+                <span class="window-dot red"></span>
+                <span class="window-dot yellow"></span>
+                <span class="window-dot green"></span>
+            </div>
+            <span class="code-filename">appsscript.json (Explicit Least-Privilege OAuth Scopes)</span>
+            <span class="code-lang-badge">JSON</span>
+        </div>
+        <button class="copy-code-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+            Copy
+        </button>
+    </div>
+    <pre><code>{
   "timeZone": "Africa/Nairobi",
   "dependencies": {},
   "exceptionLogging": "STACKDRIVER",
@@ -2262,7 +2387,7 @@ function broadcastCohortSummaryWebhook(webhookUrl) {
     "https://www.googleapis.com/auth/script.external_request"
   ]
 }</code></pre>
-                    </div>
+</div>
 
                     <!-- 2. Quotas & Limitations Table -->
                     <div class="lang-en">
