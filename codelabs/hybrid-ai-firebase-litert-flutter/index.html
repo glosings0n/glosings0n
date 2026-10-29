@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Firebase AI Logic vs Genkit Dart vs LiteRT-LM: Hybrid AI Architecture &amp; Smart Routing in Flutter | glosings0n Codelabs</title>
     <meta name="description"
-        content="Hands-on engineering codelab by Georges Byona (@glosings0n), Founder @ LosingTek &amp; Founder of FlutterFire Summer Camp. Compare Firebase AI Logic (firebase_ai), Genkit Dart server flows, and on-device LiteRT-LM (flutter_gemma), enforce server-side security invariants, and build a SmartHybridAiRouter in Flutter.">
+        content="Hands-on engineering codelab by Georges Byona (@glosings0n), Founder @ LosingTek &amp; Founder of FlutterFire Summer Camp. Compare Firebase AI Logic (firebase_ai), Genkit Dart server flows, and on-device LiteRT-LM (flutter_edge_ai, formerly flutter_gemma), enforce server-side security invariants, and build a SmartHybridAiRouter in Flutter.">
     <meta name="keywords"
-        content="Firebase AI Logic, firebase_ai, Genkit Dart, genkit, LiteRT-LM, flutter_gemma, Hybrid AI Architecture Flutter, Smart AI Router Flutter, Firebase App Check AI, Gemini Flash Latest, gemini-flash-latest, Server-Side Security Invariants, Edge AI vs Cloud AI Flutter, Georges Byona, Georges Losingson, Byona Georges, glosings0n, @glosings0n, Losingson, Losings0n, @losingson, g-losingson, LosingTek, Losing Tek, FlutterFire Summer Camp, FlutterFire Camp">
+        content="Firebase AI Logic, firebase_ai, Genkit Dart, genkit, LiteRT-LM, flutter_edge_ai, flutter_edge_ai_litertlm, flutter_gemma, Hybrid AI Architecture Flutter, Smart AI Router Flutter, Firebase App Check AI, Gemini Flash Latest, gemini-flash-latest, Server-Side Security Invariants, Edge AI vs Cloud AI Flutter, Georges Byona, Georges Losingson, Byona Georges, glosings0n, @glosings0n, Losingson, Losings0n, @losingson, g-losingson, LosingTek, Losing Tek, FlutterFire Summer Camp, FlutterFire Camp">
     <meta name="author" content="Georges Byona">
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <link rel="canonical" href="https://codelabs.glosings0n.dev/hybrid-ai-firebase-litert-flutter">
@@ -16,7 +16,7 @@
     <!-- OpenGraph -->
     <meta property="og:title" content="Firebase AI Logic vs Genkit Dart vs LiteRT-LM: Hybrid AI Architecture &amp; Smart Routing in Flutter | glosings0n Codelabs">
     <meta property="og:description"
-        content="Architect a production 3-tier Hybrid AI system in Flutter combining Firebase AI Logic (firebase_ai + App Check), Genkit Dart server flows, and 100% offline LiteRT-LM (flutter_gemma). By Georges Byona (@glosings0n).">
+        content="Architect a production 3-tier Hybrid AI system in Flutter combining Firebase AI Logic (firebase_ai + App Check), Genkit Dart server flows, and 100% offline LiteRT-LM (flutter_edge_ai). By Georges Byona (@glosings0n).">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://codelabs.glosings0n.dev/hybrid-ai-firebase-litert-flutter">
     <meta property="og:image" content="https://glosings0n.dev/assets/hero.png">
@@ -41,7 +41,7 @@
     <meta name="twitter:creator" content="@glosings0n">
     <meta name="twitter:title" content="Firebase AI Logic vs Genkit Dart vs LiteRT-LM | Hybrid AI in Flutter">
     <meta name="twitter:description"
-        content="Master the 3-tier Flutter AI architecture: Firebase AI Logic (client cloud), Genkit Dart (privileged backend), and LiteRT-LM (offline edge). By Georges Byona (@glosings0n).">
+        content="Master the 3-tier Flutter AI architecture: Firebase AI Logic (client cloud), Genkit Dart (privileged backend), and LiteRT-LM (offline edge with flutter_edge_ai). By Georges Byona (@glosings0n).">
     <meta name="twitter:image" content="https://glosings0n.dev/assets/hero.png">
 
     <!-- Schema.org JSON-LD for Google Search & AI Engines -->
@@ -98,7 +98,7 @@
           "@id": "https://codelabs.glosings0n.dev/hybrid-ai-firebase-litert-flutter#codelab",
           "headline": "Firebase AI Logic vs Genkit Dart vs LiteRT-LM: Hybrid AI Architecture & Smart Routing in Flutter",
           "name": "Firebase AI Logic vs Genkit Dart vs LiteRT-LM: Hybrid AI Architecture & Smart Routing in Flutter",
-          "description": "Production engineering codelab by Georges Byona (@glosings0n). Compare Firebase AI Logic (firebase_ai), Genkit Dart server flows, and on-device LiteRT-LM (flutter_gemma), enforce server-side security invariants, and build a dynamic SmartHybridAiRouter in Flutter.",
+          "description": "Production engineering codelab by Georges Byona (@glosings0n). Compare Firebase AI Logic (firebase_ai), Genkit Dart server flows, and on-device LiteRT-LM (flutter_edge_ai, formerly flutter_gemma), enforce server-side security invariants, and build a dynamic SmartHybridAiRouter in Flutter.",
           "url": "https://codelabs.glosings0n.dev/hybrid-ai-firebase-litert-flutter",
           "image": "https://glosings0n.dev/assets/hero.png",
           "datePublished": "2026-10-28",
@@ -123,13 +123,15 @@
             "firebase_ai",
             "Genkit Dart",
             "LiteRT-LM",
+            "flutter_edge_ai",
+            "flutter_edge_ai_litertlm",
             "flutter_gemma",
             "Firebase App Check",
             "Hybrid AI Architecture",
             "Edge AI",
             "Google Gemini"
           ],
-          "keywords": "Flutter, Firebase AI Logic, firebase_ai, Genkit Dart, LiteRT-LM, flutter_gemma, Hybrid AI Architecture, Smart Routing, Firebase App Check, gemini-flash-latest, Georges Byona, glosings0n, LosingTek, FlutterFire Summer Camp"
+          "keywords": "Flutter, Firebase AI Logic, firebase_ai, Genkit Dart, LiteRT-LM, flutter_edge_ai, flutter_edge_ai_litertlm, flutter_gemma, Hybrid AI Architecture, Smart Routing, Firebase App Check, gemini-flash-latest, Georges Byona, glosings0n, LosingTek, FlutterFire Summer Camp"
         },
         {
           "@type": "BreadcrumbList",
@@ -319,7 +321,7 @@
                         <ul>
                             <li><strong>Client-Side Cloud AI (<code>firebase_ai</code>):</strong> Calling <code>gemini-flash-latest</code> directly from Flutter without writing a custom backend, protected by Firebase App Check and Firebase Authentication.</li>
                             <li><strong>Server-Side Agentic AI (<code>genkit</code> Dart):</strong> Running structured flows, multi-step tool calling, and privileged business logic on a Dart backend (Shelf / Cloud Run / Cloud Functions).</li>
-                            <li><strong>On-Device Edge AI (<code>flutter_gemma</code> + LiteRT-LM):</strong> Running quantized <code>.litertlm</code> models 100% offline on the user's NPU/GPU/CPU with zero token cost and zero network egress.</li>
+                            <li><strong>On-Device Edge AI (<code>flutter_edge_ai</code> + LiteRT-LM):</strong> Running quantized <code>.litertlm</code> models 100% offline on the user's NPU/GPU/CPU with zero token cost and zero network egress.</li>
                         </ul>
                         <p>
                             Relying on a single paradigm for your entire mobile product creates critical failure modes: a pure-cloud client breaks in rural low-connectivity zones and exposes your API quota if App Check is misconfigured; a pure-edge app cannot execute privileged server transactions or reason over massive cloud indexes; and placing sensitive billing or quota tools inside client code violates core security boundaries.
@@ -334,7 +336,7 @@
                         <ul>
                             <li><strong>IA Cloud côté client (<code>firebase_ai</code>) :</strong> Appeler <code>gemini-flash-latest</code> directement depuis l'application Flutter sans gérer de serveur dédié, sous la protection de Firebase App Check et Firebase Authentication.</li>
                             <li><strong>IA Agentique côté serveur (<code>genkit</code> Dart) :</strong> Exécuter des flux typés (Flows), des appels d'outils (Tool Calling) et des règles métier critiques sur un backend Dart (Shelf / Cloud Run / Cloud Functions).</li>
-                            <li><strong>IA Embarquée Edge (<code>flutter_gemma</code> + LiteRT-LM) :</strong> Exécuter des modèles quantifiés <code>.litertlm</code> 100% hors-ligne sur le NPU/GPU/CPU du téléphone avec un coût de token nul et zéro fuite réseau.</li>
+                            <li><strong>IA Embarquée Edge (<code>flutter_edge_ai</code> + LiteRT-LM) :</strong> Exécuter des modèles quantifiés <code>.litertlm</code> 100% hors-ligne sur le NPU/GPU/CPU du téléphone avec un coût de token nul et zéro fuite réseau.</li>
                         </ul>
                         <p>
                             Utiliser un seul paradigme pour l'ensemble d'un produit mobile entraîne des défaillances majeures : une architecture 100% Cloud échoue dès que la connexion 3G/4G tombe et expose vos quotas si App Check est mal configuré ; une architecture 100% Edge ne peut pas valider des transactions serveur privilégiées ; et exécuter des outils de facturation ou de quota côté client viole les invariants de sécurité fondamentaux.
@@ -463,7 +465,7 @@ npx -y firebase-tools@latest --version</code></pre>
                                     <th>Engineering Dimension</th>
                                     <th>Tier 1: Firebase AI Logic (<code>firebase_ai</code>)</th>
                                     <th>Tier 2: Genkit Dart Server (<code>genkit</code>)</th>
-                                    <th>Tier 3: On-Device Edge (<code>flutter_gemma</code> / LiteRT-LM)</th>
+                                    <th>Tier 3: On-Device Edge (<code>flutter_edge_ai</code> / LiteRT-LM)</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -520,7 +522,7 @@ npx -y firebase-tools@latest --version</code></pre>
                                     <th>Dimension d'Ingénierie</th>
                                     <th>Niveau 1 : Firebase AI Logic (<code>firebase_ai</code>)</th>
                                     <th>Niveau 2 : Serveur Genkit Dart (<code>genkit</code>)</th>
-                                    <th>Niveau 3 : Edge Embarqué (<code>flutter_gemma</code> / LiteRT-LM)</th>
+                                    <th>Niveau 3 : Edge Embarqué (<code>flutter_edge_ai</code> / LiteRT-LM)</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -635,7 +637,7 @@ npx -y firebase-tools@latest --version</code></pre>
 
                     <div class="lang-en">
                         <p>
-                            Let's create a clean Flutter project and structure our folders so the UI and application router never depend directly on SDK-specific classes from <code>firebase_ai</code>, <code>genkit</code>, or <code>flutter_gemma</code>.
+                            Let's create a clean Flutter project and structure our folders so the UI and application router never depend directly on SDK-specific classes from <code>firebase_ai</code>, <code>genkit</code>, or <code>flutter_edge_ai</code>.
                         </p>
                         <h4>1. Create the Project Directory Structure</h4>
                         <p>Run the commands below in <strong>macOS / Linux / Git Bash</strong> or <strong>Windows PowerShell</strong>:</p>
@@ -643,7 +645,7 @@ npx -y firebase-tools@latest --version</code></pre>
 
                     <div class="lang-fr">
                         <p>
-                            Créons maintenant un projet Flutter propre et structurons nos dossiers afin que l'interface utilisateur et le routeur applicatif ne dépendent jamais directement des classes spécifiques aux SDK <code>firebase_ai</code>, <code>genkit</code> ou <code>flutter_gemma</code>.
+                            Créons maintenant un projet Flutter propre et structurons nos dossiers afin que l'interface utilisateur et le routeur applicatif ne dépendent jamais directement des classes spécifiques aux SDK <code>firebase_ai</code>, <code>genkit</code> ou <code>flutter_edge_ai</code>.
                         </p>
                         <h4>1. Créer l'arborescence du projet</h4>
                         <p>Exécutez les commandes suivantes sous <strong>macOS / Linux / Git Bash</strong> ou <strong>Windows PowerShell</strong> :</p>
@@ -679,14 +681,14 @@ New-Item -ItemType Directory -Force -Path lib/domain, lib/data, lib/application,
                     <div class="lang-en">
                         <h4>2. Configure <code>pubspec.yaml</code></h4>
                         <p>
-                            Replace your <code>pubspec.yaml</code> with the configuration below. Notice that we use <code>firebase_ai</code> (which replaced the deprecated <code>firebase_vertexai</code> package), <code>firebase_app_check</code>, <code>http</code> for Genkit remote flow calls, and <code>flutter_gemma</code> for LiteRT-LM edge execution:
+                            Replace your <code>pubspec.yaml</code> with the configuration below. Notice that we use <code>firebase_ai</code> (which replaced the deprecated <code>firebase_vertexai</code> package), <code>firebase_app_check</code>, <code>http</code> for Genkit remote flow calls, and <code>flutter_edge_ai</code> (with <code>flutter_edge_ai_litertlm</code>) for LiteRT-LM edge execution:
                         </p>
                     </div>
 
                     <div class="lang-fr">
                         <h4>2. Configurer <code>pubspec.yaml</code></h4>
                         <p>
-                            Remplacez votre fichier <code>pubspec.yaml</code> par la configuration ci-dessous. Notez l'utilisation de <code>firebase_ai</code> (qui remplace l'ancien package déprécié <code>firebase_vertexai</code>), de <code>firebase_app_check</code>, de <code>http</code> pour les appels aux flux distants Genkit, et de <code>flutter_gemma</code> pour l'inférence LiteRT-LM embarquée :
+                            Remplacez votre fichier <code>pubspec.yaml</code> par la configuration ci-dessous. Notez l'utilisation de <code>firebase_ai</code> (qui remplace l'ancien package déprécié <code>firebase_vertexai</code>), de <code>firebase_app_check</code>, de <code>http</code> pour les appels aux flux distants Genkit, et de <code>flutter_edge_ai</code> (avec <code>flutter_edge_ai_litertlm</code>) pour l'inférence LiteRT-LM embarquée :
                         </p>
                     </div>
 
@@ -723,7 +725,8 @@ dependencies:
   # firebase_auth: ^6.0.0
   # firebase_app_check: ^0.4.0
   # firebase_ai: ^3.0.0
-  # flutter_gemma: ^0.13.5
+  # flutter_edge_ai: ^2.5.4
+  # flutter_edge_ai_litertlm: ^1.19.0
 
 dev_dependencies:
   flutter_test:
@@ -783,7 +786,7 @@ enum AiExecutionTier {
     zeroTokenCost: false,
   ),
 
-  /// Tier 3: 100% offline on-device inference via `flutter_gemma` + LiteRT-LM.
+  /// Tier 3: 100% offline on-device inference via `flutter_edge_ai` + LiteRT-LM.
   edgeLiteRt(
     label: 'On-Device (LiteRT-LM INT4)',
     modelId: 'gemma-3n-E2B-it-int4.litertlm',
@@ -1283,13 +1286,13 @@ class GenkitServerEngine implements AiEngineGateway {
                                 data-fr="Étape 6 sur 8 | Niveau 3 : IA Embarquée Sans Sortie Réseau">Step 6 of 8 | Tier 3: Zero-Egress On-Device AI</span>
                         </div>
                         <h2 class="step-title"
-                            data-en="Tier 3 | 100% Offline Edge Inference with flutter_gemma &amp; LiteRT-LM"
-                            data-fr="Niveau 3 | Inférence Edge 100% Hors-Ligne avec flutter_gemma &amp; LiteRT-LM">Tier 3 | 100% Offline Edge Inference with flutter_gemma &amp; LiteRT-LM</h2>
+                            data-en="Tier 3 | 100% Offline Edge Inference with flutter_edge_ai &amp; LiteRT-LM"
+                            data-fr="Niveau 3 | Inférence Edge 100% Hors-Ligne avec flutter_edge_ai &amp; LiteRT-LM">Tier 3 | 100% Offline Edge Inference with flutter_edge_ai &amp; LiteRT-LM</h2>
                     </div>
 
                     <div class="lang-en">
                         <p>
-                            What happens when your user enters an elevator, travels into a rural agricultural zone with zero cellular coverage, or types a strictly private note containing sensitive PII? Our third tier, <strong>LiteRT-LM via <code>flutter_gemma</code></strong>, executes a 4-bit quantized Gemma model directly on the device's NPU/GPU/CPU.
+                            What happens when your user enters an elevator, travels into a rural agricultural zone with zero cellular coverage, or types a strictly private note containing sensitive PII? Our third tier, <strong>LiteRT-LM via <code>flutter_edge_ai</code></strong> (formerly <code>flutter_gemma</code>), executes a 4-bit quantized Gemma, Phi, or Qwen model directly on the device's NPU/GPU/CPU.
                         </p>
                         <h3>Three Production Guardrails for On-Device LiteRT-LM</h3>
                         <ol>
@@ -1302,7 +1305,7 @@ class GenkitServerEngine implements AiEngineGateway {
 
                     <div class="lang-fr">
                         <p>
-                            Que se passe-t-il lorsque votre utilisateur perd le réseau mobile en zone rurale, passe en mode avion, ou rédige une note confidentielle contenant des données personnelles sensibles (PII) ? Notre troisième niveau, <strong>LiteRT-LM via <code>flutter_gemma</code></strong>, exécute un modèle Gemma quantifié en 4 bits (INT4) directement sur le NPU/GPU/CPU de l'appareil.
+                            Que se passe-t-il lorsque votre utilisateur perd le réseau mobile en zone rurale, passe en mode avion, ou rédige une note confidentielle contenant des données personnelles sensibles (PII) ? Notre troisième niveau, <strong>LiteRT-LM via <code>flutter_edge_ai</code></strong> (anciennement <code>flutter_gemma</code>), exécute un modèle Gemma, Phi ou Qwen quantifié en 4 bits (INT4) directement sur le NPU/GPU/CPU de l'appareil.
                         </p>
                         <h3>Trois Garde-Fous de Production pour LiteRT-LM Embarqué</h3>
                         <ol>
@@ -1311,6 +1314,23 @@ class GenkitServerEngine implements AiEngineGateway {
                             <li><strong>Garde-fou déterministe Basse-RAM (<code>&lt; 2 Go de RAM libre</code>) :</strong> Sur les téléphones d'entrée de gamme soumis à une forte pression mémoire, vérifiez la RAM disponible avant d'allouer le cache KV natif et basculez vers un moteur de règles local sans surcoût mémoire.</li>
                         </ol>
                         <p>Créez le fichier <code>lib/data/litert_edge_engine.dart</code> :</p>
+                    </div>
+
+                    <div class="callout callout-info">
+                        <svg class="callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="12" y1="16" x2="12" y2="12"></line>
+                            <circle cx="12" cy="8" r="1.25" fill="currentColor" stroke="none"></circle>
+                        </svg>
+                        <div class="callout-body">
+                            <div class="callout-title" data-en="Ecosystem Evolution: flutter_gemma has evolved to flutter_edge_ai" data-fr="Évolution de l'écosystème : flutter_gemma devient flutter_edge_ai">Ecosystem Evolution: flutter_gemma has evolved to flutter_edge_ai</div>
+                            <p class="lang-en">
+                                In late 2026, <code>flutter_gemma</code> was officially unified under <strong><code>flutter_edge_ai: ^2.5.4</code></strong> (paired with <code>flutter_edge_ai_litertlm: ^1.19.0</code>). Beyond Google Gemma 2B/3n models, it now runs multiple open-weights SLMs (such as <strong>Phi-3</strong>, <strong>Qwen 2.5</strong>, <strong>DeepSeek R1 Distill</strong>, and <strong>SmolLM</strong>) with optional CPU or GPU execution targets (<code>PreferredBackend.cpu</code> / <code>PreferredBackend.gpu</code>).
+                            </p>
+                            <p class="lang-fr">
+                                Fin 2026, <code>flutter_gemma</code> a été unifié sous le package <strong><code>flutter_edge_ai: ^2.5.4</code></strong> (associé à <code>flutter_edge_ai_litertlm: ^1.19.0</code>). Au-delà des modèles Google Gemma 2B/3n, il supporte désormais de multiples modèles légers locaux (comme <strong>Phi-3</strong>, <strong>Qwen 2.5</strong>, <strong>DeepSeek R1 Distill</strong> et <strong>SmolLM</strong>) avec choix du backend d'exécution CPU ou GPU (<code>PreferredBackend.cpu</code> / <code>PreferredBackend.gpu</code>).
+                            </p>
+                        </div>
                     </div>
 
                     <div class="code-window">
@@ -1333,10 +1353,10 @@ class GenkitServerEngine implements AiEngineGateway {
 import 'dart:async';
 import '../domain/ai_models.dart';
 
-/// Signature for invoking the native C++ LiteRT-LM session via `flutter_gemma`.
+/// Signature for invoking the native C++ LiteRT-LM session via `flutter_edge_ai`.
 typedef LiteRtNativeInvoker = Future&lt;String&gt; Function(String prompt);
 
-/// Tier 3 Engine: 100% Offline On-Device Inference via LiteRT-LM (`flutter_gemma`).
+/// Tier 3 Engine: 100% Offline On-Device Inference via LiteRT-LM (`flutter_edge_ai`).
 ///
 /// Guarantees:
 /// 1. Strict mutex serialization so two concurrent UI requests never collide
@@ -2011,7 +2031,7 @@ flutter run</code></pre>
                             <li><a href="https://firebase.google.com/docs/ai-logic/get-started" target="_blank" rel="noopener">Firebase AI Logic Official Documentation (Flutter &amp; Gemini Developer API)</a></li>
                             <li><a href="https://firebase.google.com/docs/app-check" target="_blank" rel="noopener">Firebase App Check Documentation (Play Integrity &amp; App Attest)</a></li>
                             <li><a href="https://pub.dev/packages/genkit" target="_blank" rel="noopener">Genkit Dart SDK on pub.dev (<code>package:genkit</code>)</a></li>
-                            <li><a href="https://pub.dev/packages/flutter_gemma" target="_blank" rel="noopener">flutter_gemma LiteRT-LM Plugin on pub.dev (<code>package:flutter_gemma</code>)</a></li>
+                            <li><a href="https://pub.dev/packages/flutter_edge_ai" target="_blank" rel="noopener">flutter_edge_ai LiteRT-LM Plugin on pub.dev (<code>package:flutter_edge_ai</code>)</a></li>
                             <li><a href="https://github.com/glosings0n/gemmea" target="_blank" rel="noopener">Gemmea Public Reference Repository (Offline-First Edge AI Architecture)</a></li>
                         </ul>
                     </div>
@@ -2022,7 +2042,7 @@ flutter run</code></pre>
                             <li><a href="https://firebase.google.com/docs/ai-logic/get-started" target="_blank" rel="noopener">Documentation Officielle Firebase AI Logic (Flutter &amp; Gemini Developer API)</a></li>
                             <li><a href="https://firebase.google.com/docs/app-check" target="_blank" rel="noopener">Documentation Firebase App Check (Play Integrity &amp; App Attest)</a></li>
                             <li><a href="https://pub.dev/packages/genkit" target="_blank" rel="noopener">SDK Genkit Dart sur pub.dev (<code>package:genkit</code>)</a></li>
-                            <li><a href="https://pub.dev/packages/flutter_gemma" target="_blank" rel="noopener">Plugin LiteRT-LM flutter_gemma sur pub.dev (<code>package:flutter_gemma</code>)</a></li>
+                            <li><a href="https://pub.dev/packages/flutter_edge_ai" target="_blank" rel="noopener">Plugin LiteRT-LM flutter_edge_ai sur pub.dev (<code>package:flutter_edge_ai</code>)</a></li>
                             <li><a href="https://github.com/glosings0n/gemmea" target="_blank" rel="noopener">Dépôt Public de Référence Gemmea (Architecture Edge AI Offline-First)</a></li>
                         </ul>
                     </div>
