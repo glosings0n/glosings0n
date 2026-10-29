@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>On-Device AI with Flutter &amp; Gemma: Building Offline-First AI Mobile Apps for Africa | glosings0n Codelabs</title>
     <meta name="description"
-        content="Official droidCon Uganda 2026 Codelab by Georges Byona (@glosings0n), Founder @ LosingTek &amp; Founder of FlutterFire Summer Camp. Build 100% offline multimodal Flutter AI apps with flutter_gemma, LiteRT-LM, SQLite FTS5 RAG, and distill Gemma under 150 MB.">
+        content="Official droidCon Uganda 2026 Codelab by Georges Byona (@glosings0n), Founder @ LosingTek &amp; Founder of FlutterFire Summer Camp. Build 100% offline multimodal Flutter AI apps with flutter_edge_ai (formerly flutter_gemma), LiteRT-LM, SQLite FTS5 RAG, and distill Gemma under 150 MB.">
     <meta name="keywords"
-        content="On-Device AI with Flutter and Gemma, flutter_gemma, flutter_gemma_litertlm, Google Gemma, Gemma 4, LiteRT-LM, MediaPipe LLM Inference, Offline AI Mobile Apps Africa, droidCon Uganda 2026, Kampala, Gemmea, GDG on Campus UCB Build with Gemma 2026, SQLite FTS5 RAG, BM25 Local RAG, Model Distillation under 150MB, INT4 Quantization, ai-edge-torch, Georges Byona, Georges Losingson, Byona Georges, glosings0n, @glosings0n, Losingson, Losings0n, @losingson, g-losingson, LosingTek, Losing Tek, FlutterFire Summer Camp, FlutterFire Camp">
+        content="On-Device AI with Flutter and Gemma, flutter_edge_ai, flutter_edge_ai_litertlm, flutter_gemma, Google Gemma, Gemma 4, Phi, Qwen, DeepSeek, SmolLM, LiteRT-LM, MediaPipe LLM Inference, Offline AI Mobile Apps Africa, droidCon Uganda 2026, Kampala, Gemmea, GDG on Campus UCB Build with Gemma 2026, SQLite FTS5 RAG, BM25 Local RAG, Model Distillation under 150MB, INT4 Quantization, ai-edge-torch, Georges Byona, Georges Losingson, Byona Georges, glosings0n, @glosings0n, Losingson, Losings0n, @losingson, g-losingson, LosingTek, Losing Tek, FlutterFire Summer Camp, FlutterFire Camp">
     <meta name="author" content="Georges Byona">
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <link rel="canonical" href="https://codelabs.glosings0n.dev/flutter-gemma-droidcon-ug-2026">
@@ -25,7 +25,7 @@
     <meta property="og:image:alt" content="On-Device AI with Flutter &amp; Gemma | Georges Byona (@glosings0n)">
     <meta property="og:site_name" content="glosings0n Codelabs">
     <meta property="article:published_time" content="2026-10-28">
-    <meta property="article:modified_time" content="2026-10-28">
+    <meta property="article:modified_time" content="2026-10-29">
     <meta property="article:author" content="https://glosings0n.dev">
     <meta property="article:section" content="Mobile AI &amp; Flutter Engineering">
     <meta property="article:tag" content="Flutter">
@@ -102,7 +102,7 @@
           "url": "https://codelabs.glosings0n.dev/flutter-gemma-droidcon-ug-2026",
           "image": "https://glosings0n.dev/assets/hero.png",
           "datePublished": "2026-10-28",
-          "dateModified": "2026-10-28",
+          "dateModified": "2026-10-29",
           "inLanguage": "en",
           "proficiencyLevel": "Intermediate",
           "educationalLevel": "Intermediate",
@@ -291,7 +291,7 @@
                     <div class="step-header">
                         <div class="step-eyebrow">
                             <span data-en="Step 1 of 9 | Context &amp; Motivation" data-fr="Étape 1 sur 9 | Contexte &amp; Motivation">Step 1 of 9 | Context &amp; Motivation</span>
-                            <span class="codelab-last-updated" data-en="Last updated: &lt;time datetime=&quot;2026-10-28&quot;&gt;October 28, 2026&lt;/time&gt;" data-fr="Dernière mise à jour : &lt;time datetime=&quot;2026-10-28&quot;&gt;28 octobre 2026&lt;/time&gt;">Last updated: <time datetime="2026-10-28">October 28, 2026</time></span>
+                            <span class="codelab-last-updated" data-en="Last updated: &lt;time datetime=&quot;2026-10-29&quot;&gt;October 29, 2026&lt;/time&gt;" data-fr="Dernière mise à jour : &lt;time datetime=&quot;2026-10-29&quot;&gt;29 octobre 2026&lt;/time&gt;">Last updated: <time datetime="2026-10-29">October 29, 2026</time></span>
                         </div>
                         <h1 class="step-title" data-en="Overview: Why Offline-First Edge AI Matters in Africa" data-fr="Vue d'ensemble : Pourquoi l'IA Embarquée Offline-First est vitale en Afrique">Overview: Why Offline-First Edge AI Matters in Africa</h1>
                     </div>
@@ -302,6 +302,23 @@
                     <p class="lang-fr">
                         Bienvenue dans le codelab officiel de la session <strong>"On-Device AI with Flutter &amp; Gemma: Building Offline-First AI Mobile Apps for Africa"</strong> présentée au <strong>droidCon Uganda 2026</strong> à Kampala !
                     </p>
+
+                    <div class="callout callout-info">
+                        <svg class="callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="12" y1="16" x2="12" y2="12"></line>
+                            <circle cx="12" cy="8" r="1.25" fill="currentColor" stroke="none"></circle>
+                        </svg>
+                        <div class="callout-body">
+                            <div class="callout-title" data-en="Ecosystem Evolution: flutter_gemma is now flutter_edge_ai" data-fr="Évolution de l'écosystème : flutter_gemma devient flutter_edge_ai">Ecosystem Evolution: flutter_gemma is now flutter_edge_ai</div>
+                            <p class="lang-en">
+                                The official package has officially transitioned from <code>flutter_gemma</code> to <strong><code>flutter_edge_ai: ^2.5.4</code></strong> (paired with <code>flutter_edge_ai_litertlm: ^1.19.0</code>). While this codelab stems from our droidCon Uganda talk on Gemma, <code>flutter_edge_ai</code> now supports multiple local SLMs and LLMs (including <strong>Gemma</strong>, <strong>Phi-3</strong>, <strong>Qwen</strong>, <strong>DeepSeek</strong>, <strong>SmolLM</strong>, and custom converted Python models). The production <strong>Gemmea</strong> repository has been completely updated to <code>flutter_edge_ai</code>.
+                            </p>
+                            <p class="lang-fr">
+                                Le package officiel a évolué de <code>flutter_gemma</code> vers <strong><code>flutter_edge_ai: ^2.5.4</code></strong> (associé à <code>flutter_edge_ai_litertlm: ^1.19.0</code>). Bien que ce codelab soit issu de notre session à droidCon Uganda consacrée à Gemma, <code>flutter_edge_ai</code> prend en charge de multiples modèles légers locaux (dont <strong>Gemma</strong>, <strong>Phi-3</strong>, <strong>Qwen</strong>, <strong>DeepSeek</strong>, <strong>SmolLM</strong> et des modèles Python sur-mesure). Le dépôt de production <strong>Gemmea</strong> a été intégralement migré sous <code>flutter_edge_ai</code>.
+                            </p>
+                        </div>
+                    </div>
 
                     <div class="callout callout-info">
                         <svg class="callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -339,7 +356,7 @@
                                 <tr>
                                     <th>Metric</th>
                                     <th>Cloud LLM APIs (REST / WebSocket)</th>
-                                    <th>On-Device (<code>flutter_gemma</code> + LiteRT-LM)</th>
+                                    <th>On-Device (<code>flutter_edge_ai</code> + LiteRT-LM)</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -377,7 +394,7 @@
                                 <tr>
                                     <th>Métrique</th>
                                     <th>API LLM Cloud (REST / WebSocket)</th>
-                                    <th>IA Embarquée (<code>flutter_gemma</code> + LiteRT-LM)</th>
+                                    <th>IA Embarquée (<code>flutter_edge_ai</code> + LiteRT-LM)</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -412,7 +429,7 @@
 
                     <h3 data-en="2. Learning Goals &amp; What You Will Build" data-fr="2. Objectifs &amp; Ce que vous allez construire">2. Learning Goals &amp; What You Will Build</h3>
                     <ul class="lang-en">
-                        <li>Configure <code>flutter_gemma</code> and <code>flutter_gemma_litertlm</code> to run multimodal Gemma models locally on Android and iOS.</li>
+                        <li>Configure <code>flutter_edge_ai</code> and <code>flutter_edge_ai_litertlm</code> (the official evolution of <code>flutter_gemma</code>) to run multimodal Gemma, Phi-3, Qwen, DeepSeek, or custom models locally on Android and iOS.</li>
                         <li>Implement <strong>atomic <code>.tmp</code> chunked model downloads</strong> via <code>path_provider</code> so interrupted 3G downloads never corrupt native binaries or bloat your APK.</li>
                         <li>Prevent <strong>native C++ FFI concurrency deadlocks</strong> and Flutter Hot-Reload freezes with a thread-safe <code>GemmaEngineManager</code> mutex.</li>
                         <li>Eliminate Out-Of-Memory (OOM) kills during multimodal camera scans by downsampling images to <code>512px</code> and building prompt-level <strong>Early-Exit Guardrails</strong>.</li>
@@ -420,7 +437,7 @@
                         <li><strong>Bonus Finale:</strong> Distill and quantize a domain-specific Gemma Small Language Model (SLM) to <strong>under 150 MB</strong> (<code>134 MB</code> INT4) using PyTorch and <code>ai-edge-torch</code>.</li>
                     </ul>
                     <ul class="lang-fr">
-                        <li>Configurer <code>flutter_gemma</code> et <code>flutter_gemma_litertlm</code> pour exécuter des modèles Gemma multimodaux localement sur Android et iOS.</li>
+                        <li>Configurer <code>flutter_edge_ai</code> et <code>flutter_edge_ai_litertlm</code> (l'évolution officielle de <code>flutter_gemma</code>) pour exécuter des modèles Gemma, Phi-3, Qwen, DeepSeek ou sur-mesure localement sur Android et iOS.</li>
                         <li>Implémenter le <strong>téléchargement atomique par blocs via fichier <code>.tmp</code></strong> avec <code>path_provider</code> afin que les coupures 3G ne corrompent jamais les binaires natifs et n'alourdissent pas votre APK.</li>
                         <li>Prévenir les <strong>deadlocks de concurrence C++ FFI natifs</strong> et les blocages lors du Hot-Reload Flutter grâce au mutex thread-safe <code>GemmaEngineManager</code>.</li>
                         <li>Éliminer les crashs Out-Of-Memory (OOM) lors des scans caméra multimodaux en réduisant les images à <code>512px</code> et en intégrant des <strong>garde-fous d'arrêt anticipé (Early-Exit)</strong> dans le prompt.</li>
@@ -449,7 +466,7 @@
                                 <tr>
                                     <td><strong>Flutter &amp; Dart SDK</strong></td>
                                     <td><strong>Flutter 3.24.0+</strong> (Dart <strong>3.5.0+</strong>)</td>
-                                    <td>Required by <code>flutter_gemma</code>, <code>flutter_gemma_litertlm</code>, and modern FFI bindings.</td>
+                                    <td>Required by <code>flutter_edge_ai</code>, <code>flutter_edge_ai_litertlm</code>, and modern FFI bindings.</td>
                                 </tr>
                                 <tr>
                                     <td><strong>Java Development Kit</strong></td>
@@ -487,7 +504,7 @@
                                 <tr>
                                     <td><strong>SDK Flutter &amp; Dart</strong></td>
                                     <td><strong>Flutter 3.24.0+</strong> (Dart <strong>3.5.0+</strong>)</td>
-                                    <td>Requis par <code>flutter_gemma</code>, <code>flutter_gemma_litertlm</code> et les bindings FFI modernes.</td>
+                                    <td>Requis par <code>flutter_edge_ai</code>, <code>flutter_edge_ai_litertlm</code> et les bindings FFI modernes.</td>
                                 </tr>
                                 <tr>
                                     <td><strong>Java Development Kit</strong></td>
@@ -550,7 +567,7 @@ flutter devices</code></pre>
                         <div class="step-eyebrow">
                             <span data-en="Step 2 of 9 | System Design" data-fr="Étape 2 sur 9 | Architecture Système">Step 2 of 9 | System Design</span>
                         </div>
-                        <h2 class="step-title" data-en="Offline-First Architecture &amp; &lt;code&gt;flutter_gemma&lt;/code&gt; Setup" data-fr="Architecture Offline-First &amp; Configuration de &lt;code&gt;flutter_gemma&lt;/code&gt;">Offline-First Architecture &amp; <code>flutter_gemma</code> Setup</h2>
+                        <h2 class="step-title" data-en="Offline-First Architecture &amp; &lt;code&gt;flutter_edge_ai&lt;/code&gt; Setup" data-fr="Architecture Offline-First &amp; Configuration de &lt;code&gt;flutter_edge_ai&lt;/code&gt;">Offline-First Architecture &amp; <code>flutter_edge_ai</code> Setup</h2>
                     </div>
 
                     <p class="lang-en">
@@ -584,7 +601,7 @@ flutter devices</code></pre>
                                │ 2. Injects Factual Grounding Context
                                ▼
 ┌──────────────────────────────────────────────────────────────────────┐
-│ 2. ON-DEVICE GEMMA ENGINE (flutter_gemma + LiteRT-LM Runtime)        │
+│ 2. ON-DEVICE ENGINE (flutter_edge_ai + LiteRT-LM Runtime)            │
 │ - GemmaEngineManager: Single-threaded FFI Mutex + 8s Timeout Lock    │
 │ - Vision VLM Mode: 512px image + 4096 maxTokens + Early-Exit Filter  │
 │ - Chat Assistant Mode: 2048 maxTokens + 5-message Sliding Window     │
@@ -712,9 +729,9 @@ dependencies:
   flutter:
     sdk: flutter
 
-  # On-Device LLM Runtime (MediaPipe / LiteRT-LM Native Bindings)
-  flutter_gemma: ^1.2.3
-  flutter_gemma_litertlm: ^1.1.0
+  # On-Device Edge AI Runtime (LiteRT-LM Native Bindings)
+  flutter_edge_ai: ^2.5.4
+  flutter_edge_ai_litertlm: ^1.19.0
 
   # Local FTS5 RAG Database &amp; Atomic Model File Management
   sqflite: ^2.4.3
@@ -734,12 +751,29 @@ flutter:
   uses-material-design: true</code></pre>
                     </div>
 
+                    <div class="callout callout-info">
+                        <svg class="callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="12" y1="16" x2="12" y2="12"></line>
+                            <circle cx="12" cy="8" r="1.25" fill="currentColor" stroke="none"></circle>
+                        </svg>
+                        <div class="callout-body">
+                            <div class="callout-title" data-en="Evolution Note: Upgrading from flutter_gemma" data-fr="Note d'évolution : Migration depuis flutter_gemma">Evolution Note: Upgrading from flutter_gemma</div>
+                            <p class="lang-en">
+                                The package <code>flutter_gemma</code> was renamed to <code>flutter_edge_ai</code> in October 2026 to reflect its broad ability to execute non-Gemma models (Phi, Qwen, DeepSeek, SmolLM, and converted custom models). If you have an existing codebase with <code>flutter_gemma</code>, simply update your <code>pubspec.yaml</code> to <code>flutter_edge_ai: ^2.5.4</code> and run <code>dart fix --apply</code> in your terminal to automatically update all class names and imports.
+                            </p>
+                            <p class="lang-fr">
+                                Le package <code>flutter_gemma</code> a été renommé en <code>flutter_edge_ai</code> en octobre 2026 pour refléter sa capacité à exécuter d'autres modèles que Gemma (Phi, Qwen, DeepSeek, SmolLM et modèles personnalisés convertis). Si vous avez déjà du code avec <code>flutter_gemma</code>, mettez simplement à jour votre <code>pubspec.yaml</code> vers <code>flutter_edge_ai: ^2.5.4</code> puis lancez <code>dart fix --apply</code> dans votre terminal pour renommer automatiquement les classes et imports.
+                            </p>
+                        </div>
+                    </div>
+
                     <h3 data-en="3. Set Android &lt;code&gt;minSdk = 26&lt;/code&gt; &amp; Hardware Acceleration" data-fr="3. Configurer Android &lt;code&gt;minSdk = 26&lt;/code&gt; &amp; l'accélération matérielle">3. Set Android <code>minSdk = 26</code> &amp; Hardware Acceleration</h3>
                     <p class="lang-en">
-                        <strong>Crucial Step:</strong> <code>flutter_gemma</code> and <code>flutter_gemma_litertlm</code> link native 64-bit C++ MediaPipe / LiteRT-LM binaries that require <strong>Android API 26+ (Android 8.0)</strong>. Open <code>android/app/build.gradle.kts</code> (or <code>android/app/build.gradle</code>) and update <code>minSdk</code> inside <code>defaultConfig</code> from <code>flutter.minSdkVersion</code> to <code>26</code>:
+                        <strong>Crucial Step:</strong> <code>flutter_edge_ai</code> and <code>flutter_edge_ai_litertlm</code> link native 64-bit C++ MediaPipe / LiteRT-LM binaries that require <strong>Android API 26+ (Android 8.0)</strong>. Open <code>android/app/build.gradle.kts</code> (or <code>android/app/build.gradle</code>) and update <code>minSdk</code> inside <code>defaultConfig</code> from <code>flutter.minSdkVersion</code> to <code>26</code>:
                     </p>
                     <p class="lang-fr">
-                        <strong>Étape cruciale :</strong> <code>flutter_gemma</code> et <code>flutter_gemma_litertlm</code> lient des binaires C++ 64-bit natifs MediaPipe / LiteRT-LM qui exigent <strong>Android API 26+ (Android 8.0)</strong>. Ouvrez <code>android/app/build.gradle.kts</code> (ou <code>android/app/build.gradle</code>) et remplacez <code>minSdk</code> dans <code>defaultConfig</code> par <code>26</code> :
+                        <strong>Étape cruciale :</strong> <code>flutter_edge_ai</code> et <code>flutter_edge_ai_litertlm</code> lient des binaires C++ 64-bit natifs MediaPipe / LiteRT-LM qui exigent <strong>Android API 26+ (Android 8.0)</strong>. Ouvrez <code>android/app/build.gradle.kts</code> (ou <code>android/app/build.gradle</code>) et remplacez <code>minSdk</code> dans <code>defaultConfig</code> par <code>26</code> :
                     </p>
 
                     <div class="code-window">
@@ -1049,8 +1083,8 @@ Future&lt;void&gt; initializeGemma(Function(double) onProgress) async {
                         </div>
                         <pre><code>import 'dart:async';
 import 'dart:developer' as dev;
-import 'package:flutter_gemma/flutter_gemma.dart';
-import 'package:flutter_gemma_litertlm/flutter_gemma_litertlm.dart';
+import 'package:flutter_edge_ai/flutter_edge_ai.dart';
+import 'package:flutter_edge_ai_litertlm/flutter_edge_ai_litertlm.dart';
 
 class GemmaEngineManager {
   static bool _isInitialized = false;
@@ -1083,7 +1117,7 @@ class GemmaEngineManager {
 
     _initCompleter = Completer&lt;void&gt;();
     try {
-      await FlutterGemma.initialize(
+      await FlutterEdgeAi.initialize(
         inferenceEngines: const [LiteRtLmEngine()],
       );
       _isInitialized = true;
@@ -1229,7 +1263,7 @@ class GemmaEngineManager {
                         <pre><code>import 'dart:io';
 import 'dart:typed_data';
 import 'dart:ui' as ui;
-import 'package:flutter_gemma/flutter_gemma.dart';
+import 'package:flutter_edge_ai/flutter_edge_ai.dart';
 import 'package:gemmea/core/services/gemma_engine_manager.dart';
 import 'package:gemmea/core/utils/text_sanitizer.dart';
 import 'package:gemmea/data/datasources/sqlite_helper.dart';
@@ -1251,13 +1285,13 @@ class GemmaLocalSourceImpl {
         // 3. Prefer CPU backend on budget devices whose GPUs lack OpenCL vision buffers
         InferenceModel model;
         try {
-          model = await FlutterGemma.getActiveModel(
+          model = await FlutterEdgeAi.getActiveModel(
             supportImage: true,
             maxTokens: 4096,
             preferredBackend: PreferredBackend.cpu,
           );
         } catch (_) {
-          model = await FlutterGemma.getActiveModel(
+          model = await FlutterEdgeAi.getActiveModel(
             supportImage: true,
             maxTokens: 4096,
           );
@@ -1690,7 +1724,7 @@ class SQLiteHelper {
                         </div>
                         <pre><code>import 'dart:async';
 import 'dart:io';
-import 'package:flutter_gemma/flutter_gemma.dart';
+import 'package:flutter_edge_ai/flutter_edge_ai.dart';
 import 'package:http/http.dart' as http;
 import 'package:path_provider/path_provider.dart';
 import 'package:gemmea/core/services/gemma_engine_manager.dart';
@@ -1772,7 +1806,7 @@ class ChatRepositoryImpl {
         }
       }
 
-      await FlutterGemma.installModel(
+      await FlutterEdgeAi.installModel(
         modelType: ModelType.gemmaIt,
         fileType: ModelFileType.litertlm,
       ).fromFile(modelFile.path).install();
@@ -1842,13 +1876,13 @@ ${faoContext.isNotEmpty ? '\n\nOFFICIAL FAO/IITA REFERENCE DATA:\n$faoContext' :
 
       InferenceModel model;
       try {
-        model = await FlutterGemma.getActiveModel(
+        model = await FlutterEdgeAi.getActiveModel(
           supportImage: true,
           maxTokens: 2048,
           preferredBackend: PreferredBackend.cpu,
         );
       } catch (_) {
-        model = await FlutterGemma.getActiveModel(
+        model = await FlutterEdgeAi.getActiveModel(
           supportImage: true,
           maxTokens: 2048,
           preferredBackend: PreferredBackend.gpu,
@@ -2327,7 +2361,7 @@ print(f"Success! Final SLM Bundle Size: {size_mb:.1f} MB (&lt; 150 MB target)")
                         </div>
                         <pre><code>import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:flutter_gemma/flutter_gemma.dart';
+import 'package:flutter_edge_ai/flutter_edge_ai.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:gemmea/data/datasources/gemma_local_source.dart';
 import 'package:gemmea/data/repositories/chat_repository_impl.dart';
@@ -2556,14 +2590,14 @@ flutter run --release</code></pre>
                     <h3 data-en="3. Key Engineering Takeaways" data-fr="3. Points clés à retenir">3. Key Engineering Takeaways</h3>
                     <ol class="lang-en">
                         <li><strong>Stream Downloads to <code>.tmp</code> &amp; Swap Atomically:</strong> Never buffer large models in Dart's heap or let interrupted mobile downloads leave corrupted files for the native C++ runtime.</li>
-                        <li><strong>Serialize Native FFI Access:</strong> Wrap every <code>flutter_gemma</code> call and stream in a mutex lock (<code>GemmaEngineManager</code>) with deadlock timeouts for Hot Reload resilience.</li>
+                        <li><strong>Serialize Native FFI Access:</strong> Wrap every <code>flutter_edge_ai</code> call and stream in a mutex lock (<code>GemmaEngineManager</code>) with deadlock timeouts for Hot Reload resilience.</li>
                         <li><strong>Downsample Vision Inputs to <code>512px</code> &amp; Short-Circuit Early:</strong> Resize camera photos before tensor encoding, dispose native image handles immediately, and instruct the VLM to halt in Step 1 if the image is out-of-domain.</li>
                         <li><strong>Choose SQLite FTS5 + BM25 Over Heavy Vector DBs on Budget RAM:</strong> Get sub-2ms factual grounding with <strong>0 MB of extra RAM overhead</strong>.</li>
                         <li><strong>Distill &amp; Quantize to &lt;150 MB:</strong> Combine Teacher-Student logit distillation, vocabulary pruning, and <code>dynamic_int4_block32</code> quantization so your AI ships directly inside your app bundle.</li>
                     </ol>
                     <ol class="lang-fr">
                         <li><strong>Streamer les téléchargements vers <code>.tmp</code> &amp; renommer atomiquement :</strong> Ne chargez jamais un modèle entier dans le tas mémoire Dart et ne laissez jamais un téléchargement interrompu exposer un binaire corrompu au moteur C++ natif.</li>
-                        <li><strong>Sérialiser les accès FFI natifs :</strong> Enveloppez chaque appel et flux <code>flutter_gemma</code> dans un verrou mutex (<code>GemmaEngineManager</code>) avec timeout anti-deadlock pour résister aux Hot Reloads.</li>
+                        <li><strong>Sérialiser les accès FFI natifs :</strong> Enveloppez chaque appel et flux <code>flutter_edge_ai</code> dans un verrou mutex (<code>GemmaEngineManager</code>) avec timeout anti-deadlock pour résister aux Hot Reloads.</li>
                         <li><strong>Réduire les images Vision à <code>512px</code> &amp; court-circuiter tôt :</strong> Redimensionnez les photos avant l'encodage tensoriel, libérez immédiatement les textures natives et ordonnez au VLM de s'arrêter dès l'Étape 1 si l'image est hors-sujet.</li>
                         <li><strong>Privilégier SQLite FTS5 + BM25 aux bases vectorielles lourdes sur RAM limitée :</strong> Obtenez un ancrage factuel en moins de 2 ms avec <strong>0 Mo de surcharge RAM supplémentaire</strong>.</li>
                         <li><strong>Distiller &amp; quantifier sous 150 Mo :</strong> Combinez la distillation de logits Teacher-Student, l'élagage du vocabulaire et la quantification <code>dynamic_int4_block32</code> pour embarquer votre IA directement dans l'installation Play Store.</li>
@@ -2572,16 +2606,281 @@ flutter run --release</code></pre>
                     <h3 data-en="4. Official Documentation &amp; Further Resources" data-fr="4. Ressources officielles &amp; Pour aller plus loin">4. Official Documentation &amp; Further Resources</h3>
                     <ul class="lang-en">
                         <li><strong>Gemmea Production Source Code (Public GitHub):</strong> <a href="https://github.com/glosings0n/gemmea" target="_blank" rel="noopener">github.com/glosings0n/gemmea</a></li>
-                        <li><strong>Flutter Gemma Package on pub.dev:</strong> <a href="https://pub.dev/packages/flutter_gemma" target="_blank" rel="noopener">pub.dev/packages/flutter_gemma</a></li>
+                        <li><strong>Flutter Edge AI Package on pub.dev (Modern SDK):</strong> <a href="https://pub.dev/packages/flutter_edge_ai" target="_blank" rel="noopener">pub.dev/packages/flutter_edge_ai</a></li>
+                        <li><strong>Flutter Edge AI Official Documentation &amp; Architecture:</strong> <a href="https://flutteredge.ai" target="_blank" rel="noopener">flutteredge.ai</a></li>
+                        <li><strong>Legacy Flutter Gemma Package on pub.dev (Discontinued):</strong> <a href="https://pub.dev/packages/flutter_gemma" target="_blank" rel="noopener">pub.dev/packages/flutter_gemma</a></li>
                         <li><strong>Google AI Edge &amp; LiteRT-LM Documentation:</strong> <a href="https://ai.google.dev/edge/litert" target="_blank" rel="noopener">ai.google.dev/edge/litert</a></li>
                         <li><strong>SQLite FTS5 &amp; BM25 Official Specification:</strong> <a href="https://www.sqlite.org/fts5.html" target="_blank" rel="noopener">sqlite.org/fts5.html</a></li>
                     </ul>
                     <ul class="lang-fr">
                         <li><strong>Code source complet de Gemmea (Dépôt GitHub public) :</strong> <a href="https://github.com/glosings0n/gemmea" target="_blank" rel="noopener">github.com/glosings0n/gemmea</a></li>
-                        <li><strong>Package Flutter Gemma sur pub.dev :</strong> <a href="https://pub.dev/packages/flutter_gemma" target="_blank" rel="noopener">pub.dev/packages/flutter_gemma</a></li>
+                        <li><strong>Package Flutter Edge AI sur pub.dev (SDK moderne) :</strong> <a href="https://pub.dev/packages/flutter_edge_ai" target="_blank" rel="noopener">pub.dev/packages/flutter_edge_ai</a></li>
+                        <li><strong>Documentation officielle Flutter Edge AI &amp; Architecture :</strong> <a href="https://flutteredge.ai" target="_blank" rel="noopener">flutteredge.ai</a></li>
+                        <li><strong>Package historique Flutter Gemma sur pub.dev (Remplacé) :</strong> <a href="https://pub.dev/packages/flutter_gemma" target="_blank" rel="noopener">pub.dev/packages/flutter_gemma</a></li>
                         <li><strong>Documentation Google AI Edge &amp; LiteRT-LM :</strong> <a href="https://ai.google.dev/edge/litert" target="_blank" rel="noopener">ai.google.dev/edge/litert</a></li>
                         <li><strong>Spécification officielle SQLite FTS5 &amp; BM25 :</strong> <a href="https://www.sqlite.org/fts5.html" target="_blank" rel="noopener">sqlite.org/fts5.html</a></li>
                     </ul>
+
+                    <!-- =========================================================
+                         5. THE FUTURE: FLUTTER_EDGE_AI & MULTI-MODEL ROADMAP
+                         ========================================================= -->
+                    <h3 data-en="5. The Future: flutter_edge_ai &amp; Multi-Model Ecosystem" data-fr="5. L'Avenir : flutter_edge_ai &amp; l'Écosystème Multi-Modèles">5. The Future: flutter_edge_ai &amp; Multi-Model Ecosystem</h3>
+
+                    <p class="lang-en">
+                        In October 2026, the creator of <code>flutter_gemma</code> (Sasha Denisov) officially transitioned the package to <strong><code>flutter_edge_ai</code></strong>. Why? Because the runtime engine (Google LiteRT-LM) and the underlying FFI architecture can execute far more than just Google Gemma: it runs lightweight open-source models like <strong>Phi-3</strong>, <strong>Qwen</strong>, <strong>DeepSeek</strong>, <strong>SmolLM</strong>, and custom models trained in Python.
+                    </p>
+                    <p class="lang-fr">
+                        En octobre 2026, le créateur de <code>flutter_gemma</code> (Sasha Denisov) a officiellement fait évoluer le package vers <strong><code>flutter_edge_ai</code></strong>. Pourquoi ? Parce que le moteur d'exécution (Google LiteRT-LM) et l'architecture FFI sous-jacente peuvent exécuter bien d'autres modèles que Gemma : il fait tourner des modèles open-source légers comme <strong>Phi-3</strong>, <strong>Qwen</strong>, <strong>DeepSeek</strong>, <strong>SmolLM</strong> ainsi que des modèles sur-mesure entraînés en Python.
+                    </p>
+
+                    <!-- Conference Final Slide UI Representation -->
+                    <div class="callout callout-info" style="border-width: 2px;">
+                        <svg class="callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                            <line x1="8" y1="21" x2="16" y2="21"></line>
+                            <line x1="12" y1="17" x2="12" y2="21"></line>
+                        </svg>
+                        <div class="callout-body">
+                            <div class="callout-title" style="font-size: 1.05rem;" data-en="Conference Closing Slide | The Future: flutter_edge_ai" data-fr="Slide de Clôture de Conférence | L'Avenir : flutter_edge_ai">Conference Closing Slide | The Future: flutter_edge_ai</div>
+                            <div class="lang-en" style="margin-top: 8px;">
+                                <p style="font-weight: 700; color: var(--color-cyan); margin-bottom: 6px;">Good News: Evolution!</p>
+                                <p style="margin-bottom: 8px;">
+                                    The <code>flutter_gemma</code> package has officially evolved and is now <strong><code>flutter_edge_ai: ^2.5.4</code></strong>.
+                                </p>
+                                <ul style="margin: 0 0 8px 18px; padding: 0;">
+                                    <li><strong>Beyond Gemma:</strong> Built to support a wide range of open-source local LLMs and SLMs.</li>
+                                    <li><strong>More Models:</strong> Out-of-the-box support for Phi, Qwen, DeepSeek, SmolLM, and custom Python models.</li>
+                                    <li><strong>Modular Ecosystem:</strong> Dedicated pluggable runtimes (LiteRT-LM, MediaPipe, ONNX, Built-in OS AI) and standalone RAG/Speech modules.</li>
+                                    <li><strong>How to Upgrade:</strong> Update <code>pubspec.yaml</code> to <code>flutter_edge_ai: ^2.5.4</code> and run <code>dart fix --apply</code> in your terminal.</li>
+                                </ul>
+                            </div>
+                            <div class="lang-fr" style="margin-top: 8px;">
+                                <p style="font-weight: 700; color: var(--color-cyan); margin-bottom: 6px;">Bonne nouvelle : Évolution !</p>
+                                <p style="margin-bottom: 8px;">
+                                    Le package <code>flutter_gemma</code> a officiellement évolué et s'appelle désormais <strong><code>flutter_edge_ai: ^2.5.4</code></strong>.
+                                </p>
+                                <ul style="margin: 0 0 8px 18px; padding: 0;">
+                                    <li><strong>Au-delà de Gemma :</strong> Conçu pour supporter un large panel de LLM et SLM locaux open-source.</li>
+                                    <li><strong>Davantage de modèles :</strong> Prise en charge native de Phi, Qwen, DeepSeek, SmolLM et modèles Python personnalisés.</li>
+                                    <li><strong>Écosystème modulaire :</strong> Moteurs d'inférence interchangeables (LiteRT-LM, MediaPipe, ONNX, IA système intégrée) et modules RAG/Speech indépendants.</li>
+                                    <li><strong>Comment migrer :</strong> Mettez à jour <code>pubspec.yaml</code> avec <code>flutter_edge_ai: ^2.5.4</code> puis lancez <code>dart fix --apply</code> dans le terminal.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h4 data-en="Model Compatibility &amp; Integration Matrix" data-fr="Matrice de compatibilité et d'intégration des modèles">Model Compatibility &amp; Integration Matrix</h4>
+                    <p class="lang-en">
+                        Not all models can or should run directly on a mobile smartphone. Here is the architectural decision matrix governing local on-device versus remote cloud inference:
+                    </p>
+                    <p class="lang-fr">
+                        Tous les modèles ne peuvent pas (et ne doivent pas) tourner directement sur un smartphone. Voici la matrice de décision architecturale entre exécution locale et requêtes cloud distantes :
+                    </p>
+
+                    <div class="table-responsive lang-en">
+                        <table class="codelab-table">
+                            <thead>
+                                <tr>
+                                    <th>Model Category</th>
+                                    <th>Technical Approach in Flutter</th>
+                                    <th>Compatible with <code>flutter_edge_ai</code>?</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Lightweight Open-Source Models</strong><br><span style="font-size: 0.85rem; color: var(--text-muted);">(Gemma 4 / 3n, Phi-3, Qwen 2.5, DeepSeek R1 Distill, SmolLM)</span></td>
+                                    <td>Local On-Device inference using <code>.litertlm</code> format executed over CPU, GPU, or mobile NPU.</td>
+                                    <td><strong>Yes</strong> (Core design role of the package).</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Your Custom In-House Python Model</strong><br><span style="font-size: 0.85rem; color: var(--text-muted);">(Trained in PyTorch, JAX, or Hugging Face SafeTensors)</span></td>
+                                    <td>Local On-Device after upstream conversion and INT4/INT8 quantization into <code>.litertlm</code> using <code>ai-edge-torch</code> or LiteRT converter tools.</td>
+                                    <td><strong>Yes</strong> (Runs identically to Gemma once converted to <code>.litertlm</code>).</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Massive Commercial Cloud LLMs</strong><br><span style="font-size: 0.85rem; color: var(--text-muted);">(Kimi / Moonshot AI, OpenAI GPT-4o, Claude 3.5 Sonnet)</span></td>
+                                    <td>Remote HTTPS REST / WebSocket API calls via standard HTTP clients (e.g. <code>package:http</code> or <code>package:dio</code>).</td>
+                                    <td><strong>No</strong> (Requires multi-GPU cloud server clusters; cannot and should not be loaded on-device).</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="table-responsive lang-fr">
+                        <table class="codelab-table">
+                            <thead>
+                                <tr>
+                                    <th>Catégorie de Modèle</th>
+                                    <th>Approche Technique dans Flutter</th>
+                                    <th>Compatible avec <code>flutter_edge_ai</code> ?</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Modèles Open-Source Légers</strong><br><span style="font-size: 0.85rem; color: var(--text-muted);">(Gemma 4 / 3n, Phi-3, Qwen 2.5, DeepSeek R1 Distill, SmolLM)</span></td>
+                                    <td>Inférence locale (On-Device) via le format <code>.litertlm</code> exécuté sur CPU, GPU ou NPU mobile.</td>
+                                    <td><strong>Oui</strong> (C'est la vocation première du package).</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Votre Modèle Python Sur-Mesure</strong><br><span style="font-size: 0.85rem; color: var(--text-muted);">(Entraîné sous PyTorch, JAX ou Hugging Face SafeTensors)</span></td>
+                                    <td>Inférence locale après conversion et quantification INT4/INT8 au format <code>.litertlm</code> avec <code>ai-edge-torch</code> ou le convertisseur LiteRT.</td>
+                                    <td><strong>Oui</strong> (S'exécute de façon identique une fois converti en <code>.litertlm</code>).</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Modèles Cloud Propriétaires Massifs</strong><br><span style="font-size: 0.85rem; color: var(--text-muted);">(Kimi / Moonshot AI, OpenAI GPT-4o, Claude 3.5 Sonnet)</span></td>
+                                    <td>Appels API distants via requêtes HTTPS standard avec <code>package:http</code> ou <code>package:dio</code>.</td>
+                                    <td><strong>Non</strong> (Nécessite des clusters de serveurs cloud multi-GPU ; impossible à embarquer en local).</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h4 data-en="Modular Architecture: Pull Only What You Need" data-fr="Architecture modulaire : N'embarquez que le nécessaire">Modular Architecture: Pull Only What You Need</h4>
+                    <p class="lang-en">
+                        To keep your APK and IPA binary sizes minimal, <code>flutter_edge_ai</code> registers zero engines by default. You add only the modular runtime engines and capability plugins your application demands:
+                    </p>
+                    <p class="lang-fr">
+                        Afin de préserver la taille minimale de votre APK et IPA, <code>flutter_edge_ai</code> n'embarque aucun moteur par défaut. Vous ajoutez uniquement les extensions d'exécution et fonctionnalités nécessaires :
+                    </p>
+
+                    <div class="table-responsive lang-en">
+                        <table class="codelab-table">
+                            <thead>
+                                <tr>
+                                    <th>Capability</th>
+                                    <th>Modular Package</th>
+                                    <th>Runtime Target &amp; Formats</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>LiteRT-LM Models</strong></td>
+                                    <td><code>flutter_edge_ai_litertlm: ^1.19.0</code></td>
+                                    <td>Executes <code>.litertlm</code> binaries on Android, iOS, macOS, Windows, Linux, and Web via FFI.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>MediaPipe Models</strong></td>
+                                    <td><code>flutter_edge_ai_mediapipe</code></td>
+                                    <td>Executes <code>.task</code> / <code>.bin</code> models for mobile and web inference.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>ONNX Runtime</strong></td>
+                                    <td><code>flutter_edge_ai_onnx</code></td>
+                                    <td>Runs ONNX text generation and local dense embedding models.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>OS Built-in AI</strong></td>
+                                    <td><code>flutter_edge_ai_builtin_ai</code></td>
+                                    <td>Leverages pre-installed operating system AI (Gemini Nano on Android/Pixel, Apple Foundation Models, Windows AI Foundry) with <strong>0 MB model download</strong>.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>On-Device RAG</strong></td>
+                                    <td><code>flutter_edge_ai_rag</code> + <code>flutter_edge_ai_sqlite</code></td>
+                                    <td>Vector embeddings and cosine search powered by local <code>sqlite-vec</code> or Qdrant Edge.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Offline Speech</strong></td>
+                                    <td><code>flutter_edge_ai_speech</code></td>
+                                    <td>Completely offline Speech-to-Text (STT) and Text-to-Speech (TTS) pipelines.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="table-responsive lang-fr">
+                        <table class="codelab-table">
+                            <thead>
+                                <tr>
+                                    <th>Fonctionnalité</th>
+                                    <th>Package Modulaire</th>
+                                    <th>Cible d'Exécution &amp; Formats</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Modèles LiteRT-LM</strong></td>
+                                    <td><code>flutter_edge_ai_litertlm: ^1.19.0</code></td>
+                                    <td>Exécute les binaires <code>.litertlm</code> sur Android, iOS, macOS, Windows, Linux et Web via FFI.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Modèles MediaPipe</strong></td>
+                                    <td><code>flutter_edge_ai_mediapipe</code></td>
+                                    <td>Exécute les modèles <code>.task</code> / <code>.bin</code> sur mobile et web.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Moteur ONNX</strong></td>
+                                    <td><code>flutter_edge_ai_onnx</code></td>
+                                    <td>Exécute les modèles de texte et d'embeddings au format ONNX.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>IA Système Intégrée</strong></td>
+                                    <td><code>flutter_edge_ai_builtin_ai</code></td>
+                                    <td>Exploite les modèles déjà intégrés au système (Gemini Nano sur Android/Pixel, Apple Foundation Models, Windows AI Foundry) avec <strong>0 Mo de téléchargement</strong>.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>RAG Embarqué</strong></td>
+                                    <td><code>flutter_edge_ai_rag</code> + <code>flutter_edge_ai_sqlite</code></td>
+                                    <td>Stockage vectoriel et recherche par similarité cosinus via <code>sqlite-vec</code> local ou Qdrant Edge.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Reconnaissance Vocale Locale</strong></td>
+                                    <td><code>flutter_edge_ai_speech</code></td>
+                                    <td>Pipelines complets de transcription (STT) et synthèse vocale (TTS) 100% hors-ligne.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h4 data-en="Instant Project Migration Guide" data-fr="Guide de migration immédiat">Instant Project Migration Guide</h4>
+                    <p class="lang-en">
+                        To migrate your existing Flutter project from <code>flutter_gemma</code> to <code>flutter_edge_ai</code>:
+                    </p>
+                    <p class="lang-fr">
+                        Pour migrer votre projet Flutter existant de <code>flutter_gemma</code> vers <code>flutter_edge_ai</code> :
+                    </p>
+
+                    <div class="code-window">
+                        <div class="code-window-header">
+                            <div class="code-window-meta">
+                                <div class="window-dots">
+                                    <span class="window-dot red"></span>
+                                    <span class="window-dot yellow"></span>
+                                    <span class="window-dot green"></span>
+                                </div>
+                                <span class="code-filename">Terminal | Automated 3-Step Migration</span>
+                                <span class="code-lang-badge">BASH</span>
+                            </div>
+                            <button class="copy-code-btn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                Copy
+                            </button>
+                        </div>
+                        <pre><code># 1. Update dependencies in your pubspec.yaml:
+flutter pub remove flutter_gemma flutter_gemma_litertlm
+flutter pub add flutter_edge_ai:^2.5.4 flutter_edge_ai_litertlm:^1.19.0
+
+# 2. Run automated symbol refactoring across your codebase:
+dart fix --apply
+
+# 3. Verify static analysis and test suite:
+flutter analyze
+flutter test</code></pre>
+                    </div>
+
+                    <div class="callout callout-success">
+                        <svg class="callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                        <div class="callout-body">
+                            <div class="callout-title" data-en="Verified Production Status in Gemmea" data-fr="Statut de Production Vérifié dans Gemmea">Verified Production Status in Gemmea</div>
+                            <p class="lang-en">
+                                The official open-source <strong>Gemmea</strong> repository has completed full migration to <code>flutter_edge_ai: ^2.5.4</code> and <code>flutter_edge_ai_litertlm: ^1.19.0</code>. All 27 unit and integration tests (including autonomous irrigation function calling, SQLite FTS5 RAG, and image downsampling) pass cleanly with zero compiler warnings.
+                            </p>
+                            <p class="lang-fr">
+                                Le dépôt open-source officiel <strong>Gemmea</strong> a achevé sa migration complète vers <code>flutter_edge_ai: ^2.5.4</code> et <code>flutter_edge_ai_litertlm: ^1.19.0</code>. L'intégralité des 27 tests unitaires et d'intégration (incluant les appels de fonction d'irrigation autonome, le RAG SQLite FTS5 et l'échantillonnage d'images) s'exécute avec succès et sans le moindre avertissement de compilation.
+                            </p>
+                        </div>
+                    </div>
 
                     <div class="callout callout-info">
                         <svg class="callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
