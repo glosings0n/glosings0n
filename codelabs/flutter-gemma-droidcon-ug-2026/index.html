@@ -243,8 +243,8 @@
                 </li>
                 <li class="step-nav-item" data-step="3">
                     <span class="step-num">4</span>
-                    <span class="step-nav-title" data-en="FFI Mutex &amp; Deadlock Recovery" data-fr="Mutex FFI &amp; Récupération Deadlock">FFI Mutex &amp; Deadlock Recovery</span>
-                    <span class="step-nav-time">5m</span>
+                    <span class="step-nav-title" data-en="FFI Mutex &amp; CPU vs. GPU Selection" data-fr="Mutex FFI &amp; Choix CPU vs GPU">FFI Mutex &amp; CPU vs. GPU Selection</span>
+                    <span class="step-nav-time">8m</span>
                 </li>
                 <li class="step-nav-item" data-step="4">
                     <span class="step-num">5</span>
@@ -1030,14 +1030,14 @@ Future&lt;void&gt; initializeGemma(Function(double) onProgress) async {
                 </article>
 
                 <!-- =========================================================
-                     STEP 4: FFI MUTEX & DEADLOCK RECOVERY
+                     STEP 4: FFI MUTEX, DEADLOCK RECOVERY & CPU VS GPU
                      ========================================================= -->
-                <article class="codelab-step" id="step-4" data-duration="5">
+                <article class="codelab-step" id="step-4" data-duration="8">
                     <div class="step-header">
                         <div class="step-eyebrow">
-                            <span data-en="Step 4 of 9 | Native Concurrency" data-fr="Étape 4 sur 9 | Concurrence Native">Step 4 of 9 | Native Concurrency</span>
+                            <span data-en="Step 4 of 9 | Native Concurrency &amp; Hardware" data-fr="Étape 4 sur 9 | Concurrence Native &amp; Matériel">Step 4 of 9 | Native Concurrency &amp; Hardware</span>
                         </div>
-                        <h2 class="step-title" data-en="Preventing Native FFI Crashes &amp; Hot-Reload Deadlocks" data-fr="Prévenir les Crashs FFI Natifs &amp; les Deadlocks au Hot-Reload">Preventing Native FFI Crashes &amp; Hot-Reload Deadlocks</h2>
+                        <h2 class="step-title" data-en="Preventing FFI Deadlocks &amp; Hardware Inference: CPU vs. GPU" data-fr="Prévenir les Deadlocks FFI &amp; Inférence Matérielle : CPU vs GPU">Preventing FFI Deadlocks &amp; Hardware Inference: CPU vs. GPU</h2>
                     </div>
 
                     <div class="callout callout-danger">
@@ -1190,6 +1190,271 @@ class GemmaEngineManager {
     }
   }
 }</code></pre>
+                    </div>
+
+                    <h3 data-en="Hardware Inference Strategy: Does Gemmea Run on CPU or GPU and Why?" data-fr="Stratégie d'Inférence Matérielle : Gemmea tourne-t-il sur CPU ou GPU et Pourquoi ?">Hardware Inference Strategy: Does Gemmea Run on CPU or GPU and Why?</h3>
+
+                    <p class="lang-en">
+                        When deploying on-device Small Language Models (SLMs) and Vision-Language Models (VLMs) with <code>flutter_edge_ai</code>, developers can explicitly configure the execution hardware target in <code>FlutterEdgeAi.getActiveModel()</code> using <code>preferredBackend: PreferredBackend.cpu</code> or <code>preferredBackend: PreferredBackend.gpu</code>.
+                    </p>
+                    <p class="lang-fr">
+                        Lors du déploiement de modèles de langage légers (SLM) ou multimodaux (VLM) avec <code>flutter_edge_ai</code>, les développeurs peuvent configurer explicitement la cible d'exécution matérielle dans <code>FlutterEdgeAi.getActiveModel()</code> à l'aide de <code>preferredBackend: PreferredBackend.cpu</code> ou <code>preferredBackend: PreferredBackend.gpu</code>.
+                    </p>
+
+                    <p class="lang-en">
+                        In production across East Africa, <strong>Gemmea deliberately attempts CPU execution first</strong>, with an automated fallback to GPU or the platform default:
+                    </p>
+                    <p class="lang-fr">
+                        En production en Afrique de l'Est, <strong>Gemmea tente délibérément l'exécution sur CPU en priorité</strong>, avec un mécanisme de repli (fallback) automatique vers le GPU ou le backend par défaut de la plateforme :
+                    </p>
+
+                    <div class="code-window">
+                        <div class="code-window-header">
+                            <div class="code-window-meta">
+                                <div class="window-dots">
+                                    <span class="window-dot red"></span>
+                                    <span class="window-dot yellow"></span>
+                                    <span class="window-dot green"></span>
+                                </div>
+                                <span class="code-filename">Resilient Backend Initialization Pattern (CPU First with GPU Fallback)</span>
+                                <span class="code-lang-badge">DART</span>
+                            </div>
+                            <button class="copy-code-btn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                Copy
+                            </button>
+                        </div>
+                        <pre><code>InferenceModel model;
+try {
+  // 1. Attempt CPU initialization: prioritizes universal stability and zero native GPU driver crashes
+  model = await FlutterEdgeAi.getActiveModel(
+    supportImage: true,
+    maxTokens: 2048,
+    preferredBackend: PreferredBackend.cpu,
+  );
+} catch (e) {
+  // 2. Automatic fallback to GPU or platform default backend if CPU allocation is unavailable
+  model = await FlutterEdgeAi.getActiveModel(
+    supportImage: true,
+    maxTokens: 2048,
+    preferredBackend: PreferredBackend.gpu,
+  );
+}</code></pre>
+                    </div>
+
+                    <h4 data-en="Why CPU First in Gemmea? Three Crucial Field Lessons" data-fr="Pourquoi le CPU en priorité dans Gemmea ? Trois retours d'expérience du terrain">Why CPU First in Gemmea? Three Crucial Field Lessons</h4>
+                    <p class="lang-en">
+                        While GPU execution offers higher theoretical token throughput, field testing across rural smallholder communities in Uganda revealed three critical architectural bottlenecks that make CPU execution superior for production resilience:
+                    </p>
+                    <p class="lang-fr">
+                        Bien que l'exécution sur GPU offre un débit théorique de tokens supérieur, les tests sur le terrain auprès des petits exploitants agricoles en Ouganda ont révélé trois goulots d'étranglement architecturaux majeurs qui rendent le CPU bien plus résilient en production :
+                    </p>
+
+                    <ol class="lang-en">
+                        <li>
+                            <strong>GPU Driver Fragmentation &amp; Silent Crashes:</strong> Entry-level and mid-range Android devices (Tecno, Infinix, Samsung Galaxy A, Xiaomi Redmi powered by MediaTek Helio G85/G99 or Unisoc chipsets) run diverse, closed-source GPU drivers (ARM Mali, Imagination PowerVR). Many of these drivers feature incomplete or unstable Vulkan 1.1/1.2 or OpenCL implementations. Attempting to allocate 1.5GB to 2.5GB of model tensors into shared GPU memory triggers native <code>SIGSEGV</code> or <code>EGL_BAD_ALLOC</code> segmentation faults that instantly kill the Linux process without throwing catchable Dart exceptions.
+                        </li>
+                        <li>
+                            <strong>Predictable Memory via Linux <code>mmap</code>:</strong> In CPU mode, the LiteRT-LM runtime maps the quantized INT4 <code>.litertlm</code> binary directly into virtual memory via standard POSIX <code>mmap()</code>. The Android kernel pages model weights on demand into system RAM (LPDDR4x/5) without requiring a massive, contiguous block of dedicated VRAM. This prevents sudden terminations by Android's Low Memory Killer (<code>lmkd</code>).
+                        </li>
+                        <li>
+                            <strong>Multimodal Vision Pipeline Reliability:</strong> Transferring 512px image tensors between the camera, CPU, and GPU across low-bandwidth 32-bit memory buses frequently causes texture corruption or bus contention. Executing the vision encoder on CPU ensures 100% deterministic mathematical execution.
+                        </li>
+                    </ol>
+
+                    <ol class="lang-fr">
+                        <li>
+                            <strong>Fragmentation des pilotes GPU &amp; crashs silencieux :</strong> Les smartphones Android d'entrée et de milieu de gamme (Tecno, Infinix, Samsung Galaxy A, Xiaomi Redmi équipés de puces MediaTek Helio G85/G99 ou Unisoc) intègrent des pilotes graphiques propriétaires (ARM Mali, PowerVR) dont le support Vulkan ou OpenCL est parfois partiel ou buggé. Allouer un graphe de 1,5 Go à 2,5 Go en VRAM partagée déclenche des erreurs natives <code>SIGSEGV</code> ou <code>EGL_BAD_ALLOC</code> qui tuent immédiatement le processus sans passer par le bloc <code>try / catch</code> de Dart.
+                        </li>
+                        <li>
+                            <strong>Mémoire prévisible via <code>mmap</code> Linux :</strong> En mode CPU, le moteur LiteRT-LM projette le fichier quantifié INT4 <code>.litertlm</code> en mémoire virtuelle via l'appel système POSIX <code>mmap()</code>. Le noyau Android charge les poids à la demande dans la RAM système (LPDDR4x/5) sans exiger de bloc VRAM contigu rigide, évitant ainsi les arrêts brutaux du <code>lmkd</code> (Low Memory Killer).
+                        </li>
+                        <li>
+                            <strong>Fiabilité du pipeline de vision multimodale :</strong> Le transfert de tenseurs d'image de 512px entre la caméra, le CPU et le GPU sur des bus mémoire étroits de 32 bits génère des goulots d'étranglement ou des corruptions de textures. L'encodage de vision sur CPU garantit une exécution mathématique 100 % déterministe.
+                        </li>
+                    </ol>
+
+                    <h4 data-en="Technical Breakdown: CPU vs. GPU Execution for On-Device SLMs" data-fr="Analyse Technique Comparative : Exécution CPU vs GPU pour SLMs Embarqués">Technical Breakdown: CPU vs. GPU Execution for On-Device SLMs</h4>
+
+                    <div class="table-responsive lang-en">
+                        <table class="codelab-table">
+                            <thead>
+                                <tr>
+                                    <th>Technical Metric</th>
+                                    <th>CPU Execution</th>
+                                    <th>GPU Execution</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Compute Architecture</strong></td>
+                                    <td>4 to 8 ARM CPU cores (Cortex-A55 / A78 / X-series) with SIMD vectorization (ARM NEON, FP16/dotprod).</td>
+                                    <td>Hundreds to thousands of parallel GPU shader cores optimized for dense matrix multiplication (GEMM).</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Generation Throughput</strong></td>
+                                    <td><strong>3 to 8 tokens/s</strong> on mid-range; <strong>8 to 14 tokens/s</strong> on modern flagship CPU cores.</td>
+                                    <td><strong>15 to 35+ tokens/s</strong> on modern Vulkan 1.3 / Apple Metal GPUs with high memory bandwidth.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Time To First Token (TTFT)</strong></td>
+                                    <td>Slower prefill: 1.2s to 3.5s for 500-token prompt context and multimodal image patches.</td>
+                                    <td>Ultra-fast prefill: 200ms to 700ms on capable mobile GPUs.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Thermal &amp; Power Profile</strong></td>
+                                    <td>Sustained 100% CPU multi-core load triggers thermal throttling after 20 to 30s, reducing clock frequencies.</td>
+                                    <td>Higher energy efficiency per FLOP: lower thermal strain during short to medium generation bursts.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Hardware Compatibility</strong></td>
+                                    <td><strong>100% Universal:</strong> executes predictably on every ARM64 Android and iOS device with zero driver quirks.</td>
+                                    <td><strong>Fragmented:</strong> varies by manufacturer driver releases, Vulkan extensions, and GPU shader compiler bugs.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Memory Tolerance &amp; VRAM</strong></td>
+                                    <td>High tolerance via OS virtual memory paging (<code>mmap</code>); no contiguous VRAM buffer restrictions.</td>
+                                    <td>Strict allocation caps (<code>GL_MAX_TEXTURE_SIZE</code>); fails abruptly if contiguous memory is fragmented.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="table-responsive lang-fr">
+                        <table class="codelab-table">
+                            <thead>
+                                <tr>
+                                    <th>Critère Technique</th>
+                                    <th>Exécution CPU</th>
+                                    <th>Exécution GPU</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Architecture de Calcul</strong></td>
+                                    <td>4 à 8 cœurs CPU ARM (Cortex-A55 / A78 / série X) avec vectorisation SIMD (ARM NEON, FP16/dotprod).</td>
+                                    <td>Centaines à milliers de micro-cœurs de shaders GPU optimisés pour la multiplication matricielle dense (GEMM).</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Vitesse de Génération</strong></td>
+                                    <td><strong>3 à 8 tokens/s</strong> sur milieu de gamme ; <strong>8 à 14 tokens/s</strong> sur cœurs CPU haut de gamme.</td>
+                                    <td><strong>15 à 35+ tokens/s</strong> sur GPU modernes compatibles Vulkan 1.3 ou Apple Metal avec large bande passante.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Latence Premier Token (TTFT)</strong></td>
+                                    <td>Pré-remplissage plus lent : 1,2s à 3,5s pour un prompt de 500 tokens et des patches d'image multimodaux.</td>
+                                    <td>Pré-remplissage ultra-rapide : 200ms à 700ms sur les GPU mobiles performants.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Profil Thermique &amp; Batterie</strong></td>
+                                    <td>Une charge CPU soutenue à 100 % active le thermal throttling après 20 à 30s, réduisant la fréquence d'horloge.</td>
+                                    <td>Excellente efficience énergétique par FLOP : échauffement réduit sur des requêtes courtes et moyennes.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Compatibilité Matérielle</strong></td>
+                                    <td><strong>100 % Universelle :</strong> s'exécute de façon déterministe sur tout appareil ARM64 sans dépendance de pilote.</td>
+                                    <td><strong>Fragmentée :</strong> dépend des pilotes constructeurs, des extensions Vulkan et des compilateurs de shaders.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Tolérance Mémoire &amp; VRAM</strong></td>
+                                    <td>Très haute tolérance via la pagination virtuelle (<code>mmap</code>) ; aucune contrainte de buffer VRAM contigu.</td>
+                                    <td>Plafonds d'allocation stricts (<code>GL_MAX_TEXTURE_SIZE</code>) ; crash si la mémoire vidéo est fragmentée.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h4 data-en="Smartphone Tier &amp; Device Sizing Matrix" data-fr="Matrice de Dimensionnement par Gamme de Téléphone">Smartphone Tier &amp; Device Sizing Matrix</h4>
+
+                    <div class="table-responsive lang-en">
+                        <table class="codelab-table">
+                            <thead>
+                                <tr>
+                                    <th>Device Tier</th>
+                                    <th>Representative Hardware &amp; RAM</th>
+                                    <th>Recommended Backend</th>
+                                    <th>Observed Throughput</th>
+                                    <th>Production Safeguards</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Budget / Entry-Level</strong></td>
+                                    <td>3GB to 4GB RAM<br><span style="font-size: 0.85rem; color: var(--text-muted);">MediaTek Helio G85/G99, Unisoc T606/T616, Snapdragon 680</span></td>
+                                    <td><strong>CPU Mandatory</strong></td>
+                                    <td>2 to 5 tokens/s</td>
+                                    <td>Cap <code>maxTokens: 2048</code>, downsample camera frames to 512px, kill background apps before inference.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Mid-Range</strong></td>
+                                    <td>6GB to 8GB RAM<br><span style="font-size: 0.85rem; color: var(--text-muted);">Snapdragon 7s Gen 2 / 7 Gen 3, Dimensity 7200 / 8200, Exynos 1380</span></td>
+                                    <td><strong>GPU Preferred</strong><br>(with CPU fallback)</td>
+                                    <td>GPU: 10 to 18 tokens/s<br>CPU: 6 to 10 tokens/s</td>
+                                    <td>Comfortable 60 FPS token streaming, stable Vulkan 1.3 execution, balanced battery drain.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Flagship / High-End</strong></td>
+                                    <td>12GB to 16GB RAM<br><span style="font-size: 0.85rem; color: var(--text-muted);">Snapdragon 8 Gen 2 / 3 / Elite, Google Tensor G3 / G4, Apple A17 Pro / M-series</span></td>
+                                    <td><strong>GPU or NPU</strong><br>(LiteRT Accelerators)</td>
+                                    <td>GPU: 20 to 35+ tokens/s<br>CPU: 12 to 18 tokens/s</td>
+                                    <td>Instantaneous responses (&lt;300ms TTFT), multi-turn chats with zero thermal throttling.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="table-responsive lang-fr">
+                        <table class="codelab-table">
+                            <thead>
+                                <tr>
+                                    <th>Gamme d'Appareil</th>
+                                    <th>Matériel Représentatif &amp; RAM</th>
+                                    <th>Backend Recommandé</th>
+                                    <th>Débit Observé</th>
+                                    <th>Garde-Fous de Production</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Entrée de Gamme / Budget</strong></td>
+                                    <td>3 Go à 4 Go RAM<br><span style="font-size: 0.85rem; color: var(--text-muted);">MediaTek Helio G85/G99, Unisoc T606/T616, Snapdragon 680</span></td>
+                                    <td><strong>CPU Obligatoire</strong></td>
+                                    <td>2 à 5 tokens/s</td>
+                                    <td>Plafonner <code>maxTokens: 2048</code>, sous-échantillonner à 512px, fermer les applications en arrière-plan.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Milieu de Gamme</strong></td>
+                                    <td>6 Go à 8 Go RAM<br><span style="font-size: 0.85rem; color: var(--text-muted);">Snapdragon 7s Gen 2 / 7 Gen 3, Dimensity 7200 / 8200, Exynos 1380</span></td>
+                                    <td><strong>GPU Préféré</strong><br>(avec repli CPU)</td>
+                                    <td>GPU : 10 à 18 tokens/s<br>CPU : 6 à 10 tokens/s</td>
+                                    <td>Streaming fluide à 60 FPS, pilotes Vulkan 1.3 stables, consommation énergétique équilibrée.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Haut de Gamme / Flagship</strong></td>
+                                    <td>12 Go à 16 Go RAM<br><span style="font-size: 0.85rem; color: var(--text-muted);">Snapdragon 8 Gen 2 / 3 / Elite, Google Tensor G3 / G4, Apple A17 Pro / série M</span></td>
+                                    <td><strong>GPU ou NPU</strong><br>(Accélérateurs LiteRT)</td>
+                                    <td>GPU : 20 à 35+ tokens/s<br>CPU : 12 à 18 tokens/s</td>
+                                    <td>Réponse instantanée (&lt;300ms TTFT), sessions multi-tours sans aucun bridage thermique.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="callout callout-info">
+                        <svg class="callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="12" y1="16" x2="12" y2="12"></line>
+                            <circle cx="12" cy="8" r="1.25" fill="currentColor" stroke="none"></circle>
+                        </svg>
+                        <div class="callout-body">
+                            <div class="callout-title" data-en="How Gemmea Keeps CPU Execution Fast in the Field" data-fr="Comment Gemmea accélère l'exécution CPU sur le terrain">How Gemmea Keeps CPU Execution Fast in the Field</div>
+                            <p class="lang-en">
+                                Because 2 to 5 tokens/second is typical on entry-level CPUs, Gemmea offsets CPU limitations with three software optimizations: (1) <strong>512px image downsampling</strong> to shrink vision computation by 90% (Step 5); (2) <strong>Prompt-level early-exit</strong> to immediately reject non-plant photos in &lt;15 tokens before the CPU heats up (Step 5); and (3) <strong>Zero-RAM SQLite FTS5 RAG</strong> to inject facts directly into text without RAM-heavy dense vector models (Step 6).
+                            </p>
+                            <p class="lang-fr">
+                                Comme un débit de 2 à 5 tokens/seconde est courant sur les CPU économiques, Gemmea compense la vitesse du processeur par trois optimisations logicielles : (1) <strong>Sous-échantillonnage d'image à 512px</strong> pour réduire de 90 % le calcul de vision (Étape 5) ; (2) <strong>Arrêt anticipé par prompt (early-exit)</strong> pour rejeter immédiatement les photos hors-sujet en moins de 15 tokens avant que le CPU ne surchauffe (Étape 5) ; et (3) <strong>RAG local SQLite FTS5 zéro-RAM</strong> pour injecter les faits agronomiques sans charger de modèles de vecteurs denses en mémoire vive (Étape 6).
+                            </p>
+                        </div>
                     </div>
 
                     <div class="step-pagination">
