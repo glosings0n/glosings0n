@@ -312,10 +312,10 @@
                         <div class="callout-body">
                             <div class="callout-title" data-en="Ecosystem Evolution: flutter_gemma is now flutter_edge_ai" data-fr="Évolution de l'écosystème : flutter_gemma devient flutter_edge_ai">Ecosystem Evolution: flutter_gemma is now flutter_edge_ai</div>
                             <p class="lang-en">
-                                The official package has officially transitioned from <code>flutter_gemma</code> to <strong><code>flutter_edge_ai: ^2.5.4</code></strong> (paired with <code>flutter_edge_ai_litertlm: ^1.19.0</code>). While this codelab stems from our droidCon Uganda talk on Gemma, <code>flutter_edge_ai</code> now supports multiple local SLMs and LLMs (including <strong>Gemma</strong>, <strong>Phi-3</strong>, <strong>Qwen</strong>, <strong>DeepSeek</strong>, <strong>SmolLM</strong>, and custom converted Python models). The production <strong>Gemmea</strong> repository has been completely updated to <code>flutter_edge_ai</code>.
+                                The official package has officially transitioned from <code>flutter_gemma</code> to <strong><code>flutter_edge_ai</code></strong> (paired with <code>flutter_edge_ai_litertlm</code>). While this codelab stems from our droidCon Uganda talk on Gemma, <code>flutter_edge_ai</code> now supports multiple local SLMs and LLMs (including <strong>Gemma</strong>, <strong>Phi-3</strong>, <strong>Qwen</strong>, <strong>DeepSeek</strong>, <strong>SmolLM</strong>, and custom converted Python models). The production <strong>Gemmea</strong> repository has been completely updated to <code>flutter_edge_ai</code>.
                             </p>
                             <p class="lang-fr">
-                                Le package officiel a évolué de <code>flutter_gemma</code> vers <strong><code>flutter_edge_ai: ^2.5.4</code></strong> (associé à <code>flutter_edge_ai_litertlm: ^1.19.0</code>). Bien que ce codelab soit issu de notre session à droidCon Uganda consacrée à Gemma, <code>flutter_edge_ai</code> prend en charge de multiples modèles légers locaux (dont <strong>Gemma</strong>, <strong>Phi-3</strong>, <strong>Qwen</strong>, <strong>DeepSeek</strong>, <strong>SmolLM</strong> et des modèles Python sur-mesure). Le dépôt de production <strong>Gemmea</strong> a été intégralement migré sous <code>flutter_edge_ai</code>.
+                                Le package officiel a évolué de <code>flutter_gemma</code> vers <strong><code>flutter_edge_ai</code></strong> (associé à <code>flutter_edge_ai_litertlm</code>). Bien que ce codelab soit issu de notre session à droidCon Uganda consacrée à Gemma, <code>flutter_edge_ai</code> prend en charge de multiples modèles légers locaux (dont <strong>Gemma</strong>, <strong>Phi-3</strong>, <strong>Qwen</strong>, <strong>DeepSeek</strong>, <strong>SmolLM</strong> et des modèles Python sur-mesure). Le dépôt de production <strong>Gemmea</strong> a été intégralement migré sous <code>flutter_edge_ai</code>.
                             </p>
                         </div>
                     </div>
@@ -730,22 +730,23 @@ dependencies:
     sdk: flutter
 
   # On-Device Edge AI Runtime (LiteRT-LM Native Bindings)
-  flutter_edge_ai: ^2.5.4
-  flutter_edge_ai_litertlm: ^1.19.0
+  # Note: Use the current latest versions from pub.dev at the time you follow this codelab
+  flutter_edge_ai:
+  flutter_edge_ai_litertlm:
 
   # Local FTS5 RAG Database &amp; Atomic Model File Management
-  sqflite: ^2.4.3
-  path: ^1.9.1
-  path_provider: ^2.1.6
-  http: ^1.2.1
+  sqflite:
+  path:
+  path_provider:
+  http:
 
   # Multimodal Camera / Gallery Input
-  image_picker: ^1.1.2
+  image_picker:
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^5.0.0
+  flutter_lints:
 
 flutter:
   uses-material-design: true</code></pre>
@@ -760,10 +761,10 @@ flutter:
                         <div class="callout-body">
                             <div class="callout-title" data-en="Evolution Note: Upgrading from flutter_gemma" data-fr="Note d'évolution : Migration depuis flutter_gemma">Evolution Note: Upgrading from flutter_gemma</div>
                             <p class="lang-en">
-                                The package <code>flutter_gemma</code> was renamed to <code>flutter_edge_ai</code> in October 2026 to reflect its broad ability to execute non-Gemma models (Phi, Qwen, DeepSeek, SmolLM, and converted custom models). If you have an existing codebase with <code>flutter_gemma</code>, simply update your <code>pubspec.yaml</code> to <code>flutter_edge_ai: ^2.5.4</code> and run <code>dart fix --apply</code> in your terminal to automatically update all class names and imports.
+                                The package <code>flutter_gemma</code> was renamed to <code>flutter_edge_ai</code> in October 2026 to reflect its broad ability to execute non-Gemma models (Phi, Qwen, DeepSeek, SmolLM, and converted custom models). If you have an existing codebase with <code>flutter_gemma</code>, simply update your <code>pubspec.yaml</code> to <code>flutter_edge_ai</code> (using the current latest version from pub.dev) and run <code>dart fix --apply</code> in your terminal to automatically update all class names and imports.
                             </p>
                             <p class="lang-fr">
-                                Le package <code>flutter_gemma</code> a été renommé en <code>flutter_edge_ai</code> en octobre 2026 pour refléter sa capacité à exécuter d'autres modèles que Gemma (Phi, Qwen, DeepSeek, SmolLM et modèles personnalisés convertis). Si vous avez déjà du code avec <code>flutter_gemma</code>, mettez simplement à jour votre <code>pubspec.yaml</code> vers <code>flutter_edge_ai: ^2.5.4</code> puis lancez <code>dart fix --apply</code> dans votre terminal pour renommer automatiquement les classes et imports.
+                                Le package <code>flutter_gemma</code> a été renommé en <code>flutter_edge_ai</code> en octobre 2026 pour refléter sa capacité à exécuter d'autres modèles que Gemma (Phi, Qwen, DeepSeek, SmolLM et modèles personnalisés convertis). Si vous avez déjà du code avec <code>flutter_gemma</code>, mettez simplement à jour votre <code>pubspec.yaml</code> vers <code>flutter_edge_ai</code> (avec la version actuelle sur pub.dev) puis lancez <code>dart fix --apply</code> dans votre terminal pour renommer automatiquement les classes et imports.
                             </p>
                         </div>
                     </div>
@@ -2910,25 +2911,25 @@ flutter run --release</code></pre>
                             <div class="lang-en" style="margin-top: 8px;">
                                 <p style="font-weight: 700; color: var(--color-cyan); margin-bottom: 6px;">Good News: Evolution!</p>
                                 <p style="margin-bottom: 8px;">
-                                    The <code>flutter_gemma</code> package has officially evolved and is now <strong><code>flutter_edge_ai: ^2.5.4</code></strong>.
+                                    The <code>flutter_gemma</code> package has officially evolved and is now <strong><code>flutter_edge_ai</code></strong>.
                                 </p>
                                 <ul style="margin: 0 0 8px 18px; padding: 0;">
                                     <li><strong>Beyond Gemma:</strong> Built to support a wide range of open-source local LLMs and SLMs.</li>
                                     <li><strong>More Models:</strong> Out-of-the-box support for Phi, Qwen, DeepSeek, SmolLM, and custom Python models.</li>
                                     <li><strong>Modular Ecosystem:</strong> Dedicated pluggable runtimes (LiteRT-LM, MediaPipe, ONNX, Built-in OS AI) and standalone RAG/Speech modules.</li>
-                                    <li><strong>How to Upgrade:</strong> Update <code>pubspec.yaml</code> to <code>flutter_edge_ai: ^2.5.4</code> and run <code>dart fix --apply</code> in your terminal.</li>
+                                    <li><strong>How to Upgrade:</strong> Update <code>pubspec.yaml</code> to <code>flutter_edge_ai</code> (using current version from pub.dev) and run <code>dart fix --apply</code> in your terminal.</li>
                                 </ul>
                             </div>
                             <div class="lang-fr" style="margin-top: 8px;">
                                 <p style="font-weight: 700; color: var(--color-cyan); margin-bottom: 6px;">Bonne nouvelle : Évolution !</p>
                                 <p style="margin-bottom: 8px;">
-                                    Le package <code>flutter_gemma</code> a officiellement évolué et s'appelle désormais <strong><code>flutter_edge_ai: ^2.5.4</code></strong>.
+                                    Le package <code>flutter_gemma</code> a officiellement évolué et s'appelle désormais <strong><code>flutter_edge_ai</code></strong>.
                                 </p>
                                 <ul style="margin: 0 0 8px 18px; padding: 0;">
                                     <li><strong>Au-delà de Gemma :</strong> Conçu pour supporter un large panel de LLM et SLM locaux open-source.</li>
                                     <li><strong>Davantage de modèles :</strong> Prise en charge native de Phi, Qwen, DeepSeek, SmolLM et modèles Python personnalisés.</li>
                                     <li><strong>Écosystème modulaire :</strong> Moteurs d'inférence interchangeables (LiteRT-LM, MediaPipe, ONNX, IA système intégrée) et modules RAG/Speech indépendants.</li>
-                                    <li><strong>Comment migrer :</strong> Mettez à jour <code>pubspec.yaml</code> avec <code>flutter_edge_ai: ^2.5.4</code> puis lancez <code>dart fix --apply</code> dans le terminal.</li>
+                                    <li><strong>Comment migrer :</strong> Mettez à jour <code>pubspec.yaml</code> avec <code>flutter_edge_ai</code> (avec la version actuelle sur pub.dev) puis lancez <code>dart fix --apply</code> dans le terminal.</li>
                                 </ul>
                             </div>
                         </div>
@@ -3020,7 +3021,7 @@ flutter run --release</code></pre>
                             <tbody>
                                 <tr>
                                     <td><strong>LiteRT-LM Models</strong></td>
-                                    <td><code>flutter_edge_ai_litertlm: ^1.19.0</code></td>
+                                    <td><code>flutter_edge_ai_litertlm</code></td>
                                     <td>Executes <code>.litertlm</code> binaries on Android, iOS, macOS, Windows, Linux, and Web via FFI.</td>
                                 </tr>
                                 <tr>
@@ -3064,7 +3065,7 @@ flutter run --release</code></pre>
                             <tbody>
                                 <tr>
                                     <td><strong>Modèles LiteRT-LM</strong></td>
-                                    <td><code>flutter_edge_ai_litertlm: ^1.19.0</code></td>
+                                    <td><code>flutter_edge_ai_litertlm</code></td>
                                     <td>Exécute les binaires <code>.litertlm</code> sur Android, iOS, macOS, Windows, Linux et Web via FFI.</td>
                                 </tr>
                                 <tr>
@@ -3122,7 +3123,8 @@ flutter run --release</code></pre>
                         </div>
                         <pre><code># 1. Update dependencies in your pubspec.yaml:
 flutter pub remove flutter_gemma flutter_gemma_litertlm
-flutter pub add flutter_edge_ai:^2.5.4 flutter_edge_ai_litertlm:^1.19.0
+# Install the latest compatible versions directly from pub.dev:
+flutter pub add flutter_edge_ai flutter_edge_ai_litertlm
 
 # 2. Run automated symbol refactoring across your codebase:
 dart fix --apply

@@ -719,20 +719,21 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  http: ^1.2.2
+  # Note: Use the current latest versions from pub.dev at the time you follow this codelab
+  http:
   # Production SDKs for real device deployment:
-  # firebase_core: ^4.0.0
-  # firebase_auth: ^6.0.0
-  # firebase_app_check: ^0.4.0
-  # firebase_ai: ^3.0.0
-  # flutter_edge_ai: ^2.5.4
-  # flutter_edge_ai_litertlm: ^1.19.0
+  # firebase_core:
+  # firebase_auth:
+  # firebase_app_check:
+  # firebase_ai:
+  # flutter_edge_ai:
+  # flutter_edge_ai_litertlm:
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^5.0.0
-  test: ^1.25.0
+  flutter_lints:
+  test:
 
 flutter:
   uses-material-design: true</code></pre>
@@ -1325,10 +1326,10 @@ class GenkitServerEngine implements AiEngineGateway {
                         <div class="callout-body">
                             <div class="callout-title" data-en="Ecosystem Evolution: flutter_gemma has evolved to flutter_edge_ai" data-fr="Évolution de l'écosystème : flutter_gemma devient flutter_edge_ai">Ecosystem Evolution: flutter_gemma has evolved to flutter_edge_ai</div>
                             <p class="lang-en">
-                                In late 2026, <code>flutter_gemma</code> was officially unified under <strong><code>flutter_edge_ai: ^2.5.4</code></strong> (paired with <code>flutter_edge_ai_litertlm: ^1.19.0</code>). Beyond Google Gemma 2B/3n models, it now runs multiple open-weights SLMs (such as <strong>Phi-3</strong>, <strong>Qwen 2.5</strong>, <strong>DeepSeek R1 Distill</strong>, and <strong>SmolLM</strong>) with optional CPU or GPU execution targets (<code>PreferredBackend.cpu</code> / <code>PreferredBackend.gpu</code>).
+                                In late 2026, <code>flutter_gemma</code> was officially unified under <strong><code>flutter_edge_ai</code></strong> (paired with <code>flutter_edge_ai_litertlm</code>). Beyond Google Gemma 2B/3n models, it now runs multiple open-weights SLMs (such as <strong>Phi-3</strong>, <strong>Qwen 2.5</strong>, <strong>DeepSeek R1 Distill</strong>, and <strong>SmolLM</strong>) with optional CPU or GPU execution targets (<code>PreferredBackend.cpu</code> / <code>PreferredBackend.gpu</code>).
                             </p>
                             <p class="lang-fr">
-                                Fin 2026, <code>flutter_gemma</code> a été unifié sous le package <strong><code>flutter_edge_ai: ^2.5.4</code></strong> (associé à <code>flutter_edge_ai_litertlm: ^1.19.0</code>). Au-delà des modèles Google Gemma 2B/3n, il supporte désormais de multiples modèles légers locaux (comme <strong>Phi-3</strong>, <strong>Qwen 2.5</strong>, <strong>DeepSeek R1 Distill</strong> et <strong>SmolLM</strong>) avec choix du backend d'exécution CPU ou GPU (<code>PreferredBackend.cpu</code> / <code>PreferredBackend.gpu</code>).
+                                Fin 2026, <code>flutter_gemma</code> a été unifié sous le package <strong><code>flutter_edge_ai</code></strong> (associé à <code>flutter_edge_ai_litertlm</code>). Au-delà des modèles Google Gemma 2B/3n, il supporte désormais de multiples modèles légers locaux (comme <strong>Phi-3</strong>, <strong>Qwen 2.5</strong>, <strong>DeepSeek R1 Distill</strong> et <strong>SmolLM</strong>) avec choix du backend d'exécution CPU ou GPU (<code>PreferredBackend.cpu</code> / <code>PreferredBackend.gpu</code>).
                             </p>
                         </div>
                     </div>
