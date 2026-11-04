@@ -1,71 +1,54 @@
 # Georges Byona | @glosings0n
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Software_Engineer-00B0FF?style=for-the-badge&logo=codeforces&logoColor=white" alt="Software Engineer" />
-  <img src="https://img.shields.io/badge/LosingTek_Founder-02569B?style=for-the-badge&logo=google-cloud&logoColor=white" alt="LosingTek Founder" />
-  <img src="https://img.shields.io/badge/GDG_Lead-4285F4?style=for-the-badge&logo=google&logoColor=white" alt="GDG Lead" />
+  <a href="https://glosings0n.dev"><img src="https://img.shields.io/badge/Portfolio-glosings0n.dev-00B0FF?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Portfolio" /></a>
+  <a href="https://codelabs.glosings0n.dev"><img src="https://img.shields.io/badge/Codelabs-codelabs.glosings0n.dev-02569B?style=for-the-badge&logo=google&logoColor=white" alt="Codelabs" /></a>
+  <a href="https://losingtek.com"><img src="https://img.shields.io/badge/LosingTek-Founder-00B0FF?style=for-the-badge" alt="LosingTek Founder" /></a>
+  <a href="https://sautilm.losingtek.com"><img src="https://img.shields.io/badge/SautiLM-Edge--AI_Researcher-02569B?style=for-the-badge" alt="SautiLM Edge-AI" /></a>
+  <a href="https://flutterfirecamp.dev"><img src="https://img.shields.io/badge/FlutterFire_Camp-Founder-00B0FF?style=for-the-badge&logo=firebase&logoColor=black" alt="FlutterFire Camp Founder" /></a>
 </p>
 
 ---
 
 ### About Me
 
-I am **Georges Byona** (aka **glosings0n**), a software engineer, edge-AI researcher, and community builder. As the founder of **LosingTek** and founder of **FlutterFire Summer Camp**, I architect modern, high-performance, and robust software systems.
+Software Engineer and Edge-AI Researcher based in the Democratic Republic of the Congo, dedicated to building high-performance cross-platform applications and offline-first intelligent systems.
 
-* Specializing in mobile and web ecosystems, focused on high performance and clean architecture.
-* **Edge-AI Researcher & SautiLM Initiative**: Pioneering offline-first Edge-AI and quantized Small Language Models for mother-tongue literacy in nomadic and displaced communities ([sautilm.losingtek.com](https://sautilm.losingtek.com)).
-* **GDG on Campus UCB Leader**: Mentoring 500+ student developers in mobile development, cloud computing, and AI.
-* **FlutterFire Summer Camp Organizer**: Coordinating bootcamps to share development best practices with thousands of participants across Africa.
-* **Tech Speaker**: Presenting on mobile development, Firebase, and AI technologies at major events like **droidCon**, **flutterCon**, **Build with AI**, **Google I/O Extended**, and **DevFest**.
+* **Founder @ LosingTek**: Architecting resilient software architectures and digital experiences for web and mobile.
+* **Edge-AI Researcher @ SautiLM**: Pioneering offline-first Edge-AI and quantized Small Language Models (SLMs) for mother-tongue literacy in nomadic pastoralist and displaced communities across East Africa ([sautilm.losingtek.com](https://sautilm.losingtek.com)).
+* **Founder of FlutterFire Summer Camp**: Leading developer training initiatives across Africa on Flutter and Firebase ([flutterfirecamp.dev](https://flutterfirecamp.dev)).
+* **Former GDG on Campus UCB Lead**: Mentoring 500+ student engineers in mobile development, cloud computing, and AI.
+* **Tech Speaker**: Presenting on mobile architectures, on-device AI, and cloud ecosystems at **droidCon**, **flutterCon**, **Build with AI**, **Google I/O Extended**, and **DevFest**.
+* **Author & Educator**: Publishing hands-on engineering codelabs ([codelabs.glosings0n.dev](https://codelabs.glosings0n.dev)) and technical articles on Medium.
 
 ---
 
-### Tech Stack
+### Core Tech Stack
 
 <p align="left">
-  <!-- Mobile & Web -->
-  <a href="https://flutter.dev" target="_blank" rel="noreferrer">
-    <img src="https://raw.githubusercontent.com/danielcranney/profileme-dev/master/public/icons/skills/flutter.svg" alt="Flutter" width="40" height="40"/>
-  </a>
-  <a href="https://dart.dev" target="_blank" rel="noreferrer">
-    <img src="https://raw.githubusercontent.com/danielcranney/profileme-dev/master/public/icons/skills/dart.svg" alt="Dart" width="40" height="40"/>
-  </a>
-  <a href="https://developer.android.com" target="_blank" rel="noreferrer">
-    <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/android/android-original.svg" alt="Android" width="40" height="40"/>
-  </a>
-  <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" rel="noreferrer">
-    <img src="https://raw.githubusercontent.com/danielcranney/profileme-dev/master/public/icons/skills/javascript.svg" alt="JavaScript" width="40" height="40"/>
-  </a>
-  <a href="https://www.w3.org/html/" target="_blank" rel="noreferrer">
-    <img src="https://raw.githubusercontent.com/danielcranney/profileme-dev/master/public/icons/skills/html5.svg" alt="HTML5" width="40" height="40"/>
-  </a>
-  <a href="https://www.w3schools.com/css/" target="_blank" rel="noreferrer">
-    <img src="https://raw.githubusercontent.com/danielcranney/profileme-dev/master/public/icons/skills/css3.svg" alt="CSS3" width="40" height="40"/>
-  </a>
-  <!-- Backend & Cloud -->
-  <a href="https://firebase.google.com" target="_blank" rel="noreferrer">
-    <img src="https://raw.githubusercontent.com/danielcranney/profileme-dev/master/public/icons/skills/firebase.svg" alt="Firebase" width="40" height="40"/>
-  </a>
-  <a href="https://cloud.google.com" target="_blank" rel="noreferrer">
-    <img src="https://raw.githubusercontent.com/danielcranney/profileme-dev/master/public/icons/skills/googlecloud.svg" alt="GCP" width="40" height="40"/>
-  </a>
-  <a href="https://nodejs.org" target="_blank" rel="noreferrer">
-    <img src="https://raw.githubusercontent.com/danielcranney/profileme-dev/master/public/icons/skills/nodejs.svg" alt="Node.js" width="40" height="40"/>
-  </a>
-  <!-- Deployment & Tools -->
-  <a href="https://git-scm.com" target="_blank" rel="noreferrer">
-    <img src="https://raw.githubusercontent.com/danielcranney/profileme-dev/master/public/icons/skills/git.svg" alt="Git" width="40" height="40"/>
-  </a>
+  <img src="https://img.shields.io/badge/Flutter-02569B?style=for-the-badge&logo=flutter&logoColor=white" alt="Flutter" />
+  <img src="https://img.shields.io/badge/Dart-0175C2?style=for-the-badge&logo=dart&logoColor=white" alt="Dart" />
+  <img src="https://img.shields.io/badge/Android-3DDC84?style=for-the-badge&logo=android&logoColor=white" alt="Android" />
+  <img src="https://img.shields.io/badge/Firebase-FFCA28?style=for-the-badge&logo=firebase&logoColor=black" alt="Firebase" />
+  <img src="https://img.shields.io/badge/Google_Cloud-4285F4?style=for-the-badge&logo=googlecloud&logoColor=white" alt="Google Cloud" />
+  <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python" />
+  <img src="https://img.shields.io/badge/TensorFlow_/_LiteRT-FF6F00?style=for-the-badge&logo=tensorflow&logoColor=white" alt="TensorFlow / LiteRT" />
+  <img src="https://img.shields.io/badge/PyTorch-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white" alt="PyTorch" />
+  <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white" alt="Node.js" />
+  <img src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white" alt="Git" />
 </p>
 
 ---
 
-### GitHub Stats
+### Real-Time GitHub Analytics
 
 <p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=glosings0n&show_icons=true&theme=tokyonight&count_private=true" alt="glosings0n's GitHub Stats" />
-  <br/>
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=glosings0n&layout=compact&theme=tokyonight" alt="glosings0n's Top Languages" />
+  <img src="https://github-readme-stats-fast.vercel.app/api?username=glosings0n&show_icons=true&include_all_commits=true&count_private=true&bg_color=0f1424&title_color=00B0FF&text_color=cbd5e1&icon_color=00B0FF&border_color=202b46" alt="Georges Byona GitHub Stats" />
+  <img src="https://github-readme-stats-fast.vercel.app/api/top-langs/?username=glosings0n&layout=compact&bg_color=0f1424&title_color=00B0FF&text_color=cbd5e1&border_color=202b46" alt="Top Languages" />
+</p>
+
+<p align="center">
+  <img src="https://streak-stats.demolab.com/?user=glosings0n&background=0F1424&ring=00B0FF&fire=00B0FF&currStreakLabel=00B0FF&border=202B46&stroke=202B46&currStreakNum=F8FAFC&sideNums=F8FAFC&sideLabels=CBD5E1&dates=CBD5E1" alt="GitHub Streak Stats" />
 </p>
 
 ---
@@ -73,25 +56,31 @@ I am **Georges Byona** (aka **glosings0n**), a software engineer, edge-AI resear
 ### Let's Connect
 
 <p align="left">
+  <a href="https://glosings0n.dev" target="_blank" rel="noopener noreferrer">
+    <img src="https://img.shields.io/badge/Portfolio-glosings0n.dev-00B0FF?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Portfolio" />
+  </a>
+  <a href="https://codelabs.glosings0n.dev" target="_blank" rel="noopener noreferrer">
+    <img src="https://img.shields.io/badge/Codelabs-codelabs.glosings0n.dev-02569B?style=for-the-badge&logo=google&logoColor=white" alt="Codelabs" />
+  </a>
+  <a href="https://linkedin.com/in/glosings0n" target="_blank" rel="noopener noreferrer">
+    <img src="https://img.shields.io/badge/LinkedIn-glosings0n-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" />
+  </a>
+  <a href="https://x.com/glosings0n" target="_blank" rel="noopener noreferrer">
+    <img src="https://img.shields.io/badge/Twitter/X-@glosings0n-000000?style=for-the-badge&logo=x&logoColor=white" alt="Twitter/X" />
+  </a>
+  <a href="https://medium.com/@glosings0n" target="_blank" rel="noopener noreferrer">
+    <img src="https://img.shields.io/badge/Medium-@glosings0n-12100E?style=for-the-badge&logo=medium&logoColor=white" alt="Medium" />
+  </a>
+  <a href="https://youtube.com/@FlutterFireCamp" target="_blank" rel="noopener noreferrer">
+    <img src="https://img.shields.io/badge/YouTube-FlutterFire_Camp-FF0000?style=for-the-badge&logo=youtube&logoColor=white" alt="YouTube" />
+  </a>
   <a href="mailto:glosings0n.dev@gmail.com">
-    <img src="https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="Gmail Badge" />
-  </a>
-  <a href="https://linkedin.com/in/glosings0n" target="_blank">
-    <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn Badge" />
-  </a>
-  <a href="https://x.com/glosings0n" target="_blank">
-    <img src="https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white" alt="Twitter/X Badge" />
-  </a>
-  <a href="https://medium.com/@glosings0n" target="_blank">
-    <img src="https://img.shields.io/badge/Medium-12100E?style=for-the-badge&logo=medium&logoColor=white" alt="Medium Badge" />
-  </a>
-  <a href="https://youtube.com/@FlutterFireCamp" target="_blank">
-    <img src="https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white" alt="YouTube Badge" />
+    <img src="https://img.shields.io/badge/Email-glosings0n.dev@gmail.com-D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="Email" />
   </a>
 </p>
 
 ---
 
 <p align="center">
-  Maintained by <a href="https://losingtek.com">LosingTek</a>
+  Crafted by <a href="https://glosings0n.dev">Georges Byona</a> &bull; Powered by <a href="https://losingtek.com">LosingTek</a>
 </p>
