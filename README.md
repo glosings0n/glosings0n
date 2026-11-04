@@ -13,6 +13,7 @@
 I am **Georges Byona** (aka **glosings0n**), a software engineer, edge-AI researcher, and community builder. As the founder of **LosingTek** and founder of **FlutterFire Summer Camp**, I architect modern, high-performance, and robust software systems.
 
 * Specializing in mobile and web ecosystems, focused on high performance and clean architecture.
+* **Edge-AI Researcher & SautiLM Initiative**: Pioneering offline-first Edge-AI and quantized Small Language Models for mother-tongue literacy in nomadic and displaced communities ([sautilm.losingtek.com](https://sautilm.losingtek.com)).
 * **GDG on Campus UCB Leader**: Mentoring 500+ student developers in mobile development, cloud computing, and AI.
 * **FlutterFire Summer Camp Organizer**: Coordinating bootcamps to share development best practices with thousands of participants across Africa.
 * **Tech Speaker**: Presenting on mobile development, Firebase, and AI technologies at major events like **droidCon**, **flutterCon**, **Build with AI**, **Google I/O Extended**, and **DevFest**.

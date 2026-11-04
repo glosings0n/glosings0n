@@ -2,6 +2,7 @@ const AppConfig = {
     email: "glosings0n.dev@gmail.com",
     links: {
         losingTek: "https://losingtek.com",
+        sautiLM: "https://sautilm.losingtek.com",
         flutterFireSummer: "https://flutterfirecamp.dev",
         gdgCampus: "https://gdg.community.dev/gdg-on-campus-universite-catholique-de-bukavu-bukavu-democratic-republic-of-the-congo/",
         linkedin: "https://linkedin.com/in/glosings0n",

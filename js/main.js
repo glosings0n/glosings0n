@@ -14,6 +14,10 @@ const Translations = {
         "block1-tag": "Founder & Engineering",
         "block1-heading": "Software Engineer & Founder of <span class=\"losingtek-font\"><span class=\"brand-bold\">Losing</span>Tek</span>",
         "block1-text": "We design robust software architectures and intuitive applications with cutting-edge technologies. Performance, code quality, and strong community impact are at the core of our achievements.",
+        "block-sautilm-tag": "Research & Edge-AI",
+        "block-sautilm-heading": "Edge-AI Researcher & SautiLM Initiative",
+        "block-sautilm-text": "Pioneering offline-first Edge-AI and quantized Small Language Models (SLMs) for mother-tongue literacy in nomadic pastoralist and conflict-displaced communities across East Africa (Bbadha-Swahili). Our open-source research pipeline fine-tunes lightweight models via LoRA and Unsloth, then applies INT8 quantization for 100% offline local inference on standard Android smartphones at zero data cost.",
+        "block-sautilm-stat": "Offline Local Inference",
         "block2-tag": "Bootcamp & Training",
         "block2-heading": "Initiator & Lead Organizer of <span class=\"ffsc-brand\"><span class=\"brand-bold\">FlutterFire Summer</span> <span class=\"brand-regular\">Camp</span></span>",
         "block2-text": "I initiated and founded this large-scale summer program in French-speaking Africa to train developers on Flutter and Firebase. The camp directly bridges participants, recruiters, and French GDEs (Google Developer Experts) to open up concrete opportunities.",
@@ -41,6 +45,10 @@ const Translations = {
         "block1-tag": "Fondateur & Ingénierie",
         "block1-heading": "Ingénieur Logiciel & Fondateur de <span class=\"losingtek-font\"><span class=\"brand-bold\">Losing</span>Tek</span>",
         "block1-text": "Nous concevons des architectures logicielles robustes et des applications intuitives avec les technologies les plus modernes. Performance, qualité du code et fort impact communautaire sont au cœur de nos réalisations.",
+        "block-sautilm-tag": "Recherche & Edge-AI",
+        "block-sautilm-heading": "Chercheur en Edge-AI & Initiative SautiLM",
+        "block-sautilm-text": "Pionnier de l'IA embarquée hors-ligne et des Small Language Models (SLMs) quantifiés pour l'apprentissage en langue maternelle dans les communautés pastorales nomades et déplacées d'Afrique de l'Est (Bbadha-Swahili). Notre pipeline de recherche open-source fine-tune des modèles légers avec LoRA et Unsloth, puis applique une quantification INT8 pour une inférence 100 % locale sur smartphones Android sans connexion ni frais de données.",
+        "block-sautilm-stat": "Inférence locale hors-ligne",
         "block2-tag": "Bootcamp & Formation",
         "block2-heading": "Initiateur & Organisateur Principal du <span class=\"ffsc-brand\"><span class=\"brand-bold\">FlutterFire Summer</span> <span class=\"brand-regular\">Camp</span></span>",
         "block2-text": "J'ai fondé et initié ce programme d'été d'envergure en Afrique francophone pour former les développeurs sur Flutter et Firebase. Le camp crée un pont direct entre les participants, des recruteurs et des GDEs (Google Developer Experts) français pour ouvrir des opportunités concrètes.",
@@ -213,6 +221,11 @@ function initAppConfig() {
     if (linkLosingtek) linkLosingtek.href = AppConfig.links.losingTek;
     const linkImgLosingtek = document.getElementById('link-img-losingtek');
     if (linkImgLosingtek) linkImgLosingtek.href = AppConfig.links.losingTek;
+
+    const linkSautilm = document.getElementById('link-sautilm');
+    if (linkSautilm) linkSautilm.href = AppConfig.links.sautiLM;
+    const linkImgSautilm = document.getElementById('link-img-sautilm');
+    if (linkImgSautilm) linkImgSautilm.href = AppConfig.links.sautiLM;
 
     const linkGdg = document.getElementById('link-gdg');
     if (linkGdg) linkGdg.href = AppConfig.links.gdgCampus;
