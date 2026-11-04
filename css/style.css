@@ -645,6 +645,7 @@ h4 {
 /* Platform CTA buttons */
 .creator-platforms {
     display: flex;
+    flex-wrap: wrap;
     gap: 16px;
     margin-top: 12px;
 }
