@@ -7,16 +7,36 @@
   "redirects": [
     {
       "source": "/codelabs",
-      "destination": "https://codelabs.glosings0n.dev/",
-      "permanent": false
+      "destination": "https://codelab.glosings0n.dev/",
+      "permanent": true
     },
     {
       "source": "/codelabs/",
-      "destination": "https://codelabs.glosings0n.dev/",
-      "permanent": false
+      "destination": "https://codelab.glosings0n.dev/",
+      "permanent": true
+    },
+    {
+      "source": "/codelab",
+      "destination": "https://codelab.glosings0n.dev/",
+      "permanent": true
+    },
+    {
+      "source": "/codelab/",
+      "destination": "https://codelab.glosings0n.dev/",
+      "permanent": true
     }
   ],
   "rewrites": [
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "codelab.glosings0n.dev"
+        }
+      ],
+      "destination": "/codelabs/hub"
+    },
     {
       "source": "/",
       "has": [
@@ -50,6 +70,16 @@
     {
       "source": "/apps-script-workspace-automation",
       "destination": "/codelabs/apps-script-workspace-automation"
+    },
+    {
+      "source": "/:slug([^/.]+)",
+      "has": [
+        {
+          "type": "host",
+          "value": "codelab.glosings0n.dev"
+        }
+      ],
+      "destination": "/codelabs/:slug"
     },
     {
       "source": "/:slug([^/.]+)",

@@ -2,7 +2,7 @@
 
 <p align="center">
   <a href="https://glosings0n.dev"><img src="https://img.shields.io/badge/Portfolio-glosings0n.dev-00B0FF?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Portfolio" /></a>
-  <a href="https://codelabs.glosings0n.dev"><img src="https://img.shields.io/badge/Codelabs-codelabs.glosings0n.dev-02569B?style=for-the-badge&logo=google&logoColor=white" alt="Codelabs" /></a>
+  <a href="https://codelab.glosings0n.dev"><img src="https://img.shields.io/badge/Codelabs-codelab.glosings0n.dev-02569B?style=for-the-badge&logo=google&logoColor=white" alt="Codelabs" /></a>
   <a href="https://losingtek.com"><img src="https://img.shields.io/badge/LosingTek-Founder-00B0FF?style=for-the-badge" alt="LosingTek Founder" /></a>
   <a href="https://sautilm.losingtek.com"><img src="https://img.shields.io/badge/SautiLM-Edge--AI_Researcher-02569B?style=for-the-badge" alt="SautiLM Edge-AI" /></a>
   <a href="https://flutterfirecamp.dev"><img src="https://img.shields.io/badge/FlutterFire_Camp-Founder-00B0FF?style=for-the-badge&logo=firebase&logoColor=black" alt="FlutterFire Camp Founder" /></a>
@@ -19,7 +19,7 @@ Software Engineer and Edge-AI Researcher based in the Democratic Republic of the
 * **Founder of FlutterFire Summer Camp**: Leading developer training initiatives across Africa on Flutter and Firebase ([flutterfirecamp.dev](https://flutterfirecamp.dev)).
 * **Former GDG on Campus UCB Lead**: Mentoring 500+ student engineers in mobile development, cloud computing, and AI.
 * **Tech Speaker**: Presenting on mobile architectures, on-device AI, and cloud ecosystems at **droidCon**, **flutterCon**, **Build with AI**, **Google I/O Extended**, and **DevFest**.
-* **Author & Educator**: Publishing hands-on engineering codelabs ([codelabs.glosings0n.dev](https://codelabs.glosings0n.dev)) and technical articles on Medium.
+* **Author & Educator**: Publishing hands-on engineering codelabs ([codelab.glosings0n.dev](https://codelab.glosings0n.dev)) and technical articles on Medium.
 
 ---
 
@@ -59,8 +59,8 @@ Software Engineer and Edge-AI Researcher based in the Democratic Republic of the
   <a href="https://glosings0n.dev" target="_blank" rel="noopener noreferrer">
     <img src="https://img.shields.io/badge/Portfolio-glosings0n.dev-00B0FF?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Portfolio" />
   </a>
-  <a href="https://codelabs.glosings0n.dev" target="_blank" rel="noopener noreferrer">
-    <img src="https://img.shields.io/badge/Codelabs-codelabs.glosings0n.dev-02569B?style=for-the-badge&logo=google&logoColor=white" alt="Codelabs" />
+  <a href="https://codelab.glosings0n.dev" target="_blank" rel="noopener noreferrer">
+    <img src="https://img.shields.io/badge/Codelabs-codelab.glosings0n.dev-02569B?style=for-the-badge&logo=google&logoColor=white" alt="Codelabs" />
   </a>
   <a href="https://linkedin.com/in/glosings0n" target="_blank" rel="noopener noreferrer">
     <img src="https://img.shields.io/badge/LinkedIn-glosings0n-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" />

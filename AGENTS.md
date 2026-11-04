@@ -42,9 +42,9 @@ These rules are mandatory across all web, codelab, slide, documentation, and app
   - **Code, Numbers/Digits (`0-9`, `+`), Technical Metrics & `@glosings0n` Handle:** `'JetBrains Mono'` (with `JetBrainsMonoDigits` `unicode-range: U+0030-0039, U+002B` so all numbers render in monospace automatically).
   - **LosingTek Brand Wordmark:** Always use `'Urbanist'` via `<span class="losingtek-font"><span class="brand-bold">Losing</span>Tek</span>` (`Losing` in bold `700`, `Tek` in regular `400`).
   - **FlutterFire Summer Camp Brand Wordmark:** In HTML, always write `<span class="ffsc-brand"><span class="brand-bold">FlutterFire Summer</span> <span class="brand-regular">Camp</span></span>` (`FlutterFire Summer` in bold `700`, `Camp` in regular `400`).
-- **Domain & Routing (`codelabs.glosings0n.dev`):**
-  - `https://codelabs.glosings0n.dev/` serves the Codelabs hub directly at `/` (never `/codelabs/`).
-  - Each codelab is served at `https://codelabs.glosings0n.dev/<session-slug>` (e.g., `/flutter-gemma-droidcon-ug-2026`).
+- **Domain & Routing (`codelab.glosings0n.dev`):**
+  - `https://codelab.glosings0n.dev/` serves the Codelabs hub directly at `/` (never `/codelabs/`).
+  - Each codelab is served at `https://codelab.glosings0n.dev/<session-slug>` (e.g., `/flutter-gemma-droidcon-ug-2026`).
   - When displaying domain links in text, use a clean lowercase blue link (`codelabs-url-link`), never inside an uppercase badge.
 - **Copyright Year Policy:**
   - The main Portfolio (`index.html`) and the Codelabs Hub (`codelabs/hub.html`) use a **dynamic** `currentYear` (`new Date().getFullYear()` via `#current-year`) so the year updates automatically every year.
@@ -63,7 +63,7 @@ These rules are mandatory across all web, codelab, slide, documentation, and app
     3. The `<lastmod>YYYY-MM-DD</lastmod>` entry in `sitemap.xml`.
 - **Mandatory Google SEO & AI Engine (AEO) Indexing on Every Codelab:**
   - Every existing and future codelab (`codelabs/<slug>/index.html`) and the Codelabs Hub (`codelabs/hub.html`) MUST include:
-    1. Comprehensive `<meta name="keywords">`, `<meta name="description">`, `<meta name="author" content="Georges Byona">`, `<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">`, and `<link rel="canonical" href="https://codelabs.glosings0n.dev/<slug>">`.
+    1. Comprehensive `<meta name="keywords">`, `<meta name="description">`, `<meta name="author" content="Georges Byona">`, `<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">`, and `<link rel="canonical" href="https://codelab.glosings0n.dev/<slug>">`.
     2. Complete OpenGraph (`og:*`, `article:*`) and Twitter Card (`twitter:*`) tags referencing `@glosings0n`.
     3. A complete Schema.org JSON-LD `@graph` (`TechArticle`, `LearningResource`, `BreadcrumbList`, `Person` for **Georges Byona** with all aliases `glosings0n`, `@glosings0n`, `Losingson`, `Losings0n`, `@losingson`, `Georges Losingson`, `Byona Georges`, `g-losingson`, and `Organization` entities for **LosingTek** and **FlutterFire Summer Camp**, plus all technical topic tags).
     4. Registration of the new codelab URL in `sitemap.xml` and in the `hasPart` array of `codelabs/hub.html`'s `CollectionPage` JSON-LD.

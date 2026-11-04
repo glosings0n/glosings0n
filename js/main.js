@@ -152,7 +152,7 @@ function handleInitialScroll() {
     if (navCodelabs) {
         const isLocal = ['localhost', '127.0.0.1', ''].includes(window.location.hostname) ||
                         window.location.protocol === 'file:';
-        navCodelabs.href = isLocal ? '/codelabs/hub.html' : 'https://codelabs.glosings0n.dev';
+        navCodelabs.href = isLocal ? '/codelabs/hub.html' : 'https://codelab.glosings0n.dev';
     }
 
     const hash = window.location.hash;
@@ -206,7 +206,7 @@ function initAppConfig() {
     if (btnCodelabs) {
         const isLocal = ['localhost', '127.0.0.1', ''].includes(window.location.hostname) ||
                         window.location.protocol === 'file:';
-        btnCodelabs.href = isLocal ? '/codelabs/hub.html' : (AppConfig.links.codelabs || 'https://codelabs.glosings0n.dev');
+        btnCodelabs.href = isLocal ? '/codelabs/hub.html' : (AppConfig.links.codelabs || 'https://codelab.glosings0n.dev');
     }
 
     // Footer Socials

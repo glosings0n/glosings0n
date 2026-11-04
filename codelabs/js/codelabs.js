@@ -32,10 +32,10 @@ function initCurrentYear() {
 }
 
 /**
- * 0. Environment-Aware Routing (Local Dev vs. Live codelabs.glosings0n.dev)
+ * 0. Environment-Aware Routing (Local Dev vs. Live codelab.glosings0n.dev)
  */
 function initEnvironmentLinks() {
-    const isSubdomain = window.location.hostname === 'codelabs.glosings0n.dev';
+    const isSubdomain = window.location.hostname === 'codelab.glosings0n.dev' || window.location.hostname === 'codelabs.glosings0n.dev';
     const hubPath = isSubdomain ? '/' : '/codelabs/hub.html';
     const portfolioPath = isSubdomain ? 'https://glosings0n.dev' : '/';
 
