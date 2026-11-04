@@ -15,7 +15,7 @@ I am **Georges Byona** (aka **glosings0n**), a software engineer, edge-AI resear
 * Specializing in mobile and web ecosystems, focused on high performance and clean architecture.
 * **GDG on Campus UCB Leader**: Mentoring 500+ student developers in mobile development, cloud computing, and AI.
 * **FlutterFire Summer Camp Organizer**: Coordinating bootcamps to share development best practices with thousands of participants across Africa.
-* **Tech Speaker**: Presenting on mobile development, Firebase, and AI technologies at major events like **Build with AI**, **Google I/O Extended**, and **DevFest**.
+* **Tech Speaker**: Presenting on mobile development, Firebase, and AI technologies at major events like **droidCon**, **flutterCon**, **Build with AI**, **Google I/O Extended**, and **DevFest**.
 
 ---
 
