@@ -1,0 +1,17 @@
+# glosings0n | Georges Byona
+
+Official portfolio of Georges Byona (@glosings0n / @losingson).
+Software Engineer, Founder @ LosingTek, Edge-AI Researcher @ SautiLM, Founder of FlutterFire Summer Camp, Former GDG on Campus UCB Lead, Tech Speaker & Educator.
+
+## Links
+- Portfolio: https://glosings0n.dev
+- Codelabs: https://codelab.glosings0n.dev
+- LosingTek: https://losingtek.com
+- SautiLM: https://sautilm.com
+- FlutterFire Summer Camp: https://flutterfirecamp.dev
+- GitHub: https://github.com/glosings0n
+- LinkedIn: https://linkedin.com/in/glosings0n
+- X / Twitter: https://x.com/glosings0n
+- Medium: https://medium.com/@glosings0n
+- YouTube: https://youtube.com/@FlutterFireCamp
+- Contact: glosings0n.dev@gmail.com

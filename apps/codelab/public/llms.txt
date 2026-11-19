@@ -1,0 +1,14 @@
+# glosings0n Codelabs | Hands-On Engineering Guides
+
+Interactive, bilingual (EN/FR) production-grade engineering codelabs by Georges Byona (@glosings0n), Founder @ LosingTek & Founder of FlutterFire Summer Camp.
+
+## Codelabs
+- https://codelab.glosings0n.dev/flutter-gemma-droidcon-ug-2026 | On-Device AI with Flutter & Gemma: Building Offline-First AI Mobile Apps for Africa
+- https://codelab.glosings0n.dev/genkit-dart-agentic-workflows | Full-Stack Agentic Dart: Building End-to-End Typed AI Agents with Genkit Dart & Shelf
+- https://codelab.glosings0n.dev/agentic-coding-flutter-mcp-skills | Agentic Coding for Flutter: Mastering Dart MCP Server, AGENTS.md & Custom Skills
+- https://codelab.glosings0n.dev/hybrid-ai-firebase-litert-flutter | Firebase AI Logic vs Genkit Dart vs LiteRT-LM: Hybrid AI Architecture & Smart Routing in Flutter
+- https://codelab.glosings0n.dev/apps-script-workspace-automation | Automation with Google Apps Script Workshop | GDG - Google Workspace Training
+
+## Author
+- Portfolio: https://glosings0n.dev
+- GitHub: https://github.com/glosings0n

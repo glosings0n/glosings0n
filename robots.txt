@@ -1,5 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://glosings0n.dev/sitemap.xml
-Sitemap: https://codelab.glosings0n.dev/sitemap.xml
