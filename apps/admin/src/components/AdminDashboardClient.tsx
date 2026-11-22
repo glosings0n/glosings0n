@@ -323,7 +323,7 @@ export function AdminDashboardClient() {
       <div className="h-[100dvh] max-h-[100dvh] overflow-hidden relative bg-[var(--bg-primary)]">
         {/* Clean Floating Header matching Portfolio Hero (no line, no bg) */}
         <header className="admin-hero-header">
-          <div className="max-w-full h-full px-[3%] flex items-center justify-between gap-3">
+          <div className="w-full h-full px-5 sm:px-[2%] flex items-center justify-between gap-3">
             <a
               href={portfolioUrl}
               className="flex items-center gap-3 text-[var(--text-primary)] hover:text-[var(--color-cyan)] transition-colors"
@@ -391,7 +391,7 @@ export function AdminDashboardClient() {
             className="admin-hero-bg-img"
           />
 
-          <div className="relative z-10 w-full max-w-[1200px] mx-auto px-6">
+          <div className="relative z-10 w-full px-5 sm:px-[6%]">
             <div className="max-w-xl flex flex-col gap-6 items-center md:items-start text-center md:text-left">
               <h1 className="text-5xl sm:text-6xl lg:text-[4rem] font-semibold tracking-[-1.5px] leading-[1.1] text-[var(--text-primary)]">
                 {lang === "fr" ? "Régie Arcade" : "Arcade Control"}{" "}
@@ -458,7 +458,7 @@ export function AdminDashboardClient() {
     <div className="min-h-screen flex flex-col">
       {/* Topbar */}
       <header className="sticky top-0 z-50 h-16 bg-[var(--bg-secondary)] border-b border-[var(--border-color)]">
-        <div className="max-w-7xl mx-auto px-4 h-full flex items-center justify-between gap-3">
+        <div className="w-full px-5 h-full flex items-center justify-between gap-3">
           <div className="flex items-center gap-2.5 min-w-0">
             <a
               href={portfolioUrl}
@@ -534,7 +534,7 @@ export function AdminDashboardClient() {
       </header>
 
       {/* Main Content */}
-      <main className="flex-1 max-w-7xl w-full mx-auto px-4 py-8">
+      <main className="flex-1 w-full px-5 sm:px-8 py-6">
         <div className="flex flex-col gap-6">
             {/* Navigation Tabs */}
             <div className="flex items-center justify-between flex-wrap gap-3">

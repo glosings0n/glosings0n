@@ -86,8 +86,8 @@ export function ArcadeHubClient() {
     <div className="min-h-screen flex flex-col">
       <ArcadeTopbar user={user} />
 
-      <main className="flex-1 max-w-7xl w-full mx-auto px-4 py-10 flex flex-col gap-8">
-        <section className="text-center max-w-3xl mx-auto flex flex-col gap-3">
+      <main className="flex-1 w-full px-5 sm:px-8 py-8 flex flex-col gap-8">
+        <section className="text-center max-w-4xl mx-auto flex flex-col gap-3">
           <div className="inline-flex items-center gap-2 self-center px-3 py-1 rounded-full bg-[var(--bg-tertiary)] border border-[var(--border-color)] font-mono text-xs font-semibold text-[var(--color-cyan)]">
             <AppIcon name="game" size={15} strokeWidth={2} />
             <span>
@@ -192,12 +192,12 @@ export function ArcadeHubClient() {
           })}
         </div>
 
-        {/* Games Grid (centered for odd/partial counts) */}
+        {/* Games Grid (1 compact, 2 md, 3 lg, 4 xl, centered rows) */}
         <section className="flex flex-wrap justify-center gap-5">
           {visibleGames.map((game) => (
             <article
               key={game.slug}
-              className="w-full sm:w-[calc(50%-10px)] lg:w-[calc((100%-40px)/3)] arcade-surface p-6 flex flex-col gap-4 hover:border-[var(--color-cyan)] transition-colors"
+              className="w-full md:w-[calc(50%-10px)] lg:w-[calc((100%-40px)/3)] xl:w-[calc((100%-60px)/4)] arcade-surface p-6 flex flex-col gap-4 hover:border-[var(--color-cyan)] transition-colors"
             >
               <div className="flex items-center justify-between gap-2">
                 <div className="w-10 h-10 rounded-xl bg-[var(--bg-tertiary)] border border-[var(--border-color)] flex items-center justify-center text-[var(--color-cyan)]">

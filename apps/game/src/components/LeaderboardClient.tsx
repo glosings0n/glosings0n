@@ -104,7 +104,7 @@ export function LeaderboardClient({
         backHref={`/${game.slug}/${sessionCode}`}
       />
 
-      <main className="flex-1 max-w-6xl w-full mx-auto px-4 py-6 flex flex-col gap-6">
+      <main className="flex-1 w-full px-5 sm:px-8 py-6 flex flex-col gap-6">
         {/* Projector Header */}
         <section className="arcade-surface p-5 sm:p-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div className="flex items-center gap-4">

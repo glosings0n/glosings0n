@@ -265,8 +265,8 @@ export function SessionPlayerClient({
       <main
         className={
           isActivePlay
-            ? "flex-1 min-h-0 max-w-2xl w-full mx-auto px-3 py-2 sm:py-4 flex flex-col justify-center overflow-hidden"
-            : "flex-1 max-w-2xl w-full mx-auto px-4 py-6 flex flex-col gap-5"
+            ? "flex-1 min-h-0 w-full px-3 sm:px-6 py-2 sm:py-4 flex flex-col justify-center overflow-hidden"
+            : "flex-1 w-full px-5 sm:px-8 py-6 flex flex-col gap-5"
         }
       >
         {/* Session Header (hidden during active play so game stays zero-scroll) */}

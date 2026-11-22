@@ -34,7 +34,7 @@ export function ArcadeTopbar({
 
   return (
     <header className="arcade-topbar">
-      <div className="max-w-7xl mx-auto px-4 h-full flex items-center justify-between gap-3">
+      <div className="w-full px-5 h-full flex items-center justify-between gap-3">
         <div className="flex items-center gap-2.5 min-w-0">
           {backHref ? (
             <Link
