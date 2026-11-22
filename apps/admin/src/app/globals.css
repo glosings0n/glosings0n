@@ -1,0 +1,142 @@
+@import "@repo/ui/styles/tokens.css";
+@source "../../../../packages/ui/src";
+@source "../../../../packages/arcade/src";
+
+:root {
+  --header-height: 64px;
+  --transition-smooth: all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+html,
+body {
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-family);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+.admin-surface {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+}
+
+.admin-card {
+  background-color: var(--bg-tertiary);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+}
+
+.admin-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-tertiary);
+  color: var(--text-primary);
+}
+
+.admin-btn:hover:not(:disabled) {
+  border-color: var(--color-cyan);
+  color: var(--color-cyan);
+}
+
+.admin-btn-primary {
+  background-color: var(--color-cyan);
+  border-color: var(--color-cyan);
+  color: var(--text-on-accent);
+}
+
+.admin-btn-primary:hover:not(:disabled) {
+  background-color: var(--color-blue-light);
+  border-color: var(--color-blue-light);
+  color: var(--text-on-accent);
+}
+
+.admin-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.admin-input {
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  border-radius: 10px;
+  padding: 10px 14px;
+  outline: none;
+  transition: var(--transition-smooth);
+}
+
+.admin-input:focus {
+  border-color: var(--color-cyan);
+}
+
+/* Admin Login Hero Layout (matches main portfolio Hero) */
+.admin-hero-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  background-color: transparent;
+  border-bottom: none;
+  z-index: 50;
+}
+
+.admin-hero-section {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.admin-hero-bg-img {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 55%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  z-index: 1;
+  pointer-events: none;
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(0, 0, 0, 0.35) 28%,
+    rgba(0, 0, 0, 0.85) 60%,
+    #000 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(0, 0, 0, 0.35) 28%,
+    rgba(0, 0, 0, 0.85) 60%,
+    #000 100%
+  );
+}
+
+@media (max-width: 768px) {
+  .admin-hero-bg-img {
+    width: 100%;
+    opacity: 0.22;
+    object-position: center 20%;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+}

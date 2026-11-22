@@ -1,7 +1,7 @@
 export const AppConfig = {
   email: "glosings0n.dev@gmail.com",
   links: {
-    losingTek: "https://losingtek.com",
+    musanTek: "https://www.musantek.com",
     sautiLM: "https://sautilm.com",
     flutterFireSummer: "https://flutterfirecamp.dev",
     gdgCampus:

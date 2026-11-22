@@ -46,7 +46,7 @@ export const CODELAB_CATALOG: CodelabSummary[] = [
     datePublished: "2026-10-28",
     dateModified: "2026-11-04",
     keywords:
-      "On-Device AI with Flutter and Gemma, flutter_edge_ai, flutter_edge_ai_litertlm, flutter_gemma, Google Gemma, Gemma 4, Phi, Qwen, DeepSeek, SmolLM, LiteRT-LM, MediaPipe LLM Inference, Offline AI Mobile Apps Africa, droidCon Uganda 2026, Kampala, Gemmea, GDG on Campus UCB Build with Gemma 2026, SQLite FTS5 RAG, BM25 Local RAG, Model Distillation under 150MB, INT4 Quantization, ai-edge-torch, Georges Byona, Georges Losingson, Byona Georges, glosings0n, @glosings0n, Losingson, Losings0n, @losingson, g-losingson, LosingTek, Losing Tek, FlutterFire Summer Camp, FlutterFire Camp",
+      "On-Device AI with Flutter and Gemma, flutter_edge_ai, flutter_edge_ai_litertlm, flutter_gemma, Google Gemma, Gemma 4, Phi, Qwen, DeepSeek, SmolLM, LiteRT-LM, MediaPipe LLM Inference, Offline AI Mobile Apps Africa, droidCon Uganda 2026, Kampala, Gemmea, GDG on Campus UCB Build with Gemma 2026, SQLite FTS5 RAG, BM25 Local RAG, Model Distillation under 150MB, INT4 Quantization, ai-edge-torch, Georges Byona, Georges Losingson, Byona Georges, glosings0n, @glosings0n, Losingson, Losings0n, @losingson, g-losingson, MusanTek, Musan Tek, FlutterFire Summer Camp, FlutterFire Camp",
     headerTitleEn: "On-Device AI with Flutter & Gemma (droidCon Uganda 2026)",
     headerTitleFr: "IA Embarquée avec Flutter & Gemma (droidCon Uganda 2026)",
     initialTimeLeft: "45 min left",
@@ -75,7 +75,7 @@ export const CODELAB_CATALOG: CodelabSummary[] = [
     datePublished: "2026-10-28",
     dateModified: "2026-11-04",
     keywords:
-      "Full-Stack Agentic Dart, Genkit Dart, genkit, genkit_google_genai, genkit_shelf, genkit_middleware, schemantic, schemantic_builder, Dart AI Agents, Flutter AI Client, defineRemoteAction, defineFlow, defineTool, toolApproval, Human in the Loop AI, Dart Shelf Server, Gemini 2.5 Flash, Georges Byona, Georges Losingson, Byona Georges, glosings0n, @glosings0n, Losingson, Losings0n, @losingson, g-losingson, LosingTek, Losing Tek, FlutterFire Summer Camp, FlutterFire Camp",
+      "Full-Stack Agentic Dart, Genkit Dart, genkit, genkit_google_genai, genkit_shelf, genkit_middleware, schemantic, schemantic_builder, Dart AI Agents, Flutter AI Client, defineRemoteAction, defineFlow, defineTool, toolApproval, Human in the Loop AI, Dart Shelf Server, Gemini 2.5 Flash, Georges Byona, Georges Losingson, Byona Georges, glosings0n, @glosings0n, Losingson, Losings0n, @losingson, g-losingson, MusanTek, Musan Tek, FlutterFire Summer Camp, FlutterFire Camp",
     headerTitleEn: "Full-Stack Agentic Dart: Genkit Dart & Shelf",
     headerTitleFr: "Full-Stack Agentic Dart : Genkit Dart & Shelf",
     initialTimeLeft: "45 min left",
@@ -108,7 +108,7 @@ export const CODELAB_CATALOG: CodelabSummary[] = [
     datePublished: "2026-10-28",
     dateModified: "2026-11-04",
     keywords:
-      "Agentic Coding for Flutter, Dart MCP Server, dart mcp-server, Model Context Protocol Flutter, AGENTS.md Flutter, SKILL.md Agent Skills, genkit_mcp Dart, Genkit Dart Middleware, Vibe Coding vs Agentic Engineering, AI Verification Tax, Flutter Clean Architecture AI Agent, Georges Byona, Georges Losingson, Byona Georges, glosings0n, @glosings0n, Losingson, Losings0n, @losingson, g-losingson, LosingTek, Losing Tek, FlutterFire Summer Camp, FlutterFire Camp",
+      "Agentic Coding for Flutter, Dart MCP Server, dart mcp-server, Model Context Protocol Flutter, AGENTS.md Flutter, SKILL.md Agent Skills, genkit_mcp Dart, Genkit Dart Middleware, Vibe Coding vs Agentic Engineering, AI Verification Tax, Flutter Clean Architecture AI Agent, Georges Byona, Georges Losingson, Byona Georges, glosings0n, @glosings0n, Losingson, Losings0n, @losingson, g-losingson, MusanTek, Musan Tek, FlutterFire Summer Camp, FlutterFire Camp",
     headerTitleEn:
       "Agentic Coding for Flutter: Mastering Dart MCP Server, AGENTS.md & Custom Skills",
     headerTitleFr:
@@ -143,7 +143,7 @@ export const CODELAB_CATALOG: CodelabSummary[] = [
     datePublished: "2026-10-28",
     dateModified: "2026-11-04",
     keywords:
-      "Firebase AI Logic, firebase_ai, Genkit Dart, genkit, LiteRT-LM, flutter_edge_ai, flutter_edge_ai_litertlm, flutter_gemma, Hybrid AI Architecture Flutter, Smart AI Router Flutter, Firebase App Check AI, Gemini Flash Latest, gemini-flash-latest, Server-Side Security Invariants, Edge AI vs Cloud AI Flutter, Georges Byona, Georges Losingson, Byona Georges, glosings0n, @glosings0n, Losingson, Losings0n, @losingson, g-losingson, LosingTek, Losing Tek, FlutterFire Summer Camp, FlutterFire Camp",
+      "Firebase AI Logic, firebase_ai, Genkit Dart, genkit, LiteRT-LM, flutter_edge_ai, flutter_edge_ai_litertlm, flutter_gemma, Hybrid AI Architecture Flutter, Smart AI Router Flutter, Firebase App Check AI, Gemini Flash Latest, gemini-flash-latest, Server-Side Security Invariants, Edge AI vs Cloud AI Flutter, Georges Byona, Georges Losingson, Byona Georges, glosings0n, @glosings0n, Losingson, Losings0n, @losingson, g-losingson, MusanTek, Musan Tek, FlutterFire Summer Camp, FlutterFire Camp",
     headerTitleEn:
       "Firebase AI Logic vs Genkit Dart vs LiteRT-LM: Hybrid AI in Flutter",
     headerTitleFr:
@@ -178,7 +178,7 @@ export const CODELAB_CATALOG: CodelabSummary[] = [
     datePublished: "2026-10-29",
     dateModified: "2026-11-04",
     keywords:
-      "Google Apps Script, Apps Script Automation, Google Workspace Training, GDG, GDG Afrique Francophone, GDG Pointe-Noire, GDG on Campus CUEA, SpreadsheetApp, GmailApp, DriveApp, SlidesApp, DocumentApp, FormApp, ContactsApp, CalendarApp, HtmlService, Web App Apps Script, Google Workspace Automation, Georges Byona, Georges Losingson, Byona Georges, glosings0n, @glosings0n, Losingson, Losings0n, @losingson, g-losingson, LosingTek, Losing Tek, FlutterFire Summer Camp, FlutterFire Camp",
+      "Google Apps Script, Apps Script Automation, Google Workspace Training, GDG, GDG Afrique Francophone, GDG Pointe-Noire, GDG on Campus CUEA, SpreadsheetApp, GmailApp, DriveApp, SlidesApp, DocumentApp, FormApp, ContactsApp, CalendarApp, HtmlService, Web App Apps Script, Google Workspace Automation, Georges Byona, Georges Losingson, Byona Georges, glosings0n, @glosings0n, Losingson, Losings0n, @losingson, g-losingson, MusanTek, Musan Tek, FlutterFire Summer Camp, FlutterFire Camp",
     headerTitleEn: "Automation with Google Apps Script Workshop",
     headerTitleFr: "Workshop Automatisation avec Google Apps Script",
     initialTimeLeft: "60 min left",

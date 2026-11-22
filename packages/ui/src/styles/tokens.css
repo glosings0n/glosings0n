@@ -125,18 +125,18 @@ samp,
   font-family: var(--font-mono);
 }
 
-.losingtek-font {
+.musantek-font {
   font-family: var(--font-urbanist-family);
   font-weight: 400;
 }
 
-.losingtek-font .brand-bold,
-.losingtek-font strong,
-.losingtek-font b {
+.musantek-font .brand-bold,
+.musantek-font strong,
+.musantek-font b {
   font-weight: 700;
 }
 
-.losingtek-font .brand-regular {
+.musantek-font .brand-regular {
   font-weight: 400;
 }
 

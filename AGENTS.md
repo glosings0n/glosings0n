@@ -36,11 +36,12 @@ These rules are mandatory across all web, codelab, slide, documentation, and app
 ## 3. Brand Identity & Typography
 - **Brand Name:** Always write `glosings0n` (strictly NO trailing dot: never write `glosings0n.`).
 - **Author & Organization Identity:**
-  - **Georges Byona** (`@glosings0n`), Software Engineer, Edge-AI Researcher, Founder @ **LosingTek**, Founder of **FlutterFire Summer Camp**.
+  - **Georges Byona** (`@glosings0n`), Software Engineer, Edge-AI Researcher, Founder @ **MusanTek**, Founder of **FlutterFire Summer Camp**.
 - **Typography System:**
   - **UI & Body Text:** `'Figtree'`
   - **Code, Numbers/Digits (`0-9`, `+`), Technical Metrics & `@glosings0n` Handle:** `'JetBrains Mono'` (with `JetBrainsMonoDigits` `unicode-range: U+0030-0039, U+002B` so all numbers render in monospace automatically).
-  - **LosingTek Brand Wordmark:** Always use `'Urbanist'` via `<span class="losingtek-font"><span class="brand-bold">Losing</span>Tek</span>` (`Losing` in bold `700`, `Tek` in regular `400`).
+  - **MusanTek Brand Wordmark:** Always use `'Urbanist'` via `<span class="musantek-font"><span class="brand-bold">Musan</span>Tek</span>` (`Musan` in bold `700`, `Tek` in regular `400`).
+  - **MusanTek Logo:** In the MusanTek company card, the heading shows the official logo (`<MusanTekLogo />` from `@repo/ui`, drawn from the brand SVG, letters in `currentColor` so it follows the theme) and the card visual shows the M logomark (`musantek-mark.svg`). MusanTek was formerly named LosingTek; its handle is `@musantekk` (two k).
   - **FlutterFire Summer Camp Brand Wordmark:** In HTML, always write `<span class="ffsc-brand"><span class="brand-bold">FlutterFire Summer</span> <span class="brand-regular">Camp</span></span>` (`FlutterFire Summer` in bold `700`, `Camp` in regular `400`).
 - **Domain & Routing (`codelab.glosings0n.dev`):**
   - `https://codelab.glosings0n.dev/` serves the Codelabs hub directly at `/` (never `/codelabs/`).
@@ -65,7 +66,7 @@ These rules are mandatory across all web, codelab, slide, documentation, and app
   - Every existing and future codelab (`codelabs/<slug>/index.html`) and the Codelabs Hub (`codelabs/hub.html`) MUST include:
     1. Comprehensive `<meta name="keywords">`, `<meta name="description">`, `<meta name="author" content="Georges Byona">`, `<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">`, and `<link rel="canonical" href="https://codelab.glosings0n.dev/<slug>">`.
     2. Complete OpenGraph (`og:*`, `article:*`) and Twitter Card (`twitter:*`) tags referencing `@glosings0n`.
-    3. A complete Schema.org JSON-LD `@graph` (`TechArticle`, `LearningResource`, `BreadcrumbList`, `Person` for **Georges Byona** with all aliases `glosings0n`, `@glosings0n`, `Losingson`, `Losings0n`, `@losingson`, `Georges Losingson`, `Byona Georges`, `g-losingson`, and `Organization` entities for **LosingTek** and **FlutterFire Summer Camp**, plus all technical topic tags).
+    3. A complete Schema.org JSON-LD `@graph` (`TechArticle`, `LearningResource`, `BreadcrumbList`, `Person` for **Georges Byona** with all aliases `glosings0n`, `@glosings0n`, `Losingson`, `Losings0n`, `@losingson`, `Georges Losingson`, `Byona Georges`, `g-losingson`, and `Organization` entities for **MusanTek** and **FlutterFire Summer Camp**, plus all technical topic tags).
     4. Registration of the new codelab URL in `sitemap.xml` and in the `hasPart` array of `codelabs/hub.html`'s `CollectionPage` JSON-LD.
 
 ---

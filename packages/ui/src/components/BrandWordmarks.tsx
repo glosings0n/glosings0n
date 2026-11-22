@@ -1,7 +1,7 @@
-export function LosingTekWordmark() {
+export function MusanTekWordmark() {
   return (
-    <span className="losingtek-font">
-      <span className="brand-bold">Losing</span>Tek
+    <span className="musantek-font">
+      <span className="brand-bold">Musan</span>Tek
     </span>
   );
 }

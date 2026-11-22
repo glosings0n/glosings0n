@@ -1,4 +1,4 @@
-import { FlutterFireCampWordmark, LosingTekWordmark } from "@repo/ui";
+import { FlutterFireCampWordmark, MusanTekWordmark } from "@repo/ui";
 import { Bilingual } from "@/components/Bilingual";
 import { Callout } from "@/components/Callout";
 import { CodeWindow } from "@/components/CodeWindow";
@@ -822,10 +822,10 @@ function Step9() {
       />
       <Callout variant={"info"} iconName={"users"} titleEn={"Webale Nnyo / Asante Sana, droidCon Uganda 2026!"} titleFr={"Webale Nnyo / Asante Sana, droidCon Uganda 2026 !"}>
         <p className={"lang-en"}>
-                                Built by <strong>Georges Byona</strong> (<a href={"https://glosings0n.dev"} target={"_blank"} rel={"noopener"}>@glosings0n</a>), Founder @ <LosingTekWordmark /> & Founder of the <a href={"https://flutterfirecamp.dev"} target="_blank" rel="noopener noreferrer" className="ffsc-brand"><FlutterFireCampWordmark /></a>.<br />
+                                Built by <strong>Georges Byona</strong> (<a href={"https://glosings0n.dev"} target={"_blank"} rel={"noopener"}>@glosings0n</a>), Founder @ <MusanTekWordmark /> & Founder of the <a href={"https://flutterfirecamp.dev"} target="_blank" rel="noopener noreferrer" className="ffsc-brand"><FlutterFireCampWordmark /></a>.<br />
                                 Star the repo on GitHub: <a href={"https://github.com/glosings0n/gemmea"} target={"_blank"} rel={"noopener"}>github.com/glosings0n/gemmea</a></p>
         <p className={"lang-fr"}>
-                                Conçu par <strong>Georges Byona</strong> (<a href={"https://glosings0n.dev"} target={"_blank"} rel={"noopener"}>@glosings0n</a>), Fondateur @ <LosingTekWordmark /> & Fondateur du <a href={"https://flutterfirecamp.dev"} target="_blank" rel="noopener noreferrer" className="ffsc-brand"><FlutterFireCampWordmark /></a>.<br />
+                                Conçu par <strong>Georges Byona</strong> (<a href={"https://glosings0n.dev"} target={"_blank"} rel={"noopener"}>@glosings0n</a>), Fondateur @ <MusanTekWordmark /> & Fondateur du <a href={"https://flutterfirecamp.dev"} target="_blank" rel="noopener noreferrer" className="ffsc-brand"><FlutterFireCampWordmark /></a>.<br />
                                 Ajoutez une étoile au dépôt sur GitHub : <a href={"https://github.com/glosings0n/gemmea"} target={"_blank"} rel={"noopener"}>github.com/glosings0n/gemmea</a></p>
       </Callout>
     </>

@@ -10,13 +10,14 @@ const ASSETS_DIR = path.resolve(
 export const ASSET_CONTENT_TYPES: Record<string, string> = {
   "community.jpg": "image/jpeg",
   "favicon.ico": "image/png",
-  "favicon.png": "image/png",
   "ffsc.png": "image/png",
   "hero.png": "image/png",
   "logo.svg": "image/svg+xml",
-  "losingtek.png": "image/png",
+  "musantek-mark.svg": "image/svg+xml",
   "sautilm.svg": "image/svg+xml",
-  "speaker.jpeg": "image/jpeg",
+  "speaker-1.jpeg": "image/jpeg",
+  "speaker-2.jpeg": "image/jpeg",
+  "speaker-3.jpeg": "image/jpeg",
 };
 
 export const ASSET_FILENAMES = Object.keys(ASSET_CONTENT_TYPES);

@@ -1,4 +1,4 @@
-import { FlutterFireCampWordmark, LosingTekWordmark } from "@repo/ui";
+import { FlutterFireCampWordmark, MusanTekWordmark } from "@repo/ui";
 import { Callout } from "@/components/Callout";
 import { CodeWindow } from "@/components/CodeWindow";
 import type { CodelabDefinition } from "./types";
@@ -436,14 +436,14 @@ function Step8() {
           <div className={"callout-title"}>
 Built for the Dart & Flutter Engineering Community
           </div>          <p>
-                                    Authored by <strong>Georges Byona</strong> (<a href={"https://glosings0n.dev"} target={"_blank"} rel={"noopener"}>@glosings0n</a>), Founder @ <LosingTekWordmark /> & Founder of the <a href={"https://flutterfirecamp.dev"} target="_blank" rel="noopener noreferrer" className="ffsc-brand"><FlutterFireCampWordmark /></a>.
+                                    Authored by <strong>Georges Byona</strong> (<a href={"https://glosings0n.dev"} target={"_blank"} rel={"noopener"}>@glosings0n</a>), Founder @ <MusanTekWordmark /> & Founder of the <a href={"https://flutterfirecamp.dev"} target="_blank" rel="noopener noreferrer" className="ffsc-brand"><FlutterFireCampWordmark /></a>.
                                 </p>
         </div>
         <div className={"lang-fr"}>
           <div className={"callout-title"}>
 Conçu pour la communauté d&apos;ingénierie Dart & Flutter
           </div>          <p>
-                                    Rédigé par <strong>Georges Byona</strong> (<a href={"https://glosings0n.dev"} target={"_blank"} rel={"noopener"}>@glosings0n</a>), Fondateur @ <LosingTekWordmark /> & Fondateur du <a href={"https://flutterfirecamp.dev"} target="_blank" rel="noopener noreferrer" className="ffsc-brand"><FlutterFireCampWordmark /></a>.
+                                    Rédigé par <strong>Georges Byona</strong> (<a href={"https://glosings0n.dev"} target={"_blank"} rel={"noopener"}>@glosings0n</a>), Fondateur @ <MusanTekWordmark /> & Fondateur du <a href={"https://flutterfirecamp.dev"} target="_blank" rel="noopener noreferrer" className="ffsc-brand"><FlutterFireCampWordmark /></a>.
                                 </p>
         </div>
       </Callout>

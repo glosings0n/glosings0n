@@ -1,4 +1,4 @@
-import { FlutterFireCampWordmark, LosingTekWordmark } from "@repo/ui";
+import { FlutterFireCampWordmark, MusanTekWordmark } from "@repo/ui";
 import { Callout } from "@/components/Callout";
 import { CodeWindow } from "@/components/CodeWindow";
 import type { CodelabDefinition } from "./types";
@@ -445,7 +445,7 @@ function Step8() {
           <li><strong>Official Dart & Flutter MCP Server Guide:</strong> <a href={"https://docs.flutter.dev/ai/mcp-server"} target={"_blank"} rel={"noopener noreferrer"} className={"codelab-url-link"}>https://docs.flutter.dev/ai/mcp-server</a></li>          <li><strong>Dart MCP Packages (<code>dart_mcp</code>):</strong> <a href={"https://pub.dev/packages/dart_mcp"} target={"_blank"} rel={"noopener noreferrer"} className={"codelab-url-link"}>https://pub.dev/packages/dart_mcp</a></li>          <li><strong>Genkit Dart MCP Integration (<code>genkit_mcp</code>):</strong> <a href={"https://pub.dev/packages/genkit_mcp"} target={"_blank"} rel={"noopener noreferrer"} className={"codelab-url-link"}>https://pub.dev/packages/genkit_mcp</a></li>          <li><strong>AGENTS.md Open Standard:</strong> <a href={"https://agents.md"} target={"_blank"} rel={"noopener noreferrer"} className={"codelab-url-link"}>https://agents.md</a></li>          <li><strong>Related Codelab (On-Device AI with Flutter & Gemma):</strong> <a href={"https://codelab.glosings0n.dev/flutter-gemma-droidcon-ug-2026"} className={"codelab-url-link"}>https://codelab.glosings0n.dev/flutter-gemma-droidcon-ug-2026</a></li>
         </ul>        <Callout variant={"info"} iconName={"users"} titleEn={"About the Author"} titleFr={"About the Author"}>
           <p>
-                                    Authored by <strong>Georges Byona</strong> (<a href={"https://glosings0n.dev"} target={"_blank"} rel={"noopener"}>@glosings0n</a>), Software Engineer, Edge-AI Researcher, Founder @ <LosingTekWordmark /> & Founder of <a href={"https://flutterfirecamp.dev"} target="_blank" rel="noopener noreferrer" className="ffsc-brand"><FlutterFireCampWordmark /></a>.
+                                    Authored by <strong>Georges Byona</strong> (<a href={"https://glosings0n.dev"} target={"_blank"} rel={"noopener"}>@glosings0n</a>), Software Engineer, Edge-AI Researcher, Founder @ <MusanTekWordmark /> & Founder of <a href={"https://flutterfirecamp.dev"} target="_blank" rel="noopener noreferrer" className="ffsc-brand"><FlutterFireCampWordmark /></a>.
                                 </p>
         </Callout>
       </div>
@@ -476,7 +476,7 @@ function Step8() {
           <li><strong>Guide Officiel Dart & Flutter MCP Server :</strong> <a href={"https://docs.flutter.dev/ai/mcp-server"} target={"_blank"} rel={"noopener noreferrer"} className={"codelab-url-link"}>https://docs.flutter.dev/ai/mcp-server</a></li>          <li><strong>Paquet Dart MCP (<code>dart_mcp</code>) :</strong> <a href={"https://pub.dev/packages/dart_mcp"} target={"_blank"} rel={"noopener noreferrer"} className={"codelab-url-link"}>https://pub.dev/packages/dart_mcp</a></li>          <li><strong>Intégration MCP Genkit Dart (<code>genkit_mcp</code>) :</strong> <a href={"https://pub.dev/packages/genkit_mcp"} target={"_blank"} rel={"noopener noreferrer"} className={"codelab-url-link"}>https://pub.dev/packages/genkit_mcp</a></li>          <li><strong>Standard Ouvert AGENTS.md :</strong> <a href={"https://agents.md"} target={"_blank"} rel={"noopener noreferrer"} className={"codelab-url-link"}>https://agents.md</a></li>          <li><strong>Codelab Associé (On-Device AI with Flutter & Gemma) :</strong> <a href={"https://codelab.glosings0n.dev/flutter-gemma-droidcon-ug-2026"} className={"codelab-url-link"}>https://codelab.glosings0n.dev/flutter-gemma-droidcon-ug-2026</a></li>
         </ul>        <Callout variant={"info"} iconName={"users"} titleEn={"À propos de l'Auteur"} titleFr={"À propos de l'Auteur"}>
           <p>
-                                    Conçu par <strong>Georges Byona</strong> (<a href={"https://glosings0n.dev"} target={"_blank"} rel={"noopener"}>@glosings0n</a>), Software Engineer, Edge-AI Researcher, Fondateur @ <LosingTekWordmark /> & Fondateur du <a href={"https://flutterfirecamp.dev"} target="_blank" rel="noopener noreferrer" className="ffsc-brand"><FlutterFireCampWordmark /></a>.
+                                    Conçu par <strong>Georges Byona</strong> (<a href={"https://glosings0n.dev"} target={"_blank"} rel={"noopener"}>@glosings0n</a>), Software Engineer, Edge-AI Researcher, Fondateur @ <MusanTekWordmark /> & Fondateur du <a href={"https://flutterfirecamp.dev"} target="_blank" rel="noopener noreferrer" className="ffsc-brand"><FlutterFireCampWordmark /></a>.
                                 </p>
         </Callout>
       </div>

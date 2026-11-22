@@ -80,7 +80,7 @@ export default async function CodelabDetailPage(context: {
           "Losings0n",
           "@losingson",
           "g-losingson",
-          "LosingTek",
+          "MusanTek",
         ],
         url: "https://glosings0n.dev",
         image: "https://glosings0n.dev/assets/hero.png",
@@ -95,9 +95,9 @@ export default async function CodelabDetailPage(context: {
         founder: [
           {
             "@type": "Organization",
-            "@id": "https://glosings0n.dev/#losingtek",
-            name: "LosingTek",
-            url: "https://losingtek.com",
+            "@id": "https://glosings0n.dev/#musantek",
+            name: "MusanTek",
+            url: "https://www.musantek.com",
           },
           {
             "@type": "EducationalOrganization",
@@ -124,7 +124,7 @@ export default async function CodelabDetailPage(context: {
           "@id": "https://glosings0n.dev/#person",
         },
         publisher: {
-          "@id": "https://glosings0n.dev/#losingtek",
+          "@id": "https://glosings0n.dev/#musantek",
         },
         isPartOf: {
           "@id": "https://codelab.glosings0n.dev/#website",

@@ -1,4 +1,4 @@
-import { FlutterFireCampWordmark, LosingTekWordmark } from "@repo/ui";
+import { FlutterFireCampWordmark, MusanTekWordmark } from "@repo/ui";
 import { Callout } from "@/components/Callout";
 import { CodeWindow } from "@/components/CodeWindow";
 import type { CodelabDefinition } from "./types";
@@ -420,10 +420,10 @@ function Step8() {
       </div>
       <Callout variant={"success"} iconName={"success"} titleEn={"Codelab Complete | Hybrid AI Architecture Mastered"} titleFr={"Codelab Terminé | Architecture IA Hybride Maîtrisée"}>
         <p className={"lang-en"}>
-                                Built by <strong>Georges Byona</strong> (<a href={"https://glosings0n.dev"} target={"_blank"} rel={"noopener"}>@glosings0n</a>), Founder @ <LosingTekWordmark /> & Founder of the <a href={"https://flutterfirecamp.dev"} target="_blank" rel="noopener noreferrer" className="ffsc-brand"><FlutterFireCampWordmark /></a>.
+                                Built by <strong>Georges Byona</strong> (<a href={"https://glosings0n.dev"} target={"_blank"} rel={"noopener"}>@glosings0n</a>), Founder @ <MusanTekWordmark /> & Founder of the <a href={"https://flutterfirecamp.dev"} target="_blank" rel="noopener noreferrer" className="ffsc-brand"><FlutterFireCampWordmark /></a>.
                             </p>
         <p className={"lang-fr"}>
-                                Conçu par <strong>Georges Byona</strong> (<a href={"https://glosings0n.dev"} target={"_blank"} rel={"noopener"}>@glosings0n</a>), Fondateur @ <LosingTekWordmark /> & Fondateur du <a href={"https://flutterfirecamp.dev"} target="_blank" rel="noopener noreferrer" className="ffsc-brand"><FlutterFireCampWordmark /></a>.
+                                Conçu par <strong>Georges Byona</strong> (<a href={"https://glosings0n.dev"} target={"_blank"} rel={"noopener"}>@glosings0n</a>), Fondateur @ <MusanTekWordmark /> & Fondateur du <a href={"https://flutterfirecamp.dev"} target="_blank" rel="noopener noreferrer" className="ffsc-brand"><FlutterFireCampWordmark /></a>.
                             </p>
       </Callout>
     </>

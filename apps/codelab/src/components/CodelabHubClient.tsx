@@ -3,7 +3,7 @@
 import {
   AppIcon,
   FlutterFireCampWordmark,
-  LosingTekWordmark,
+  MusanTekWordmark,
 } from "@repo/ui";
 import { CODELAB_CATALOG } from "@/data/catalog";
 import Link from "next/link";
@@ -30,7 +30,7 @@ export function CodelabHubClient() {
             AI, Full-Stack Agentic Dart, Hybrid AI, and Flutter architectures by{" "}
             <strong>Georges Byona</strong> (
             <span className="font-mono">@glosings0n</span>), Founder @{" "}
-            <LosingTekWordmark /> &amp; Founder @{" "}
+            <MusanTekWordmark /> &amp; Founder @{" "}
             <a
               href="https://flutterfirecamp.dev"
               target="_blank"
@@ -46,7 +46,7 @@ export function CodelabHubClient() {
             l&apos;Edge AI, le Full-Stack Agentic Dart, l&apos;IA Hybride et les
             architectures Flutter par <strong>Georges Byona</strong> (
             <span className="font-mono">@glosings0n</span>), Fondateur @{" "}
-            <LosingTekWordmark /> &amp; Fondateur du{" "}
+            <MusanTekWordmark /> &amp; Fondateur du{" "}
             <a
               href="https://flutterfirecamp.dev"
               target="_blank"

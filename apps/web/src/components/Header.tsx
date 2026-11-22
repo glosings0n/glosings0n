@@ -61,7 +61,7 @@ export function Header({
         >
           <img
             src={logoSvg.src}
-            alt="LosingTek Logo"
+            alt="glosings0n logo"
             className="logo-icon"
             id="logo-img"
             width={32}

@@ -74,7 +74,7 @@ export function CodelabTopbar({
           >
             <img
               src={logoSvg.src}
-              alt="LosingTek Logo"
+              alt="glosings0n logo"
               className="brand-logo"
               width={26}
               height={26}

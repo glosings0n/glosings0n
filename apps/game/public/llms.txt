@@ -1,0 +1,15 @@
+# glosings0n Arcade | Tech Session Warm-Up Games
+
+Interactive 5s to 15s mobile-first mini-games designed by Georges Byona (@glosings0n) to energize developer conferences, student workshops, Flutter sessions, and DevFest audiences.
+
+## Games
+- https://game.glosings0n.dev/tap-blitz/solo | Tap Blitz (5s pure speed)
+- https://game.glosings0n.dev/stroop-trap/solo | Stroop Trap (15s attention & color vs word trap)
+- https://game.glosings0n.dev/dash-climb/solo | Dash Sky Climb (10s animated Flutter Dash mascot game)
+- https://game.glosings0n.dev/ping-reflex/solo | Ping Reflex (3-round ms reaction test)
+- https://game.glosings0n.dev/bug-squash/solo | Bug Squash (12s 3x3 server grid)
+- https://game.glosings0n.dev/syntax-spotter/solo | Syntax Spotter (15s typo hunter)
+- https://game.glosings0n.dev/exact-timer/solo | Exact 5.000s (blind stopwatch precision)
+- https://game.glosings0n.dev/bit-snap/solo | Bit Snap (15s binary & boolean sprint)
+- https://game.glosings0n.dev/swipe-storm/solo | Swipe Storm (12s directional agility)
+- https://game.glosings0n.dev/true-or-glitch/solo | True or Glitch (15s tech quiz)

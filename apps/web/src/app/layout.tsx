@@ -27,9 +27,9 @@ const urbanist = Urbanist({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://glosings0n.dev"),
-  title: "Georges Byona (glosings0n) - Software Engineer & Founder @ LosingTek",
+  title: "Georges Byona (glosings0n) | Founder @ MusanTek, Edge-AI Researcher @ SautiLM",
   description:
-    "Official portfolio of Georges Byona (alias @glosings0n / @losingson) - Software Engineer, Founder of LosingTek, Initiator of the FlutterFire Summer Camp, and former GDG Lead.",
+    "Official portfolio of Georges Byona (@glosings0n / @losingson): Founder & Software Engineer at MusanTek, Edge-AI Researcher at SautiLM, Founder of the FlutterFire Summer Camp (1,000+ participants), former GDG Lead (500+ students trained) and speaker at droidcon, flutterCon and DevFest.",
   keywords: [
     "Georges Byona",
     "Georges Losingson",
@@ -51,8 +51,8 @@ export const metadata: Metadata = {
     "Losingson Georges",
     "Losings0n Georges",
     "Glosingson",
-    "LosingTek",
-    "Losing Tek",
+    "MusanTek",
+    "Musan Tek",
     "FlutterFire Summer Camp",
     "GDG Bukavu",
     "GDG UCB",
@@ -80,9 +80,9 @@ export const metadata: Metadata = {
     canonical: "https://glosings0n.dev",
   },
   openGraph: {
-    title: "Georges Byona (glosings0n) - Software Engineer & Founder @ LosingTek",
+    title: "Georges Byona (glosings0n) | Founder @ MusanTek, Edge-AI Researcher @ SautiLM",
     description:
-      "Discover the official portfolio of Georges Byona (@glosings0n / @losingson): Founder of LosingTek, Initiator of the FlutterFire Summer Camp, and former GDG Lead.",
+      "Official portfolio of Georges Byona (@glosings0n / @losingson): Founder & Software Engineer at MusanTek, Edge-AI Researcher at SautiLM, Founder of the FlutterFire Summer Camp (1,000+ participants), former GDG Lead (500+ students trained) and speaker at droidcon, flutterCon and DevFest.",
     type: "profile",
     url: "https://glosings0n.dev",
     siteName: "glosings0n Portfolio",
@@ -99,18 +99,18 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     site: "@glosings0n",
     creator: "@glosings0n",
-    title: "Georges Byona (glosings0n) - Software Engineer & Founder @ LosingTek",
+    title: "Georges Byona (glosings0n) | Founder @ MusanTek, Edge-AI Researcher @ SautiLM",
     description:
-      "Official portfolio of Georges Byona (@glosings0n / @losingson): Founder of LosingTek, former GDG Lead, and Initiator of the FlutterFire Summer Camp.",
+      "Official portfolio of Georges Byona (@glosings0n / @losingson): Founder & Software Engineer at MusanTek, Edge-AI Researcher at SautiLM, Founder of the FlutterFire Summer Camp (1,000+ participants), former GDG Lead (500+ students trained) and speaker at droidcon, flutterCon and DevFest.",
     images: ["https://glosings0n.dev/assets/hero.png"],
   },
   icons: {
     icon: [
-      { url: "/assets/favicon.png", sizes: "192x192", type: "image/png" },
+      { url: "/favicon.ico", type: "image/png" },
       { url: "/assets/logo.svg", type: "image/svg+xml" },
     ],
     shortcut: "/favicon.ico",
-    apple: "/assets/favicon.png",
+    apple: "/favicon.ico",
   },
 };
 
@@ -123,7 +123,7 @@ const jsonLd = {
       name: "Georges Byona",
       additionalName: "Georges Losingson",
       description:
-        "Georges Byona (also known as @glosings0n or @losingson) is a Software Engineer based in the Democratic Republic of the Congo. He is the founder of LosingTek and initiator of the FlutterFire Summer Camp, and previously served as GDG Lead.",
+        "Georges Byona (also known as @glosings0n or @losingson) is a Software Engineer based in the Democratic Republic of the Congo. He is the founder of MusanTek, an Edge-AI researcher at SautiLM and the founder of the FlutterFire Summer Camp, and previously served as GDG Lead.",
       alternateName: [
         "glosings0n",
         "Glosingson",
@@ -142,12 +142,12 @@ const jsonLd = {
         "losing",
         "losingson",
         "Losing",
-        "LosingTek",
-        "Losing Tek",
+        "MusanTek",
+        "Musan Tek",
       ],
       url: "https://glosings0n.dev",
       image: "https://glosings0n.dev/assets/hero.png",
-      jobTitle: "Software Engineer",
+      jobTitle: "Founder & Software Engineer, Edge-AI Researcher",
       knowsAbout: [
         "Software Engineering",
         "Mobile Development",
@@ -172,10 +172,18 @@ const jsonLd = {
       founder: [
         {
           "@type": "Organization",
-          "@id": "https://glosings0n.dev/#losingtek",
-          name: "LosingTek",
-          url: "https://losingtek.com",
-          description: "Innovative software architectures and development firm.",
+          "@id": "https://glosings0n.dev/#musantek",
+          name: "MusanTek",
+          alternateName: "LosingTek",
+          url: "https://www.musantek.com",
+          description:
+            "Congolese digital company building software and AI solutions for the DRC and East Africa.",
+          sameAs: [
+            "https://www.linkedin.com/company/musantekk",
+            "https://x.com/musantekk",
+            "https://github.com/musantekk",
+            "https://www.youtube.com/@musantekk",
+          ],
         },
         {
           "@type": "ResearchProject",

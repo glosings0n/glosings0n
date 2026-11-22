@@ -374,7 +374,7 @@ h4 {
   width: 100%;
 }
 
-#block-losingtek .block-img-wrapper,
+#block-musantek .block-img-wrapper,
 #block-sautilm .block-img-wrapper,
 #block-flutterfire .block-img-wrapper {
   max-width: 400px;
@@ -462,6 +462,242 @@ h4 {
   border-color: var(--color-cyan);
 }
 
+/* Interactive Swipeable 3-Card Speaker Stack */
+.speaker-stack-root {
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.speaker-stack-deck {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 2;
+}
+
+.speaker-stack-card {
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-tertiary);
+  padding: 8px;
+  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.25);
+  user-select: none;
+  -webkit-user-select: none;
+  pointer-events: none;
+}
+
+.speaker-stack-card.is-top {
+  pointer-events: auto;
+  touch-action: none;
+  cursor: grab;
+}
+
+.speaker-stack-card.is-top:hover {
+  border-color: var(--color-cyan);
+}
+
+.speaker-stack-card.is-dragging {
+  cursor: grabbing;
+  border-color: var(--color-cyan);
+}
+
+.speaker-stack-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 22%;
+  border-radius: 10px;
+  pointer-events: none;
+}
+
+.speaker-stack-controls {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 6px 10px 6px 14px;
+  border-radius: 999px;
+  background-color: var(--bg-tertiary);
+  border: 1px solid var(--border-color);
+}
+
+.speaker-stack-dots {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.speaker-stack-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background-color: var(--border-color);
+  transition: var(--transition-smooth);
+}
+
+.speaker-stack-dot.active {
+  width: 18px;
+  background-color: var(--color-cyan);
+}
+
+.speaker-stack-next {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.speaker-stack-next:hover {
+  border-color: var(--color-cyan);
+  color: var(--color-cyan);
+}
+
+/* Privacy Policy Page (/privacy) */
+.privacy-page {
+  min-height: 100vh;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+.privacy-header {
+  border-bottom: 1px solid var(--border-color);
+  background-color: var(--bg-secondary);
+}
+
+.privacy-header-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.privacy-badge {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--color-cyan);
+  background-color: var(--bg-tertiary);
+  border: 1px solid var(--border-color);
+  padding: 6px 12px;
+  border-radius: 999px;
+}
+
+.privacy-main {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 48px 24px 80px;
+}
+
+.privacy-container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.privacy-hero {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.privacy-kicker {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--color-cyan);
+}
+
+.privacy-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  color: var(--text-primary);
+}
+
+.privacy-meta {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.privacy-intro {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  line-height: 1.7;
+  margin-top: 4px;
+}
+
+.privacy-card {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 26px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.privacy-card h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.privacy-card p,
+.privacy-card li {
+  color: var(--text-secondary);
+  font-size: 0.96rem;
+  line-height: 1.7;
+}
+
+.privacy-card ul {
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.privacy-card code,
+.privacy-intro code {
+  font-family: var(--font-mono);
+  font-size: 0.85em;
+  background-color: var(--bg-tertiary);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  padding: 1px 6px;
+  color: var(--color-cyan);
+}
+
+.privacy-card a {
+  color: var(--color-cyan);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.privacy-contact {
+  background-color: var(--bg-tertiary);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 14px 18px;
+}
+
 .block-content {
   flex: 1;
   display: flex;
@@ -493,6 +729,15 @@ h4 {
 .block-heading {
   font-size: 2.2rem;
   font-weight: 600;
+  color: var(--text-primary);
+}
+
+.block-heading-logo {
+  display: block;
+  height: 0.95em;
+  width: auto;
+  max-width: 100%;
+  margin-top: 0.35em;
   color: var(--text-primary);
 }
 
@@ -831,6 +1076,10 @@ h4 {
 
   .block-heading {
     font-size: clamp(1.4rem, 5vw, 1.7rem);
+  }
+
+  .block-heading-logo {
+    margin-inline: auto;
   }
 
   .block-text {

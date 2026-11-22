@@ -1,0 +1,225 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // ===============================================================
+    // Assumed Data Model
+    // ===============================================================
+    //
+    // Collection: sessions
+    // Document ID: {sessionId}
+    // Fields:
+    //   - gameSlug: string (required, 1..50 chars)
+    //   - sessionCode: string (required, 1..60 chars)
+    //   - eventName: string (required, 1..100 chars)
+    //   - status: string (required, 'active' | 'paused' | 'ended')
+    //   - sortOrder: string (required, 'asc' | 'desc')
+    //   - maxAttemptsPerPlayer: int (required, 1..10)
+    //   - createdAt: timestamp (optional)
+    //   - updatedAt: timestamp (optional)
+    //
+    // Subcollection: sessions/{sessionId}/scores
+    // Document ID: {playerUid} (matches Firebase Auth UID)
+    // Fields:
+    //   - uid: string (required, immutable, equals request.auth.uid)
+    //   - displayName: string (required, 1..40 chars)
+    //   - score: number (required, 0..1000000)
+    //   - metricLabel: string (required, 1..32 chars)
+    //   - attempts: int (required, 1..session.maxAttemptsPerPlayer; 1 on create, +1 on update)
+    //   - photoURL: string | null (optional, max 512 chars, http/https URL if string)
+    //   - meta: map (optional, max 8 entries for compact game stats)
+    //   - createdAt: timestamp (optional, immutable if set)
+    //   - updatedAt: timestamp (optional)
+    //
+    // Collection: arcadeConfig
+    // Document ID: {docId}
+    // Fields: admin-managed configuration documents
+    //
+    // Collection: admins
+    // Document ID: {adminEmail} (lowercase verified email)
+    // Access: server-side / Firebase Console only (all client read/write denied)
+    //
+    // ===============================================================
+
+    // ===============================================================
+    // Helper Functions
+    // ===============================================================
+
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function isAdmin() {
+      return isAuthenticated() &&
+        'email_verified' in request.auth.token &&
+        request.auth.token.email_verified == true &&
+        'email' in request.auth.token &&
+        request.auth.token.email != null &&
+        request.auth.token.email is string &&
+        request.auth.token.email.size() > 0 &&
+        exists(/databases/$(database)/documents/admins/$(request.auth.token.email.lower()));
+    }
+
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+
+    function hasRequiredFields(data, fields) {
+      return data.keys().hasAll(fields);
+    }
+
+    function hasOnlyAllowedFields(data, fields) {
+      return data.keys().hasOnly(fields);
+    }
+
+    function validStringLength(value, minLen, maxLen) {
+      return value is string &&
+        value.size() >= minLen &&
+        value.size() <= maxLen;
+    }
+
+    function isValidOptionalUrlOrNull(data, field, maxLen) {
+      return !(field in data) ||
+        data[field] == null ||
+        (data[field] is string &&
+          data[field].size() <= maxLen &&
+          (data[field].matches('^https://.*') || data[field].matches('^http://.*')));
+    }
+
+    function isValidOptionalTimestamp(data, field) {
+      return !(field in data) || data[field] is timestamp;
+    }
+
+    function sessionDocPath(sessionId) {
+      return /databases/$(database)/documents/sessions/$(sessionId);
+    }
+
+    function isSessionActive(sessionId) {
+      return exists(sessionDocPath(sessionId)) &&
+        get(sessionDocPath(sessionId)).data.status == 'active';
+    }
+
+    // ===============================================================
+    // Domain Validators
+    // ===============================================================
+
+    function isValidSession(data) {
+      return hasRequiredFields(data, [
+          'gameSlug',
+          'sessionCode',
+          'eventName',
+          'status',
+          'sortOrder',
+          'maxAttemptsPerPlayer'
+        ]) &&
+        validStringLength(data.gameSlug, 1, 50) &&
+        validStringLength(data.sessionCode, 1, 60) &&
+        validStringLength(data.eventName, 1, 100) &&
+        data.status in ['active', 'paused', 'ended'] &&
+        data.sortOrder in ['asc', 'desc'] &&
+        data.maxAttemptsPerPlayer is int &&
+        data.maxAttemptsPerPlayer >= 1 &&
+        data.maxAttemptsPerPlayer <= 10 &&
+        isValidOptionalTimestamp(data, 'createdAt') &&
+        isValidOptionalTimestamp(data, 'updatedAt');
+    }
+
+    function isValidPlayerScore(data, sessionId) {
+      let maxAttempts = get(sessionDocPath(sessionId)).data.maxAttemptsPerPlayer;
+      return hasRequiredFields(data, [
+          'uid',
+          'displayName',
+          'score',
+          'metricLabel',
+          'attempts'
+        ]) &&
+        hasOnlyAllowedFields(data, [
+          'uid',
+          'displayName',
+          'score',
+          'metricLabel',
+          'attempts',
+          'photoURL',
+          'meta',
+          'createdAt',
+          'updatedAt'
+        ]) &&
+        data.uid is string &&
+        data.uid == request.auth.uid &&
+        validStringLength(data.displayName, 1, 40) &&
+        data.score is number &&
+        data.score >= 0 &&
+        data.score <= 1000000 &&
+        validStringLength(data.metricLabel, 1, 32) &&
+        maxAttempts is int &&
+        data.attempts is int &&
+        data.attempts >= 1 &&
+        data.attempts <= maxAttempts &&
+        isValidOptionalUrlOrNull(data, 'photoURL', 512) &&
+        (!('meta' in data) || (data.meta is map && data.meta.size() <= 8)) &&
+        isValidOptionalTimestamp(data, 'createdAt') &&
+        isValidOptionalTimestamp(data, 'updatedAt');
+    }
+
+    function isImmutableScoreFieldsPreserved() {
+      return request.resource.data.uid == resource.data.uid &&
+        (!('createdAt' in resource.data) ||
+          ('createdAt' in request.resource.data &&
+            request.resource.data.createdAt == resource.data.createdAt));
+    }
+
+    // ===============================================================
+    // Collection Rules
+    // ===============================================================
+
+    // Public read for players and live projector leaderboard (/leaderboard).
+    // Only the verified admin can create, update, or delete sessions.
+    match /sessions/{sessionId} {
+      allow read: if true;
+      allow create, update: if isAdmin() && isValidSession(request.resource.data);
+      allow delete: if isAdmin();
+
+      // Public read for real-time leaderboard projection.
+      // Authenticated players can submit and update their own score while the session is active.
+      match /scores/{playerUid} {
+        allow read: if true;
+
+        allow create: if isAdmin() || (
+          isOwner(playerUid) &&
+          isSessionActive(sessionId) &&
+          isValidPlayerScore(request.resource.data, sessionId) &&
+          request.resource.data.attempts == 1
+        );
+
+        allow update: if isAdmin() || (
+          isOwner(playerUid) &&
+          isSessionActive(sessionId) &&
+          isValidPlayerScore(request.resource.data, sessionId) &&
+          isImmutableScoreFieldsPreserved() &&
+          resource.data.attempts is int &&
+          request.resource.data.attempts == resource.data.attempts + 1
+        );
+
+        allow delete: if isAdmin();
+      }
+    }
+
+    // Public read for arcade configuration; admin-only writes.
+    match /arcadeConfig/{docId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // Locked admin allowlist (managed via Firebase Console / Admin SDK only).
+    // Checked server-side by isAdmin() via exists(); all client reads/writes denied.
+    match /admins/{adminEmail} {
+      allow read, write: if false;
+    }
+
+    // Default deny everything else.
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

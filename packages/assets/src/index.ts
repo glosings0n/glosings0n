@@ -2,22 +2,27 @@
 
 import communityImg from "../assets/community.jpg";
 import faviconIco from "../assets/favicon.ico";
-import faviconPng from "../assets/favicon.png";
 import ffscImg from "../assets/ffsc.png";
 import heroImg from "../assets/hero.png";
 import logoSvg from "../assets/logo.svg";
-import losingtekImg from "../assets/losingtek.png";
+import musantekMarkSvg from "../assets/musantek-mark.svg";
 import sautilmSvg from "../assets/sautilm.svg";
-import speakerImg from "../assets/speaker.jpeg";
+import speaker1Img from "../assets/speaker-1.jpeg";
+import speaker2Img from "../assets/speaker-2.jpeg";
+import speaker3Img from "../assets/speaker-3.jpeg";
+
+const speakerImg = speaker1Img;
 
 export {
   communityImg,
   faviconIco,
-  faviconPng,
   ffscImg,
   heroImg,
   logoSvg,
-  losingtekImg,
+  musantekMarkSvg,
   sautilmSvg,
+  speaker1Img,
+  speaker2Img,
+  speaker3Img,
   speakerImg,
 };

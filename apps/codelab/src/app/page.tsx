@@ -5,7 +5,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "glosings0n Codelabs | Hands-On Engineering Guides by Georges Byona",
   description:
-    "Interactive, bilingual (EN/FR) production-grade engineering codelabs by Georges Byona (@glosings0n / @losingson), Founder of LosingTek & Founder of FlutterFire Summer Camp. Deep-dive guides on On-Device AI, Flutter, Google Gemma, LiteRT-LM, Genkit Dart, Firebase AI Logic, and Agentic Coding with MCP.",
+    "Interactive, bilingual (EN/FR) production-grade engineering codelabs by Georges Byona (@glosings0n / @losingson), Founder of MusanTek & Founder of FlutterFire Summer Camp. Deep-dive guides on On-Device AI, Flutter, Google Gemma, LiteRT-LM, Genkit Dart, Firebase AI Logic, and Agentic Coding with MCP.",
   keywords: [
     "glosings0n Codelabs",
     "Georges Byona",
@@ -17,8 +17,8 @@ export const metadata: Metadata = {
     "@glosings0n",
     "@losingson",
     "g-losingson",
-    "LosingTek",
-    "Losing Tek",
+    "MusanTek",
+    "Musan Tek",
     "FlutterFire Summer Camp",
     "FlutterFire Camp",
     "GDG on Campus UCB",
@@ -51,7 +51,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "glosings0n Codelabs | Hands-On Engineering Guides by Georges Byona",
     description:
-      "Step-by-step interactive codelabs (EN/FR) with real production code by Georges Byona (@glosings0n), Founder @ LosingTek & Founder @ FlutterFire Summer Camp.",
+      "Step-by-step interactive codelabs (EN/FR) with real production code by Georges Byona (@glosings0n), Founder @ MusanTek & Founder @ FlutterFire Summer Camp.",
     type: "website",
     url: "https://codelab.glosings0n.dev",
     siteName: "glosings0n Codelabs",
@@ -70,7 +70,7 @@ export const metadata: Metadata = {
     creator: "@glosings0n",
     title: "glosings0n Codelabs | Hands-On Engineering Guides by Georges Byona",
     description:
-      "Interactive engineering codelabs on On-Device AI, Flutter, Google Gemma, Genkit Dart, Firebase AI Logic, and Agentic Coding by Georges Byona (@glosings0n), Founder @ LosingTek & Founder @ FlutterFire Summer Camp.",
+      "Interactive engineering codelabs on On-Device AI, Flutter, Google Gemma, Genkit Dart, Firebase AI Logic, and Agentic Coding by Georges Byona (@glosings0n), Founder @ MusanTek & Founder @ FlutterFire Summer Camp.",
     images: ["https://glosings0n.dev/assets/hero.png"],
   },
   other: {
@@ -97,7 +97,7 @@ const hubJsonLd = {
         "Losings0n",
         "@losingson",
         "g-losingson",
-        "LosingTek",
+        "MusanTek",
       ],
       url: "https://glosings0n.dev",
       image: "https://glosings0n.dev/assets/hero.png",
@@ -112,9 +112,9 @@ const hubJsonLd = {
       founder: [
         {
           "@type": "Organization",
-          "@id": "https://glosings0n.dev/#losingtek",
-          name: "LosingTek",
-          url: "https://losingtek.com",
+          "@id": "https://glosings0n.dev/#musantek",
+          name: "MusanTek",
+          url: "https://www.musantek.com",
         },
         {
           "@type": "EducationalOrganization",

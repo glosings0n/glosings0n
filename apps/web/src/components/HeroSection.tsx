@@ -1,7 +1,7 @@
 "use client";
 
 import { heroImg } from "@repo/assets";
-import { LosingTekWordmark } from "@repo/ui";
+import { MusanTekWordmark } from "@repo/ui";
 import type { PortfolioCopy } from "@/data/translations";
 
 interface HeroSectionProps {
@@ -23,7 +23,7 @@ export function HeroSection({ copy, onNavigateHash }: HeroSectionProps) {
           </h1>
           <p className="hero-subtitle">
             {copy.heroRolePrefix}
-            <LosingTekWordmark />
+            <MusanTekWordmark />
             {copy.heroRoleSuffix}
           </p>
           <div className="hero-actions">

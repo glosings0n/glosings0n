@@ -3,7 +3,7 @@
 <p align="center">
   <a href="https://glosings0n.dev"><img src="https://img.shields.io/badge/Portfolio-glosings0n.dev-00B0FF?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Portfolio" /></a>
   <a href="https://codelab.glosings0n.dev"><img src="https://img.shields.io/badge/Codelabs-codelab.glosings0n.dev-02569B?style=for-the-badge&logo=google&logoColor=white" alt="Codelabs" /></a>
-  <a href="https://losingtek.com"><img src="https://img.shields.io/badge/LosingTek-Founder-00B0FF?style=for-the-badge" alt="LosingTek Founder" /></a>
+  <a href="https://www.musantek.com"><img src="https://img.shields.io/badge/MusanTek-Founder-00B0FF?style=for-the-badge" alt="MusanTek Founder" /></a>
   <a href="https://sautilm.com"><img src="https://img.shields.io/badge/SautiLM-Edge--AI_Researcher-02569B?style=for-the-badge" alt="SautiLM Edge-AI" /></a>
   <a href="https://flutterfirecamp.dev"><img src="https://img.shields.io/badge/FlutterFire_Camp-Founder-00B0FF?style=for-the-badge&logo=firebase&logoColor=black" alt="FlutterFire Camp Founder" /></a>
 </p>
@@ -14,7 +14,7 @@
 
 Software Engineer and Edge-AI Researcher based in the Democratic Republic of the Congo, dedicated to building high-performance cross-platform applications and offline-first intelligent systems.
 
-* **Founder @ LosingTek**: Architecting resilient software architectures and digital experiences for web and mobile.
+* **Founder @ MusanTek**: Architecting resilient software architectures and digital experiences for web and mobile.
 * **Edge-AI Researcher @ SautiLM**: Pioneering offline-first Edge-AI and quantized Small Language Models (SLMs) for mother-tongue literacy in nomadic pastoralist and displaced communities across East Africa ([sautilm.com](https://sautilm.com)).
 * **Founder of FlutterFire Summer Camp**: Leading developer training initiatives across Africa on Flutter and Firebase ([flutterfirecamp.dev](https://flutterfirecamp.dev)).
 * **Former GDG on Campus UCB Lead**: Mentoring 500+ student engineers in mobile development, cloud computing, and AI.
@@ -82,5 +82,5 @@ Software Engineer and Edge-AI Researcher based in the Democratic Republic of the
 ---
 
 <p align="center">
-  Crafted by <a href="https://glosings0n.dev">Georges Byona</a> &bull; Powered by <a href="https://losingtek.com">LosingTek</a>
+  Crafted by <a href="https://glosings0n.dev">Georges Byona</a> &bull; Powered by <a href="https://www.musantek.com">MusanTek</a>
 </p>

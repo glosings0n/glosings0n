@@ -3,16 +3,16 @@
 import {
   communityImg,
   ffscImg,
-  losingtekImg,
+  musantekMarkSvg,
   sautilmSvg,
-  speakerImg,
 } from "@repo/assets";
 import {
   AppIcon,
   FlutterFireCampWordmark,
-  LosingTekWordmark,
+  MusanTekLogo,
   useIsLocalHost,
 } from "@repo/ui";
+import { SpeakerCardStack } from "@/components/SpeakerCardStack";
 import { AppConfig } from "@/data/config";
 import type { PortfolioCopy } from "@/data/translations";
 
@@ -31,37 +31,37 @@ export function AchievementsSection({ copy }: AchievementsSectionProps) {
       <div className="section-container">
         <h2 className="section-title">{copy.aboutTitle}</h2>
 
-        {/* Block 1: Software Engineer & Founder of LosingTek */}
-        <div className="achievement-block reveal-on-scroll" id="block-losingtek">
+        {/* Block 1: Founder & Software Engineer at MusanTek */}
+        <div className="achievement-block reveal-on-scroll" id="block-musantek">
           <div className="block-visual">
             <a
-              href={AppConfig.links.losingTek}
-              id="link-img-losingtek"
+              href={AppConfig.links.musanTek}
+              id="link-img-musantek"
               className="block-img-wrapper tilt-right"
               target="_blank"
               rel="noopener noreferrer"
             >
               <img
-                src={losingtekImg.src}
-                alt="LosingTek Branding Visual"
+                src={musantekMarkSvg.src}
+                alt="MusanTek M logomark"
                 className="block-img"
               />
             </a>
           </div>
           <div className="block-content">
-            <div className="block-tag" id="tag-losingtek">
+            <div className="block-tag" id="tag-musantek">
               <AppIcon name="code" size={16} strokeWidth={1.5} className="tag-icon" />
               <span>{copy.block1Tag}</span>
             </div>
             <h3 className="block-heading">
               {copy.block1HeadingPrefix}
-              <LosingTekWordmark />
+              <MusanTekLogo className="block-heading-logo" />
             </h3>
             <p className="block-text">{copy.block1Text}</p>
             <a
-              href={AppConfig.links.losingTek}
+              href={AppConfig.links.musanTek}
               className="block-link"
-              id="link-losingtek"
+              id="link-musantek"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -202,19 +202,7 @@ export function AchievementsSection({ copy }: AchievementsSectionProps) {
         {/* Block 5: Content Creator & Speaker */}
         <div className="achievement-block reveal-on-scroll" id="block-creator">
           <div className="block-visual">
-            <a
-              href={AppConfig.links.medium}
-              id="link-img-creator"
-              className="block-img-wrapper stack-3"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <img
-                src={speakerImg.src}
-                alt="Content Creation Visual"
-                className="block-img"
-              />
-            </a>
+            <SpeakerCardStack />
           </div>
           <div className="block-content">
             <div className="block-tag" id="tag-creator">
