@@ -14,6 +14,7 @@ import {
 } from "firebase/firestore";
 import { getFirestoreDb } from "./firebase";
 import { formatScoreMetric, getArcadeGame, type GameSortOrder } from "./games";
+import { normalizeMascotId, type TechMascotId } from "./mascots";
 
 export type SessionStatus = "active" | "paused" | "ended";
 
@@ -40,6 +41,7 @@ export interface ScoreMeta {
 export interface PlayerScoreEntry {
   uid: string;
   displayName: string;
+  mascot?: TechMascotId;
   photoURL: string | null;
   score: number;
   metricLabel: string;
@@ -244,6 +246,7 @@ export async function submitPlayerScore(input: {
   sessionCode: string;
   uid: string;
   displayName: string;
+  mascot?: string | null;
   photoURL: string | null;
   score: number;
   meta?: ScoreMeta;
@@ -258,6 +261,7 @@ export async function submitPlayerScore(input: {
   const sessionRef = doc(db, "sessions", sessionId);
   const scoreRef = doc(db, "sessions", sessionId, "scores", input.uid);
   const cleanName = input.displayName.trim().slice(0, 40) || "Player";
+  const mascot = normalizeMascotId(input.mascot);
   const clampedScore = Math.max(0, Math.min(1000000, Math.round(input.score)));
 
   return runTransaction(db, async (tx) => {
@@ -276,6 +280,7 @@ export async function submitPlayerScore(input: {
       tx.set(scoreRef, {
         uid: input.uid,
         displayName: cleanName,
+        mascot,
         photoURL: input.photoURL,
         score: clampedScore,
         metricLabel,
@@ -302,6 +307,7 @@ export async function submitPlayerScore(input: {
 
     tx.update(scoreRef, {
       displayName: cleanName,
+      mascot,
       photoURL: input.photoURL,
       score: bestScore,
       metricLabel,
@@ -311,5 +317,40 @@ export async function submitPlayerScore(input: {
     });
 
     return { savedScore: bestScore, attempts: nextAttempts, improved: isBetter };
+  });
+}
+
+export async function adminRecordPlayerScore(input: {
+  session: ArcadeSession;
+  displayName: string;
+  mascot?: string | null;
+  score: number;
+}): Promise<void> {
+  const game = getArcadeGame(input.session.gameSlug);
+  if (!game) {
+    throw new Error(`Unknown game slug: ${input.session.gameSlug}`);
+  }
+  const cleanName = input.displayName.trim().slice(0, 40) || "Player";
+  const mascot = normalizeMascotId(input.mascot);
+  const clampedScore = Math.max(0, Math.min(1000000, Math.round(input.score)));
+  const slugPart = cleanName
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "")
+    .slice(0, 24) || "player";
+  const entryId = `manual_${slugPart}_${Date.now().toString(36)}`;
+  const db = getFirestoreDb();
+
+  await setDoc(doc(db, "sessions", input.session.id, "scores", entryId), {
+    uid: entryId,
+    displayName: cleanName,
+    mascot,
+    photoURL: null,
+    score: clampedScore,
+    metricLabel: formatScoreMetric(game, clampedScore),
+    attempts: 1,
+    meta: {},
+    createdAt: serverTimestamp(),
+    updatedAt: serverTimestamp(),
   });
 }

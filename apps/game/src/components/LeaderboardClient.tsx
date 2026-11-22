@@ -3,13 +3,14 @@
 import {
   generateQrDataUrl,
   getArcadeGame,
+  getTechMascot,
   normalizeSessionCode,
   subscribeSession,
   subscribeSessionLeaderboard,
   type ArcadeSession,
   type PlayerScoreEntry,
 } from "@repo/arcade";
-import { AppIcon } from "@repo/ui";
+import { AppIcon, TechMascotAvatar } from "@repo/ui";
 import Link from "next/link";
 import { useEffect, useState, useSyncExternalStore } from "react";
 import { useArcadeSettings } from "./ArcadeContext";
@@ -88,13 +89,14 @@ export function LeaderboardClient({
     }
   };
 
-  const copyLink = async () => {
-    if (!joinLink) return;
-    await navigator.clipboard.writeText(joinLink);
+  const copyLink = async (text = `${origin}/${game.slug}/${sessionCode}`) => {
+    if (!text) return;
+    await navigator.clipboard.writeText(text);
     setCopied(true);
     setTimeout(() => setCopied(false), 1800);
   };
 
+  const boardLink = `${origin}/${game.slug}/${sessionCode}/leaderboard`;
   const podium = entries.slice(0, 3);
 
   return (
@@ -120,10 +122,16 @@ export function LeaderboardClient({
                   className={`font-mono text-xs font-bold uppercase px-2.5 py-0.5 rounded-full border ${
                     session?.status === "active"
                       ? "bg-[var(--color-green-bg)] border-[var(--color-green)] text-[var(--color-green)]"
-                      : "bg-[var(--color-amber-bg)] border-[var(--color-amber)] text-[var(--color-amber)]"
+                      : session?.status === "ended"
+                        ? "bg-[var(--bg-tertiary)] border-[var(--color-cyan)] text-[var(--color-cyan)]"
+                        : "bg-[var(--color-amber-bg)] border-[var(--color-amber)] text-[var(--color-amber)]"
                   }`}
                 >
-                  {session?.status || "OFFLINE"}
+                  {session?.status === "ended"
+                    ? lang === "fr"
+                      ? "TERMINÉE | ARCHIVÉE"
+                      : "ENDED | ARCHIVED"
+                    : session?.status || "OFFLINE"}
                 </span>
                 <span className="font-mono text-xs text-[var(--text-muted)]">
                   {entries.length}{" "}
@@ -137,6 +145,24 @@ export function LeaderboardClient({
           </div>
 
           <div className="flex items-center gap-2 flex-wrap">
+            <button
+              type="button"
+              onClick={() => void copyLink(boardLink)}
+              className="arcade-btn h-10 px-3.5 text-xs font-mono"
+            >
+              <AppIcon
+                name={copied ? "check" : "copy"}
+                size={15}
+                strokeWidth={2}
+              />
+              {copied
+                ? lang === "fr"
+                  ? "Lien copié"
+                  : "Link Copied"
+                : lang === "fr"
+                  ? "Lien permanent"
+                  : "Copy Board URL"}
+            </button>
             <button
               type="button"
               onClick={() => setShowQr((s) => !s)}
@@ -160,11 +186,21 @@ export function LeaderboardClient({
               {lang === "fr" ? "Plein écran" : "Fullscreen"}
             </button>
             <Link
-              href={`/${game.slug}/${sessionCode}`}
+              href={
+                session?.status === "ended"
+                  ? `/${game.slug}/solo`
+                  : `/${game.slug}/${sessionCode}`
+              }
               className="arcade-btn arcade-btn-primary h-10 px-4 text-xs font-mono"
             >
               <AppIcon name="play" size={15} strokeWidth={2} />
-              {lang === "fr" ? "Jouer" : "Join"}
+              {session?.status === "ended"
+                ? lang === "fr"
+                  ? "Jouer Solo"
+                  : "Play Solo"
+                : lang === "fr"
+                  ? "Jouer"
+                  : "Join"}
             </Link>
           </div>
         </section>
@@ -233,12 +269,13 @@ export function LeaderboardClient({
                     <span className="font-mono text-2xl font-extrabold text-[var(--color-cyan)]">
                       {rankBadge}
                     </span>
+                    <TechMascotAvatar mascotId={entry.mascot} size={42} />
                     <div className="min-w-0">
                       <div className="font-bold text-lg truncate">
                         {entry.displayName}
                       </div>
                       <div className="font-mono text-xs text-[var(--text-muted)]">
-                        {entry.attempts}{" "}
+                        {getTechMascot(entry.mascot).name} · {entry.attempts}{" "}
                         {entry.attempts > 1
                           ? lang === "fr"
                             ? "essais"
@@ -300,7 +337,16 @@ export function LeaderboardClient({
                         {idx + 1}
                       </td>
                       <td className="py-3 px-4 font-semibold">
-                        {entry.displayName}
+                        <div className="flex items-center gap-2.5">
+                          <TechMascotAvatar mascotId={entry.mascot} size={30} />
+                          <div className="min-w-0">
+                            <div className="truncate">{entry.displayName}</div>
+                            <div className="font-mono text-[11px] text-[var(--text-muted)]">
+                              {getTechMascot(entry.mascot).name} (
+                              {getTechMascot(entry.mascot).tech})
+                            </div>
+                          </div>
+                        </div>
                       </td>
                       <td className="py-3 px-4 text-right font-mono font-bold">
                         {entry.metricLabel}

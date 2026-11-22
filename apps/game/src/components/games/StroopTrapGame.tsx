@@ -233,7 +233,7 @@ export function StroopTrapGame({ lang, onFinish }: MiniGameProps) {
         </div>
       </div>
 
-      <div className="grid grid-cols-2 gap-3">
+      <div className="grid grid-cols-2 gap-3 w-full max-w-[340px] sm:max-w-[380px] mx-auto">
         {round.cards.map((card, idx) => (
           <button
             key={idx}
@@ -246,10 +246,10 @@ export function StroopTrapGame({ lang, onFinish }: MiniGameProps) {
               backgroundColor: card.bgColor.bgHex,
               borderColor: card.bgColor.borderHex,
             }}
-            className="tap-zone h-24 sm:h-30 rounded-xl border-2 flex items-center justify-center active:scale-95 transition-transform"
+            className="tap-zone touch-none aspect-square max-h-[155px] sm:max-h-[175px] w-full rounded-2xl border-2 flex items-center justify-center active:scale-95 transition-transform"
           >
             <span
-              className="font-mono text-2xl sm:text-3xl font-extrabold tracking-wider px-3 py-1 rounded-lg bg-[#070a13]/75"
+              className="font-mono text-2xl sm:text-3xl font-extrabold tracking-wider select-none"
               style={{ color: card.textColor.inkHex }}
             >
               {lang === "fr" ? card.word.labelFr : card.word.labelEn}

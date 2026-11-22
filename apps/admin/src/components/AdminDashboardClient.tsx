@@ -2,13 +2,16 @@
 
 import { heroImg, logoSvg } from "@repo/assets";
 import {
+  adminRecordPlayerScore,
   ARCADE_GAMES,
   createArcadeSession,
+  DEFAULT_MASCOT_ID,
   deleteArcadeSession,
   deletePlayerScore,
   generateQrDataUrl,
   getArcadeGame,
   getNextSequentialCode,
+  getTechMascot,
   normalizeSessionCode,
   signInWithGoogle,
   signOutFirebase,
@@ -16,16 +19,19 @@ import {
   subscribeArcadeConfig,
   subscribeAuthState,
   subscribeSessionLeaderboard,
+  TECH_MASCOTS,
   updateArcadeConfig,
   updateArcadeSession,
   type ArcadeSession,
   type AuthUser,
   type PlayerScoreEntry,
   type SessionStatus,
+  type TechMascotId,
 } from "@repo/arcade";
 import {
   AppIcon,
   AppSelect,
+  TechMascotAvatar,
   useIsLocalHost,
   useStoredLang,
   useStoredTheme,
@@ -79,6 +85,13 @@ export function AdminDashboardClient() {
   const [selectedScores, setSelectedScores] = useState<PlayerScoreEntry[]>([]);
   const [qrDataUrl, setQrDataUrl] = useState("");
   const [copiedId, setCopiedId] = useState<string | null>(null);
+
+  // Manual score entry state
+  const [manualName, setManualName] = useState("");
+  const [manualMascot, setManualMascot] =
+    useState<TechMascotId>(DEFAULT_MASCOT_ID);
+  const [manualScore, setManualScore] = useState("");
+  const [savingManual, setSavingManual] = useState(false);
 
   useEffect(() => {
     let active = true;
@@ -218,6 +231,16 @@ export function AdminDashboardClient() {
     [],
   );
 
+  const mascotOptions = useMemo<AppSelectOption<TechMascotId>[]>(
+    () =>
+      TECH_MASCOTS.map((m) => ({
+        value: m.id,
+        label: m.name,
+        hint: m.tech,
+      })),
+    [],
+  );
+
   const handleSuggestNextCode = async (slug = newGameSlug) => {
     try {
       const next = await getNextSequentialCode(slug);
@@ -287,13 +310,34 @@ export function AdminDashboardClient() {
     setTimeout(() => setCopiedId(null), 1600);
   };
 
+  const handleRecordManualScore = async (e: FormEvent) => {
+    e.preventDefault();
+    if (!selectedSession || !manualName.trim() || !manualScore.trim()) return;
+    const numeric = Number(manualScore);
+    if (!Number.isFinite(numeric) || numeric < 0) return;
+
+    setSavingManual(true);
+    try {
+      await adminRecordPlayerScore({
+        session: selectedSession,
+        displayName: manualName,
+        mascot: manualMascot,
+        score: numeric,
+      });
+      setManualName("");
+      setManualScore("");
+    } finally {
+      setSavingManual(false);
+    }
+  };
+
   const exportCsv = () => {
     if (!selectedSession || selectedScores.length === 0) return;
-    const header = "Rank,Player,Score,Metric,Attempts\n";
+    const header = "Rank,Username,Mascot,Score,Metric,Attempts,Session\n";
     const rows = selectedScores
       .map(
         (entry, i) =>
-          `${i + 1},"${entry.displayName.replace(/"/g, '""')}",${entry.score},"${entry.metricLabel}",${entry.attempts}`,
+          `${i + 1},"${entry.displayName.replace(/"/g, '""')}","${getTechMascot(entry.mascot).name}",${entry.score},"${entry.metricLabel}",${entry.attempts},"#${selectedSession.sessionCode}"`,
       )
       .join("\n");
     const blob = new Blob([header + rows], { type: "text/csv;charset=utf-8;" });
@@ -746,10 +790,14 @@ export function AdminDashboardClient() {
                                           ? "bg-[var(--color-green-bg)] border-[var(--color-green)] text-[var(--color-green)]"
                                           : s.status === "paused"
                                             ? "bg-[var(--color-amber-bg)] border-[var(--color-amber)] text-[var(--color-amber)]"
-                                            : "bg-[var(--bg-secondary)] border-[var(--border-color)] text-[var(--text-muted)]"
+                                            : "bg-[var(--bg-secondary)] border-[var(--color-cyan)] text-[var(--color-cyan)]"
                                       }`}
                                     >
-                                      {s.status}
+                                      {s.status === "ended"
+                                        ? lang === "fr"
+                                          ? "ARRÊTÉE | ARCHIVÉE"
+                                          : "ENDED | ARCHIVED"
+                                        : s.status}
                                     </span>
                                   </div>
                                   <h3 className="font-bold text-base mt-1">
@@ -798,6 +846,29 @@ export function AdminDashboardClient() {
                                     ? "Copied"
                                     : "Join URL"}
                                 </button>
+                                <button
+                                  type="button"
+                                  onClick={() =>
+                                    void handleCopy(`board-${s.id}`, boardUrl)
+                                  }
+                                  className="admin-btn h-8 px-2.5"
+                                >
+                                  <AppIcon
+                                    name={
+                                      copiedId === `board-${s.id}`
+                                        ? "check"
+                                        : "copy"
+                                    }
+                                    size={13}
+                                  />
+                                  {copiedId === `board-${s.id}`
+                                    ? lang === "fr"
+                                      ? "Lien copié"
+                                      : "Copied Board"
+                                    : lang === "fr"
+                                      ? "Lien Classement"
+                                      : "Board URL"}
+                                </button>
                                 <a
                                   href={boardUrl}
                                   target="_blank"
@@ -816,7 +887,13 @@ export function AdminDashboardClient() {
                                     className="admin-btn h-8 px-2.5 text-[var(--color-green)]"
                                   >
                                     <AppIcon name="play" size={13} />
-                                    Resume
+                                    {s.status === "ended"
+                                      ? lang === "fr"
+                                        ? "Réouvrir"
+                                        : "Reopen"
+                                      : lang === "fr"
+                                        ? "Reprendre"
+                                        : "Resume"}
                                   </button>
                                 ) : (
                                   <button
@@ -836,10 +913,10 @@ export function AdminDashboardClient() {
                                     onClick={() =>
                                       void handleStatusChange(s, "ended")
                                     }
-                                    className="admin-btn h-8 px-2.5"
+                                    className="admin-btn h-8 px-2.5 text-[var(--color-red)]"
                                   >
                                     <AppIcon name="stop" size={13} />
-                                    End
+                                    {lang === "fr" ? "Arrêter" : "Stop"}
                                   </button>
                                 ) : null}
                               </div>
@@ -912,11 +989,100 @@ export function AdminDashboardClient() {
                           </div>
                         ) : null}
 
+                        <div className="admin-card px-3 py-2.5 flex items-center justify-between gap-2">
+                          <span className="font-mono text-xs text-[var(--color-cyan)] truncate">
+                            {gameBaseUrl}/{selectedSession.gameSlug}/
+                            {selectedSession.sessionCode}/leaderboard
+                          </span>
+                          <button
+                            type="button"
+                            onClick={() =>
+                              void handleCopy(
+                                `insp-board-${selectedSession.id}`,
+                                `${gameBaseUrl}/${selectedSession.gameSlug}/${selectedSession.sessionCode}/leaderboard`,
+                              )
+                            }
+                            className="admin-btn h-7 px-2.5 text-[11px] font-mono shrink-0"
+                          >
+                            <AppIcon
+                              name={
+                                copiedId === `insp-board-${selectedSession.id}`
+                                  ? "check"
+                                  : "copy"
+                              }
+                              size={12}
+                            />
+                            {copiedId === `insp-board-${selectedSession.id}`
+                              ? lang === "fr"
+                                ? "Copié"
+                                : "Copied"
+                              : lang === "fr"
+                                ? "Copier"
+                                : "Copy"}
+                          </button>
+                        </div>
+
+                        <form
+                          onSubmit={(e) => void handleRecordManualScore(e)}
+                          className="admin-card p-3 flex flex-col gap-2.5"
+                        >
+                          <div className="font-mono text-[11px] uppercase text-[var(--text-muted)]">
+                            {lang === "fr"
+                              ? "Enregistrer un participant (username / points)"
+                              : "Record Participant Score"}
+                          </div>
+                          <div className="grid grid-cols-1 sm:grid-cols-12 gap-2">
+                            <input
+                              type="text"
+                              value={manualName}
+                              onChange={(e) => setManualName(e.target.value)}
+                              maxLength={40}
+                              placeholder={
+                                lang === "fr" ? "Username" : "Username"
+                              }
+                              className="admin-input h-9 text-xs sm:col-span-5"
+                            />
+                            <div className="sm:col-span-4">
+                              <AppSelect
+                                value={manualMascot}
+                                options={mascotOptions}
+                                onChange={setManualMascot}
+                                triggerClassName="h-9 text-xs"
+                              />
+                            </div>
+                            <input
+                              type="number"
+                              min={0}
+                              max={1000000}
+                              value={manualScore}
+                              onChange={(e) => setManualScore(e.target.value)}
+                              placeholder={lang === "fr" ? "Points" : "Score"}
+                              className="admin-input h-9 text-xs font-mono sm:col-span-3"
+                            />
+                          </div>
+                          <button
+                            type="submit"
+                            disabled={
+                              savingManual ||
+                              !manualName.trim() ||
+                              !manualScore.trim()
+                            }
+                            className="admin-btn admin-btn-primary h-8 px-3 text-xs self-end"
+                          >
+                            <AppIcon name="add" size={13} />
+                            {savingManual
+                              ? "..."
+                              : lang === "fr"
+                                ? "Enregistrer"
+                                : "Save Score"}
+                          </button>
+                        </form>
+
                         <div className="flex flex-col gap-2">
                           <div className="font-mono text-xs uppercase text-[var(--text-muted)]">
                             {lang === "fr"
-                              ? `Classement live (${selectedScores.length})`
-                              : `Live Leaderboard (${selectedScores.length})`}
+                              ? `Scores (${selectedScores.length}) | Session #${selectedSession.sessionCode}`
+                              : `Scores (${selectedScores.length}) | Session #${selectedSession.sessionCode}`}
                           </div>
                           {selectedScores.length === 0 ? (
                             <p className="text-xs text-[var(--text-muted)] py-4 text-center">
@@ -931,15 +1097,26 @@ export function AdminDashboardClient() {
                                 className="admin-card px-3 py-2 flex items-center justify-between gap-2 text-xs"
                               >
                                 <div className="flex items-center gap-2 min-w-0">
-                                  <span className="font-mono font-bold text-[var(--color-cyan)] w-5">
+                                  <span className="font-mono font-bold text-[var(--color-cyan)] w-5 shrink-0">
                                     #{idx + 1}
                                   </span>
-                                  <span className="font-semibold truncate">
-                                    {entry.displayName}
-                                  </span>
+                                  <TechMascotAvatar
+                                    mascotId={entry.mascot}
+                                    size={26}
+                                  />
+                                  <div className="min-w-0">
+                                    <div className="font-semibold truncate">
+                                      {entry.displayName}
+                                    </div>
+                                    <div className="font-mono text-[10px] text-[var(--text-muted)] truncate">
+                                      {getTechMascot(entry.mascot).name} · #
+                                      {selectedSession.sessionCode} ·{" "}
+                                      {entry.attempts}x
+                                    </div>
+                                  </div>
                                 </div>
                                 <div className="flex items-center gap-2 shrink-0">
-                                  <span className="font-mono font-bold">
+                                  <span className="font-mono font-bold text-[var(--color-cyan)]">
                                     {entry.metricLabel}
                                   </span>
                                   <button

@@ -70,7 +70,7 @@ export function ArcadeTopbar({
         </div>
 
         <div className="flex items-center gap-2 shrink-0">
-          {user ? (
+          {user && !user.isAnonymous ? (
             <button
               type="button"
               onClick={() => void signOutFirebase()}

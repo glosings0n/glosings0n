@@ -10,6 +10,7 @@ export {
   MusanTekWordmark,
 } from "./components/BrandWordmarks";
 export { MusanTekLogo } from "./components/MusanTekLogo";
+export { TechMascotAvatar, type MascotId } from "./components/TechMascotAvatar";
 export {
   useIsLocalHost,
   useStoredLang,

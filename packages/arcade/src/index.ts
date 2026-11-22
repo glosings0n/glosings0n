@@ -1,4 +1,5 @@
 export {
+  ensureAnonymousParticipant,
   getFirebaseApp,
   getFirebaseAuth,
   getFirestoreDb,
@@ -8,6 +9,7 @@ export {
   type AuthUser,
 } from "./firebase";
 export {
+  adminRecordPlayerScore,
   buildSessionId,
   createArcadeSession,
   deleteArcadeSession,
@@ -35,4 +37,12 @@ export {
   type GameCategory,
   type GameSortOrder,
 } from "./games";
+export {
+  DEFAULT_MASCOT_ID,
+  getTechMascot,
+  normalizeMascotId,
+  TECH_MASCOTS,
+  type TechMascotId,
+  type TechMascotMeta,
+} from "./mascots";
 export { generateQrDataUrl } from "./qr";

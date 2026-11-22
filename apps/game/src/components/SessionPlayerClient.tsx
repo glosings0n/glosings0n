@@ -1,19 +1,23 @@
 "use client";
 
 import {
+  DEFAULT_MASCOT_ID,
+  ensureAnonymousParticipant,
   formatScoreMetric,
   getArcadeGame,
+  normalizeMascotId,
   normalizeSessionCode,
-  signInWithGoogle,
   submitPlayerScore,
   subscribeAuthState,
   subscribeSession,
   subscribeSessionLeaderboard,
+  TECH_MASCOTS,
   type ArcadeSession,
   type AuthUser,
   type PlayerScoreEntry,
+  type TechMascotId,
 } from "@repo/arcade";
-import { AppIcon } from "@repo/ui";
+import { AppIcon, TechMascotAvatar } from "@repo/ui";
 import Link from "next/link";
 import { useCallback, useEffect, useState, useSyncExternalStore } from "react";
 import { useArcadeSettings } from "./ArcadeContext";
@@ -21,6 +25,7 @@ import { ArcadeTopbar } from "./ArcadeTopbar";
 import { GAME_COMPONENTS, type GameResult } from "./games";
 
 const SOLO_BEST_EVENT = "glosings0n:solobest";
+const PLAYER_PROFILE_EVENT = "glosings0n:playerprofile";
 
 interface SessionPlayerClientProps {
   gameSlug: string;
@@ -39,15 +44,15 @@ export function SessionPlayerClient({
   const isSolo = sessionCode === "solo";
 
   const [user, setUser] = useState<AuthUser | null>(null);
-  const [authReady, setAuthReady] = useState(false);
   const [authError, setAuthError] = useState<string | null>(null);
-  const [signingIn, setSigningIn] = useState(false);
+  const [startingSession, setStartingSession] = useState(false);
 
   const [session, setSession] = useState<ArcadeSession | null>(null);
   const [loadedSessionKey, setLoadedSessionKey] = useState<string | null>(null);
   const [leaderboard, setLeaderboard] = useState<PlayerScoreEntry[]>([]);
 
-  const [nickname, setNickname] = useState("");
+  const [draftName, setDraftName] = useState<string | null>(null);
+  const [draftMascot, setDraftMascot] = useState<TechMascotId | null>(null);
   const [stage, setStage] = useState<PlayStage>("lobby");
   const [countdown, setCountdown] = useState(3);
   const [runKey, setRunKey] = useState(0);
@@ -65,6 +70,30 @@ export function SessionPlayerClient({
       window.removeEventListener(SOLO_BEST_EVENT, onChange);
     };
   }, []);
+
+  const subscribeProfile = useCallback((onChange: () => void) => {
+    window.addEventListener("storage", onChange);
+    window.addEventListener(PLAYER_PROFILE_EVENT, onChange);
+    return () => {
+      window.removeEventListener("storage", onChange);
+      window.removeEventListener(PLAYER_PROFILE_EVENT, onChange);
+    };
+  }, []);
+
+  const savedName = useSyncExternalStore(
+    subscribeProfile,
+    () => localStorage.getItem("glosings0n_player_name") || "",
+    () => "",
+  );
+
+  const savedMascot = useSyncExternalStore(
+    subscribeProfile,
+    () => normalizeMascotId(localStorage.getItem("glosings0n_player_mascot")),
+    () => DEFAULT_MASCOT_ID,
+  );
+
+  const activeName = draftName !== null ? draftName : savedName;
+  const activeMascot = draftMascot !== null ? draftMascot : savedMascot;
 
   const soloBest = useSyncExternalStore(
     subscribeSoloBest,
@@ -84,15 +113,6 @@ export function SessionPlayerClient({
   useEffect(() => {
     const unsubAuth = subscribeAuthState((nextUser) => {
       setUser(nextUser);
-      setAuthReady(true);
-      if (nextUser) {
-        const defaultName = (
-          nextUser.displayName ||
-          nextUser.email?.split("@")[0] ||
-          "Player"
-        ).slice(0, 40);
-        setNickname((prev) => prev || defaultName);
-      }
     });
     return () => unsubAuth();
   }, []);
@@ -163,26 +183,7 @@ export function SessionPlayerClient({
   const canPlaySession =
     !isSolo &&
     session?.status === "active" &&
-    Boolean(user) &&
     attemptsUsed < maxAttempts;
-
-  const handleGoogleSignIn = async () => {
-    setAuthError(null);
-    setSigningIn(true);
-    try {
-      await signInWithGoogle();
-    } catch (err) {
-      setAuthError(
-        err instanceof Error
-          ? err.message
-          : lang === "fr"
-            ? "Échec de connexion Google."
-            : "Google Sign-In failed.",
-      );
-    } finally {
-      setSigningIn(false);
-    }
-  };
 
   const startCountdown = () => {
     setLastResult(null);
@@ -191,6 +192,44 @@ export function SessionPlayerClient({
     setCountdown(3);
     setRunKey((k) => k + 1);
     setStage("countdown");
+  };
+
+  const handleStartSessionRun = async () => {
+    const cleanName = activeName.trim().slice(0, 40);
+    if (!cleanName) return;
+
+    localStorage.setItem("glosings0n_player_name", cleanName);
+    localStorage.setItem("glosings0n_player_mascot", activeMascot);
+    window.dispatchEvent(new Event(PLAYER_PROFILE_EVENT));
+
+    setAuthError(null);
+    setStartingSession(true);
+    try {
+      const authUser = user ?? (await ensureAnonymousParticipant());
+      setUser(authUser);
+      startCountdown();
+    } catch (err) {
+      const msg = err instanceof Error ? err.message : "";
+      if (
+        msg.includes("operation-not-allowed") ||
+        msg.includes("admin-restricted-operation")
+      ) {
+        setAuthError(
+          lang === "fr"
+            ? "Active l'authentification Anonyme dans Firebase Console > Authentication > Sign-in method."
+            : "Enable Anonymous Sign-In in Firebase Console > Authentication > Sign-in method.",
+        );
+      } else {
+        setAuthError(
+          msg ||
+            (lang === "fr"
+              ? "Impossible de rejoindre la session."
+              : "Could not join session."),
+        );
+      }
+    } finally {
+      setStartingSession(false);
+    }
   };
 
   const handleFinish = async (result: GameResult) => {
@@ -212,15 +251,18 @@ export function SessionPlayerClient({
       return;
     }
 
-    if (!user || !session || session.status !== "active") return;
+    if (!session || session.status !== "active") return;
     setSaveState("saving");
     try {
+      const authUser = user ?? (await ensureAnonymousParticipant());
+      setUser(authUser);
       const saved = await submitPlayerScore({
         gameSlug: game.slug,
         sessionCode,
-        uid: user.uid,
-        displayName: nickname.trim() || user.displayName || "Player",
-        photoURL: user.photoURL,
+        uid: authUser.uid,
+        displayName: activeName.trim() || "Player",
+        mascot: activeMascot,
+        photoURL: authUser.photoURL,
         score: result.score,
         meta: result.meta,
       });
@@ -419,58 +461,22 @@ export function SessionPlayerClient({
                       : "View Leaderboard"}
                   </Link>
                 </div>
-              ) : !authReady ? (
-                <div className="py-8 text-center font-mono text-sm text-[var(--text-muted)]">
-                  ...
-                </div>
-              ) : !user ? (
-                <div className="py-4 text-center flex flex-col items-center gap-4">
-                  <div className="w-12 h-12 rounded-2xl bg-[var(--bg-tertiary)] border border-[var(--border-color)] flex items-center justify-center text-[var(--color-cyan)]">
-                    <AppIcon name="google" size={24} strokeWidth={1.8} />
-                  </div>
-                  <div>
-                    <h2 className="text-lg font-bold">
-                      {lang === "fr"
-                        ? "Connexion Google requise pour le classement"
-                        : "Sign in with Google to Join the Leaderboard"}
-                    </h2>
-                    <p className="text-sm text-[var(--text-secondary)] mt-1">
-                      {lang === "fr"
-                        ? "Un seul clic avec ton compte Google pour enregistrer ton score en direct."
-                        : "One-tap Google Sign-In so your score updates on the live room screen."}
-                    </p>
-                  </div>
-                  {authError ? (
-                    <p className="text-xs font-mono text-[var(--color-red)]">
-                      {authError}
-                    </p>
-                  ) : null}
-                  <button
-                    type="button"
-                    disabled={signingIn}
-                    onClick={() => void handleGoogleSignIn()}
-                    className="arcade-btn arcade-btn-primary h-12 px-6 text-sm"
-                  >
-                    <AppIcon name="google" size={18} strokeWidth={2} />
-                    {signingIn
-                      ? lang === "fr"
-                        ? "Connexion..."
-                        : "Signing in..."
-                      : lang === "fr"
-                        ? "Continuer avec Google"
-                        : "Continue with Google"}
-                  </button>
-                </div>
               ) : (
-                <div className="flex flex-col gap-4">
+                <div className="flex flex-col gap-5">
                   <div className="flex items-center justify-between gap-3 flex-wrap arcade-card p-3.5">
-                    <div className="text-sm">
-                      <span className="text-[var(--text-muted)]">
-                        {lang === "fr" ? "Connecté :" : "Signed in:"}
-                      </span>{" "}
-                      <span className="font-mono font-semibold">
-                        {user.email}
-                      </span>
+                    <div className="flex items-center gap-3 min-w-0">
+                      <TechMascotAvatar mascotId={activeMascot} size={36} />
+                      <div className="min-w-0">
+                        <div className="text-sm font-semibold truncate">
+                          {activeName.trim() ||
+                            (lang === "fr" ? "Participant" : "Challenger")}
+                        </div>
+                        <div className="font-mono text-xs text-[var(--text-muted)]">
+                          {lang === "fr"
+                            ? "Aucune connexion requise"
+                            : "No sign-in required"}
+                        </div>
+                      </div>
                     </div>
                     <div className="font-mono text-xs text-[var(--color-cyan)]">
                       {lang === "fr" ? "Essais" : "Attempts"}: {attemptsUsed} /{" "}
@@ -478,24 +484,71 @@ export function SessionPlayerClient({
                     </div>
                   </div>
 
+                  {/* Username Input */}
                   <div className="flex flex-col gap-1.5">
                     <label
                       htmlFor="player-nickname"
                       className="font-mono text-xs font-semibold uppercase text-[var(--text-secondary)]"
                     >
                       {lang === "fr"
-                        ? "Pseudo sur le classement"
-                        : "Leaderboard Display Name"}
+                        ? "Ton username sur le classement"
+                        : "Your Leaderboard Username"}
                     </label>
                     <input
                       id="player-nickname"
                       type="text"
                       maxLength={40}
-                      value={nickname}
-                      onChange={(e) => setNickname(e.target.value)}
+                      value={activeName}
+                      onChange={(e) => {
+                        const val = e.target.value;
+                        setDraftName(val);
+                        localStorage.setItem("glosings0n_player_name", val);
+                      }}
                       className="arcade-input font-medium"
-                      placeholder={user.displayName || "Player"}
+                      placeholder={lang === "fr" ? "Ex: dev_alice" : "e.g. dev_alice"}
                     />
+                  </div>
+
+                  {/* 10 Tech Mascot Selector */}
+                  <div className="flex flex-col gap-2">
+                    <span className="font-mono text-xs font-semibold uppercase text-[var(--text-secondary)]">
+                      {lang === "fr"
+                        ? "Choisis ta mascotte tech (10)"
+                        : "Pick Your Tech Mascot (10)"}
+                    </span>
+                    <div className="grid grid-cols-2 sm:grid-cols-5 gap-2">
+                      {TECH_MASCOTS.map((mascot) => {
+                        const isSelected = activeMascot === mascot.id;
+                        return (
+                          <button
+                            key={mascot.id}
+                            type="button"
+                            onClick={() => {
+                              setDraftMascot(mascot.id);
+                              localStorage.setItem(
+                                "glosings0n_player_mascot",
+                                mascot.id,
+                              );
+                            }}
+                            className={`p-2 rounded-xl border text-left flex items-center gap-2.5 transition-colors cursor-pointer ${
+                              isSelected
+                                ? "border-[var(--color-cyan)] bg-[var(--color-cyan-tint)]"
+                                : "border-[var(--border-color)] bg-[var(--bg-tertiary)] hover:border-[var(--color-cyan)]"
+                            }`}
+                          >
+                            <TechMascotAvatar mascotId={mascot.id} size={32} />
+                            <div className="min-w-0">
+                              <div className="font-semibold text-xs truncate text-[var(--text-primary)]">
+                                {mascot.name}
+                              </div>
+                              <div className="font-mono text-[10px] truncate text-[var(--text-muted)]">
+                                {mascot.tech}
+                              </div>
+                            </div>
+                          </button>
+                        );
+                      })}
+                    </div>
                   </div>
 
                   {myEntry ? (
@@ -512,20 +565,32 @@ export function SessionPlayerClient({
                     </div>
                   ) : null}
 
+                  {authError ? (
+                    <div className="rounded-xl p-3 border border-[var(--color-red)] bg-[var(--color-red-bg)] text-xs font-mono text-[var(--color-red)]">
+                      {authError}
+                    </div>
+                  ) : null}
+
                   <button
                     type="button"
-                    disabled={!canPlaySession || !nickname.trim()}
-                    onClick={startCountdown}
+                    disabled={
+                      startingSession || !canPlaySession || !activeName.trim()
+                    }
+                    onClick={() => void handleStartSessionRun()}
                     className="arcade-btn arcade-btn-primary h-12 px-6 text-base w-full"
                   >
                     <AppIcon name="play" size={18} strokeWidth={2} />
-                    {attemptsUsed >= maxAttempts
+                    {startingSession
                       ? lang === "fr"
-                        ? "Nombre max d'essais atteint"
-                        : "Maximum Attempts Reached"
-                      : lang === "fr"
-                        ? `Démarrer (${game.durationLabel})`
-                        : `Start (${game.durationLabel})`}
+                        ? "Préparation..."
+                        : "Preparing..."
+                      : attemptsUsed >= maxAttempts
+                        ? lang === "fr"
+                          ? "Nombre max d'essais atteint"
+                          : "Maximum Attempts Reached"
+                        : lang === "fr"
+                          ? `Démarrer (${game.durationLabel})`
+                          : `Start (${game.durationLabel})`}
                   </button>
                 </div>
               )}
@@ -641,10 +706,11 @@ export function SessionPlayerClient({
                       : ""
                   }`}
                 >
-                  <div className="flex items-center gap-3 min-w-0">
+                  <div className="flex items-center gap-2.5 min-w-0">
                     <span className="font-mono text-xs font-bold text-[var(--color-cyan)] w-6">
                       #{idx + 1}
                     </span>
+                    <TechMascotAvatar mascotId={entry.mascot} size={28} />
                     <span className="font-medium truncate">
                       {entry.displayName}
                     </span>

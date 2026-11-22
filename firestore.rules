@@ -28,6 +28,7 @@ service cloud.firestore {
     //   - metricLabel: string (required, 1..32 chars)
     //   - attempts: int (required, 1..session.maxAttemptsPerPlayer; 1 on create, +1 on update)
     //   - photoURL: string | null (optional, max 512 chars, http/https URL if string)
+    //   - mascot: string | null (optional, 1..24 chars)
     //   - meta: map (optional, max 8 entries for compact game stats)
     //   - createdAt: timestamp (optional, immutable if set)
     //   - updatedAt: timestamp (optional)
@@ -141,6 +142,7 @@ service cloud.firestore {
           'metricLabel',
           'attempts',
           'photoURL',
+          'mascot',
           'meta',
           'createdAt',
           'updatedAt'
@@ -157,6 +159,7 @@ service cloud.firestore {
         data.attempts >= 1 &&
         data.attempts <= maxAttempts &&
         isValidOptionalUrlOrNull(data, 'photoURL', 512) &&
+        (!('mascot' in data) || data.mascot == null || validStringLength(data.mascot, 1, 24)) &&
         (!('meta' in data) || (data.meta is map && data.meta.size() <= 8)) &&
         isValidOptionalTimestamp(data, 'createdAt') &&
         isValidOptionalTimestamp(data, 'updatedAt');
